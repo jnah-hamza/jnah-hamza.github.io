@@ -1,0 +1,29 @@
+CLUBS, ÉVÉNEMENTS ET LOGOS — HAMZA JNAH
+Fichiers de ce dossier et où les mettre. Légendes FR / EN.
+
+LOGOS
+- logo-aiesec.png — carte AIESEC (Parascolaire).
+- logo-neoschool.png — Neoschool International (Jobs étudiants).
+- logo-children-of-the-world.png — Children of the World (Jobs étudiants).
+- logo-accede-internationale.png — Hackathon ACCEDE (Parascolaire, distinctions).
+
+GREEN INVEST — "RECYCLE IT", 1re ÉDITION (2024) — Chef de projet
+- parascolaire-green-invest-1-pitch.jpg — couverture. FR : Recycle It, 1re édition : le lancement. EN : Recycle It, 1st edition: the kick-off.
+- parascolaire-green-invest-2-atelier.jpg — FR : Recycler, créer, convaincre. EN : Recycle, create, convince.
+- parascolaire-green-invest-3-participant.jpg — FR : Chaque équipe défend son idée. EN : Every team pitches its idea.
+- parascolaire-green-invest-4-equipes.jpg — FR : Les équipes à l'œuvre. EN : Teams at work.
+- parascolaire-green-invest-5-organisation.jpg — FR : L'équipe d'organisation. EN : The organizing team.
+
+AIESEC — YOUTH CORNER, 4e ÉDITION "TECHPRENEURS" — OC Logistique & Finance
+- parascolaire-aiesec-youth-corner-1-oc-logfin.jpg — visuel d'annonce de l'équipe (OC Log&Fin). FR : L'annonce du comité d'organisation. EN : Organizing committee announcement.
+- parascolaire-aiesec-youth-corner-2-techpreneurs.jpg — couverture. FR : Youth Corner 4 : Techpreneurs. EN : Youth Corner 4: Techpreneurs.
+- parascolaire-aiesec-youth-corner-3-oc-wizards.jpg — FR : Les comités d'organisation sur scène, certificats en main. EN : The organizing committees on stage, certificates in hand.
+- parascolaire-aiesec-youth-corner-4-equipe.jpg — FR : Les coulisses. EN : Behind the scenes.
+- parascolaire-aiesec-youth-corner-5-portrait.jpg — FR : Le jour J. EN : The big day.
+
+HACKATHON "LE PHARE DE L'ENTREPRENEURIAT" — ACCEDE INTERNATIONALE — Lauréat
+- parascolaire-hackathon-accede-1-victoire.jpg — couverture. FR : 10 heures de travail, une idée qui gagne. EN : 10 hours of work, one winning idea.
+- parascolaire-hackathon-accede-2-groupe.jpg — FR : Les participants du premier hackathon ACCEDE. EN : Participants of the first ACCEDE hackathon.
+- parascolaire-hackathon-accede-3-visite.jpg — FR : Visite des lieux au Technopark. EN : Touring the Technopark.
+
+Ne recadre pas les visages. Chargement différé pour toutes ces photos.
