@@ -10,7 +10,6 @@
     "menu": "Menu",
     "close": "Fermer",
     "back_home": "← Retour à l'accueil",
-    "todo": "[À COMPLÉTER]",
     "group": "Projet de groupe",
     "ongoing": "En cours",
     "new_tab": "(s'ouvre dans un nouvel onglet)",
@@ -26,12 +25,13 @@
     "video": "Vidéo",
     "photo": "Photo",
     "extra": "Parascolaire",
-    "contact": "Contact"
+    "contact": "Contact",
+    "jobs": "Jobs étudiants"
   },
   "hero": {
     "kicker": "Portfolio 2027",
     "title": "Hamza Jnah",
-    "subtitle": "Étudiant en marketing · IAE Saint-Étienne",
+    "subtitle": "Étudiant en marketing · Esprit créatif",
     "badge": "Recherche un stage en marketing · 3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne & Lyon",
     "pitch": "Mon atout : un double profil. J'analyse (données, SEO, GEO, études de marché, réseaux sociaux) et je crée (vidéo, photo, design graphique).",
     "tag_analyse": "Analyse",
@@ -39,8 +39,21 @@
     "cta_projects": "Voir mes projets",
     "cta_cv": "Télécharger mon CV",
     "portrait_alt": "Portrait de Hamza Jnah",
-    "portrait_todo": "[À COMPLÉTER : portrait détouré]",
-    "scroll": "Défiler"
+    "scroll": "Défiler",
+    "type_prefix": "Je pense la stratégie. Je crée",
+    "type_words": [
+      "l'image",
+      "la vidéo",
+      "l'histoire",
+      "la marque"
+    ],
+    "tags": [
+      "vidéo",
+      "photo",
+      "design",
+      "stratégie"
+    ],
+    "photo_caption": "The Pitch, 7e édition"
   },
   "marquee": {
     "about": "À propos",
@@ -50,7 +63,8 @@
     "photo": "Photographie",
     "extra": "Parascolaire",
     "skills": "Compétences",
-    "contact": "Contact"
+    "contact": "Contact",
+    "jobs": "Jobs étudiants"
   },
   "about": {
     "title": "Hello",
@@ -59,11 +73,34 @@
     "tools_title": "Mes outils",
     "mobility": "Mobilité : Saint-Étienne & Lyon · Permis B",
     "note": "analyse + création = moi",
-    "polaroids_note": "Quelques images de mon carnet"
+    "polaroids_note": "Quelques images de mon carnet",
+    "card_back_title": "Étudiant en marketing",
+    "card_back_sub": "Saint-Étienne & Lyon",
+    "card_hint": "Cliquez pour retourner la carte",
+    "model_alt": "Hamza Jnah en 3D",
+    "strengths_title": "Mes atouts",
+    "strengths": [
+      {
+        "name": "Créativité",
+        "text": "vidéographie, photographie, design graphique, direction artistique de campagne (affiche Rebirth)"
+      },
+      {
+        "name": "Marketing digital",
+        "text": "SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur"
+      },
+      {
+        "name": "Marketing stratégique",
+        "text": "études de marché, analyse concurrentielle, stratégies marketing"
+      },
+      {
+        "name": "Data & reporting",
+        "text": "analyse de données, ACP, tableaux de bord"
+      }
+    ]
   },
   "projects": {
     "title": "Projets",
-    "intro": "Quatre projets, quatre façons de travailler : prototype, rapport, co-branding et entrepreneuriat.",
+    "intro": "Trois projets, trois façons de travailler : co-branding de luxe, marketing opérationnel mis en scène et entrepreneuriat.",
     "open": "Voir le projet",
     "drag": "Faites défiler →",
     "types": {
@@ -71,7 +108,9 @@
       "report": "Rapport",
       "video": "Vidéo",
       "brand": "Marque · Entrepreneuriat",
-      "campaign": "Campagne"
+      "campaign": "Campagne",
+      "mix_report": "Rapport + présentation",
+      "mix_media": "Photo + vidéo"
     },
     "labels": {
       "context": "Contexte",
@@ -87,161 +126,147 @@
       "screens": "Écrans du prototype",
       "next": "Projet suivant",
       "figma": "Ouvrir le prototype Figma",
-      "pdf": "Télécharger le PDF",
+      "pdf": "Télécharger la note de synthèse (PDF)",
       "type": "Type",
       "year": "Année",
-      "process": "Ma démarche"
+      "process": "Ma démarche",
+      "concept": "Le concept",
+      "steps": "La démarche",
+      "launch": "Lancement proposé",
+      "canva": "Voir la présentation (Canva)",
+      "concept_visual": "Visuel de concept, projet étudiant",
+      "video_intro": "Vidéo d'introduction",
+      "team": "L'équipe",
+      "photos": "En images",
+      "pdf_generic": "Télécharger le PDF"
     },
-    "screen_todo": "[À COMPLÉTER : écran]",
-    "page_todo": "[À COMPLÉTER : page]",
-    "image_todo": "[À COMPLÉTER : image]",
     "items": {
-      "take-taste": {
-        "title": "Take & Taste",
-        "kind": "Application mobile · Prototype",
-        "year": "[À COMPLÉTER : année]",
-        "tagline": "Des idées de recettes, des kits d'ingrédients et des plats prêts, pensés pour les sportifs.",
-        "context": "Take & Taste est une application qui propose des idées de recettes et vend des kits d'ingrédients et des plats prêts. Cible : les sportifs. Lancement en France.",
-        "problem": "[À COMPLÉTER : la question à laquelle le projet répond]",
-        "role": "[À COMPLÉTER : mon rôle précis dans le projet]",
-        "output": "Un prototype iPhone réalisé sur Figma. [À COMPLÉTER : autres livrables]",
-        "result": "[À COMPLÉTER : résultat, note ou retour obtenu]",
-        "tools": [
-          "Figma",
-          "[À COMPLÉTER]"
-        ],
-        "figures": [
-          {
-            "value": "iPhone",
-            "label": "Prototype"
-          },
-          {
-            "value": "FR",
-            "label": "Marché de lancement"
-          },
-          {
-            "value": "3",
-            "label": "Offres : recettes, kits, plats prêts"
-          }
-        ],
-        "tiles": [
-          "Recettes",
-          "Kits",
-          "Plats prêts",
-          "Sportifs"
-        ],
-        "sketch": {
-          "title": "Take & Taste — la démarche",
-          "n1": "Cible : les sportifs",
-          "n2": "Idées de recettes",
-          "n3": "Kits d'ingrédients",
-          "n4": "Plats prêts",
-          "n5": "Lancement en France",
-          "n6": "Prototype iPhone sur Figma",
-          "n7": "une seule app, trois façons de bien manger"
-        }
-      },
       "porsche-hermes": {
         "title": "Porsche × Hermès « 911 Sellier »",
-        "kind": "Co-branding · Rapport",
-        "year": "2026 · en cours",
-        "tagline": "Imaginer un produit inédit qui associe deux maisons d'exception.",
-        "context": "Projet de co-branding : conception d'un produit inédit associant Porsche et Hermès, la « 911 Sellier ».",
-        "problem": "[À COMPLÉTER : la question à laquelle le projet répond]",
-        "role": "[À COMPLÉTER : mon rôle précis dans le projet]",
-        "output": "Analyse du fit entre les deux marques, analyse du capital-marque et benchmark concurrentiel. [À COMPLÉTER : autres livrables]",
-        "result": "Projet en cours. [À COMPLÉTER : résultat à ajouter à la fin du projet]",
+        "kind": "Co-branding · Note de synthèse + présentation",
+        "year": "Octobre 2026",
+        "tagline": "Pour ceux à qui la 911 manque.",
+        "chips": [
+          "Projet en binôme",
+          "Visuel de concept"
+        ],
+        "context": "Module « Branding : stratégie et performance » (L. Ambroise), M1 Marketing et Stratégie d'Innovation, IAE Saint-Étienne, octobre 2026. Projet en binôme avec Ichrak Zerqaoui.",
+        "concept": "Un co-développement entre Porsche et Hermès. La 911 Sellier est une série de 24 Porsche 911 classiques (type G, 1974-1989) restaurées par Porsche Classic à Stuttgart et habillées par les selliers d'Hermès, chacune livrée avec un sac Kelly en édition limitée. Signature : « Pour ceux à qui la 911 manque ».",
+        "steps": [
+          "Diagnostic des deux marques (prismes d'identité de Kapferer)",
+          "Évaluation du fit sur les 6 dimensions de Deng & Messinger",
+          "Matrice capital-marque × fit",
+          "Transfert croisé d'associations",
+          "Analyse concurrentielle : Louis Vuitton × Singer, Berluti, Aimé Leon Dore × Porsche, Chiron habillée par Hermès",
+          "Recommandations managériales"
+        ],
+        "launch": [
+          {
+            "date": "Février 2027",
+            "text": "Dévoilement à Rétromobile"
+          },
+          {
+            "date": "2027",
+            "text": "Ventes sur invitation"
+          },
+          {
+            "date": "Juin 2028",
+            "text": "Livraison au Mans"
+          }
+        ],
+        "role": "Co-auteur de la note de synthèse et de la présentation.",
+        "output": "Une note de synthèse de 4 pages et une présentation.",
         "tools": [
-          "[À COMPLÉTER]"
+          "Capital-marque",
+          "Co-branding",
+          "Prisme d'identité",
+          "Matrice des risques",
+          "Chaîne du capital-marque et indicateurs"
         ],
         "figures": [
           {
-            "value": "2",
-            "label": "Marques associées"
+            "value": "24",
+            "label": "exemplaires"
           },
           {
-            "value": "911",
-            "label": "Le modèle de départ"
+            "value": "650 000 €",
+            "label": "par voiture"
           },
           {
-            "value": "[À COMPLÉTER]",
-            "label": "Chiffre clé"
+            "value": "15,6 M€",
+            "label": "de chiffre d'affaires"
+          },
+          {
+            "value": "4,2 / 5",
+            "label": "fit entre les marques"
           }
         ],
-        "highlights": [
-          "Fit entre les marques",
-          "Capital-marque",
-          "Benchmark concurrentiel"
-        ],
         "tiles": [
-          "Fit de marque",
-          "Capital-marque",
-          "Benchmark"
-        ]
+          "Prisme d'identité",
+          "Fit 4,2 / 5",
+          "Capital-marque"
+        ],
+        "sketch": {
+          "title": "911 Sellier — la démarche",
+          "center": "911 Sellier",
+          "n1": "Prismes de Kapferer",
+          "n2": "Fit : 6 dimensions",
+          "n3": "Capital-marque × fit",
+          "n4": "Transfert d'associations",
+          "n5": "Concurrence : LV × Singer…",
+          "n6": "Rétromobile → Le Mans",
+          "n7": "24 voitures, un sac Kelly chacune"
+        }
       },
       "sephora": {
         "title": "Sephora et les chatbots",
-        "kind": "Marketing opérationnel · Rapport",
+        "kind": "Marketing opérationnel · Photo + vidéo",
         "year": "Novembre 2025",
-        "tagline": "Ce que les chatbots changent dans l'expérience client d'une marque beauté.",
-        "context": "Analyse des 4P de Sephora et de l'impact des chatbots sur l'expérience client.",
-        "problem": "[À COMPLÉTER : la question à laquelle le projet répond]",
-        "role": "[À COMPLÉTER : mon rôle précis dans le projet]",
-        "output": "Une analyse des 4P de Sephora et une étude de l'impact des chatbots sur l'expérience client. [À COMPLÉTER : autres livrables]",
-        "result": "[À COMPLÉTER : résultat, note ou retour obtenu]",
-        "tools": [
-          "[À COMPLÉTER]"
+        "tagline": "« Sephora Secret » : une enquête de détectives sur l'impact des chatbots.",
+        "chips": [
+          "Projet de groupe · 6 personnes"
         ],
+        "case": "Dossier : Sephora Secret",
+        "stamp": "Confidentiel",
+        "context": "Analyse des 4P de Sephora et de l'impact des chatbots sur l'expérience client.",
+        "concept": "Une présentation mise en scène comme une enquête de détectives, « Sephora Secret », pour révéler l'impact des chatbots sur l'expérience client chez Sephora, avec une vidéo d'introduction que j'ai réalisée.",
+        "role": "Réalisation de la vidéo d'introduction de la présentation.",
+        "output": "Une présentation en forme d'enquête et sa vidéo d'introduction.",
+        "photo_caption": "Le jour de la soutenance du projet Sephora.",
         "figures": [
           {
+            "value": "6",
+            "label": "membres dans l'équipe"
+          },
+          {
             "value": "4P",
-            "label": "Produit, prix, distribution, communication"
-          },
-          {
-            "value": "[À COMPLÉTER]",
-            "label": "Chiffre clé"
-          },
-          {
-            "value": "[À COMPLÉTER]",
-            "label": "Chiffre clé"
+            "label": "produit, prix, distribution, communication"
           }
-        ],
-        "highlights": [
-          "Analyse des 4P",
-          "Chatbots",
-          "Expérience client"
         ],
         "tiles": [
           "4P",
           "Chatbots",
-          "Expérience client"
+          "Enquête"
         ]
       },
       "aballa": {
         "title": "Aballa",
-        "kind": "Marque de vêtements · Entrepreneuriat",
-        "year": "[À COMPLÉTER : année]",
-        "tagline": "Une marque de vêtements lancée avec deux associés.",
-        "context": "Projet entrepreneurial : une marque de vêtements que j'ai lancée avec deux associés.",
-        "problem": "[À COMPLÉTER : le besoin ou l'idée de départ]",
-        "role": "J'ai géré les flux financiers, les flux de stock et la communication.",
-        "output": "[À COMPLÉTER : collections, produits, contenus réalisés]",
-        "result": "[À COMPLÉTER : résultat (ventes, communauté, apprentissages)]",
-        "tools": [
-          "[À COMPLÉTER]"
+        "kind": "Marque streetwear · Entrepreneuriat",
+        "year": "",
+        "tagline": "Une marque de vêtements streetwear lancée entre amis, vendue localement sur une marketplace.",
+        "chips": [
+          "Avec deux associés"
         ],
+        "context": "Petit projet entrepreneurial lancé entre amis : une marque de vêtements streetwear, vendue localement sur une marketplace, avec deux associés.",
+        "role": "Gestion des flux financiers, des flux de stock et de la communication.",
         "figures": [
           {
             "value": "3",
-            "label": "Cofondateurs"
+            "label": "cofondateurs"
           },
           {
-            "value": "[À COMPLÉTER]",
-            "label": "Chiffre clé"
-          },
-          {
-            "value": "[À COMPLÉTER]",
-            "label": "Chiffre clé"
+            "value": "Local",
+            "label": "vente sur une marketplace"
           }
         ],
         "tiles": [
@@ -253,30 +278,36 @@
       "rebirth": {
         "title": "Rebirth",
         "kind": "Campagne · Club Génie",
-        "year": "[À COMPLÉTER : année]",
+        "year": "",
         "tagline": "L'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie.",
-        "context": "Rebirth est l'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie.",
-        "problem": "[À COMPLÉTER : le programme de l'équipe]",
-        "role": "[À COMPLÉTER : mon rôle dans l'équipe]",
-        "output": "Une présentation de campagne et une fiche de candidature. [À COMPLÉTER : identité visuelle]",
-        "result": "[À COMPLÉTER : résultat de la candidature]",
-        "tools": [
-          "[À COMPLÉTER]"
+        "chips": [
+          "Candidat président"
         ],
+        "context": "Rebirth est l'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie, à l'ENCG Settat.",
+        "role": "Candidat président de l'équipe Rebirth.",
+        "output": "L'affiche de campagne, dans le style d'une affiche de film.",
+        "team": [
+          "Président",
+          "Vice-président événementiel",
+          "Vice-présidente créa",
+          "Trésorière",
+          "Coordinateur général",
+          "Secrétaire générale"
+        ],
+        "poster_caption": "L'affiche de campagne de Rebirth.",
+        "team_caption": "L'équipe Rebirth, prête pour la campagne.",
         "figures": [
           {
-            "value": "[À COMPLÉTER]",
-            "label": "Membres de l'équipe"
+            "value": "6",
+            "label": "membres dans l'équipe"
           }
-        ],
-        "pdf_presentation": "Télécharger la présentation (PDF)",
-        "pdf_fiche": "Télécharger la fiche (PDF)"
+        ]
       }
     }
   },
   "sketch": {
     "label": "Carnet de croquis",
-    "paper_alt": "Feuille de notes manuscrites expliquant la démarche du projet Take & Taste"
+    "paper_alt": "Feuille de notes manuscrites expliquant la démarche du projet 911 Sellier"
   },
   "experience": {
     "title": "Expériences",
@@ -328,28 +359,8 @@
           "Événementiel",
           "Brevo",
           "Reporting"
-        ]
-      }
-    ],
-    "jobs_title": "Jobs étudiants",
-    "jobs": [
-      {
-        "role": "Tuteur de mathématiques",
-        "org": "[À COMPLÉTER : structure]",
-        "date": "En cours",
-        "desc": "[À COMPLÉTER : niveau des élèves, fréquence]"
-      },
-      {
-        "role": "Professeur d'anglais à distance",
-        "org": "Children of the World · Virginie, États-Unis",
-        "date": "Été 2026",
-        "desc": ""
-      },
-      {
-        "role": "Professeur d'anglais et d'informatique",
-        "org": "Neoschool International",
-        "date": "Étés 2024 et 2025",
-        "desc": "Anglais en maternelle et primaire, Pack Office et Scratch."
+        ],
+        "photo_caption": "Ecotech Expo, Casablanca : le jour J, après des mois de préparation."
       }
     ],
     "edu_title": "Formation",
@@ -378,35 +389,23 @@
     "title": "Vidéographie",
     "intro": "Filmer, monter, raconter. Mes vidéos sont montées sur Adobe Premiere Pro et DaVinci Resolve.",
     "play": "Lire la vidéo",
-    "labels": {
-      "place": "Lieu",
-      "software": "Logiciel",
-      "role": "Mon rôle"
-    },
-    "missing": "Lien de la vidéo à ajouter",
     "items": [
       {
-        "title": "[À COMPLÉTER : titre de la vidéo 1]",
-        "poem": "[À COMPLÉTER : phrase courte]",
-        "place": "[À COMPLÉTER]",
-        "software": "[À COMPLÉTER : Premiere Pro ou DaVinci Resolve]",
-        "role": "[À COMPLÉTER]"
+        "title": "Again and Again",
+        "poem": "Lancer sa ligne vers l'inconnu, sans savoir ce qui reviendra, et continuer quand même : par foi, pas par certitude."
       },
       {
-        "title": "[À COMPLÉTER : titre de la vidéo 2]",
-        "poem": "[À COMPLÉTER : phrase courte]",
-        "place": "[À COMPLÉTER]",
-        "software": "[À COMPLÉTER : Premiere Pro ou DaVinci Resolve]",
-        "role": "[À COMPLÉTER]"
+        "title": "The Space Between Steps",
+        "poem": "Un court-métrage pour ralentir. Neige, pluie, rues calmes : s'arrêter, respirer, et vivre vraiment."
       },
       {
-        "title": "[À COMPLÉTER : titre de la vidéo 3]",
-        "poem": "[À COMPLÉTER : phrase courte]",
-        "place": "[À COMPLÉTER]",
-        "software": "[À COMPLÉTER : Premiere Pro ou DaVinci Resolve]",
-        "role": "[À COMPLÉTER]"
+        "title": "Through My Eyes · The Art of Color Grading",
+        "poem": "Mêmes images, autres couleurs, une tout autre émotion. L'histoire n'est pas dans ce qu'on filme, mais dans la façon de le regarder."
       }
-    ]
+    ],
+    "credit_film": "Tournage et montage · Hamza Jnah",
+    "credit_grade": "Étalonnage · DaVinci Resolve · Hamza Jnah",
+    "before_after": "Avant / Après"
   },
   "photo": {
     "title": "Photographie",
@@ -436,7 +435,7 @@
     },
     "regions": {
       "maroc": "Maroc",
-      "alpes": "Alpes"
+      "alpes": "France & Suisse"
     },
     "places": {
       "casablanca": "Casablanca",
@@ -606,13 +605,12 @@
       "photo-60-geneve-cathedrale-interieur": "L'intérieur de la cathédrale Saint-Pierre, une silhouette",
       "photo-56-geneve-cour-automne": "Cour intérieure couverte de feuilles d'automne",
       "photo-74-geneve-jonction-rhone-arve": "La Jonction : le Rhône bleu et l'Arve beige côte à côte (format large)"
-    }
+    },
+    "home_label": "J'habite ici"
   },
   "extra": {
     "title": "Parascolaire",
     "intro": "Les clubs et les associations m'ont appris à mener une équipe et à organiser des projets concrets.",
-    "photo_todo": "[À COMPLÉTER : photo de l'événement]",
-    "caption_todo": "[À COMPLÉTER : légende]",
     "items": [
       {
         "role": "Président",
@@ -630,19 +628,47 @@
         "role": "Vice-président",
         "org": "Club Génie",
         "date": "Septembre 2022 – septembre 2025",
-        "desc": "Chef de projet « The Pitch », organisation d'événements, coordination des équipes sur des projets entrepreneuriaux."
+        "desc": "Chef de projet de The Pitch (7e édition, compétition nationale d'entrepreneuriat), puis vice-président créatif : organisation d'événements et coordination des équipes sur des projets entrepreneuriaux."
       }
     ],
     "rebirth": {
       "label": "Campagne · Club Génie",
       "title": "Rebirth",
-      "text": "L'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie.",
+      "text": "L'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie, avec moi comme candidat président. L'affiche de campagne, façon affiche de film, montre aussi ma patte en communication visuelle.",
       "cta": "Voir la campagne"
+    },
+    "captions": {
+      "parascolaire-genie-the-pitch-7-chef-de-projet": "The Pitch, 7e édition : chef de projet, et un certificat pour l'équipe.",
+      "parascolaire-genie-the-pitch-8-vp": "The Pitch, 8e édition, côté organisation.",
+      "parascolaire-genie-vp-crea-groupe": "Club Génie : l'équipe après l'événement.",
+      "parascolaire-genie-vp-crea-equipe": "Les membres du Club Génie.",
+      "parascolaire-rebirth-affiche": "L'affiche de campagne de Rebirth.",
+      "parascolaire-rebirth-equipe": "L'équipe Rebirth, prête pour la campagne.",
+      "projet-take-and-taste-pitch": "Le pitch de Take & Taste devant le jury.",
+      "projet-take-and-taste-equipe": "L'équipe Take & Taste."
+    },
+    "tt": {
+      "label": "Projet entrepreneurial · En équipe",
+      "title": "Take & Taste",
+      "date": "2026 · équipe de 4",
+      "badge": "Lauréat de la phase campus de la Hult Prize",
+      "text": "Une application qui propose des idées de recettes et vend des kits d'ingrédients et des plats prêts, pensée pour les sportifs, avec un lancement en France. Un projet entrepreneurial mené en équipe dans le cadre associatif.",
+      "role": "Mon rôle : conception du prototype de l'application et des idées pendant la phase d'idéation.",
+      "cta": "Tester le prototype"
     }
   },
   "skills": {
     "title": "Compétences",
     "groups": [
+      {
+        "name": "Créativité",
+        "items": [
+          "Vidéographie",
+          "Photographie (prise de vue, retouche)",
+          "Design graphique",
+          "Direction artistique de campagne (affiche Rebirth)"
+        ]
+      },
       {
         "name": "Marketing digital",
         "items": [
@@ -670,14 +696,6 @@
           "Analyses statistiques (ACP)",
           "Tableaux de bord",
           "Suivi de la performance"
-        ]
-      },
-      {
-        "name": "Création",
-        "items": [
-          "Vidéographie",
-          "Photographie (prise de vue, retouche)",
-          "Design graphique"
         ]
       }
     ],
@@ -731,5 +749,34 @@
     "title": "Page introuvable",
     "text": "Cette page s'est perdue en chemin. Pas de panique, le portfolio est juste là.",
     "cta": "Retour à l'accueil"
+  },
+  "jobs": {
+    "title": "Jobs étudiants",
+    "intro": "Enseigner, c'est expliquer simplement, convaincre et s'adapter à chaque public. Trois réflexes que j'emporte en marketing.",
+    "skills": [
+      "Expliquer simplement",
+      "Convaincre",
+      "S'adapter à un public"
+    ],
+    "items": [
+      {
+        "role": "Tuteur de mathématiques",
+        "org": "",
+        "date": "En cours",
+        "desc": ""
+      },
+      {
+        "role": "Professeur d'anglais à distance",
+        "org": "Children of the World · Virginie, États-Unis",
+        "date": "Été 2026",
+        "desc": ""
+      },
+      {
+        "role": "Professeur d'anglais et d'informatique",
+        "org": "Neoschool International",
+        "date": "Étés 2024 et 2025",
+        "desc": "Anglais en maternelle et primaire ; Pack Office et Scratch."
+      }
+    ]
   }
 }

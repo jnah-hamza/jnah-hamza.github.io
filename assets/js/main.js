@@ -11,11 +11,36 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var PH = 'assets/img/photos/';
 
+  /* Photo de parcours (événements, projets) en polaroïd */
+  function pola(p, caption, tilt, size, i) {
+    return HJ.polaroid({
+      thumb: 'assets/img/' + p.folder + '/thumbs/' + p.file + '.webp', alt: caption,
+      caption: caption, tilt: tilt, size: size, w: p.w, h: p.h, button: true, index: i
+    });
+  }
+  /* Clic sur un polaroïd : plein écran avec toutes les photos du même groupe */
+  function bindGallery(root, photos, captionOf) {
+    root.querySelectorAll('.polaroid[data-index]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        HJ.lightbox.open(photos.map(function (p) {
+          var c = captionOf(p);
+          return { src: 'assets/img/' + p.folder + '/' + p.file + '.webp', alt: c, caption: I18N.esc(c) };
+        }), parseInt(b.getAttribute('data-index'), 10));
+      });
+    });
+  }
+  function logo(src, alt) {
+    return src ? '<img class="logo-mono" src="' + src + '" alt="' + I18N.esc(alt || '') + '" loading="lazy">' : '';
+  }
+
   /* ---------- À propos ---------- */
   function renderAbout() {
     var tools = ['Excel', 'Power BI', 'SPSS', 'Google Analytics', 'Brevo', 'Canva', 'Figma', 'Photoshop', 'Illustrator', 'Premiere Pro', 'DaVinci Resolve'];
     $('#about-tools').innerHTML = tools.map(function (n, i) {
       return '<li class="pill rv" style="--d:' + (i * 40) + 'ms">' + h(n) + '</li>';
+    }).join('');
+    $('#strengths').innerHTML = (t('about.strengths') || []).map(function (x, i) {
+      return '<li class="rv' + (i === 0 ? ' is-first' : '') + '"><strong>' + h(x.name) + '</strong> : ' + h(x.text) + '</li>';
     }).join('');
     var tilts = [-6, 4, -2];
     var sizes = ['m', 's', 'm'];
@@ -34,20 +59,21 @@
     var tiles = t(k + '.tiles') || [];
     var figs = t(k + '.figures') || [];
     var fig = figs[0] || { value: '', label: '' };
+    var year = t(k + '.year');
+    var chips = t(k + '.chips') || [];
     var cover = p.cover
       ? '<img src="' + p.cover + '" alt="" loading="lazy">'
       : '<span class="tile__pattern" aria-hidden="true"></span>';
-    return '<article class="pcard pcard--' + p.id + ' rv" style="--d:' + (i * 90) + 'ms">' +
+    return '<article class="pcard pcard--' + p.id + (p.cover ? ' has-cover' : '') + ' rv" style="--d:' + (i * 90) + 'ms">' +
       '<div class="bento">' +
         '<div class="tile tile--hero">' + cover +
           '<span class="tile__num">0' + (i + 1) + '</span>' +
           '<h3 class="pcard__title"><a href="projet.html?id=' + p.id + '" class="stretched">' +
             '<span class="glitch" data-text="' + I18N.esc(t(k + '.title')) + '">' + h(t(k + '.title')) + '</span></a></h3>' +
           (p.group ? '<span class="chip chip--red">' + h(t('common.group')) + '</span>' : '') +
-          (p.ongoing ? '<span class="chip chip--blink">● ' + h(t('common.ongoing')) + '</span>' : '') +
         '</div>' +
         '<div class="tile tile--type"><span class="tile__lbl">' + h(t('projects.labels.type')) + '</span><strong>' + h(t('projects.types.' + p.type)) + '</strong></div>' +
-        '<div class="tile tile--year"><span class="tile__lbl">' + h(t('projects.labels.year')) + '</span><strong>' + h(t(k + '.year')) + '</strong></div>' +
+        '<div class="tile tile--year"><span class="tile__lbl">' + h(year ? t('projects.labels.year') : t('projects.labels.team')) + '</span><strong>' + h(year || chips[0] || '') + '</strong></div>' +
         '<div class="tile tile--tall"><ul>' + tiles.map(function (x) { return '<li>' + h(x) + '</li>'; }).join('') + '</ul></div>' +
         '<div class="tile tile--wide"><p>' + h(t(k + '.tagline')) + '</p><span class="tile__go" aria-hidden="true">' + h(t('projects.open')) + ' →</span></div>' +
         '<div class="tile tile--fig"><strong' + (String(fig.value).length > 3 ? ' class="is-long"' : '') + '>' + h(fig.value) + '</strong><span>' + h(fig.label) + '</span></div>' +
@@ -84,7 +110,6 @@
     };
     window.addEventListener('scroll', function () { requestAnimationFrame(hs.update); }, { passive: true });
     window.addEventListener('resize', hs.measure);
-    // Clavier : amène la carte focalisée à l'écran
     track.addEventListener('focusin', function (e) {
       if (!hs.on) return;
       var card = e.target.closest('.pcard');
@@ -96,12 +121,12 @@
     hs.measure();
   }
 
-  /* ---------- Carnet de croquis (Take & Taste) ---------- */
+  /* ---------- Carnet de croquis (911 Sellier) ---------- */
   function renderSketch() {
-    var k = 'projects.items.take-taste.sketch.';
+    var k = 'projects.items.porsche-hermes.sketch.';
     var wrap = $('#sketch');
     wrap.innerHTML = HJ.sketchSVG(k) +
-      '<p class="sketch-wrap__lbl"><span class="star">✦✦✦</span> ' + h(t('sketch.label')) + ' · <a href="projet.html?id=take-taste">' + h(t('projects.items.take-taste.title')) + ' →</a></p>';
+      '<p class="sketch-wrap__lbl"><span class="star">✦✦✦</span> ' + h(t('sketch.label')) + ' · <a href="projet.html?id=porsche-hermes">' + h(t('projects.items.porsche-hermes.title')) + ' →</a></p>';
     HJ.observe(wrap);
   }
 
@@ -109,21 +134,26 @@
   function renderExperience() {
     var items = t('experience.items') || [];
     $('#timeline').innerHTML = items.map(function (e, i) {
+      var d = (SITE.experience || [])[i] || {};
+      var photo = d.photo && e.photo_caption ? '<div class="timeline__photo">' + pola(d.photo, e.photo_caption, i % 2 ? 4 : -4, 's', 0) + '</div>' : '';
       return '<li class="timeline__item" style="--d:' + (i * 120) + 'ms">' +
         '<span class="timeline__dot" aria-hidden="true"></span>' +
-        '<div class="timeline__card">' +
-          '<p class="timeline__date">' + h(e.date) + '</p>' +
+        '<div class="timeline__card' + (photo ? ' has-photo' : '') + '">' +
+          '<div class="timeline__head"><p class="timeline__date">' + h(e.date) + '</p>' + logo(d.logo, d.logo_alt) + '</div>' +
           '<h3 class="timeline__role">' + h(e.role) + '</h3>' +
           '<p class="timeline__org"><strong>' + h(e.org) + '</strong> · ' + h(e.place) + '</p>' +
           '<ul class="timeline__points">' + e.points.map(function (p) { return '<li>' + h(p) + '</li>'; }).join('') + '</ul>' +
           '<p class="timeline__tags">' + (e.tags || []).map(function (x) { return '<span class="chip">' + h(x) + '</span>'; }).join('') + '</p>' +
+          photo +
         '</div></li>';
     }).join('');
-    $('#jobs').innerHTML = (t('experience.jobs') || []).map(function (j) {
-      return '<li class="rv"><p class="mini-list__date">' + h(j.date) + '</p><h4>' + h(j.role) + '</h4><p>' + h(j.org) + '</p>' + (j.desc ? '<p class="mini-list__desc">' + h(j.desc) + '</p>' : '') + '</li>';
-    }).join('');
-    $('#education').innerHTML = (t('experience.education') || []).map(function (j) {
-      return '<li class="rv"><p class="mini-list__date">' + h(j.date) + '</p><h4>' + h(j.degree) + '</h4><p>' + h(j.school) + '</p>' + (j.note ? '<p class="mini-list__desc">' + h(j.note) + '</p>' : '') + '</li>';
+    items.forEach(function (e, i) {
+      var d = (SITE.experience || [])[i] || {};
+      if (d.photo) bindGallery($('#timeline').children[i], [d.photo], function () { return e.photo_caption; });
+    });
+    $('#education').innerHTML = (t('experience.education') || []).map(function (j, i) {
+      var d = (SITE.education || [])[i] || {};
+      return '<li class="rv' + (d.logo ? ' has-logo' : '') + '">' + logo(d.logo, d.logo_alt) + '<div><p class="mini-list__date">' + h(j.date) + '</p><h4>' + h(j.degree) + '</h4><p>' + h(j.school) + '</p>' + (j.note ? '<p class="mini-list__desc">' + h(j.note) + '</p>' : '') + '</div></li>';
     }).join('');
     HJ.observe($('#experiences'));
     timelineProgress();
@@ -141,27 +171,39 @@
     up();
   }
 
+  /* ---------- Jobs étudiants ---------- */
+  function renderJobs() {
+    $('#jobs-skills').innerHTML = (t('jobs.skills') || []).map(function (x, i) {
+      return '<li class="rv" style="--d:' + (i * 90) + 'ms"><span>0' + (i + 1) + '</span>' + h(x) + '</li>';
+    }).join('');
+    $('#jobs-list').innerHTML = (t('jobs.items') || []).map(function (j, i) {
+      return '<li class="job rv" style="--d:' + (i * 110) + 'ms">' +
+        '<p class="job__date hand">' + h(j.date) + '</p>' +
+        '<h3 class="job__role">' + h(j.role) + '</h3>' +
+        (j.org ? '<p class="job__org">' + h(j.org) + '</p>' : '') +
+        (j.desc ? '<p class="job__desc">' + h(j.desc) + '</p>' : '') +
+        '<span class="job__num" aria-hidden="true">0' + (i + 1) + '</span></li>';
+    }).join('');
+    HJ.observe($('#jobs'));
+  }
+
   /* ---------- Vidéos ---------- */
   function renderVideos() {
     var items = t('video.items') || [];
-    $('#videos').innerHTML = SITE.videos.map(function (v, i) {
+    $('#videos').innerHTML = SITE.videos.filter(function (v) { return v.youtube; }).map(function (v, i) {
       var it = items[i] || {};
-      var media = v.youtube
-        ? '<button class="yt" type="button" data-yt="' + I18N.esc(v.youtube) + '" aria-label="' + I18N.esc(t('video.play') + ' : ' + (it.title || '')) + '">' +
+      var media = '<button class="yt" type="button" data-yt="' + I18N.esc(v.youtube) + '" aria-label="' + I18N.esc(t('video.play') + ' : ' + (it.title || '')) + '">' +
             '<img src="https://i.ytimg.com/vi/' + encodeURIComponent(v.youtube) + '/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">' +
-            '<span class="yt__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>'
-        : '<div class="yt yt--empty"><span>' + h(t('video.missing')) + '</span><mark class="todo">[À COMPLÉTER : lien YouTube]</mark></div>';
+            '<span class="yt__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
+            (v.badge ? '<span class="yt__badge">' + h(t('video.' + v.badge)) + '</span>' : '') + '</button>';
       return '<article class="vcard vcard--' + (i + 1) + ' rv" style="--d:' + (i * 100) + 'ms">' +
         '<div class="vcard__media">' + media + '<span class="vcard__rec" aria-hidden="true">● REC</span></div>' +
         '<div class="vcard__body">' +
           '<p class="vcard__num">0' + (i + 1) + '</p>' +
           '<h3 class="vcard__title">' + h(it.title) + '</h3>' +
           '<p class="vcard__poem hand">' + h(it.poem) + '</p>' +
-          '<dl class="vcard__meta">' +
-            '<div><dt>' + h(t('video.labels.place')) + '</dt><dd>' + h(it.place) + '</dd></div>' +
-            '<div><dt>' + h(t('video.labels.software')) + '</dt><dd>' + h(it.software) + '</dd></div>' +
-            '<div><dt>' + h(t('video.labels.role')) + '</dt><dd>' + h(it.role) + '</dd></div>' +
-          '</dl></div></article>';
+          '<p class="vcard__credit">' + h(t('video.' + v.credit)) + '</p>' +
+        '</div></article>';
     }).join('');
     HJ.observe($('#videos'));
   }
@@ -180,41 +222,59 @@
   });
 
   /* ---------- Parascolaire ---------- */
-  function gallery(photos, n) {
-    var tilts = [-5, 3, -2, 6];
-    if (!photos || !photos.length) {
-      var out = '';
-      for (var i = 0; i < n; i++) out += HJ.polaroid({ placeholder: t('extra.photo_todo'), caption: t('extra.caption_todo'), tilt: tilts[i % 4], size: 's' });
-      return out;
-    }
-    return photos.map(function (p, i) {
-      return HJ.polaroid({ thumb: p.src, alt: p['alt_' + I18N.lang] || p.alt || '', caption: p['caption_' + I18N.lang] || p.caption || t('extra.caption_todo'), tilt: tilts[i % 4], size: 's', w: p.w, h: p.h });
-    }).join('');
+  var tilts = [-5, 3, -2, 6];
+  function capOf(p) { return t('extra.captions.' + p.file); }
+  function gallery(photos) {
+    return photos.map(function (p, i) { return pola(p, capOf(p), tilts[i % 4], i === 0 ? 'm' : 's', i); }).join('');
   }
   function renderExtra() {
     var items = t('extra.items') || [];
     var rb = SITE.campaigns[0];
-    $('#extra-list').innerHTML = items.map(function (e, i) {
-      var photos = (SITE.extra[i] || {}).photos || [];
+    var tt = SITE.take_taste || {};
+    var cards = items.map(function (e, i) {
+      var d = SITE.extra[i] || {};
+      var photos = d.photos || [];
       var reb = i === 2
         ? '<a class="campaign rv" href="projet.html?id=' + rb.id + '">' +
-            '<span class="campaign__lbl">' + h(t('extra.rebirth.label')) + '</span>' +
-            '<span class="campaign__title"><span class="glitch" data-text="REBIRTH">REBIRTH</span></span>' +
-            '<span class="campaign__text">' + h(t('extra.rebirth.text')) + '</span>' +
-            '<span class="campaign__cta">' + h(t('extra.rebirth.cta')) + ' →</span>' +
+            '<span class="campaign__poster"><img src="assets/img/parascolaire/thumbs/parascolaire-rebirth-affiche.webp" alt="' + I18N.esc(capOf({ file: 'parascolaire-rebirth-affiche' })) + '" loading="lazy" width="700" height="1051"></span>' +
+            '<span class="campaign__body">' +
+              '<span class="campaign__lbl">' + h(t('extra.rebirth.label')) + '</span>' +
+              '<span class="campaign__title"><span class="glitch" data-text="REBIRTH">REBIRTH</span></span>' +
+              '<span class="campaign__text">' + h(t('extra.rebirth.text')) + '</span>' +
+              '<span class="campaign__cta">' + h(t('extra.rebirth.cta')) + ' →</span>' +
+            '</span>' +
             '<span class="campaign__stamp" aria-hidden="true">VOTE ✦</span>' +
           '</a>'
         : '';
-      return '<article class="xcard rv' + (i % 2 ? ' xcard--alt' : '') + '">' +
+      return '<article class="xcard rv' + (i % 2 ? ' xcard--alt' : '') + (photos.length ? '' : ' xcard--text') + '" data-i="' + i + '">' +
         '<div class="xcard__text">' +
           '<p class="xcard__date">' + h(e.date) + '</p>' +
           '<h3 class="xcard__role">' + h(e.role) + '</h3>' +
-          '<p class="xcard__org sel">' + h(e.org) + '<i class="sel__h" aria-hidden="true"></i><i class="sel__h" aria-hidden="true"></i></p>' +
+          '<p class="xcard__org">' + logo(d.logo, d.logo_alt) + '<span class="sel">' + h(e.org) + '<i class="sel__h" aria-hidden="true"></i><i class="sel__h" aria-hidden="true"></i></span></p>' +
           '<p>' + h(e.desc) + '</p>' + reb +
         '</div>' +
-        '<div class="xcard__gal polas polas--small">' + gallery(photos, 2) + '</div>' +
+        (photos.length ? '<div class="xcard__gal polas polas--small">' + gallery(photos) + '</div>' : '') +
       '</article>';
     }).join('');
+    // Take & Taste : projet entrepreneurial en équipe
+    var ttp = tt.photos || [];
+    cards += '<article class="xcard ttcard rv" data-i="tt">' +
+      '<div class="xcard__text">' +
+        '<p class="xcard__date">' + h(t('extra.tt.label')) + ' · ' + h(t('extra.tt.date')) + '</p>' +
+        '<h3 class="xcard__role">' + h(t('extra.tt.title')) + '</h3>' +
+        '<p class="award"><span class="award__icon" aria-hidden="true">★</span>' + h(t('extra.tt.badge')) + '</p>' +
+        '<p>' + h(t('extra.tt.text')) + '</p>' +
+        '<p class="ttcard__role">' + h(t('extra.tt.role')) + '</p>' +
+        (tt.prototype ? '<a class="btn btn--red" href="' + tt.prototype + '" target="_blank" rel="noopener">' + h(t('extra.tt.cta')) + ' ↗<span class="sr-only"> ' + h(t('common.new_tab')) + '</span></a>' : '') +
+      '</div>' +
+      (ttp.length ? '<div class="xcard__gal polas polas--small">' + gallery(ttp) + '</div>' : '') +
+    '</article>';
+    $('#extra-list').innerHTML = cards;
+    $('#extra-list').querySelectorAll('.xcard').forEach(function (c) {
+      var i = c.getAttribute('data-i');
+      var photos = i === 'tt' ? ttp : ((SITE.extra[+i] || {}).photos || []);
+      if (photos.length) bindGallery(c, photos, capOf);
+    });
     HJ.observe($('#extra-list'));
   }
 
@@ -222,7 +282,7 @@
   function renderSkills() {
     var groups = t('skills.groups') || [];
     $('#skill-groups').innerHTML = groups.map(function (g, i) {
-      return '<div class="sgroup rv' + (i === 3 ? ' sgroup--red' : '') + '" style="--d:' + (i * 80) + 'ms">' +
+      return '<div class="sgroup rv' + (i === 0 ? ' sgroup--red' : '') + '" style="--d:' + (i * 80) + 'ms">' +
         '<p class="sgroup__num">0' + (i + 1) + '</p>' +
         '<h3 class="sgroup__name">' + h(g.name) + '</h3>' +
         '<ul>' + g.items.map(function (x, j) { return '<li style="--j:' + j + '">' + h(x) + '</li>'; }).join('') + '</ul></div>';
@@ -299,6 +359,7 @@
     renderProjects();
     renderSketch();
     renderExperience();
+    renderJobs();
     renderVideos();
     renderExtra();
     renderSkills();

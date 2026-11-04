@@ -12,7 +12,11 @@ const REGIONS = {
   maroc: { lat: 34.38, lon: -5.79, flags: '🇲🇦' },
   alpes: { lat: 45.82, lon: 5.63, flags: '🇫🇷🇨🇭' }
 };
-const ROUTE = ['casablanca', 'saint-etienne', 'chamonix', 'geneve'];
+// Parcours : les arcs partent de Saint-Étienne
+const ROUTE = [['saint-etienne', 'chamonix'], ['saint-etienne', 'geneve'], ['saint-etienne', 'casablanca']];
+// Ordre des boutons « Lieu suivant »
+const ORDER = ['saint-etienne', 'chamonix', 'geneve', 'casablanca', 'settat', 'ifrane', 'al-wahda', 'tanger', 'tetouan', 'mdiq', 'chefchaouen', 'akchour', 'al-hoceima'];
+const START = 'saint-etienne';
 const DEG = Math.PI / 180;
 
 function t(k, v) { return window.I18N ? I18N.t(k, v) : ''; }
@@ -44,7 +48,7 @@ async function start() {
   /* Photos à publier (une photo peut attendre l'accord de la personne photographiée) */
   const places = data.places.map((p) => ({ ...p, photos: p.photos.filter((ph) => ph.consent !== false) }));
   const byId = Object.fromEntries(places.map((p) => [p.id, p]));
-  const order = places.map((p) => p.id);
+  const order = ORDER.filter((id) => byId[id]).concat(places.map((p) => p.id).filter((id) => ORDER.indexOf(id) < 0));
   const regionCount = (r) => places.filter((p) => p.region === r).reduce((s, p) => s + p.photos.length, 0);
 
   const state = { place: null, region: null, mode: null };
@@ -59,7 +63,7 @@ async function start() {
   function photosLabel(n) { return n + ' ' + (n > 1 ? t('photo.photos') : t('photo.photo')); }
 
   function renderPills() {
-    const groups = ['ma', 'fr', 'ch'];
+    const groups = ['fr', 'ch', 'ma'];
     pills.innerHTML = groups.map((c) => {
       const list = places.filter((p) => p.country === c);
       return '<div class="place-pills__group"><span class="place-pills__country">' + FLAGS[c] + ' ' + esc(t('photo.countries.' + c)) + '</span>' +
@@ -75,16 +79,16 @@ async function start() {
   /* ---------- Marqueurs HTML (accessibles au clavier) ---------- */
   function buildMarkers() {
     labels.innerHTML =
-      Object.keys(REGIONS).map((r) =>
+      ['alpes', 'maroc'].map((r) =>
         '<button type="button" class="gl gl-bubble" data-region="' + r + '">' +
         esc(t('photo.regions.' + r)) + ' ' + REGIONS[r].flags + ' <small>· ' + esc(photosLabel(regionCount(r))) + '</small></button>').join('') +
       places.map((p) => {
         const s = Math.round(10 + Math.sqrt(p.photos.length) * 3.2);
-        return '<button type="button" class="gl gl-place is-hidden" data-place="' + p.id + '" style="--s:' + s + 'px" aria-label="' +
+        return '<button type="button" class="gl gl-place is-hidden' + (p.home ? ' is-home' : '') + '" data-place="' + p.id + '" style="--s:' + s + 'px" aria-label="' +
           esc(t('photo.places.' + p.id) + ' · ' + photosLabel(p.photos.length)) + '">' +
           '<span class="gl-place__dot"></span><span class="gl-place__lbl">' + FLAGS[p.country] + ' ' + esc(t('photo.places.' + p.id)) +
           ' <em>· ' + esc(photosLabel(p.photos.length)) + '</em>' +
-          (p.home ? '<span class="gl-place__home">' + esc(t('photo.home_badge')) + '</span>' : '') + '</span></button>';
+          (p.home ? '<span class="gl-place__home">· ' + esc(t('photo.home_label')) + '</span>' : '') + '</span></button>';
       }).join('');
     labels.querySelectorAll('.gl-place__lbl').forEach((l) => { l.__w = 0; });
   }
@@ -116,7 +120,7 @@ async function start() {
         let score = 0;
         for (const o of rects) if (hit(r, o)) score += 10;
         dotsR.forEach((d, j) => { if (j !== idx && hit(r, d)) score += 3; });
-        if (r.x < 4 || r.y < 4 || r.x + w > it.W - 4 || r.y + h > it.H - 4) score += 6;
+        if (r.x < 4 || r.y < 4 || r.x + w > it.W - 4 || r.y + h > it.H - 4) score += 30;
         if (score < bestScore) { bestScore = score; best = [dx, dy, r]; }
         if (score === 0) break;
       }
@@ -174,7 +178,7 @@ async function start() {
     openPlace(order[(i + d + order.length) % order.length], false, true);
   }
 
-  function openPlace(id, fromPills, keepFocus) {
+  function openPlace(id, fromPills, keepFocus, silent) {
     const p = byId[id];
     if (!p) return;
     state.place = id;
@@ -187,6 +191,7 @@ async function start() {
     backBtn.hidden = state.mode === 'flat';
     if (engine) { engine.resize(); engine.focusPlace(p); }
     const nameEl = panel.querySelector('.pp__name');
+    if (silent) return;
     if (keepFocus) {
       const btn = panel.querySelector(document.activeElement && document.activeElement.dataset && document.activeElement.dataset.step === '-1' ? '[data-step="-1"]' : '[data-step="1"]');
       if (btn) btn.focus({ preventScroll: true });
@@ -250,6 +255,8 @@ async function start() {
   renderCounter();
   renderPills();
   buildMarkers();
+  // Le panneau de Saint-Étienne est ouvert par défaut
+  openPlace(START, false, false, true);
 
   /* ---------- Choix du moteur : 3D ou carte plate ---------- */
   function webglOK() {
@@ -284,7 +291,7 @@ async function start() {
     }
   }
   view.classList.add('globe-ready');
-  if (state.place && engine) engine.focusPlace(byId[state.place]);
+  if (state.place && engine) (engine.jump || engine.focusPlace)(byId[state.place]);
 }
 
 /* =========================================================
@@ -366,8 +373,8 @@ function globe3D(THREE, OrbitControls, ctx) {
 
   // Arc rouge du parcours : Maroc → Saint-Étienne → Chamonix → Genève
   const arcs = [];
-  for (let i = 0; i < ROUTE.length - 1; i++) {
-    const a = byId[ROUTE[i]], b = byId[ROUTE[i + 1]];
+  for (let i = 0; i < ROUTE.length; i++) {
+    const a = byId[ROUTE[i][0]], b = byId[ROUTE[i][1]];
     const va = vec(a.lat, a.lon).normalize(), vb = vec(b.lat, b.lon).normalize();
     const ang = va.angleTo(vb);
     const pts = [];
@@ -469,7 +476,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   function focusPlace(p) {
     level = 2; state.region = p.region;
     controls.autoRotate = false;
-    flyTo(p.lat, p.lon, regionDist(p.region) * 0.985, 1200);
+    flyTo(p.lat, p.lon, 1 + (regionDist(p.region) - 1) * 1.25, 1200);
   }
 
   /* ---------- Étiquettes HTML suivant le globe ---------- */
@@ -562,14 +569,15 @@ function globe3D(THREE, OrbitControls, ctx) {
   }
   labels.classList.add('is-intro');
   setTimeout(() => labels.classList.remove('is-intro'), 9000);
+  // Arrivée : le globe est déjà centré sur Saint-Étienne, l'arc rouge se dessine
+  // vers les autres lieux et les points s'allument un par un
   const startIntro = () => {
-    if (state.place) { // un lieu a déjà été choisi avec les pastilles
-      arcs.forEach((a) => { a.geo.setDrawRange(0, a.total); a.lgeo.setDrawRange(0, a.ltotal); });
-      placeMeshes.forEach((m) => m.scale.setScalar(1));
-      labels.classList.remove('is-intro');
-      return;
-    }
-    flyTo(REGIONS.maroc.lat, REGIONS.maroc.lon, fitDist(), 2000).then(() => { intro = { t0: performance.now() }; });
+    intro = { t0: performance.now() };
+    labels.querySelectorAll('.gl-place:not(.is-hidden)').forEach((el, i) => {
+      el.classList.remove('is-lit'); void el.offsetWidth;
+      el.querySelector('.gl-place__dot').style.animationDelay = (300 + i * 140) + 'ms';
+      el.classList.add('is-lit');
+    });
   };
   // Lance l'animation d'arrivée quand le globe est bien visible à l'écran
   let introStarted = false;
@@ -585,6 +593,13 @@ function globe3D(THREE, OrbitControls, ctx) {
   return {
     resize: () => { resize(); setTimeout(resize, 300); },
     showRegion, showGlobe, focusPlace,
+    jump: (p) => {
+      resize();
+      level = 2; state.region = p.region; controls.autoRotate = false;
+      const R = REGIONS[p.region];
+      camera.position.copy(vec(R.lat, R.lon, regionDist(p.region)));
+      camera.lookAt(0, 0, 0); controls.update();
+    },
     refresh: () => { labels.querySelectorAll('.gl').forEach((el) => { el.style.left = '0'; el.style.top = '0'; }); }
   };
 }
@@ -600,8 +615,8 @@ function flatMap(ctx) {
   const box = document.getElementById('flatmap');
   box.hidden = false;
   const BOX = {
-    maroc: { L0: -8.7, L1: -3.1, B0: 32.3, B1: 36.4 },
-    alpes: { L0: 3.5, L1: 7.7, B0: 44.85, B1: 46.75 }
+    alpes: { L0: 3.5, L1: 7.7, B0: 44.85, B1: 46.75 },
+    maroc: { L0: -8.7, L1: -3.1, B0: 32.3, B1: 36.4 }
   };
   Object.values(BOX).forEach((b) => {
     b.k = Math.cos(((b.B0 + b.B1) / 2) * DEG);

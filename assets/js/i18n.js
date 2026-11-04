@@ -36,12 +36,9 @@
     });
   }
 
-  /* Met en évidence les « [À COMPLÉTER …] » pour les repérer facilement */
-  function html(s) {
-    return esc(s == null ? '' : s).replace(/\[À COMPLÉTER[^\]]*\]/g, function (m) {
-      return '<mark class="todo">' + m + '</mark>';
-    });
-  }
+  /* Les textes provisoires « [À COMPLÉTER …] » ne sont jamais affichés sur le site */
+  function clean(s) { return String(s == null ? '' : s).replace(/\s*\[À COMPLÉTER[^\]]*\]/g, '').trim(); }
+  function html(s) { return esc(clean(s)); }
 
   var I18N = {
     lang: detect(),
@@ -58,17 +55,17 @@
     html: html,
     esc: esc,
     /* Remplit un élément avec un texte (sécurisé), en marquant les [À COMPLÉTER] */
+    clean: clean,
     fill: function (el, text) {
       if (!el) return;
-      if (/\[À COMPLÉTER/.test(text || '')) el.innerHTML = html(text);
-      else el.textContent = text == null ? '' : text;
+      el.textContent = clean(text);
     },
     apply: function (root) {
       root = root || document;
       root.querySelectorAll('[data-i18n]').forEach(function (el) {
         var v = I18N.t(el.getAttribute('data-i18n'));
         if (typeof v !== 'string' || v === '') return;
-        if (el.classList.contains('reveal-letters') && el.__letters) { el.__letters(v); return; }
+        if (el.classList.contains('reveal-letters') && el.__letters) { el.__letters(clean(v)); return; }
         I18N.fill(el, v);
       });
       root.querySelectorAll('[data-i18n-attr]').forEach(function (el) {

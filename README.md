@@ -36,8 +36,7 @@ Chaque modification que vous enregistrez sur la branche `main` de GitHub est en 
 - ne pas supprimer les virgules à la fin des lignes ;
 - pour écrire un guillemet dans un texte, utilisez les guillemets français « » ou l'apostrophe '.
 
-Astuce : tous les textes provisoires contiennent **`[À COMPLÉTER`**. Cherchez ce mot pour tous les retrouver.
-Sur le site, ils sont entourés de pointillés rouges : quand vous les remplacez, les pointillés disparaissent.
+Un texte vide ("") est simplement masqué sur le site : rien d'incomplet n'apparaît aux visiteurs.
 
 ## 3. Ajouter / changer une photo du globe
 
@@ -57,45 +56,50 @@ Le compteur « photos · lieux · pays » se met à jour tout seul.
 « à publier seulement si la personne est d'accord ». Si elle est d'accord, dans `data/photos.json`,
 supprimez `"consent": false` sur la ligne `photo-11-…`.
 
-## 4. Ajouter le portrait
+## 4. Ajouter le portrait et le modèle 3D
 
-Déposez votre photo **détourée (fond transparent)** sous le nom exact `assets/img/portrait.png`.
-Le contour rouge s'ajoute automatiquement. Pour l'aperçu des partages (LinkedIn, WhatsApp),
-remplacez aussi `assets/img/og-image.jpg` (1200 × 630 px).
+Le site détecte les fichiers tout seul, il suffit de les déposer :
+- **`portrait.png`** (fond transparent), à la racine du dépôt ou dans `assets/img/` :
+  il s'affiche en grand sur l'accueil avec le contour rouge.
+- sinon **`portrait.jpg`** : il s'affiche dans un cadre blanc type polaroïd.
+- tant qu'aucun des deux n'existe, la photo « The Pitch, 7e édition » est utilisée.
+- **`moi-3d.glb`** (à la racine ou dans `assets/3d/`) : il remplace la carte qui se retourne
+  dans le cadre « Hello » (rotation lente, on peut le faire tourner, pas de zoom).
 
-## 5. Ajouter les images et liens des projets
+Pour l'aperçu des partages (LinkedIn, WhatsApp), remplacez aussi `assets/img/og-image.jpg` (1200 × 630 px).
+
+## 5. Projets : images, liens et PDF
 
 Tout se passe dans `data/site.json`, partie `projects` :
-- `"cover"` : image de couverture de la carte, par exemple `"assets/img/projets/projet-aballa-1.webp"` ;
-- `"figma"` : lien du prototype Figma (Take & Taste) ;
-- `"screens"` : liste des écrans du prototype (images verticales) ;
-- `"pages"` : aperçu des pages d'un rapport (images) ;
-- `"pdf"` : chemin du PDF (déposez le fichier dans `assets/docs/` avec ce nom exact) ;
-- `"gallery"` : photos produits (Aballa) ;
+- `"canva"` (911 Sellier) : lien de **vue publique** de la présentation Canva
+  (bouton « Partager » → « Lien de vue publique », jamais un lien qui finit par `/edit`).
+  Le bouton apparaît dès que le lien est collé.
+- `"youtube"` (Sephora) : identifiant YouTube de la vidéo d'introduction. Le lecteur apparaît dès qu'il est rempli.
+- `"pdf"`, `"pdfs"` : chemins des PDF dans `assets/docs/`. Un bouton n'apparaît que si le fichier existe.
+- `"gallery"` (Aballa) : photos produits, par exemple `"assets/img/projets/projet-aballa-1.webp"`.
 - `"group": true` affiche « Projet de groupe ».
 
-Exemple : `"screens": ["assets/img/projets/projet-take-taste-1.webp", "assets/img/projets/projet-take-taste-2.webp"]`
+Take & Taste est dans la partie `take_taste` (lien du prototype et photos) : il s'affiche dans la section Parascolaire.
 
-Les boutons PDF s'activent tout seuls dès que le fichier existe.
-
-**Ajouter un nouveau projet** : copiez un bloc dans `projects` de `data/site.json` en changeant `"id"`
-(sans espace ni accent, ex. `"mon-projet"`) et `"type"` (`prototype`, `report`, `video`, `brand`) ;
-pour `video`, ajoutez `"youtube": "identifiant"`. Puis copiez un bloc dans `projects` → `items` de
-`lang/fr.json` et `lang/en.json` avec le même identifiant.
+Les textes (rôle, résultat, chiffres…) sont dans `lang/fr.json` et `lang/en.json` → `projects` → `items`.
+Un texte laissé vide ("") ou contenant `[À COMPLÉTER]` n'est jamais affiché sur le site.
 
 ## 6. Vidéos
 
-Dans `data/site.json`, partie `videos` : mettez l'identifiant YouTube (la partie après `youtu.be/`).
-Les titres, phrases, lieux et rôles sont dans `lang/*.json` → `video` → `items`.
+Dans `data/site.json`, partie `videos` : l'identifiant YouTube (la partie après `youtu.be/`), dans l'ordre d'affichage.
+Les titres et phrases sont dans `lang/*.json` → `video` → `items`.
 
-## 7. Photos du parascolaire
+## 7. Photos du parascolaire et des expériences
 
-Dans `data/site.json`, partie `extra` (dans l'ordre : Epik Leaders, AIESEC, Club Génie) :
-```json
-{ "photos": [
-  { "src": "assets/img/parascolaire/parascolaire-aiesec-1.webp", "caption": "Légende FR", "caption_en": "English caption", "alt": "Description", "alt_en": "Description", "w": 600, "h": 800 }
-] }
-```
+Dans `data/site.json` : `extra` (dans l'ordre : Epik Leaders, AIESEC, Club Génie), `experience` (logos, photo Ecotech)
+et `education` (logos des écoles). Une photo s'écrit :
+`{ "folder": "parascolaire", "file": "parascolaire-aiesec-1", "w": 1600, "h": 1200 }`
+(fichier WebP dans `assets/img/parascolaire/` + miniature dans `assets/img/parascolaire/thumbs/`).
+Sa légende va dans `lang/*.json` → `extra` → `captions`, avec le même nom de fichier.
+
+## 7 bis. Jobs étudiants
+
+Textes dans `lang/*.json` → `jobs`. Pour le tutorat, remplissez `org` et `desc` quand vous aurez les détails.
 
 ## 8. Activer le formulaire de contact (Formspree, gratuit)
 
