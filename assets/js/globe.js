@@ -618,6 +618,8 @@ function globe3D(THREE, OrbitControls, ctx) {
     stage.style.setProperty('--se', k.toFixed(3));
     view.style.setProperty('--g', g.toFixed(3));
     if (seIntro) seIntro.classList.toggle('is-gone', k >= 0.999);
+    // Le bandeau de photos (téléphone) n'apparaît qu'après l'intro de Saint-Étienne
+    stage.classList.toggle('se-active', k < 0.999);
     applyCam(Math.min(1, Math.max(0, (p - 0.3) / 0.7)));
   }
   function scrollMetrics() {

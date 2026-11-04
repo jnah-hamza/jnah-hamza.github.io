@@ -370,9 +370,10 @@
       }).join('');
       return '<div class="reel__row" data-dir="' + dir + '"><div class="reel__track">' + items + '</div></div>';
     }
-    var half = Math.ceil(photos.length / 2);
-    var top = photos.slice(0, half), bottom = photos.slice(half);
-    if (!bottom.length) bottom = top.slice();
+    // Toutes les photos dans chaque rangée (ordre décalé en bas) : pas de répétition de 2 photos seulement
+    var top = photos.slice();
+    var shift = Math.ceil(photos.length / 2);
+    var bottom = photos.slice(shift).concat(photos.slice(0, shift)).reverse();
     return '<div class="reel" data-reel>' + row(top, -1) + row(bottom, 1) + '<div class="reel__row reel__row--one" data-dir="-1"><div class="reel__track">' +
       photos.map(function (p, i) { return '<button type="button" class="reel__p" data-index="' + i + '" style="--ar:' + (p.w / p.h).toFixed(3) + '" aria-label="' + I18N.esc(capOf(p)) + '"><img src="assets/img/' + p.folder + '/thumbs/' + p.file + '.webp" alt="" loading="lazy" draggable="false"></button>'; }).join('') +
       '</div></div></div>';
