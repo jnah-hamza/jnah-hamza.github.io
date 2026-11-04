@@ -1,0 +1,24 @@
+LOGOS ET PROJET 911 SELLIER — HAMZA JNAH
+
+LOGOS (section Formation et Parascolaire)
+- logo-iae-saint-etienne.png — Master 1 Marketing et Stratégie d'Innovation, IAE Saint-Étienne.
+- logo-encg-settat.png — ENCG Settat (Licence, double diplôme).
+- logo-club-genie.png — Club Génie, ENCG Settat (carte parascolaire Club Génie et Rebirth).
+Affiche-les en petit, à côté du nom de l'école ou du club, en version monochrome par défaut qui reprend sa couleur au survol (pour rester dans la palette noir/blanc/rouge du site).
+
+PROJET : PORSCHE × HERMÈS, LA 911 SELLIER (type RAPPORT + PRÉSENTATION)
+Fichiers :
+- projet-911-sellier-fond.jpg — image d'ambiance (911 blanche dans les écuries, cheval, selle). À utiliser en GRAND en haut de la page projet (image pleine largeur avec le titre par-dessus) et comme image de la carte projet.
+- projet-911-sellier-note-de-synthese.pdf — la note de synthèse complète (4 pages). Bouton "Télécharger la note de synthèse (PDF)".
+- projet-911-sellier-page-1.jpg à -4.jpg — aperçu des 4 pages, à faire défiler dans la page projet (ne pas lire le PDF, utiliser ces images).
+- Présentation (PowerPoint sur Canva) : le lien est dans infos-portfolio.txt. Bouton "Voir la présentation (Canva)", s'ouvre dans un nouvel onglet.
+
+Infos pour la page projet (tirées de la note) :
+- Contexte : Module "Branding : stratégie et performance" (L. Ambroise), M1 Marketing et Stratégie d'Innovation, IAE Saint-Étienne, octobre 2026. Projet en binôme avec Ichrak Zerqaoui.
+- Le concept : un co-développement entre Porsche et Hermès. La 911 Sellier est une série de 24 Porsche 911 classiques (type G, 1974-1989) restaurées par Porsche Classic à Stuttgart et habillées par les selliers d'Hermès, chacune livrée avec un sac Kelly en édition limitée. Signature : "Pour ceux à qui la 911 manque".
+- Chiffres clés à mettre en avant : 24 exemplaires · 650 000 € par voiture · 15,6 M€ de chiffre d'affaires · fit entre les marques évalué à 4,2 / 5.
+- Démarche : diagnostic des deux marques (prismes d'identité de Kapferer), évaluation du fit sur les 6 dimensions de Deng & Messinger, matrice capital-marque × fit, transfert croisé d'associations, analyse concurrentielle (Louis Vuitton × Singer, Berluti, Aimé Leon Dore × Porsche, Chiron habillée par Hermès), recommandations managériales.
+- Lancement proposé en 3 temps : dévoilement à Rétromobile (février 2027), ventes sur invitation (2027), livraison au Mans (juin 2028).
+- Outils et concepts : capital-marque, co-branding, prisme d'identité, matrice des risques, chaîne du capital-marque et indicateurs.
+- Mon rôle : [À COMPLÉTER si infos-portfolio.txt ne le précise pas — sinon "co-auteur de la note de synthèse et de la présentation"].
+Les visuels du projet sont des visuels de concept (projet étudiant) : l'indiquer discrètement sous l'image ("Visuel de concept, projet étudiant").
