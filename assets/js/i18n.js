@@ -37,8 +37,11 @@
   }
 
   /* Les textes provisoires « [À COMPLÉTER …] » ne sont jamais affichés sur le site */
-  function clean(s) { return String(s == null ? '' : s).replace(/\s*\[À COMPLÉTER[^\]]*\]/g, '').trim(); }
-  function html(s) { return esc(clean(s)); }
+  function strip(s) { return String(s == null ? '' : s).replace(/\s*\[À COMPLÉTER[^\]]*\]/g, '').trim(); }
+  /* Texte brut (sans marqueurs) : pour les attributs et les titres */
+  function clean(s) { return strip(s).replace(/==/g, ''); }
+  /* « ==mot== » dans les fichiers de langue = mot surligné au marqueur rouge */
+  function html(s) { return esc(strip(s)).replace(/==([^=]+?)==/g, '<mark class="hl">$1</mark>'); }
 
   var I18N = {
     lang: detect(),
@@ -58,7 +61,7 @@
     clean: clean,
     fill: function (el, text) {
       if (!el) return;
-      el.textContent = clean(text);
+      if (/==/.test(text || '')) el.innerHTML = html(text); else el.textContent = clean(text);
     },
     apply: function (root) {
       root = root || document;
@@ -72,7 +75,7 @@
         el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
           var p = pair.split(':');
           var v = I18N.t(p[1].trim());
-          if (v) el.setAttribute(p[0].trim(), v);
+          if (v) el.setAttribute(p[0].trim(), clean(v));
         });
       });
     },

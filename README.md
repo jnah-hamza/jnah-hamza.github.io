@@ -38,6 +38,9 @@ Chaque modification que vous enregistrez sur la branche `main` de GitHub est en 
 
 Un texte vide ("") est simplement masqué sur le site : rien d'incomplet n'apparaît aux visiteurs.
 
+**Surligner un mot** (trait rouge façon marqueur, qui se dessine à l'écran) : entourez-le de deux signes égal,
+par exemple `"Analyse de ==plus de 200 commentaires== clients"`. Deux ou trois mots maximum par paragraphe.
+
 ## 3. Ajouter / changer une photo du globe
 
 1. Préparez la photo en **WebP**, 1600 px de large maximum (par exemple avec https://squoosh.app),
@@ -56,21 +59,17 @@ Le compteur « photos · lieux · pays » se met à jour tout seul.
 « à publier seulement si la personne est d'accord ». Si elle est d'accord, dans `data/photos.json`,
 supprimez `"consent": false` sur la ligne `photo-11-…`.
 
-## 4. Ajouter le portrait et le modèle 3D
+## 4. Portrait et modèle 3D
 
-Le site détecte les fichiers tout seul, il suffit de les déposer :
-- **`portrait.png`** (fond transparent), à la racine du dépôt ou dans `assets/img/` :
-  il s'affiche en grand sur l'accueil avec le contour rouge.
-- sinon **`portrait.jpg`** : il s'affiche dans un cadre blanc type polaroïd.
-- tant qu'aucun des deux n'existe, la photo « The Pitch, 7e édition » est utilisée.
-- **`moi-3d.glb`** (à la racine ou dans `assets/3d/`) : il remplace la carte qui se retourne
+- Le portrait officiel est `assets/img/portrait.webp` (détouré, fond transparent). Pour le changer,
+  remplacez ce fichier (WebP avec transparence, environ 1000 px de haut) : l'accueil, la carte « Hello »
+  et l'image de partage l'utilisent.
+- **`moi-3d.glb`** (à la racine ou dans `assets/3d/`) : il remplace automatiquement la carte qui se retourne
   dans le cadre « Hello » (rotation lente, on peut le faire tourner, pas de zoom).
-
-Pour l'aperçu des partages (LinkedIn, WhatsApp), remplacez aussi `assets/img/og-image.jpg` (1200 × 630 px).
 
 ## 5. Projets : images, liens et PDF
 
-Tout se passe dans `data/site.json`, partie `projects` :
+Les projets s'ouvrent dans une fenêtre pop-up (et aussi sur `projet.html?id=…`). Tout se passe dans `data/site.json`, partie `projects` :
 - `"canva"` (911 Sellier) : lien de **vue publique** de la présentation Canva
   (bouton « Partager » → « Lien de vue publique », jamais un lien qui finit par `/edit`).
   Le bouton apparaît dès que le lien est collé.
@@ -89,17 +88,23 @@ Un texte laissé vide ("") ou contenant `[À COMPLÉTER]` n'est jamais affiché 
 Dans `data/site.json`, partie `videos` : l'identifiant YouTube (la partie après `youtu.be/`), dans l'ordre d'affichage.
 Les titres et phrases sont dans `lang/*.json` → `video` → `items`.
 
-## 7. Photos du parascolaire et des expériences
+## 7. Parascolaire, prix et logos
 
-Dans `data/site.json` : `extra` (dans l'ordre : Epik Leaders, AIESEC, Club Génie), `experience` (logos, photo Ecotech)
-et `education` (logos des écoles). Une photo s'écrit :
-`{ "folder": "parascolaire", "file": "parascolaire-aiesec-1", "w": 1600, "h": 1200 }`
+Dans `data/site.json` :
+- `clubs` : un bloc par club (Club Génie, AIESEC, Green Invest, Epik Leaders) avec son logo et ses photos.
+  Le Club Génie contient aussi Take & Taste (`take_taste`) et Rebirth (`rebirth`, lien du plan d'action).
+- `distinctions` : logo et photos du hackathon ACCEDE.
+- `club_logos` : la bande de logos en haut de la section.
+- `experience`, `education`, `jobs` : logos des entreprises, écoles et employeurs.
+
+Une photo s'écrit `{ "folder": "parascolaire", "file": "nom-du-fichier", "w": 1600, "h": 1200 }`
 (fichier WebP dans `assets/img/parascolaire/` + miniature dans `assets/img/parascolaire/thumbs/`).
 Sa légende va dans `lang/*.json` → `extra` → `captions`, avec le même nom de fichier.
+Les textes des clubs sont dans `lang/*.json` → `extra` → `clubs`, et les prix dans `extra` → `awards`.
 
 ## 7 bis. Jobs étudiants
 
-Textes dans `lang/*.json` → `jobs`. Pour le tutorat, remplissez `org` et `desc` quand vous aurez les détails.
+Textes dans `lang/*.json` → `jobs`, logos dans `data/site.json` → `jobs`.
 
 ## 8. Activer le formulaire de contact (Formspree, gratuit)
 

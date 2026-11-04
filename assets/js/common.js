@@ -86,7 +86,7 @@
   /* ---------- Apparition au défilement ---------- */
   var io = null;
   HJ.observe = function (root) {
-    var els = (root || document).querySelectorAll('.reveal, .reveal-letters, .rv, .timeline__item, .draw-on-scroll');
+    var els = (root || document).querySelectorAll('.reveal, .reveal-letters, .rv, .timeline__item, .draw-on-scroll, mark.hl');
     if (!('IntersectionObserver' in window) || HJ.reduce) {
       els.forEach(function (el) { el.classList.add('is-in'); });
       return;
@@ -309,7 +309,7 @@
     HJ.torn();
     HJ.header();
     HJ.cursor();
-    I18N.onChange(function () { HJ.marquees(); });
+    I18N.onChange(function () { HJ.marquees(); HJ.observe(); });
     HJ.letters();
     I18N.init().then(function () {
       HJ.observe();

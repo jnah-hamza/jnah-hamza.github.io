@@ -33,7 +33,7 @@
     "title": "Hamza Jnah",
     "subtitle": "Marketing student · Creative mind",
     "badge": "Looking for a marketing internship · 3 to 6 months · from March 8, 2027 · Saint-Étienne & Lyon",
-    "pitch": "What sets me apart: a dual profile. I analyze (data, SEO, GEO, market research, social media) and I create (video, photography, graphic design).",
+    "pitch": "What sets me apart: a ==dual profile==. I analyze (data, SEO, GEO, market research, social media) and I create (video, photography, graphic design).",
     "tag_analyse": "Analysis",
     "tag_creation": "Creation",
     "cta_projects": "See my projects",
@@ -69,38 +69,26 @@
   "about": {
     "title": "Hello",
     "lead": "I'm Hamza.",
-    "text": "I'm a first-year Master's student in Marketing and Innovation Strategy at IAE Saint-Étienne, on a double degree with ENCG Settat, and I focus on strategic and digital marketing. Content creation is my passion, and I'm comfortable on both sides: I analyze the data, then turn it into images, videos and ideas. A former active member of student clubs and AIESEC, I moved to France in 2026 for my Master's.",
-    "tools_title": "My tools",
-    "mobility": "Mobility: Saint-Étienne & Lyon · Driving licence (B)",
-    "note": "analysis + creation = me",
-    "polaroids_note": "A few pages from my notebook",
+    "text": "After a Bachelor's in Marketing and Commerce at ENCG Settat, I moved to France in 2026 for my ==Master's in Marketing and Innovation Strategy== at IAE Saint-Étienne, on a double degree. I enjoy understanding as much as creating: I analyze the data, then turn it into images, videos and ideas. In student clubs and at AIESEC, I learned to lead teams and move real projects forward. Today, I'm looking for a ==3 to 6-month marketing internship== from March 2027, in Saint-Étienne or Lyon.",
     "card_back_title": "Marketing student",
     "card_back_sub": "Saint-Étienne & Lyon",
     "card_hint": "Click to flip the card",
     "model_alt": "Hamza Jnah in 3D",
-    "strengths_title": "My strengths",
-    "strengths": [
-      {
-        "name": "Creativity",
-        "text": "videography, photography, graphic design, campaign art direction (Rebirth poster)"
-      },
-      {
-        "name": "Digital marketing",
-        "text": "SEO, GEO, email marketing, social media, user journeys"
-      },
-      {
-        "name": "Strategic marketing",
-        "text": "market research, competitive analysis, marketing strategy"
-      },
-      {
-        "name": "Data & reporting",
-        "text": "data analysis, PCA, dashboards"
-      }
-    ]
+    "strengths_title": "What I bring",
+    "s1n": "Creativity:",
+    "s1t": "videography, photography, graphic design, campaign art direction (Rebirth poster)",
+    "s2n": "Digital marketing:",
+    "s2t": "SEO, GEO, email marketing, social media, user journeys",
+    "s3n": "Strategic marketing:",
+    "s3t": "market research, competitive analysis, marketing strategy",
+    "s4n": "Data & reporting:",
+    "s4t": "data analysis, PCA, dashboards",
+    "s5n": "Mobility:",
+    "s5t": "Saint-Étienne & Lyon · Driving licence (B)"
   },
   "projects": {
     "title": "Projects",
-    "intro": "Three projects, three ways of working: luxury co-branding, staged operational marketing and entrepreneurship.",
+    "intro": "Three projects, three ways of working: luxury co-branding, staged operational marketing and entrepreneurship. Click a project to open it.",
     "open": "View project",
     "drag": "Keep scrolling →",
     "types": {
@@ -137,8 +125,9 @@
       "concept_visual": "Concept visual, student project",
       "video_intro": "Intro video",
       "team": "The team",
-      "photos": "In pictures",
-      "pdf_generic": "Download the PDF"
+      "photos": "Photos",
+      "pdf_generic": "Download the PDF",
+      "close": "Close the project"
     },
     "items": {
       "porsche-hermes": {
@@ -151,7 +140,7 @@
           "Concept visual"
         ],
         "context": "“Branding: strategy and performance” module (L. Ambroise), Master's Year 1 in Marketing and Innovation Strategy, IAE Saint-Étienne, October 2026. Duo project with Ichrak Zerqaoui.",
-        "concept": "A co-development between Porsche and Hermès. The 911 Sellier is a series of 24 classic Porsche 911s (G-series, 1974-1989) restored by Porsche Classic in Stuttgart and upholstered by Hermès saddlers, each delivered with a limited-edition Kelly bag. Signature line: “For those who miss the 911”.",
+        "concept": "A co-development between Porsche and Hermès. The 911 Sellier is a series of ==24 classic Porsche 911s== (G-series, 1974-1989) restored by Porsche Classic in Stuttgart and upholstered by Hermès saddlers, each delivered with a ==limited-edition Kelly bag==. Signature line: “For those who miss the 911”.",
         "steps": [
           "Diagnosis of both brands (Kapferer identity prisms)",
           "Fit assessment on Deng & Messinger's 6 dimensions",
@@ -174,7 +163,7 @@
             "text": "Delivery at Le Mans"
           }
         ],
-        "role": "Co-author of the summary report and the presentation.",
+        "role": "==Co-author== of the summary report and the presentation.",
         "output": "A 4-page summary report and a presentation.",
         "tools": [
           "Brand equity",
@@ -229,8 +218,8 @@
         "case": "Case file: Sephora Secret",
         "stamp": "Confidential",
         "context": "Analysis of Sephora's 4Ps and of the impact of chatbots on the customer experience.",
-        "concept": "A presentation staged as a detective investigation, “Sephora Secret”, to reveal the impact of chatbots on Sephora's customer experience, opened by an intro video I made.",
-        "role": "Made the intro video for the presentation.",
+        "concept": "A presentation staged as a ==detective investigation==, “Sephora Secret”, to reveal the impact of chatbots on Sephora's customer experience, opened by an ==intro video== I made.",
+        "role": "Made the ==intro video== for the presentation.",
         "output": "An investigation-style presentation and its intro video.",
         "photo_caption": "Presentation day for the Sephora project.",
         "figures": [
@@ -258,7 +247,7 @@
           "With two partners"
         ],
         "context": "A small entrepreneurial project launched with friends: a streetwear clothing brand, sold locally on a marketplace, with two partners.",
-        "role": "Managed the financial flows, the inventory flows and the communication.",
+        "role": "Managed the ==financial flows==, the ==inventory flows== and the communication.",
         "figures": [
           {
             "value": "3",
@@ -274,35 +263,11 @@
           "Inventory",
           "Communication"
         ]
-      },
-      "rebirth": {
-        "title": "Rebirth",
-        "kind": "Campaign · Club Génie",
-        "year": "",
-        "tagline": "The team I put together to run for the Club Génie executive board.",
-        "chips": [
-          "Presidential candidate"
-        ],
-        "context": "Rebirth is the team I put together to run for the Club Génie executive board at ENCG Settat.",
-        "role": "Presidential candidate of the Rebirth team.",
-        "output": "The campaign poster, designed like a movie poster.",
-        "team": [
-          "President",
-          "Vice President, Events",
-          "Vice President, Creative",
-          "Treasurer",
-          "General Coordinator",
-          "Secretary General"
-        ],
-        "poster_caption": "The Rebirth campaign poster.",
-        "team_caption": "The Rebirth team, ready for the campaign.",
-        "figures": [
-          {
-            "value": "6",
-            "label": "team members"
-          }
-        ]
       }
+    },
+    "categories": {
+      "academic": "Academic project",
+      "entrepreneurial": "Entrepreneurial project"
     }
   },
   "sketch": {
@@ -319,8 +284,8 @@
         "place": "Casablanca",
         "date": "July – August 2026",
         "points": [
-          "Analyzed more than 200 customer comments on social media and designed response strategies aligned with the brand's editorial line.",
-          "Ran a GEO analysis to improve the brand's visibility in AI search engines.",
+          "Analyzed ==more than 200 customer comments== on social media and designed response strategies aligned with the brand's editorial line.",
+          "Ran a ==GEO analysis== to improve the brand's visibility in AI search engines.",
           "Made UX and user journey recommendations based on visitor profiles."
         ],
         "tags": [
@@ -335,8 +300,9 @@
         "place": "Casablanca",
         "date": "August – September 2024",
         "points": [
-          "SEO analysis and study of visitor behavior (traffic, sources, journeys).",
-          "Designed visual communication materials."
+          "==SEO analysis== and study of visitor behavior (traffic, sources, journeys).",
+          "Designed visual communication materials.",
+          "Visual design for the ==AgoraTech 2025== event: invitations, Instagram posts and communication materials."
         ],
         "tags": [
           "SEO",
@@ -350,7 +316,7 @@
         "place": "International forum",
         "date": "August 2023 – March 2024",
         "points": [
-          "Marketing strategy for an event with more than 40 exhibitors and more than 40 speakers.",
+          "Marketing strategy for an event with ==more than 40 exhibitors== and ==more than 40 speakers==.",
           "Team coordination.",
           "Multichannel communication: social media, newsletters via Brevo.",
           "Monitoring and reporting."
@@ -359,8 +325,7 @@
           "Events",
           "Brevo",
           "Reporting"
-        ],
-        "photo_caption": "Ecotech Expo, Casablanca: the big day, after months of preparation."
+        ]
       }
     ],
     "edu_title": "Education",
@@ -610,33 +575,9 @@
   },
   "extra": {
     "title": "Activities",
-    "intro": "Student clubs and associations taught me how to lead a team and run real projects.",
-    "items": [
-      {
-        "role": "President",
-        "org": "Epik Leaders",
-        "date": "May – September 2026",
-        "desc": "Led the club and ran workshops and training sessions on leadership, management and strategy."
-      },
-      {
-        "role": "Team Leader OGT & OCVP Marketing",
-        "org": "AIESEC Casablanca",
-        "date": "September 2024 – June 2025",
-        "desc": "Managed a team of more than 15 people and tracked their performance. Built the marketing strategy and digital campaigns for RiseUp Co to improve recruitment."
-      },
-      {
-        "role": "Vice President",
-        "org": "Club Génie",
-        "date": "September 2022 – September 2025",
-        "desc": "Project lead for The Pitch (7th edition, a national entrepreneurship competition), then Creative Vice President: event organization and team coordination on entrepreneurial projects."
-      }
-    ],
-    "rebirth": {
-      "label": "Campaign · Club Génie",
-      "title": "Rebirth",
-      "text": "The team I put together to run for the Club Génie executive board, with me as presidential candidate. The movie-style campaign poster also shows my visual communication skills.",
-      "cta": "See the campaign"
-    },
+    "intro": "Four clubs, four worlds: entrepreneurship, leadership, the environment and strategic consulting.",
+    "logos_label": "Clubs & events",
+    "theme": "Theme",
     "captions": {
       "parascolaire-genie-the-pitch-7-chef-de-projet": "The Pitch, 7th edition: project lead, and a certificate for the team.",
       "parascolaire-genie-the-pitch-8-vp": "The Pitch, 8th edition, from the organizing side.",
@@ -645,7 +586,20 @@
       "parascolaire-rebirth-affiche": "The Rebirth campaign poster.",
       "parascolaire-rebirth-equipe": "The Rebirth team, ready for the campaign.",
       "projet-take-and-taste-pitch": "Pitching Take & Taste to the jury.",
-      "projet-take-and-taste-equipe": "The Take & Taste team."
+      "projet-take-and-taste-equipe": "The Take & Taste team.",
+      "parascolaire-green-invest-1-pitch": "Recycle It, 1st edition: the kick-off.",
+      "parascolaire-green-invest-2-atelier": "Recycle, create, convince.",
+      "parascolaire-green-invest-3-participant": "Every team pitches its idea.",
+      "parascolaire-green-invest-4-equipes": "Teams at work.",
+      "parascolaire-green-invest-5-organisation": "The organizing team.",
+      "parascolaire-aiesec-youth-corner-1-oc-logfin": "Organizing committee announcement.",
+      "parascolaire-aiesec-youth-corner-2-techpreneurs": "Youth Corner 4: Techpreneurs.",
+      "parascolaire-aiesec-youth-corner-3-oc-wizards": "The organizing committees on stage, certificates in hand.",
+      "parascolaire-aiesec-youth-corner-4-equipe": "Behind the scenes.",
+      "parascolaire-aiesec-youth-corner-5-portrait": "The big day.",
+      "parascolaire-hackathon-accede-1-victoire": "10 hours of work, one winning idea.",
+      "parascolaire-hackathon-accede-2-groupe": "Participants of the first ACCEDE hackathon.",
+      "parascolaire-hackathon-accede-3-visite": "Touring the Technopark."
     },
     "tt": {
       "label": "Entrepreneurial project · Team",
@@ -655,6 +609,111 @@
       "text": "An app that suggests recipe ideas and sells ingredient kits and ready-made meals, designed for athletes and launching in France. A team entrepreneurial project run through student associations.",
       "role": "My role: designing the app prototype and generating ideas during the ideation phase.",
       "cta": "Try the prototype"
+    },
+    "awards": {
+      "title": "Awards",
+      "hult": {
+        "title": "Winner of the Hult Prize campus round",
+        "sub": "With Take & Taste · 2026"
+      },
+      "hack": {
+        "title": "Winner of the “Le Phare de l'entrepreneuriat” hackathon",
+        "sub": "ACCEDE Internationale · April 2023",
+        "text": "ACCEDE Internationale's first hackathon, co-organized with the MCISE and AUF North Africa at the Casablanca Technopark. Our winning project: ==Stademaps==, a platform that maps sports facilities so individuals can rent them.",
+        "stats": [
+          {
+            "v": "26",
+            "l": "students"
+          },
+          {
+            "v": "16+",
+            "l": "schools"
+          },
+          {
+            "v": "10 h",
+            "l": "to build a project"
+          }
+        ]
+      }
+    },
+    "rebirth": {
+      "label": "Campaign · Executive board",
+      "title": "Rebirth",
+      "text": "Rebirth is the team I brought together to run for Club Génie's executive board, with me as ==presidential candidate==. An unforgettable experience: building a ==full-year action plan== with like-minded people, from the club's strategy to its events.",
+      "cta": "See our action plan"
+    },
+    "clubs": {
+      "genie": {
+        "name": "Club Génie",
+        "org": "ENCG Settat",
+        "theme": "Entrepreneurship",
+        "date": "September 2022 – September 2025",
+        "roles": [
+          {
+            "title": "Vice President",
+            "text": "Contributed to the club's ==strategic management== and event organization; coordinated teams and followed up on entrepreneurial projects."
+          },
+          {
+            "title": "Project lead, The Pitch (7th edition)",
+            "text": "Organized the ==national pitch competition== at the Technopark: operations, stakeholder coordination and logistics."
+          }
+        ]
+      },
+      "aiesec": {
+        "name": "AIESEC Casablanca",
+        "org": "",
+        "theme": "Leadership",
+        "date": "September 2024 – June 2025",
+        "roles": [
+          {
+            "title": "Team Leader, OGT department (Outgoing Global Talent)",
+            "text": "Managed a ==team of more than 15 people== and tracked their performance."
+          },
+          {
+            "title": "OCVP Marketing, RiseUp Co campaign",
+            "text": "Led the ==marketing strategy== and ran digital campaigns to improve recruitment."
+          },
+          {
+            "title": "Youth Corner, 4th edition “Techpreneurs” — OC Logistics & Finance",
+            "text": "==More than 150 participants== and ==more than 20 tech speakers== gathered at ESCA École de Management, with media coverage (Hit Radio, L'Economiste), workshops and networking. In charge of logistics and finance, in coordination with the other organizing committees."
+          }
+        ]
+      },
+      "green": {
+        "name": "Green Invest",
+        "org": "ENCG Settat",
+        "theme": "Environment",
+        "date": "2024",
+        "roles": [
+          {
+            "title": "Project lead, “Recycle It” (1st edition, 2024)",
+            "text": "An ==environmental awareness competition== that brought ENCG Settat's clubs together. Co-led as a duo."
+          }
+        ],
+        "skills": [
+          "Leadership",
+          "Teamwork",
+          "Communication"
+        ]
+      },
+      "epik": {
+        "name": "Epik Leaders",
+        "org": "ENCG Settat",
+        "theme": "Strategic consulting",
+        "date": "",
+        "steps": [
+          {
+            "title": "Head of the Training Unit",
+            "date": "",
+            "text": "Designed and ran ==leadership and soft skills training==, with performance tracking and continuous improvement of the programs."
+          },
+          {
+            "title": "President",
+            "date": "May – September 2026",
+            "text": "==Led the club==, with workshops and training in leadership, management and strategy."
+          }
+        ]
+      }
     }
   },
   "skills": {
@@ -700,26 +759,27 @@
       }
     ],
     "tools_title": "Tools",
-    "tool_cats": {
-      "office": "Office",
-      "data": "Data",
-      "marketing": "Marketing",
-      "design": "Design",
-      "video": "Video editing"
-    },
     "languages_title": "Languages",
-    "languages": [
+    "tool_groups": {
+      "analysis": "Analysis",
+      "creation": "Creation",
+      "communication": "Communication"
+    },
+    "lang_story": [
       {
         "name": "Arabic",
-        "level": "Native"
+        "level": "Native",
+        "text": "The language of home, in Morocco."
       },
       {
         "name": "French",
-        "level": "C1"
+        "level": "C1",
+        "text": "The language of my studies, from ENCG Settat to IAE Saint-Étienne, where I live today."
       },
       {
         "name": "English",
-        "level": "C1"
+        "level": "C1",
+        "text": "The language I teach. The one I use to work with students in the US and international teams at AIESEC."
       }
     ]
   },
@@ -752,7 +812,7 @@
   },
   "jobs": {
     "title": "Student jobs",
-    "intro": "Teaching means explaining things simply, persuading and adapting to every audience: three habits I bring to marketing.",
+    "intro": "Teaching means ==explaining things simply==, ==persuading== and adapting to every audience: three habits I bring to marketing.",
     "skills": [
       "Explaining simply",
       "Persuading",
@@ -760,22 +820,16 @@
     ],
     "items": [
       {
-        "role": "Math tutor",
-        "org": "",
-        "date": "Ongoing",
-        "desc": ""
-      },
-      {
-        "role": "Online English teacher",
-        "org": "Children of the World · Virginia, USA",
-        "date": "Summer 2026",
-        "desc": ""
+        "role": "Tutor",
+        "org": "Children of the World · a school in Virginia, USA",
+        "date": "Ongoing · remote",
+        "desc": "Making sure students ==finish their assignments== and re-explaining anything they didn't understand."
       },
       {
         "role": "English and computer science teacher",
-        "org": "Neoschool International",
+        "org": "Neoschool International · Casablanca, Morocco",
         "date": "Summers 2024 and 2025",
-        "desc": "English for kindergarten and primary school pupils; Microsoft Office and Scratch."
+        "desc": "==English== for kindergarten and primary school pupils; ==Microsoft Office and Scratch==."
       }
     ]
   }

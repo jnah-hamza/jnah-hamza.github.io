@@ -2,14 +2,19 @@
   "cv": "assets/docs/cv-hamza-jnah.pdf",
   "email": "jnah.hamza.pro@gmail.com",
   "phone": "+33 7 45 74 91 80",
-  "linkedin": "https://www.linkedin.com/in/hamza-jnah",
+  "linkedin": "https://www.linkedin.com/in/hamza-jnah/",
   "instagram": "https://www.instagram.com/the_white_side_/",
   "formspree": "VOTRE_ID_FORMSPREE",
   "portrait": {
-    "cutout": ["assets/img/portrait.png", "portrait.png"],
-    "photo": ["assets/img/portrait.jpg", "portrait.jpg"],
-    "fallback": "assets/img/parascolaire/parascolaire-genie-the-pitch-7-chef-de-projet.webp",
-    "model": ["assets/3d/moi-3d.glb", "moi-3d.glb"]
+    "cutout": [
+      "assets/img/portrait.webp"
+    ],
+    "photo": [],
+    "fallback": "assets/img/portrait.webp",
+    "model": [
+      "assets/3d/moi-3d.glb",
+      "moi-3d.glb"
+    ]
   },
   "projects": [
     {
@@ -17,99 +22,355 @@
       "type": "mix_report",
       "cover": "assets/img/projets/projet-911-sellier-fond.webp",
       "pdf": "assets/docs/porsche-hermes-911-sellier.pdf",
-      "canva": "",
+      "canva": "https://canva.link/h1x5i7ztyvr0zvi",
       "pages": [
         "assets/img/projets/projet-911-sellier-page-1.webp",
         "assets/img/projets/projet-911-sellier-page-2.webp",
         "assets/img/projets/projet-911-sellier-page-3.webp",
         "assets/img/projets/projet-911-sellier-page-4.webp"
       ],
-      "sketch": true
+      "sketch": true,
+      "category": "academic"
     },
     {
       "id": "sephora",
       "type": "mix_media",
       "group": true,
       "cover": "assets/img/projets/projet-sephora-equipe.webp",
-      "photo": { "file": "projet-sephora-equipe", "w": 1280, "h": 960 },
-      "youtube": ""
+      "photo": {
+        "file": "projet-sephora-equipe",
+        "w": 1280,
+        "h": 960
+      },
+      "youtube": "",
+      "category": "academic"
     },
     {
       "id": "aballa",
       "type": "brand",
       "group": true,
       "cover": "",
-      "gallery": []
-    }
-  ],
-  "campaigns": [
-    {
-      "id": "rebirth",
-      "type": "campaign",
-      "poster": "assets/img/parascolaire/parascolaire-rebirth-affiche.webp",
-      "team_photo": "assets/img/parascolaire/parascolaire-rebirth-equipe.webp",
-      "pages": [],
-      "pdfs": [
-        { "file": "assets/docs/rebirth-presentation.pdf", "label": "pdf_presentation" },
-        { "file": "assets/docs/rebirth-fiche.pdf", "label": "pdf_fiche" }
-      ]
+      "gallery": [],
+      "category": "entrepreneurial"
     }
   ],
   "videos": [
-    { "youtube": "sCmYhfjKNMY", "credit": "credit_film" },
-    { "youtube": "4RrNR4nW9DI", "credit": "credit_film" },
-    { "youtube": "bxmdEVaB_88", "credit": "credit_grade", "badge": "before_after" }
+    {
+      "youtube": "sCmYhfjKNMY",
+      "credit": "credit_film"
+    },
+    {
+      "youtube": "4RrNR4nW9DI",
+      "credit": "credit_film"
+    },
+    {
+      "youtube": "bxmdEVaB_88",
+      "credit": "credit_grade",
+      "badge": "before_after"
+    }
   ],
   "experience": [
-    { "logo": "assets/img/logos/logo-alsa-casabus.webp", "logo_alt": "Alsa · Casabus" },
-    { "logo": "assets/img/logos/logo-apebi.webp", "logo_alt": "APEBI" },
-    { "logo": "assets/img/logos/logo-ecotech-expo.webp", "logo_alt": "Ecotech Expo", "photo": { "folder": "experiences", "file": "experience-ecotech-expo", "w": 1200, "h": 1600 } }
+    {
+      "logo": "assets/img/logos/logo-alsa-casabus.webp",
+      "logo_alt": "Alsa · Casabus"
+    },
+    {
+      "logo": "assets/img/logos/logo-apebi.webp",
+      "logo_alt": "APEBI"
+    },
+    {
+      "logo": "assets/img/logos/logo-ecotech-expo.webp",
+      "logo_alt": "Ecotech Expo"
+    }
   ],
   "education": [
-    { "logo": "assets/img/logos/logo-iae-saint-etienne.webp", "logo_alt": "IAE Saint-Étienne" },
-    { "logo": "assets/img/logos/logo-encg-settat.webp", "logo_alt": "ENCG Settat" },
+    {
+      "logo": "assets/img/logos/logo-iae-saint-etienne.webp",
+      "logo_alt": "IAE Saint-Étienne"
+    },
+    {
+      "logo": "assets/img/logos/logo-encg-settat.webp",
+      "logo_alt": "ENCG Settat"
+    },
     {}
   ],
-  "extra": [
-    { "photos": [] },
-    { "photos": [] },
+  "tools": [
     {
+      "group": "analysis",
+      "name": "Excel avancé",
+      "name_en": "Advanced Excel",
+      "hex": "217346",
+      "initials": "X"
+    },
+    {
+      "group": "analysis",
+      "name": "Power BI",
+      "hex": "F2C811",
+      "initials": "BI"
+    },
+    {
+      "group": "analysis",
+      "name": "SPSS",
+      "hex": "1F70C1",
+      "initials": "SPSS"
+    },
+    {
+      "group": "analysis",
+      "name": "Sphinx",
+      "hex": "1D3557",
+      "initials": "Sx"
+    },
+    {
+      "group": "analysis",
+      "name": "Google Analytics",
+      "hex": "E37400",
+      "path": "M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"
+    },
+    {
+      "group": "creation",
+      "name": "Canva",
+      "hex": "00C4CC",
+      "path": "M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"
+    },
+    {
+      "group": "creation",
+      "name": "Figma",
+      "hex": "F24E1E",
+      "path": "M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"
+    },
+    {
+      "group": "creation",
+      "name": "Adobe Photoshop",
+      "hex": "31A8FF",
+      "path": "M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.62-.23-.89-.17-.26-.41-.46-.7-.57zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"
+    },
+    {
+      "group": "creation",
+      "name": "Adobe Illustrator",
+      "hex": "FF9A00",
+      "path": "M10.53 10.73c-.1-.31-.19-.61-.29-.92-.1-.31-.19-.6-.27-.89-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.14.51-.29.98-.44 1.4h2.54c-.06-.211-.14-.46-.23-.721-.09-.269-.18-.559-.27-.859zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zM14.7 16.83h-2.091c-.069.01-.139-.04-.159-.11l-.82-2.38H7.91l-.76 2.35c-.02.09-.1.15-.19.141H5.08c-.11 0-.14-.061-.11-.18L8.19 7.38c.03-.1.06-.21.1-.33.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.08 0 .12.03.13.08l3.65 10.3c.03.109 0 .16-.1.16zm3.4-.15c0 .11-.039.16-.129.16H16.01c-.1 0-.15-.061-.15-.16v-7.7c0-.1.041-.14.131-.14h1.98c.09 0 .129.05.129.14v7.7zm-.209-9.03c-.231.24-.571.37-.911.35-.33.01-.65-.12-.891-.35-.23-.25-.35-.58-.34-.92-.01-.34.12-.66.359-.89.242-.23.562-.35.892-.35.391 0 .689.12.91.35.22.24.34.56.33.89.01.34-.11.67-.349.92z"
+    },
+    {
+      "group": "creation",
+      "name": "Adobe Premiere Pro",
+      "hex": "9999FF",
+      "path": "M10.15 8.42a2.93 2.93 0 00-1.18-.2 13.9 13.9 0 00-1.09.02v3.36l.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03a1.45 1.45 0 00-.93-1.46zM19.75.3H4.25A4.25 4.25 0 000 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.09 11.65c-.4.56-.96.98-1.61 1.22-.68.25-1.43.34-2.25.34l-.5-.01-.43-.01v3.21a.12.12 0 01-.11.14H5.82c-.08 0-.12-.04-.12-.13V6.42c0-.07.03-.11.1-.11l.56-.01.76-.02.87-.02.91-.01c.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.15.42.23.85.23 1.3 0 .86-.2 1.57-.6 2.13zm6.82-3.15v1.95c0 .08-.05.11-.16.11a4.35 4.35 0 00-1.92.37c-.19.09-.37.21-.51.37v5.1c0 .1-.04.14-.13.14h-1.97a.14.14 0 01-.16-.12v-5.58l-.01-.75-.02-.78c0-.23-.02-.45-.04-.68a.1.1 0 01.07-.11h1.78c.1 0 .18.07.2.16a3.03 3.03 0 01.13.92c.3-.35.67-.64 1.08-.86a3.1 3.1 0 011.52-.39c.07-.01.13.04.14.11v.04z"
+    },
+    {
+      "group": "creation",
+      "name": "DaVinci Resolve",
+      "hex": "233A51",
+      "path": "M17.621 0 5.977.004c-1.37 0-2.756.345-3.762 1.11a4.925 4.925 0 0 0-1.61 2.003C.233 3.93 0 5.02 0 5.951l.012 12.2c.002 1.604.479 3.057 1.461 4.112.984 1.056 2.462 1.683 4.331 1.691L16.856 24c1.26.005 3.095-.036 4.303-.714 1.075-.605 2.025-1.556 2.497-2.984.278-.84.345-2.084.344-3.147l-.021-11.13c-.002-.888-.15-2.023-.547-2.934-.425-.976-1.181-1.815-2.322-2.425C20.353.26 19.123 0 17.622 0zm0 .93c1.378 0 2.538.295 3.04.565.977.523 1.544 1.166 1.889 1.96.315.721.47 1.793.473 2.572l.018 11.13c.002 1.013-.097 2.257-.298 2.86-.396 1.202-1.146 1.946-2.063 2.462-.814.457-2.612.593-3.82.588l-11.05-.044c-1.657-.007-2.832-.534-3.626-1.386-.792-.851-1.212-2.06-1.212-3.485L.999 5.95c0-.829.196-1.827.474-2.437.345-.757.75-1.207 1.365-1.674C3.585 1.27 4.868.97 6.08.97zm-5.66 3.423c-1.976.089-3.204 1.658-3.214 3.29.019 1.443 1.635 3.481 2.884 4.53.12.099.154.109.33.18.062.025.198-.047.327-.135.36-.245.993-.947 1.648-1.738a7.67 7.67 0 0 0 1.031-1.683c.409-.89.261-1.599.235-1.888a3.983 3.983 0 0 0-.99-1.692 3.36 3.36 0 0 0-2.251-.864zm4.172 7.922a10.185 10.185 0 0 0-3.244.61c-.15.058-.26.1-.374.17-.057.036-.11.135-.105.292.017.433.29 1.278.624 2.27.384 1.135 1.066 2.27 1.844 2.74a3.23 3.23 0 0 0 2.53.342c.832-.243 1.595-.868 1.962-1.546.986-1.818.19-3.548-1.121-4.417-.447-.296-1.133-.445-1.89-.46-.074 0-.15-.002-.226-.001zm-8.432.038a6.201 6.201 0 0 0-.752.047c-.596.078-.932.273-1.29.51a3.177 3.177 0 0 0-1.365 1.979c-.075.552-.086 1.053.033 1.507.433 1.389 1.326 2.222 2.847 2.452.636.028 1.37-.063 1.99-.45 1.269-.782 2.08-3.17 2.412-4.742.053-.176.035-.357-.013-.42-.005-.067-.044-.113-.19-.183-.398-.192-1.32-.417-2.375-.6a7.68 7.68 0 0 0-1.297-.1z"
+    },
+    {
+      "group": "communication",
+      "name": "Word",
+      "hex": "2B579A",
+      "initials": "W"
+    },
+    {
+      "group": "communication",
+      "name": "PowerPoint",
+      "hex": "D24726",
+      "initials": "P"
+    },
+    {
+      "group": "communication",
+      "name": "Brevo",
+      "hex": "0B996E",
+      "path": "M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zM7.2 4.8h5.747c2.34 0 3.895 1.406 3.895 3.516 0 1.022-.348 1.862-1.09 2.588C17.189 11.812 18 13.22 18 14.785c0 2.86-2.64 5.016-6.164 5.016H7.199v-15zm2.085 1.952v5.537h.07c.233-.432.858-.796 2.249-1.226 2.039-.659 3.037-1.52 3.037-2.655 0-.998-.766-1.656-1.924-1.656H9.285zm4.87 5.266c-.766.385-1.67.748-2.76 1.11-1.229.387-2.11 1.386-2.11 2.407v2.315h2.365c2.387 0 4.149-1.34 4.149-3.155 0-1.067-.625-2.087-1.645-2.677z"
+    }
+  ],
+  "jobs": [
+    {
+      "logo": "assets/img/logos/logo-children-of-the-world.webp",
+      "logo_alt": "Children of the World"
+    },
+    {
+      "logo": "assets/img/logos/logo-neoschool.webp",
+      "logo_alt": "Neoschool International"
+    }
+  ],
+  "clubs": [
+    {
+      "id": "genie",
       "logo": "assets/img/logos/logo-club-genie.webp",
       "logo_alt": "Club Génie, ENCG Settat",
       "photos": [
-        { "folder": "parascolaire", "file": "parascolaire-genie-the-pitch-7-chef-de-projet", "w": 1200, "h": 1600 },
-        { "folder": "parascolaire", "file": "parascolaire-genie-the-pitch-8-vp", "w": 1200, "h": 1600 },
-        { "folder": "parascolaire", "file": "parascolaire-genie-vp-crea-groupe", "w": 1600, "h": 1200 },
-        { "folder": "parascolaire", "file": "parascolaire-genie-vp-crea-equipe", "w": 1600, "h": 1200 }
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-genie-the-pitch-7-chef-de-projet",
+          "w": 1200,
+          "h": 1600
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-genie-the-pitch-8-vp",
+          "w": 1200,
+          "h": 1600
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-genie-vp-crea-groupe",
+          "w": 1600,
+          "h": 1200
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-genie-vp-crea-equipe",
+          "w": 1600,
+          "h": 1200
+        }
+      ],
+      "take_taste": {
+        "prototype": "https://gentle-swept-10612813.figma.site/",
+        "photos": [
+          {
+            "folder": "projets",
+            "file": "projet-take-and-taste-pitch",
+            "w": 1600,
+            "h": 1200
+          },
+          {
+            "folder": "projets",
+            "file": "projet-take-and-taste-equipe",
+            "w": 1600,
+            "h": 1200
+          }
+        ]
+      },
+      "rebirth": {
+        "poster": "assets/img/parascolaire/parascolaire-rebirth-affiche.webp",
+        "poster_thumb": "assets/img/parascolaire/thumbs/parascolaire-rebirth-affiche.webp",
+        "team_photo": "assets/img/parascolaire/parascolaire-rebirth-equipe.webp",
+        "team_thumb": "assets/img/parascolaire/thumbs/parascolaire-rebirth-equipe.webp",
+        "plan": "https://canva.link/y7mjafpn450rdk8"
+      }
+    },
+    {
+      "id": "aiesec",
+      "logo": "assets/img/logos/logo-aiesec.webp",
+      "logo_alt": "AIESEC",
+      "photos": [
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-aiesec-youth-corner-2-techpreneurs",
+          "w": 1280,
+          "h": 853
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-aiesec-youth-corner-1-oc-logfin",
+          "w": 858,
+          "h": 863
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-aiesec-youth-corner-3-oc-wizards",
+          "w": 1280,
+          "h": 853
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-aiesec-youth-corner-4-equipe",
+          "w": 1280,
+          "h": 960
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-aiesec-youth-corner-5-portrait",
+          "w": 1280,
+          "h": 853
+        }
       ]
+    },
+    {
+      "id": "green",
+      "logo": "assets/img/logos/logo-green-invest.webp",
+      "logo_alt": "Green Invest",
+      "photos": [
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-green-invest-1-pitch",
+          "w": 720,
+          "h": 480
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-green-invest-2-atelier",
+          "w": 800,
+          "h": 533
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-green-invest-3-participant",
+          "w": 800,
+          "h": 1200
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-green-invest-4-equipes",
+          "w": 800,
+          "h": 533
+        },
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-green-invest-5-organisation",
+          "w": 720,
+          "h": 480
+        }
+      ]
+    },
+    {
+      "id": "epik",
+      "logo": "assets/img/logos/logo-epik-leaders.webp",
+      "logo_alt": "Epik Leaders, ENCG Settat",
+      "photos": []
     }
   ],
-  "take_taste": {
-    "prototype": "https://gentle-swept-10612813.figma.site/",
-    "photos": [
-      { "folder": "projets", "file": "projet-take-and-taste-pitch", "w": 1600, "h": 1200 },
-      { "folder": "projets", "file": "projet-take-and-taste-equipe", "w": 1600, "h": 1200 }
+  "distinctions": {
+    "hackathon_logo": "assets/img/logos/logo-accede-internationale.webp",
+    "hackathon_photos": [
+      {
+        "folder": "parascolaire",
+        "file": "parascolaire-hackathon-accede-1-victoire",
+        "w": 1280,
+        "h": 888
+      },
+      {
+        "folder": "parascolaire",
+        "file": "parascolaire-hackathon-accede-2-groupe",
+        "w": 1280,
+        "h": 960
+      },
+      {
+        "folder": "parascolaire",
+        "file": "parascolaire-hackathon-accede-3-visite",
+        "w": 1280,
+        "h": 853
+      }
     ]
   },
-  "about_polaroids": [
-    "photo-44-saint-etienne-tram",
-    "photo-24-al-wahda-voie-lactee",
-    "photo-62-chamonix-lac-reflet-dore"
-  ],
-  "tools": [
-    { "cat": "office", "name": "Excel avancé", "name_en": "Advanced Excel" },
-    { "cat": "office", "name": "Word" },
-    { "cat": "office", "name": "PowerPoint" },
-    { "cat": "data", "name": "Power BI" },
-    { "cat": "data", "name": "SPSS" },
-    { "cat": "data", "name": "Sphinx" },
-    { "cat": "data", "name": "Google Analytics" },
-    { "cat": "marketing", "name": "Brevo" },
-    { "cat": "design", "name": "Canva" },
-    { "cat": "design", "name": "Figma" },
-    { "cat": "design", "name": "Adobe Photoshop" },
-    { "cat": "design", "name": "Adobe Illustrator" },
-    { "cat": "video", "name": "Adobe Premiere Pro" },
-    { "cat": "video", "name": "DaVinci Resolve" }
+  "club_logos": [
+    [
+      "assets/img/logos/logo-club-genie.webp",
+      "Club Génie"
+    ],
+    [
+      "assets/img/logos/logo-aiesec.webp",
+      "AIESEC"
+    ],
+    [
+      "assets/img/logos/logo-green-invest.webp",
+      "Green Invest"
+    ],
+    [
+      "assets/img/logos/logo-epik-leaders.webp",
+      "Epik Leaders"
+    ],
+    [
+      "assets/img/logos/logo-accede-internationale.webp",
+      "ACCEDE Internationale"
+    ]
   ]
 }

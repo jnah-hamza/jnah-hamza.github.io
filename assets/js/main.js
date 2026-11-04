@@ -9,7 +9,6 @@
   var t = function (k, v) { return I18N.t(k, v); };
   var h = function (s) { return I18N.html(s); };
   var $ = function (s, r) { return (r || document).querySelector(s); };
-  var PH = 'assets/img/photos/';
 
   /* Photo de parcours (événements, projets) en polaroïd */
   function pola(p, caption, tilt, size, i) {
@@ -29,28 +28,8 @@
       });
     });
   }
-  function logo(src, alt) {
-    return src ? '<img class="logo-mono" src="' + src + '" alt="' + I18N.esc(alt || '') + '" loading="lazy">' : '';
-  }
-
-  /* ---------- À propos ---------- */
-  function renderAbout() {
-    var tools = ['Excel', 'Power BI', 'SPSS', 'Google Analytics', 'Brevo', 'Canva', 'Figma', 'Photoshop', 'Illustrator', 'Premiere Pro', 'DaVinci Resolve'];
-    $('#about-tools').innerHTML = tools.map(function (n, i) {
-      return '<li class="pill rv" style="--d:' + (i * 40) + 'ms">' + h(n) + '</li>';
-    }).join('');
-    $('#strengths').innerHTML = (t('about.strengths') || []).map(function (x, i) {
-      return '<li class="rv' + (i === 0 ? ' is-first' : '') + '"><strong>' + h(x.name) + '</strong> : ' + h(x.text) + '</li>';
-    }).join('');
-    var tilts = [-6, 4, -2];
-    var sizes = ['m', 's', 'm'];
-    $('#about-polas').innerHTML = SITE.about_polaroids.map(function (f, i) {
-      return HJ.polaroid({
-        thumb: PH + 'thumbs/' + f + '.webp', alt: t('photo.alts.' + f),
-        caption: t('photo.captions.' + f), tilt: tilts[i % 3], size: sizes[i % 3], w: 600, h: f.indexOf('tram') > -1 ? 800 : 450
-      });
-    }).join('');
-    $('#about-polas').querySelectorAll('.polaroid').forEach(function (p, i) { p.setAttribute('data-parallax', String(0.03 + i * 0.03)); });
+  function logo(src, alt, cls) {
+    return src ? '<span class="logo-chip ' + (cls || '') + '"><img src="' + src + '" alt="' + I18N.esc(alt || '') + '" loading="lazy"></span>' : '';
   }
 
   /* ---------- Projets (mosaïques) ---------- */
@@ -68,11 +47,11 @@
       '<div class="bento">' +
         '<div class="tile tile--hero">' + cover +
           '<span class="tile__num">0' + (i + 1) + '</span>' +
-          '<h3 class="pcard__title"><a href="projet.html?id=' + p.id + '" class="stretched">' +
-            '<span class="glitch" data-text="' + I18N.esc(t(k + '.title')) + '">' + h(t(k + '.title')) + '</span></a></h3>' +
+          '<h3 class="pcard__title"><a href="projet.html?id=' + p.id + '" class="stretched" data-project="' + p.id + '">' +
+            '<span class="glitch" data-text="' + I18N.esc(I18N.clean(t(k + '.title'))) + '">' + h(t(k + '.title')) + '</span></a></h3>' +
           (p.group ? '<span class="chip chip--red">' + h(t('common.group')) + '</span>' : '') +
         '</div>' +
-        '<div class="tile tile--type"><span class="tile__lbl">' + h(t('projects.labels.type')) + '</span><strong>' + h(t('projects.types.' + p.type)) + '</strong></div>' +
+        '<div class="tile tile--type"><span class="tile__lbl">' + h(t('projects.labels.type')) + '</span><strong>' + h(t('projects.categories.' + p.category)) + '</strong></div>' +
         '<div class="tile tile--year"><span class="tile__lbl">' + h(year ? t('projects.labels.year') : t('projects.labels.team')) + '</span><strong>' + h(year || chips[0] || '') + '</strong></div>' +
         '<div class="tile tile--tall"><ul>' + tiles.map(function (x) { return '<li>' + h(x) + '</li>'; }).join('') + '</ul></div>' +
         '<div class="tile tile--wide"><p>' + h(t(k + '.tagline')) + '</p><span class="tile__go" aria-hidden="true">' + h(t('projects.open')) + ' →</span></div>' +
@@ -84,6 +63,54 @@
     track.innerHTML = SITE.projects.map(projectCard).join('');
     HJ.observe(track);
     setupHScroll();
+  }
+
+  /* Fenêtre pop-up d'un projet */
+  var modal = { open: null, last: null };
+  function setupModal() {
+    var box = $('#pmodal'), content = $('#pmodal-content'), inner = $('#pmodal-box');
+    function show(id) {
+      var P = SITE.projects.filter(function (p) { return p.id === id; })[0];
+      if (!P) return;
+      modal.open = id;
+      content.innerHTML = HJ.projectHTML(P, SITE.projects, '');
+      box.hidden = false;
+      document.documentElement.classList.add('modal-open');
+      requestAnimationFrame(function () { box.classList.add('is-open'); });
+      inner.scrollTop = 0;
+      HJ.bindProject(content);
+      inner.focus({ preventScroll: true });
+    }
+    function close() {
+      if (!modal.open) return;
+      modal.open = null;
+      box.classList.remove('is-open');
+      document.documentElement.classList.remove('modal-open');
+      setTimeout(function () { box.hidden = true; content.innerHTML = ''; }, 250);
+      if (modal.last) modal.last.focus({ preventScroll: true });
+    }
+    modal.show = show;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-project]');
+      if (!a) return;
+      e.preventDefault();
+      if (!modal.open) modal.last = a;
+      show(a.getAttribute('data-project'));
+    });
+    box.querySelector('.pmodal__close').addEventListener('click', close);
+    box.addEventListener('click', function (e) { if (e.target === box) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!modal.open || !document.getElementById('lightbox').hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'Tab') {
+        var f = Array.from(box.querySelectorAll('a[href], button:not([disabled]), iframe, [tabindex="0"]')).filter(function (x) { return x.offsetParent !== null; });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && (document.activeElement === first || document.activeElement === inner)) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    I18N.onChange(function () { if (modal.open) { var id = modal.open; content.innerHTML = HJ.projectHTML(SITE.projects.filter(function (p) { return p.id === id; })[0], SITE.projects, ''); HJ.bindProject(content); } });
   }
 
   /* Défilement horizontal des projets pendant le scroll (ordinateur) */
@@ -121,36 +148,21 @@
     hs.measure();
   }
 
-  /* ---------- Carnet de croquis (911 Sellier) ---------- */
-  function renderSketch() {
-    var k = 'projects.items.porsche-hermes.sketch.';
-    var wrap = $('#sketch');
-    wrap.innerHTML = HJ.sketchSVG(k) +
-      '<p class="sketch-wrap__lbl"><span class="star">✦✦✦</span> ' + h(t('sketch.label')) + ' · <a href="projet.html?id=porsche-hermes">' + h(t('projects.items.porsche-hermes.title')) + ' →</a></p>';
-    HJ.observe(wrap);
-  }
-
   /* ---------- Expériences ---------- */
   function renderExperience() {
     var items = t('experience.items') || [];
     $('#timeline').innerHTML = items.map(function (e, i) {
       var d = (SITE.experience || [])[i] || {};
-      var photo = d.photo && e.photo_caption ? '<div class="timeline__photo">' + pola(d.photo, e.photo_caption, i % 2 ? 4 : -4, 's', 0) + '</div>' : '';
       return '<li class="timeline__item" style="--d:' + (i * 120) + 'ms">' +
         '<span class="timeline__dot" aria-hidden="true"></span>' +
-        '<div class="timeline__card' + (photo ? ' has-photo' : '') + '">' +
-          '<div class="timeline__head"><p class="timeline__date">' + h(e.date) + '</p>' + logo(d.logo, d.logo_alt) + '</div>' +
+        '<div class="timeline__card">' +
+          '<div class="timeline__head"><p class="timeline__date">' + h(e.date) + '</p>' + logo(d.logo, d.logo_alt, 'logo-chip--lg') + '</div>' +
           '<h3 class="timeline__role">' + h(e.role) + '</h3>' +
           '<p class="timeline__org"><strong>' + h(e.org) + '</strong> · ' + h(e.place) + '</p>' +
           '<ul class="timeline__points">' + e.points.map(function (p) { return '<li>' + h(p) + '</li>'; }).join('') + '</ul>' +
           '<p class="timeline__tags">' + (e.tags || []).map(function (x) { return '<span class="chip">' + h(x) + '</span>'; }).join('') + '</p>' +
-          photo +
         '</div></li>';
     }).join('');
-    items.forEach(function (e, i) {
-      var d = (SITE.experience || [])[i] || {};
-      if (d.photo) bindGallery($('#timeline').children[i], [d.photo], function () { return e.photo_caption; });
-    });
     $('#education').innerHTML = (t('experience.education') || []).map(function (j, i) {
       var d = (SITE.education || [])[i] || {};
       return '<li class="rv' + (d.logo ? ' has-logo' : '') + '">' + logo(d.logo, d.logo_alt) + '<div><p class="mini-list__date">' + h(j.date) + '</p><h4>' + h(j.degree) + '</h4><p>' + h(j.school) + '</p>' + (j.note ? '<p class="mini-list__desc">' + h(j.note) + '</p>' : '') + '</div></li>';
@@ -177,8 +189,9 @@
       return '<li class="rv" style="--d:' + (i * 90) + 'ms"><span>0' + (i + 1) + '</span>' + h(x) + '</li>';
     }).join('');
     $('#jobs-list').innerHTML = (t('jobs.items') || []).map(function (j, i) {
+      var d = (SITE.jobs || [])[i] || {};
       return '<li class="job rv" style="--d:' + (i * 110) + 'ms">' +
-        '<p class="job__date hand">' + h(j.date) + '</p>' +
+        '<div class="job__head">' + logo(d.logo, d.logo_alt, 'logo-chip--lg') + '<p class="job__date hand">' + h(j.date) + '</p></div>' +
         '<h3 class="job__role">' + h(j.role) + '</h3>' +
         (j.org ? '<p class="job__org">' + h(j.org) + '</p>' : '') +
         (j.desc ? '<p class="job__desc">' + h(j.desc) + '</p>' : '') +
@@ -192,7 +205,7 @@
     var items = t('video.items') || [];
     $('#videos').innerHTML = SITE.videos.filter(function (v) { return v.youtube; }).map(function (v, i) {
       var it = items[i] || {};
-      var media = '<button class="yt" type="button" data-yt="' + I18N.esc(v.youtube) + '" aria-label="' + I18N.esc(t('video.play') + ' : ' + (it.title || '')) + '">' +
+      var media = '<button class="yt" type="button" data-yt="' + I18N.esc(v.youtube) + '" aria-label="' + I18N.esc(t('video.play') + ' : ' + I18N.clean(it.title || '')) + '">' +
             '<img src="https://i.ytimg.com/vi/' + encodeURIComponent(v.youtube) + '/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">' +
             '<span class="yt__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>' +
             (v.badge ? '<span class="yt__badge">' + h(t('video.' + v.badge)) + '</span>' : '') + '</button>';
@@ -222,63 +235,112 @@
   });
 
   /* ---------- Parascolaire ---------- */
-  var tilts = [-5, 3, -2, 6];
+  var tilts = [-5, 3, -2, 6, -4];
   function capOf(p) { return t('extra.captions.' + p.file); }
   function gallery(photos) {
-    return photos.map(function (p, i) { return pola(p, capOf(p), tilts[i % 4], i === 0 ? 'm' : 's', i); }).join('');
+    return '<div class="club__gal polas polas--small">' + photos.map(function (p, i) { return pola(p, capOf(p), tilts[i % 5], i === 0 ? 'm' : 's', i); }).join('') + '</div>';
+  }
+  function ext(url, label, cls) {
+    return url ? '<a class="btn ' + (cls || 'btn--red') + '" href="' + url + '" target="_blank" rel="noopener">' + h(label) + ' ↗<span class="sr-only"> ' + h(t('common.new_tab')) + '</span></a>' : '';
+  }
+  function renderClubLogos() {
+    $('#club-logos').innerHTML = '<p class="club-logos__lbl">' + h(t('extra.logos_label')) + '</p><ul>' +
+      (SITE.club_logos || []).map(function (l) { return '<li>' + logo(l[0], l[1], 'logo-chip--xl') + '</li>'; }).join('') + '</ul>';
+  }
+  function renderAwards() {
+    var a = 'extra.awards.';
+    var stats = t(a + 'hack.stats') || [];
+    var ph = (SITE.distinctions || {}).hackathon_photos || [];
+    $('#awards').innerHTML = '<div class="awards__head"><svg class="awards__trophy" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v2h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 14.9V18h3v3H8v-3h3v-3.1A5 5 0 0 1 8.3 12H8a4 4 0 0 1-4-4V5h3V3zm0 4H6v1a2 2 0 0 0 1 1.7V7zm10 0v2.7A2 2 0 0 0 18 8V7h-1z"/></svg><h3 class="awards__title">' + h(t(a + 'title')) + '</h3></div>' +
+      '<div class="awards__grid">' +
+        '<article class="award-card rv"><span class="award-card__n">01</span><h4>' + h(t(a + 'hult.title')) + '</h4><p class="award-card__sub">' + h(t(a + 'hult.sub')) + '</p></article>' +
+        '<article class="award-card award-card--hack rv"><span class="award-card__n">02</span>' + logo((SITE.distinctions || {}).hackathon_logo, 'ACCEDE Internationale', 'logo-chip--lg') +
+          '<h4>' + h(t(a + 'hack.title')) + '</h4><p class="award-card__sub">' + h(t(a + 'hack.sub')) + '</p>' +
+          '<ul class="award-card__stats">' + stats.map(function (s) { return '<li><strong>' + h(s.v) + '</strong><span>' + h(s.l) + '</span></li>'; }).join('') + '</ul>' +
+          '<p>' + h(t(a + 'hack.text')) + '</p></article>' +
+      '</div>' + (ph.length ? gallery(ph) : '');
+    if (ph.length) bindGallery($('#awards'), ph, capOf);
+    HJ.observe($('#awards'));
+  }
+  function roles(list) {
+    return '<ol class="club__roles">' + (list || []).map(function (r) {
+      return '<li class="rv"><h4>' + h(r.title) + '</h4><p>' + h(r.text) + '</p></li>';
+    }).join('') + '</ol>';
   }
   function renderExtra() {
-    var items = t('extra.items') || [];
-    var rb = SITE.campaigns[0];
-    var tt = SITE.take_taste || {};
-    var cards = items.map(function (e, i) {
-      var d = SITE.extra[i] || {};
-      var photos = d.photos || [];
-      var reb = i === 2
-        ? '<a class="campaign rv" href="projet.html?id=' + rb.id + '">' +
-            '<span class="campaign__poster"><img src="assets/img/parascolaire/thumbs/parascolaire-rebirth-affiche.webp" alt="' + I18N.esc(capOf({ file: 'parascolaire-rebirth-affiche' })) + '" loading="lazy" width="700" height="1051"></span>' +
-            '<span class="campaign__body">' +
-              '<span class="campaign__lbl">' + h(t('extra.rebirth.label')) + '</span>' +
-              '<span class="campaign__title"><span class="glitch" data-text="REBIRTH">REBIRTH</span></span>' +
-              '<span class="campaign__text">' + h(t('extra.rebirth.text')) + '</span>' +
-              '<span class="campaign__cta">' + h(t('extra.rebirth.cta')) + ' →</span>' +
-            '</span>' +
+    var C = 'extra.clubs.';
+    var html = (SITE.clubs || []).map(function (c) {
+      var k = C + c.id + '.';
+      var photos = c.photos || [];
+      var inner = '';
+      if (c.id === 'epik') {
+        var steps = t(k + 'steps') || [];
+        inner = '<ol class="club__steps">' + steps.map(function (s, i) {
+          return '<li class="rv" style="--d:' + (i * 150) + 'ms"><span class="club__step-n">0' + (i + 1) + '</span>' + (s.date ? '<p class="club__step-date">' + h(s.date) + '</p>' : '') + '<h4>' + h(s.title) + '</h4><p>' + h(s.text) + '</p></li>';
+        }).join('<li class="club__arrow" aria-hidden="true">→</li>') + '</ol>';
+      } else {
+        inner = roles(t(k + 'roles'));
+        var sk = t(k + 'skills') || [];
+        if (sk.length) inner += '<p class="club__skills">' + sk.map(function (x) { return '<span class="chip">' + h(x) + '</span>'; }).join('') + '</p>';
+      }
+      var extraBlocks = '';
+      if (c.id === 'genie') {
+        var tt = c.take_taste || {}, rb = c.rebirth || {};
+        extraBlocks =
+          '<div class="subcard ttcard rv" data-g="tt"><div class="subcard__text">' +
+            '<p class="xcard__date">' + h(t('extra.tt.label')) + ' · ' + h(t('extra.tt.date')) + '</p>' +
+            '<h4 class="subcard__title">' + h(t('extra.tt.title')) + '</h4>' +
+            '<p class="award"><span class="award__icon" aria-hidden="true">★</span>' + h(t('extra.tt.badge')) + '</p>' +
+            '<p>' + h(t('extra.tt.text')) + '</p><p class="ttcard__role">' + h(t('extra.tt.role')) + '</p>' +
+            ext(tt.prototype, t('extra.tt.cta')) +
+          '</div>' + ((tt.photos || []).length ? gallery(tt.photos) : '') + '</div>' +
+          '<div class="subcard rebirth rv">' +
+            '<button type="button" class="rebirth__poster" data-rb="0"><img src="' + rb.poster_thumb + '" alt="' + I18N.esc(capOf({ file: 'parascolaire-rebirth-affiche' })) + '" loading="lazy" width="466" height="700"></button>' +
+            '<div class="rebirth__body">' +
+              '<p class="campaign__lbl">' + h(t('extra.rebirth.label')) + '</p>' +
+              '<h4 class="campaign__title"><span class="glitch" data-text="REBIRTH">REBIRTH</span></h4>' +
+              '<p>' + h(t('extra.rebirth.text')) + '</p>' +
+              '<button type="button" class="rebirth__team" data-rb="1"><img src="' + rb.team_thumb + '" alt="' + I18N.esc(capOf({ file: 'parascolaire-rebirth-equipe' })) + '" loading="lazy" width="700" height="525"><span class="hand">' + h(capOf({ file: 'parascolaire-rebirth-equipe' })) + '</span></button>' +
+              ext(rb.plan, t('extra.rebirth.cta')) +
+            '</div>' +
             '<span class="campaign__stamp" aria-hidden="true">VOTE ✦</span>' +
-          '</a>'
-        : '';
-      return '<article class="xcard rv' + (i % 2 ? ' xcard--alt' : '') + (photos.length ? '' : ' xcard--text') + '" data-i="' + i + '">' +
-        '<div class="xcard__text">' +
-          '<p class="xcard__date">' + h(e.date) + '</p>' +
-          '<h3 class="xcard__role">' + h(e.role) + '</h3>' +
-          '<p class="xcard__org">' + logo(d.logo, d.logo_alt) + '<span class="sel">' + h(e.org) + '<i class="sel__h" aria-hidden="true"></i><i class="sel__h" aria-hidden="true"></i></span></p>' +
-          '<p>' + h(e.desc) + '</p>' + reb +
-        '</div>' +
-        (photos.length ? '<div class="xcard__gal polas polas--small">' + gallery(photos) + '</div>' : '') +
+          '</div>';
+      }
+      return '<article class="club club--' + c.id + ' rv" data-club="' + c.id + '">' +
+        '<header class="club__head">' + logo(c.logo, c.logo_alt, 'logo-chip--xl') +
+          '<div><p class="club__theme"><span>' + h(t('extra.theme')) + '</span> ' + h(t(k + 'theme')) + '</p>' +
+          '<h3 class="club__name">' + h(t(k + 'name')) + '</h3>' +
+          '<p class="club__meta">' + [t(k + 'org'), t(k + 'date')].filter(function (x) { return I18N.clean(x); }).map(h).join(' · ') + '</p></div>' +
+        '</header>' +
+        '<div class="club__body' + (photos.length ? ' has-gal' : '') + '"><div class="club__text">' + inner + '</div>' + (photos.length ? gallery(photos) : '') + '</div>' +
+        extraBlocks +
       '</article>';
     }).join('');
-    // Take & Taste : projet entrepreneurial en équipe
-    var ttp = tt.photos || [];
-    cards += '<article class="xcard ttcard rv" data-i="tt">' +
-      '<div class="xcard__text">' +
-        '<p class="xcard__date">' + h(t('extra.tt.label')) + ' · ' + h(t('extra.tt.date')) + '</p>' +
-        '<h3 class="xcard__role">' + h(t('extra.tt.title')) + '</h3>' +
-        '<p class="award"><span class="award__icon" aria-hidden="true">★</span>' + h(t('extra.tt.badge')) + '</p>' +
-        '<p>' + h(t('extra.tt.text')) + '</p>' +
-        '<p class="ttcard__role">' + h(t('extra.tt.role')) + '</p>' +
-        (tt.prototype ? '<a class="btn btn--red" href="' + tt.prototype + '" target="_blank" rel="noopener">' + h(t('extra.tt.cta')) + ' ↗<span class="sr-only"> ' + h(t('common.new_tab')) + '</span></a>' : '') +
-      '</div>' +
-      (ttp.length ? '<div class="xcard__gal polas polas--small">' + gallery(ttp) + '</div>' : '') +
-    '</article>';
-    $('#extra-list').innerHTML = cards;
-    $('#extra-list').querySelectorAll('.xcard').forEach(function (c) {
-      var i = c.getAttribute('data-i');
-      var photos = i === 'tt' ? ttp : ((SITE.extra[+i] || {}).photos || []);
-      if (photos.length) bindGallery(c, photos, capOf);
+    $('#extra-list').innerHTML = html;
+    (SITE.clubs || []).forEach(function (c) {
+      var el = $('#extra-list').querySelector('[data-club="' + c.id + '"]');
+      var bodyGal = el.querySelector('.club__body');
+      if ((c.photos || []).length) bindGallery(bodyGal, c.photos, capOf);
+      if (c.id === 'genie') {
+        var tt = el.querySelector('[data-g="tt"]');
+        if (tt && c.take_taste) bindGallery(tt, c.take_taste.photos, capOf);
+        var rb = c.rebirth;
+        var items = [{ src: rb.poster, alt: capOf({ file: 'parascolaire-rebirth-affiche' }) }, { src: rb.team_photo, alt: capOf({ file: 'parascolaire-rebirth-equipe' }) }]
+          .map(function (x) { return { src: x.src, alt: x.alt, caption: I18N.esc(x.alt) }; });
+        el.querySelectorAll('[data-rb]').forEach(function (b) {
+          b.addEventListener('click', function () { HJ.lightbox.open(items, parseInt(b.getAttribute('data-rb'), 10)); });
+        });
+      }
     });
     HJ.observe($('#extra-list'));
   }
 
   /* ---------- Compétences ---------- */
+  function toolIcon(x) {
+    if (x.path) return '<svg viewBox="0 0 24 24" aria-hidden="true" style="--c:#' + x.hex + '"><path d="' + x.path + '"/></svg>';
+    var light = /^(F2C811)$/i.test(x.hex);
+    return '<span class="tool__ini' + (light ? ' is-light' : '') + '" style="--c:#' + x.hex + '" aria-hidden="true">' + I18N.esc(x.initials) + '</span>';
+  }
   function renderSkills() {
     var groups = t('skills.groups') || [];
     $('#skill-groups').innerHTML = groups.map(function (g, i) {
@@ -287,12 +349,17 @@
         '<h3 class="sgroup__name">' + h(g.name) + '</h3>' +
         '<ul>' + g.items.map(function (x, j) { return '<li style="--j:' + j + '">' + h(x) + '</li>'; }).join('') + '</ul></div>';
     }).join('');
-    $('#tool-grid').innerHTML = SITE.tools.map(function (x, i) {
-      var name = (I18N.lang === 'en' && x.name_en) ? x.name_en : x.name;
-      return '<li class="rv" style="--d:' + (i * 30) + 'ms"><span class="tool-grid__lbl">' + h(t('skills.tool_cats.' + x.cat)) + '</span><span class="tool-grid__name">' + h(name) + '</span></li>';
+    $('#tool-grid').innerHTML = ['analysis', 'creation', 'communication'].map(function (g) {
+      var list = SITE.tools.filter(function (x) { return x.group === g; });
+      return '<section class="tgroup"><h4 class="tgroup__name">' + h(t('skills.tool_groups.' + g)) + '</h4><ul class="tgroup__grid">' +
+        list.map(function (x, i) {
+          var name = (I18N.lang === 'en' && x.name_en) ? x.name_en : x.name;
+          return '<li class="tool rv" style="--d:' + (i * 50) + 'ms;--c:#' + x.hex + '">' + toolIcon(x) + '<span class="tool__name">' + h(name) + '</span></li>';
+        }).join('') + '</ul></section>';
     }).join('');
-    $('#langs').innerHTML = (t('skills.languages') || []).map(function (l) {
-      return '<li class="rv"><span class="langs__lvl">' + h(l.level) + '</span><span class="langs__name">' + h(l.name) + '</span></li>';
+    $('#langs').innerHTML = (t('skills.lang_story') || []).map(function (l, i) {
+      return '<li class="lang rv" style="--d:' + (i * 220) + 'ms"><span class="lang__n">0' + (i + 1) + '</span>' +
+        '<p class="lang__lvl">' + h(l.level) + '</p><h4 class="lang__name">' + h(l.name) + '</h4><p class="lang__text">' + h(l.text) + '</p></li>';
     }).join('');
     HJ.observe($('#competences'));
   }
@@ -355,12 +422,12 @@
   }
 
   function renderAll() {
-    renderAbout();
     renderProjects();
-    renderSketch();
     renderExperience();
     renderJobs();
     renderVideos();
+    renderClubLogos();
+    renderAwards();
     renderExtra();
     renderSkills();
   }
@@ -370,6 +437,7 @@
     HJ.boot(function () {
       renderAll();
       setupContact();
+      setupModal();
       I18N.onChange(renderAll);
     });
   });

@@ -181,6 +181,7 @@ async function start() {
   function openPlace(id, fromPills, keepFocus, silent) {
     const p = byId[id];
     if (!p) return;
+    if (engine && engine.finish) engine.finish();
     state.place = id;
     state.region = p.region;
     stage.classList.add('has-panel');
@@ -255,8 +256,6 @@ async function start() {
   renderCounter();
   renderPills();
   buildMarkers();
-  // Le panneau de Saint-Étienne est ouvert par défaut
-  openPlace(START, false, false, true);
 
   /* ---------- Choix du moteur : 3D ou carte plate ---------- */
   function webglOK() {
@@ -291,14 +290,14 @@ async function start() {
     }
   }
   view.classList.add('globe-ready');
-  if (state.place && engine) (engine.jump || engine.focusPlace)(byId[state.place]);
+  if (engine && engine.intro) engine.intro();
 }
 
 /* =========================================================
    GLOBE 3D
    ========================================================= */
 function globe3D(THREE, OrbitControls, ctx) {
-  const { view, labels, canvas, places, dots, state, declutter, byId, backBtn } = ctx;
+  const { view, labels, canvas, places, dots, state, declutter, byId, backBtn, stage } = ctx;
   const mobile = window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: !mobile, powerPreference: 'high-performance' });
@@ -413,7 +412,9 @@ function globe3D(THREE, OrbitControls, ctx) {
   let userTouched = false;
   controls.addEventListener('start', () => { userTouched = true; controls.autoRotate = false; cancelFly(); });
 
-  camera.position.copy(vec(18, -70, 4.6));
+  const HOME = byId[START];
+  camera.position.copy(vec(HOME.lat, HOME.lon, 1.045));
+  camera.lookAt(0, 0, 0);
   controls.update();
 
   /* ---------- Vols de caméra ---------- */
@@ -460,7 +461,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   let level = 1; // 1 = globe, 2 = région
   function showGlobe() {
     level = 1; state.region = null;
-    flyTo(REGIONS.maroc.lat - 2, REGIONS.maroc.lon + 8, fitDist(), 1300).then(() => { if (!userTouched) controls.autoRotate = true; });
+    flyTo(40.5, 0.5, fitDist(), 1300);
   }
   function showRegion(r) {
     if (!r) return showGlobe();
@@ -525,11 +526,12 @@ function globe3D(THREE, OrbitControls, ctx) {
     const r = view.getBoundingClientRect();
     running = r.bottom > -50 && r.top < window.innerHeight + 50 && !document.hidden;
     if (!running) return;
-    checkIntro();
+    updateScrolly(now);
     const dist = camera.position.length();
     landMat.size = landSize * Math.min(1, Math.max(0.2, (dist - 1) / 1.6));
     landMat.opacity = 0.78 * Math.min(1, Math.max(0.15, (dist - 1.2) / 0.5));
     fineMat.opacity = Math.min(0.8, Math.max(0, (1.9 - dist) / 0.5));
+    fineMat.size = 0.0019 * Math.min(1, Math.max(0.3, (dist - 1) / 0.16));
     const far = dist > 1.6;
     placeMeshes.forEach((m) => { m.visible = far; });
     arcs.forEach((a) => { a.mesh.visible = far; });
@@ -538,61 +540,91 @@ function globe3D(THREE, OrbitControls, ctx) {
       controls.rotateSpeed = 0.15 + Math.min(0.45, (camera.position.length() - 1) * 0.3);
       controls.update();
     }
-    animateIntro(now);
     renderer.render(scene, camera);
     updateLabels();
   }
 
-  /* ---------- Animation d'arrivée ---------- */
-  let intro = null;
-  function animateIntro(now) {
-    if (!intro || !intro.t0) return;
-    const el = now - intro.t0;
-    // Arcs : chacun se dessine en 700 ms
-    arcs.forEach((a, i) => {
-      const k = Math.min(1, Math.max(0, (el - i * 650) / 700));
-      a.geo.setDrawRange(0, Math.floor(k * a.total / 3) * 3);
-      a.lgeo.setDrawRange(0, Math.floor(k * a.ltotal));
-    });
-    // Points des lieux : un par un
-    const lightStart = arcs.length * 650 + 200;
-    placeMeshes.forEach((m, i) => {
-      const k = Math.min(1, Math.max(0, (el - lightStart - i * 110) / 300));
-      const s = k < 1 ? 0.001 + k * 1.6 * (1 - k) + k : 1;
-      m.scale.setScalar(Math.max(0.001, s));
-    });
-    if (el > lightStart + placeMeshes.length * 110 + 400) {
-      intro = null;
-      labels.classList.remove('is-intro');
-      if (!userTouched && level === 1) controls.autoRotate = true;
+  /* ---------- Arrivée : zoom arrière au défilement ----------
+     La section reste fixée à l'écran (sticky) : en faisant défiler,
+     la caméra recule de Saint-Étienne jusqu'au globe entier et l'arc
+     rouge se dessine. Ensuite le globe s'arrête et devient libre.
+     Appareil lent : zoom arrière automatique en 2 secondes.        */
+  const scrolly = document.getElementById('globe-scrolly');
+  const END = { lat: 40.5, lon: 0.5 };
+  const sc = { mode: 'scroll', p: 0, done: false, t0: 0 };
+  controls.enabled = false;
+  backBtn.hidden = true;
+  function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+  function applyP(p) {
+    const e = ease(p);
+    const a = vec(HOME.lat, HOME.lon).normalize(), b = vec(END.lat, END.lon).normalize();
+    const ang = a.angleTo(b);
+    const dir = a.clone().multiplyScalar(Math.sin((1 - e) * ang) / Math.sin(ang)).add(b.clone().multiplyScalar(Math.sin(e * ang) / Math.sin(ang))).normalize();
+    const d0 = 0.045, d1 = fitDist() - 1;
+    camera.position.copy(dir.multiplyScalar(1 + d0 * Math.pow(d1 / d0, e)));
+    camera.lookAt(0, 0, 0);
+    const k = Math.min(1, Math.max(0, (p - 0.3) / 0.55));
+    arcs.forEach((ar) => { ar.geo.setDrawRange(0, Math.floor(k * ar.total / 3) * 3); ar.lgeo.setDrawRange(0, Math.floor(k * ar.ltotal)); });
+    placeMeshes.forEach((m, i) => { const q = Math.min(1, Math.max(0, (p - 0.55 - i * 0.02) / 0.15)); m.scale.setScalar(Math.max(0.001, q)); });
+  }
+  function scrollMetrics() {
+    const extra = scrolly.offsetHeight - stage.offsetHeight;
+    const top = scrolly.getBoundingClientRect().top;
+    const stick = parseFloat(getComputedStyle(stage).top) || 0;
+    return { extra, used: stick - top };
+  }
+  // Ouverture d'un lieu : le zoom arrière est terminé, la section n'est plus fixée
+  function finish() {
+    if (sc.locked) return;
+    sc.locked = true;
+    applyP(1);
+    level = 1; state.region = null;
+    controls.enabled = true;
+    controls.update();
+    if (sc.mode === 'scroll' && scrolly.classList.contains('is-scrolly')) {
+      const m = scrollMetrics();
+      const shift = Math.max(0, Math.min(m.used, m.extra));
+      scrolly.classList.remove('is-scrolly');
+      if (shift) window.scrollTo({ top: window.scrollY - shift, behavior: 'instant' });
     }
   }
-  labels.classList.add('is-intro');
-  setTimeout(() => labels.classList.remove('is-intro'), 9000);
-  // Arrivée : le globe est déjà centré sur Saint-Étienne, l'arc rouge se dessine
-  // vers les autres lieux et les points s'allument un par un
-  const startIntro = () => {
-    intro = { t0: performance.now() };
-    labels.querySelectorAll('.gl-place:not(.is-hidden)').forEach((el, i) => {
-      el.classList.remove('is-lit'); void el.offsetWidth;
-      el.querySelector('.gl-place__dot').style.animationDelay = (300 + i * 140) + 'ms';
-      el.classList.add('is-lit');
-    });
-  };
-  // Lance l'animation d'arrivée quand le globe est bien visible à l'écran
-  let introStarted = false;
-  function checkIntro() {
-    if (introStarted) return;
-    const r = view.getBoundingClientRect();
-    const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
-    if (vis > Math.min(r.height, window.innerHeight) * 0.45) { introStarted = true; startIntro(); }
+  function updateScrolly(now) {
+    if (sc.locked) return;
+    if (sc.mode === 'scroll') {
+      // Lié au défilement dans les deux sens ; le globe est libre une fois le zoom arrière terminé
+      const m = scrollMetrics();
+      const p = Math.min(1, Math.max(0, m.used / Math.max(1, m.extra)));
+      if (Math.abs(p - sc.p) > 0.0005 || !sc.drawn) {
+        const wasFree = sc.p >= 0.999;
+        sc.p = p; sc.drawn = true;
+        if (p < 0.999 || !wasFree) applyP(p);
+        controls.enabled = p >= 0.999;
+        if (p >= 0.999) { level = 1; state.region = null; }
+      }
+    } else {
+      const r = view.getBoundingClientRect();
+      const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+      if (!sc.t0 && vis > r.height * 0.45) sc.t0 = now;
+      if (sc.t0) { sc.p = Math.min(1, (now - sc.t0) / 2000); applyP(sc.p); if (sc.p >= 1) { sc.locked = true; controls.enabled = true; level = 1; } }
+      else if (!sc.drawn) { sc.drawn = true; applyP(0); }
+    }
+  }
+  function intro() {
+    // Mesure rapide : si l'appareil est lent, zoom arrière automatique
+    resize();
+    const t = performance.now();
+    for (let i = 0; i < 3; i++) renderer.render(scene, camera);
+    const slow = (performance.now() - t) / 3 > 28 && mobile;
+    if (slow || !scrolly) { sc.mode = 'auto'; if (scrolly) scrolly.classList.remove('is-scrolly'); }
+    else scrolly.classList.add('is-scrolly');
+    applyP(0);
   }
 
   requestAnimationFrame(loop);
 
   return {
     resize: () => { resize(); setTimeout(resize, 300); },
-    showRegion, showGlobe, focusPlace,
+    showRegion, showGlobe, focusPlace, intro, finish,
     jump: (p) => {
       resize();
       level = 2; state.region = p.region; controls.autoRotate = false;
