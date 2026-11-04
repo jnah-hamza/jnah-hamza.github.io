@@ -1,0 +1,735 @@
+{
+  "meta": {
+    "title": "Hamza Jnah — Marketing Student · Portfolio 2027",
+    "description": "Portfolio of Hamza Jnah, first-year Master's student in Marketing and Innovation Strategy at IAE Saint-Étienne. Looking for a 3 to 6-month marketing internship starting March 8, 2027, in Saint-Étienne or Lyon."
+  },
+  "common": {
+    "skip": "Skip to content",
+    "skip_intro": "Skip",
+    "loading": "Loading…",
+    "menu": "Menu",
+    "close": "Close",
+    "back_home": "← Back to home",
+    "todo": "[À COMPLÉTER]",
+    "group": "Group project",
+    "ongoing": "Ongoing",
+    "new_tab": "(opens in a new tab)",
+    "download": "Download",
+    "soon": "Coming soon",
+    "lang_label": "Choose language"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "experience": "Experience",
+    "video": "Video",
+    "photo": "Photo",
+    "extra": "Activities",
+    "contact": "Contact"
+  },
+  "hero": {
+    "kicker": "Portfolio 2027",
+    "title": "Hamza Jnah",
+    "subtitle": "Marketing student · IAE Saint-Étienne",
+    "badge": "Looking for a marketing internship · 3 to 6 months · from March 8, 2027 · Saint-Étienne & Lyon",
+    "pitch": "What sets me apart: a dual profile. I analyze (data, SEO, GEO, market research, social media) and I create (video, photography, graphic design).",
+    "tag_analyse": "Analysis",
+    "tag_creation": "Creation",
+    "cta_projects": "See my projects",
+    "cta_cv": "Download my CV",
+    "portrait_alt": "Portrait of Hamza Jnah",
+    "portrait_todo": "[À COMPLÉTER : portrait détouré]",
+    "scroll": "Scroll"
+  },
+  "marquee": {
+    "about": "About",
+    "projects": "Projects",
+    "experience": "Experience",
+    "video": "Videography",
+    "photo": "Photography",
+    "extra": "Activities",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "about": {
+    "title": "Hello",
+    "lead": "I'm Hamza.",
+    "text": "I'm a first-year Master's student in Marketing and Innovation Strategy at IAE Saint-Étienne, on a double degree with ENCG Settat, and I focus on strategic and digital marketing. Content creation is my passion, and I'm comfortable on both sides: I analyze the data, then turn it into images, videos and ideas. A former active member of student clubs and AIESEC, I moved to France in 2026 for my Master's.",
+    "tools_title": "My tools",
+    "mobility": "Mobility: Saint-Étienne & Lyon · Driving licence (B)",
+    "note": "analysis + creation = me",
+    "polaroids_note": "A few pages from my notebook"
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "Four projects, four ways of working: prototype, report, co-branding and entrepreneurship.",
+    "open": "View project",
+    "drag": "Keep scrolling →",
+    "types": {
+      "prototype": "Prototype",
+      "report": "Report",
+      "video": "Video",
+      "brand": "Brand · Entrepreneurship",
+      "campaign": "Campaign"
+    },
+    "labels": {
+      "context": "Context",
+      "problem": "Challenge",
+      "role": "My role",
+      "output": "What we delivered",
+      "result": "Outcome",
+      "tools": "Tools",
+      "figures": "Key figures",
+      "highlights": "Highlights",
+      "pages": "Page preview",
+      "gallery": "Gallery",
+      "screens": "Prototype screens",
+      "next": "Next project",
+      "figma": "Open the Figma prototype",
+      "pdf": "Download the PDF",
+      "type": "Type",
+      "year": "Year",
+      "process": "My process"
+    },
+    "screen_todo": "[À COMPLÉTER : écran]",
+    "page_todo": "[À COMPLÉTER : page]",
+    "image_todo": "[À COMPLÉTER : image]",
+    "items": {
+      "take-taste": {
+        "title": "Take & Taste",
+        "kind": "Mobile app · Prototype",
+        "year": "[À COMPLÉTER : année]",
+        "tagline": "Recipe ideas, ingredient kits and ready-made meals, designed for athletes.",
+        "context": "Take & Taste is an app that suggests recipe ideas and sells ingredient kits and ready-made meals. Target audience: athletes. Launch market: France.",
+        "problem": "[À COMPLÉTER : la question à laquelle le projet répond]",
+        "role": "[À COMPLÉTER : mon rôle précis dans le projet]",
+        "output": "An iPhone prototype built in Figma. [À COMPLÉTER : autres livrables]",
+        "result": "[À COMPLÉTER : résultat, note ou retour obtenu]",
+        "tools": [
+          "Figma",
+          "[À COMPLÉTER]"
+        ],
+        "figures": [
+          {
+            "value": "iPhone",
+            "label": "Prototype"
+          },
+          {
+            "value": "FR",
+            "label": "Launch market"
+          },
+          {
+            "value": "3",
+            "label": "Offers: recipes, kits, ready meals"
+          }
+        ],
+        "tiles": [
+          "Recipes",
+          "Kits",
+          "Ready meals",
+          "Athletes"
+        ],
+        "sketch": {
+          "title": "Take & Taste — the process",
+          "n1": "Target: athletes",
+          "n2": "Recipe ideas",
+          "n3": "Ingredient kits",
+          "n4": "Ready-made meals",
+          "n5": "Launch in France",
+          "n6": "iPhone prototype in Figma",
+          "n7": "one app, three ways to eat well"
+        }
+      },
+      "porsche-hermes": {
+        "title": "Porsche × Hermès “911 Sellier”",
+        "kind": "Co-branding · Report",
+        "year": "2026 · ongoing",
+        "tagline": "Imagining a one-of-a-kind product that brings two iconic houses together.",
+        "context": "Co-branding project: designing a brand-new product that combines Porsche and Hermès, the “911 Sellier”.",
+        "problem": "[À COMPLÉTER : la question à laquelle le projet répond]",
+        "role": "[À COMPLÉTER : mon rôle précis dans le projet]",
+        "output": "Brand fit analysis, brand equity analysis and competitive benchmark. [À COMPLÉTER : autres livrables]",
+        "result": "Ongoing project. [À COMPLÉTER : résultat à ajouter à la fin du projet]",
+        "tools": [
+          "[À COMPLÉTER]"
+        ],
+        "figures": [
+          {
+            "value": "2",
+            "label": "Partner brands"
+          },
+          {
+            "value": "911",
+            "label": "The starting model"
+          },
+          {
+            "value": "[À COMPLÉTER]",
+            "label": "Key figure"
+          }
+        ],
+        "highlights": [
+          "Brand fit",
+          "Brand equity",
+          "Competitive benchmark"
+        ],
+        "tiles": [
+          "Brand fit",
+          "Brand equity",
+          "Benchmark"
+        ]
+      },
+      "sephora": {
+        "title": "Sephora and chatbots",
+        "kind": "Operational marketing · Report",
+        "year": "November 2025",
+        "tagline": "What chatbots change in the customer experience of a beauty brand.",
+        "context": "Analysis of Sephora's 4Ps and of the impact of chatbots on the customer experience.",
+        "problem": "[À COMPLÉTER : la question à laquelle le projet répond]",
+        "role": "[À COMPLÉTER : mon rôle précis dans le projet]",
+        "output": "An analysis of Sephora's 4Ps and a study of how chatbots affect the customer experience. [À COMPLÉTER : autres livrables]",
+        "result": "[À COMPLÉTER : résultat, note ou retour obtenu]",
+        "tools": [
+          "[À COMPLÉTER]"
+        ],
+        "figures": [
+          {
+            "value": "4P",
+            "label": "Product, price, place, promotion"
+          },
+          {
+            "value": "[À COMPLÉTER]",
+            "label": "Key figure"
+          },
+          {
+            "value": "[À COMPLÉTER]",
+            "label": "Key figure"
+          }
+        ],
+        "highlights": [
+          "4P analysis",
+          "Chatbots",
+          "Customer experience"
+        ],
+        "tiles": [
+          "4P",
+          "Chatbots",
+          "Customer experience"
+        ]
+      },
+      "aballa": {
+        "title": "Aballa",
+        "kind": "Clothing brand · Entrepreneurship",
+        "year": "[À COMPLÉTER : année]",
+        "tagline": "A clothing brand launched with two partners.",
+        "context": "Entrepreneurial project: a clothing brand I launched with two partners.",
+        "problem": "[À COMPLÉTER : le besoin ou l'idée de départ]",
+        "role": "I managed the financial flows, the inventory flows and the communication.",
+        "output": "[À COMPLÉTER : collections, produits, contenus réalisés]",
+        "result": "[À COMPLÉTER : résultat (ventes, communauté, apprentissages)]",
+        "tools": [
+          "[À COMPLÉTER]"
+        ],
+        "figures": [
+          {
+            "value": "3",
+            "label": "Co-founders"
+          },
+          {
+            "value": "[À COMPLÉTER]",
+            "label": "Key figure"
+          },
+          {
+            "value": "[À COMPLÉTER]",
+            "label": "Key figure"
+          }
+        ],
+        "tiles": [
+          "Finance",
+          "Inventory",
+          "Communication"
+        ]
+      },
+      "rebirth": {
+        "title": "Rebirth",
+        "kind": "Campaign · Club Génie",
+        "year": "[À COMPLÉTER : année]",
+        "tagline": "The team I put together to run for the Club Génie executive board.",
+        "context": "Rebirth is the team I put together to run for the Club Génie executive board.",
+        "problem": "[À COMPLÉTER : le programme de l'équipe]",
+        "role": "[À COMPLÉTER : mon rôle dans l'équipe]",
+        "output": "A campaign presentation and an application form. [À COMPLÉTER : identité visuelle]",
+        "result": "[À COMPLÉTER : résultat de la candidature]",
+        "tools": [
+          "[À COMPLÉTER]"
+        ],
+        "figures": [
+          {
+            "value": "[À COMPLÉTER]",
+            "label": "Team members"
+          }
+        ],
+        "pdf_presentation": "Download the presentation (PDF)",
+        "pdf_fiche": "Download the application form (PDF)"
+      }
+    }
+  },
+  "sketch": {
+    "label": "Sketchbook",
+    "paper_alt": "Sheet of handwritten notes explaining the Take & Taste process"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Internships and responsibilities",
+    "items": [
+      {
+        "role": "Digital Marketing Intern",
+        "org": "Alsa",
+        "place": "Casablanca",
+        "date": "July – August 2026",
+        "points": [
+          "Analyzed more than 200 customer comments on social media and designed response strategies aligned with the brand's editorial line.",
+          "Ran a GEO analysis to improve the brand's visibility in AI search engines.",
+          "Made UX and user journey recommendations based on visitor profiles."
+        ],
+        "tags": [
+          "Social media",
+          "GEO",
+          "UX"
+        ]
+      },
+      {
+        "role": "Web Analytics & Graphic Design Intern",
+        "org": "APEBI Federation",
+        "place": "Casablanca",
+        "date": "August – September 2024",
+        "points": [
+          "SEO analysis and study of visitor behavior (traffic, sources, journeys).",
+          "Designed visual communication materials."
+        ],
+        "tags": [
+          "SEO",
+          "Analytics",
+          "Design"
+        ]
+      },
+      {
+        "role": "Marketing & Communications Manager",
+        "org": "Ecotech Expo",
+        "place": "International forum",
+        "date": "August 2023 – March 2024",
+        "points": [
+          "Marketing strategy for an event with more than 40 exhibitors and more than 40 speakers.",
+          "Team coordination.",
+          "Multichannel communication: social media, newsletters via Brevo.",
+          "Monitoring and reporting."
+        ],
+        "tags": [
+          "Events",
+          "Brevo",
+          "Reporting"
+        ]
+      }
+    ],
+    "jobs_title": "Student jobs",
+    "jobs": [
+      {
+        "role": "Math tutor",
+        "org": "[À COMPLÉTER : structure]",
+        "date": "Ongoing",
+        "desc": "[À COMPLÉTER : niveau des élèves, fréquence]"
+      },
+      {
+        "role": "Online English teacher",
+        "org": "Children of the World · Virginia, USA",
+        "date": "Summer 2026",
+        "desc": ""
+      },
+      {
+        "role": "English and computer science teacher",
+        "org": "Neoschool International",
+        "date": "Summers 2024 and 2025",
+        "desc": "English for kindergarten and primary school pupils, Microsoft Office and Scratch."
+      }
+    ],
+    "edu_title": "Education",
+    "education": [
+      {
+        "degree": "Master's (Year 1) in Marketing and Innovation Strategy",
+        "school": "IAE Saint-Étienne",
+        "date": "2026 – present",
+        "note": "Double degree with ENCG Settat"
+      },
+      {
+        "degree": "Bachelor's degree in Marketing and Commerce",
+        "school": "ENCG Settat",
+        "date": "2025",
+        "note": ""
+      },
+      {
+        "degree": "Baccalaureate in Mathematical Sciences B, with honors (Bien)",
+        "school": "Lycée Qualifiant Mohammed V, Casablanca",
+        "date": "2022",
+        "note": ""
+      }
+    ]
+  },
+  "video": {
+    "title": "Videography",
+    "intro": "Shoot, edit, tell a story. I edit my videos in Adobe Premiere Pro and DaVinci Resolve.",
+    "play": "Play video",
+    "labels": {
+      "place": "Location",
+      "software": "Software",
+      "role": "My role"
+    },
+    "missing": "Video link coming soon",
+    "items": [
+      {
+        "title": "[À COMPLÉTER : titre de la vidéo 1]",
+        "poem": "[À COMPLÉTER : phrase courte]",
+        "place": "[À COMPLÉTER]",
+        "software": "[À COMPLÉTER : Premiere Pro ou DaVinci Resolve]",
+        "role": "[À COMPLÉTER]"
+      },
+      {
+        "title": "[À COMPLÉTER : titre de la vidéo 2]",
+        "poem": "[À COMPLÉTER : phrase courte]",
+        "place": "[À COMPLÉTER]",
+        "software": "[À COMPLÉTER : Premiere Pro ou DaVinci Resolve]",
+        "role": "[À COMPLÉTER]"
+      },
+      {
+        "title": "[À COMPLÉTER : titre de la vidéo 3]",
+        "poem": "[À COMPLÉTER : phrase courte]",
+        "place": "[À COMPLÉTER]",
+        "software": "[À COMPLÉTER : Premiere Pro ou DaVinci Resolve]",
+        "role": "[À COMPLÉTER]"
+      }
+    ]
+  },
+  "photo": {
+    "title": "Photography",
+    "globe_title": "Where I've looked",
+    "counter": "{photos} photos · {places} places · {countries} countries",
+    "photos": "photos",
+    "photo": "photo",
+    "hint": "Spin the globe, then pick a region.",
+    "loading": "Loading the globe…",
+    "back": "← Back to the globe",
+    "prev": "Previous place",
+    "next": "Next place",
+    "close_panel": "Close this place",
+    "home_badge": "I live here",
+    "more_insta": "More photos on Instagram →",
+    "follow": "Follow @the_white_side_ on Instagram",
+    "choose": "Pick a place",
+    "flat_note": "Simplified map view",
+    "lightbox_prev": "Previous photo",
+    "lightbox_next": "Next photo",
+    "lightbox_close": "Close (Esc)",
+    "of": "of",
+    "countries": {
+      "ma": "Morocco",
+      "fr": "France",
+      "ch": "Switzerland"
+    },
+    "regions": {
+      "maroc": "Morocco",
+      "alpes": "Alps"
+    },
+    "places": {
+      "casablanca": "Casablanca",
+      "settat": "Settat",
+      "ifrane": "Ifrane & Immouzer",
+      "al-wahda": "Al Wahda Dam",
+      "tanger": "Tangier",
+      "tetouan": "Tetouan",
+      "mdiq": "M'diq",
+      "chefchaouen": "Chefchaouen",
+      "akchour": "Akchour",
+      "al-hoceima": "Al Hoceima",
+      "saint-etienne": "Saint-Étienne",
+      "chamonix": "Chamonix",
+      "geneve": "Geneva"
+    },
+    "captions": {
+      "photo-01-casablanca-mosquee-hassan2-jour": "Stone waits for the wave, the wave waits for the sky.",
+      "photo-02-casablanca-mosquee-hassan2-nuit": "When the city goes dark, she stays lit.",
+      "photo-03-casablanca-minaret-arche": "Look up, touch the moon.",
+      "photo-04-casablanca-salle-de-priere": "Silence comes in blue.",
+      "photo-43-casablanca-chat-lierre": "A nap hidden between two seasons.",
+      "photo-05-ifrane-immouzer-chat-vitre": "He watches winter go by, in no hurry.",
+      "photo-06-ifrane-immouzer-maison-brume": "One white house, a world erased.",
+      "photo-07-ifrane-immouzer-route-foret-neige": "Snow keeps the tracks of those heading home.",
+      "photo-08-ifrane-immouzer-rue-palmier-neige": "Even the palm trees feel the cold here.",
+      "photo-09-ifrane-immouzer-terrain-basket-neige": "The game is postponed until spring.",
+      "photo-10-ifrane-immouzer-toits-neige": "The sky falls quietly on the rooftops.",
+      "photo-11-ifrane-immouzer-homme-neige": "Smiling against the wind.",
+      "photo-12-settat-rue-nuit-brouillard": "Streetlights tell the fog where the road goes.",
+      "photo-13-settat-bus-brume": "The morning bus waits for no one but the fog.",
+      "photo-32-settat-rue-minaret": "At the end of the street, the minaret waits.",
+      "photo-33-settat-parc-matin": "Morning slips between the cypresses.",
+      "photo-34-settat-porte-ancienne": "One closed door, a thousand stories in the walls.",
+      "photo-75-settat-arche-cypres": "The arch keeps the calm, the cypresses keep the wind.",
+      "photo-39-settat-drapeau": "A red thread between the sky and home.",
+      "photo-40-tanger-corniche-port": "Where the sea hesitates between two continents.",
+      "photo-41-tanger-chat-endormi": "The strait can wait, the nap comes first.",
+      "photo-42-tanger-corniche-virage": "The road follows the coast like a hand on a shoulder.",
+      "photo-14-al-hoceima-vallee-route": "One car, the whole mountain.",
+      "photo-15-al-hoceima-coucher-soleil": "The day leaves in gold.",
+      "photo-16-mdiq-maison-pilotis": "Set on the water, the house holds its breath.",
+      "photo-17-mdiq-chaton-arche": "Keeper of the window to the sea.",
+      "photo-18-mdiq-panneaux": "Every direction leads to the sea.",
+      "photo-19-mdiq-club-plongee": "The blue begins before the water.",
+      "photo-20-tetouan-terrain-foot-nuit": "The pitch sleeps, the city keeps watch.",
+      "photo-21-tetouan-panorama": "The white dove resting on the mountain.",
+      "photo-22-akchour-sentier-figuiers": "Under the fig trees, the path follows the water.",
+      "photo-23-akchour-riviere-lauriers": "Pink oleanders run down to the river.",
+      "photo-57-akchour-promeneuse": "Under the vines, the path slows down.",
+      "photo-24-al-wahda-voie-lactee": "Far from cities, the sky remembers everything.",
+      "photo-25-al-wahda-barque": "One boat, and time slows down.",
+      "photo-26-al-wahda-tente": "A home for one night, a view for good.",
+      "photo-27-al-wahda-chaton-herbe": "The little guardian of the camp.",
+      "photo-28-al-wahda-lac-olivier": "The olive tree has watched the lake forever.",
+      "photo-29-al-wahda-foret-montagnes": "A green sea all the way to the mountains.",
+      "photo-30-al-wahda-lac-sinueux": "Water draws the path the land forgot.",
+      "photo-31-al-wahda-lac-panorama": "Framed by eucalyptus, the lake rests.",
+      "photo-35-chefchaouen-minaret-bleu": "The road leads to blue, then to the sky.",
+      "photo-36-chefchaouen-medina": "The town climbs toward the light, house after house.",
+      "photo-37-chefchaouen-medina-cadre": "Looking at the town like a secret.",
+      "photo-38-chefchaouen-voiture-rouge": "The sun draws, the car poses.",
+      "photo-44-saint-etienne-tram": "Even the tram rides on grass here.",
+      "photo-45-saint-etienne-kiosque-nuit": "The moon came to listen to the bandstand.",
+      "photo-46-saint-etienne-rue-coucher-soleil": "A new city, the same pink clouds.",
+      "photo-58-saint-etienne-hotel-de-ville-drapeaux": "Liberty, Equality, and a pink sky.",
+      "photo-59-saint-etienne-hotel-de-ville-place": "Evening lights the square before the streetlamps do.",
+      "photo-61-saint-etienne-route-arbres": "The trees lean in to watch the city go by.",
+      "photo-62-chamonix-lac-reflet-dore": "The mountain looks into the lake and likes what it sees.",
+      "photo-63-chamonix-banc-glacier": "One bench, one glacier, and all the time in the world.",
+      "photo-64-chamonix-sentier-moutons": "The sheep don't even look up at the peaks.",
+      "photo-65-chamonix-lac-reflet-bleu": "Two mountains: one for the sky, one for the water.",
+      "photo-66-chamonix-chalet-soir": "One lit window, and the mountain becomes a home.",
+      "photo-67-chamonix-panneau-canards": "Even the rules here have a view of Mont Blanc.",
+      "photo-68-chamonix-horloge": "The hour passes, the glacier stays.",
+      "photo-69-chamonix-sentier-aiguille": "The path leads to gold, the mountain to the sky.",
+      "photo-70-chamonix-rue-grue": "The town builds, the mountain watches.",
+      "photo-71-chamonix-maison-aiguilles": "Blue shutters, answering the sky.",
+      "photo-72-chamonix-route-automne": "Autumn put the road in the spotlight.",
+      "photo-73-chamonix-foret-orange": "Fire below, ice above.",
+      "photo-47-geneve-promenade-automne": "Autumn lends its shade to passersby.",
+      "photo-48-geneve-batiment-forces-motrices": "The Rhône keeps its reflection like a secret.",
+      "photo-49-geneve-quais-mont-blanc": "Behind the city, the mountain keeps watch in white.",
+      "photo-50-geneve-jet-d-eau": "The lake writes its name in the sky.",
+      "photo-51-geneve-quai-coucher-soleil": "The sun sets between two hotels.",
+      "photo-52-geneve-echecs-bastions": "A game waiting for its players.",
+      "photo-53-geneve-drapeaux": "Two colors, one pride.",
+      "photo-54-geneve-passerelle": "A green bridge to change sides.",
+      "photo-55-geneve-cathedrale-saint-pierre": "Every step brings the sky closer.",
+      "photo-60-geneve-cathedrale-interieur": "Small before the stone, tall before the light.",
+      "photo-56-geneve-cour-automne": "A table for three, autumn invited itself.",
+      "photo-74-geneve-jonction-rhone-arve": "Two rivers meet without ever mixing."
+    },
+    "alts": {
+      "photo-01-casablanca-mosquee-hassan2-jour": "Hassan II Mosque under a stormy sky, with waves",
+      "photo-02-casablanca-mosquee-hassan2-nuit": "Hassan II Mosque at night",
+      "photo-03-casablanca-minaret-arche": "The minaret seen through an arch, next to the moon",
+      "photo-04-casablanca-salle-de-priere": "The prayer hall with blue stained glass",
+      "photo-43-casablanca-chat-lierre": "A cat asleep in ivy and pink leaves",
+      "photo-05-ifrane-immouzer-chat-vitre": "A cat behind a window",
+      "photo-06-ifrane-immouzer-maison-brume": "A white house in the fog (black and white)",
+      "photo-07-ifrane-immouzer-route-foret-neige": "Snowy road leading to the forest",
+      "photo-08-ifrane-immouzer-rue-palmier-neige": "Snowy street and a palm-shaped antenna",
+      "photo-09-ifrane-immouzer-terrain-basket-neige": "Basketball court under the snow",
+      "photo-10-ifrane-immouzer-toits-neige": "Rooftops in a snowstorm",
+      "photo-11-ifrane-immouzer-homme-neige": "A man smiling in the snow",
+      "photo-12-settat-rue-nuit-brouillard": "Palm-lined avenue at night, in the fog",
+      "photo-13-settat-bus-brume": "The turquoise coach in the morning mist",
+      "photo-32-settat-rue-minaret": "Street lined with cars, a minaret at the end",
+      "photo-33-settat-parc-matin": "Park in the morning, cypresses and low light",
+      "photo-34-settat-porte-ancienne": "Old door in a sunny alley",
+      "photo-75-settat-arche-cypres": "Cypresses in the wind, seen through an arch",
+      "photo-39-settat-drapeau": "The Moroccan flag between pines and olive trees",
+      "photo-40-tanger-corniche-port": "The corniche and the harbor, turquoise sea",
+      "photo-41-tanger-chat-endormi": "A cat asleep under a bench, the sea behind",
+      "photo-42-tanger-corniche-virage": "The road hugging the coastline",
+      "photo-14-al-hoceima-vallee-route": "Valley in the clouds, a single car on the road",
+      "photo-15-al-hoceima-coucher-soleil": "Golden sunset between palm leaves",
+      "photo-16-mdiq-maison-pilotis": "House on stilts above the sea",
+      "photo-17-mdiq-chaton-arche": "A kitten in an arched window, the sea behind",
+      "photo-18-mdiq-panneaux": "Hand-painted signs",
+      "photo-19-mdiq-club-plongee": "White and blue diving club",
+      "photo-20-tetouan-terrain-foot-nuit": "Rooftop football pitch, the city lit up behind",
+      "photo-21-tetouan-panorama": "The white city at the foot of the mountain",
+      "photo-22-akchour-sentier-figuiers": "Path under fig trees along a canal",
+      "photo-23-akchour-riviere-lauriers": "Cliff, river and pink oleanders",
+      "photo-57-akchour-promeneuse": "A walker in a straw hat under the vines",
+      "photo-24-al-wahda-voie-lactee": "The Milky Way above the camp",
+      "photo-25-al-wahda-barque": "A boat crossing the lake",
+      "photo-26-al-wahda-tente": "The tent by the lake, under a banana tree",
+      "photo-27-al-wahda-chaton-herbe": "A ginger kitten in the grass",
+      "photo-28-al-wahda-lac-olivier": "The lake seen from a field, olive branch",
+      "photo-29-al-wahda-foret-montagnes": "Pine forest and distant mountains",
+      "photo-30-al-wahda-lac-sinueux": "The lake winding between the hills",
+      "photo-31-al-wahda-lac-panorama": "The lake framed by eucalyptus trees",
+      "photo-35-chefchaouen-minaret-bleu": "Blue minaret at sunset, winding road",
+      "photo-36-chefchaouen-medina": "The medina climbing toward the mountain",
+      "photo-37-chefchaouen-medina-cadre": "The medina seen through an opening",
+      "photo-38-chefchaouen-voiture-rouge": "Red car and geometric shadows in a car park",
+      "photo-44-saint-etienne-tram": "The tram on its grass tracks, between two rows of trees",
+      "photo-45-saint-etienne-kiosque-nuit": "The bandstand lit up under the full moon",
+      "photo-46-saint-etienne-rue-coucher-soleil": "Street at sunset, hills at the end",
+      "photo-58-saint-etienne-hotel-de-ville-drapeaux": "The City Hall flags at sunset",
+      "photo-59-saint-etienne-hotel-de-ville-place": "City Hall square under a fiery sky",
+      "photo-61-saint-etienne-route-arbres": "Road under a tunnel of trees",
+      "photo-62-chamonix-lac-reflet-dore": "Lac des Gaillands, the golden mountain mirrored",
+      "photo-63-chamonix-banc-glacier": "A bench facing the glacier, pink sky",
+      "photo-64-chamonix-sentier-moutons": "Trail, sheep and the Aiguille du Midi",
+      "photo-65-chamonix-lac-reflet-bleu": "The lake and the Mont Blanc massif in blue",
+      "photo-66-chamonix-chalet-soir": "A chalet lit up at blue hour",
+      "photo-67-chamonix-panneau-canards": "“Do not feed the ducks” sign, peaks behind",
+      "photo-68-chamonix-horloge": "Old clock in front of the glacier",
+      "photo-69-chamonix-sentier-aiguille": "Golden trail and the Aiguille du Midi",
+      "photo-70-chamonix-rue-grue": "Chamonix street, red crane in front of the glacier",
+      "photo-71-chamonix-maison-aiguilles": "House with blue shutters below the peaks",
+      "photo-72-chamonix-route-automne": "Road through the golden forest",
+      "photo-73-chamonix-foret-orange": "Orange forest and snowy peaks",
+      "photo-47-geneve-promenade-automne": "Promenade under chestnut trees in autumn",
+      "photo-48-geneve-batiment-forces-motrices": "The Bâtiment des Forces Motrices on the Rhône (black and white)",
+      "photo-49-geneve-quais-mont-blanc": "The quays and snowy Mont Blanc in the distance",
+      "photo-50-geneve-jet-d-eau": "The Jet d'Eau under a stormy sky",
+      "photo-51-geneve-quai-coucher-soleil": "The quay at sunset",
+      "photo-52-geneve-echecs-bastions": "Giant chess in Parc des Bastions",
+      "photo-53-geneve-drapeaux": "Swiss and Geneva flags on a façade",
+      "photo-54-geneve-passerelle": "Footbridge under the trees",
+      "photo-55-geneve-cathedrale-saint-pierre": "St. Pierre Cathedral seen from a staircase",
+      "photo-60-geneve-cathedrale-interieur": "Inside St. Pierre Cathedral, a silhouette",
+      "photo-56-geneve-cour-automne": "Courtyard covered in autumn leaves",
+      "photo-74-geneve-jonction-rhone-arve": "The Junction: the blue Rhône and the beige Arve side by side"
+    }
+  },
+  "extra": {
+    "title": "Activities",
+    "intro": "Student clubs and associations taught me how to lead a team and run real projects.",
+    "photo_todo": "[À COMPLÉTER : photo de l'événement]",
+    "caption_todo": "[À COMPLÉTER : légende]",
+    "items": [
+      {
+        "role": "President",
+        "org": "Epik Leaders",
+        "date": "May – September 2026",
+        "desc": "Led the club and ran workshops and training sessions on leadership, management and strategy."
+      },
+      {
+        "role": "Team Leader OGT & OCVP Marketing",
+        "org": "AIESEC Casablanca",
+        "date": "September 2024 – June 2025",
+        "desc": "Managed a team of more than 15 people and tracked their performance. Built the marketing strategy and digital campaigns for RiseUp Co to improve recruitment."
+      },
+      {
+        "role": "Vice President",
+        "org": "Club Génie",
+        "date": "September 2022 – September 2025",
+        "desc": "Project lead for “The Pitch”, event organization and team coordination on entrepreneurial projects."
+      }
+    ],
+    "rebirth": {
+      "label": "Campaign · Club Génie",
+      "title": "Rebirth",
+      "text": "The team I put together to run for the Club Génie executive board.",
+      "cta": "See the campaign"
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "groups": [
+      {
+        "name": "Digital marketing",
+        "items": [
+          "SEO",
+          "GEO",
+          "Email marketing",
+          "Social media management",
+          "User journey optimization (UX)"
+        ]
+      },
+      {
+        "name": "Strategic marketing",
+        "items": [
+          "Market research",
+          "Competitive analysis",
+          "Strategic intelligence",
+          "Marketing strategy",
+          "Multichannel communication"
+        ]
+      },
+      {
+        "name": "Data & reporting",
+        "items": [
+          "Data analysis",
+          "Statistical analysis (PCA)",
+          "Dashboards",
+          "Performance tracking"
+        ]
+      },
+      {
+        "name": "Creation",
+        "items": [
+          "Videography",
+          "Photography (shooting, editing)",
+          "Graphic design"
+        ]
+      }
+    ],
+    "tools_title": "Tools",
+    "tool_cats": {
+      "office": "Office",
+      "data": "Data",
+      "marketing": "Marketing",
+      "design": "Design",
+      "video": "Video editing"
+    },
+    "languages_title": "Languages",
+    "languages": [
+      {
+        "name": "Arabic",
+        "level": "Native"
+      },
+      {
+        "name": "French",
+        "level": "C1"
+      },
+      {
+        "name": "English",
+        "level": "C1"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's work together",
+    "intro": "An internship, a question, a project? Drop me a line, I reply fast.",
+    "email": "Email",
+    "phone": "Phone",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "form_title": "Send a message",
+    "name": "Your name",
+    "mail": "Your email",
+    "company": "Company (optional)",
+    "message": "Your message",
+    "send": "Send",
+    "sending": "Sending…",
+    "success": "Thank you! Your message has been sent. I'll get back to you very soon.",
+    "error": "Oops, the message didn't go through. Please try again or email me directly at jnah.hamza.pro@gmail.com.",
+    "not_ready": "The form isn't active yet. Please email me directly at jnah.hamza.pro@gmail.com."
+  },
+  "footer": {
+    "copy": "© 2027 Hamza Jnah · Saint-Étienne",
+    "top": "Back to top ↑"
+  },
+  "notfound": {
+    "title": "Page not found",
+    "text": "This page got lost along the way. No worries, the portfolio is right here.",
+    "cta": "Back to home"
+  }
+}
