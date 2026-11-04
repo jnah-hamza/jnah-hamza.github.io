@@ -186,7 +186,7 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && menu.classList.contains('is-open')) close(true);
     });
-    window.addEventListener('resize', function () { if (window.innerWidth >= 1100 && menu.classList.contains('is-open')) close(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth >= 1240 && menu.classList.contains('is-open')) close(false); });
   };
 
   /* ---------- Visionneuse plein écran (photos) ---------- */
@@ -285,7 +285,7 @@
       '<svg viewBox="0 0 700 640" aria-hidden="true" focusable="false">' +
         '<text x="34" y="66" class="sk-title">' + tx('title') + '</text>' +
         P('M34 80 C 140 90, 260 74, 400 84', 'red', 0.1) +
-        '<text x="350" y="318" text-anchor="middle" class="sk-logo">Take &amp; Taste</text>' +
+        '<text x="350" y="318" text-anchor="middle" class="sk-logo">' + tx('center') + '</text>' +
         P('M175 300 C 172 250, 270 222, 360 224 C 470 226, 528 262, 522 304 C 516 352, 420 378, 340 376 C 240 374, 168 346, 182 296', 'red', 0.3) +
         '<text x="500" y="160" text-anchor="middle" class="sk-note">' + tx('n1') + '</text>' +
         P('M496 176 C 486 196, 458 214, 426 228 M426 228 l14 -2 M426 228 l6 -12', '', 0.6) +
@@ -299,7 +299,7 @@
         '<text x="34" y="586" class="sk-note">' + tx('n5') + '</text>' +
         P('M34 600 C 90 610, 160 594, 250 604', 'red', 1.4) +
         '<text x="666" y="604" text-anchor="end" class="sk-note">' + tx('n6') + '</text>' +
-        P('M612 470 h34 a6 6 0 0 1 6 6 v70 a6 6 0 0 1 -6 6 h-34 a6 6 0 0 1 -6 -6 v-70 a6 6 0 0 1 6 -6 Z M622 478 h14', '', 1.6) +
+        P('M606 468 h40 l12 12 v72 h-52 Z M646 468 v12 h12 M616 496 h32 M616 510 h32 M616 524 h22', '', 1.6) +
         P('M70 120 l10 10 M80 120 l-10 10', 'red', 1.7) +
         P('M640 60 c 6 -10, 16 -10, 20 0 c 4 10, -12 18, -20 8', '', 1.8) +
       '</svg></figure>';

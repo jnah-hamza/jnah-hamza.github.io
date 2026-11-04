@@ -84,6 +84,7 @@
         <li><a href="#a-propos" data-i18n="nav.about">À propos</a></li>
         <li><a href="#projets" data-i18n="nav.projects">Projets</a></li>
         <li><a href="#experiences" data-i18n="nav.experience">Expériences</a></li>
+        <li><a href="#jobs" data-i18n="nav.jobs">Jobs étudiants</a></li>
         <li><a href="#video" data-i18n="nav.video">Vidéo</a></li>
         <li><a href="#photo" data-i18n="nav.photo">Photo</a></li>
         <li><a href="#parascolaire" data-i18n="nav.extra">Parascolaire</a></li>
@@ -106,6 +107,7 @@
         <li><a href="#a-propos" data-i18n="nav.about">À propos</a></li>
         <li><a href="#projets" data-i18n="nav.projects">Projets</a></li>
         <li><a href="#experiences" data-i18n="nav.experience">Expériences</a></li>
+        <li><a href="#jobs" data-i18n="nav.jobs">Jobs étudiants</a></li>
         <li><a href="#video" data-i18n="nav.video">Vidéo</a></li>
         <li><a href="#photo" data-i18n="nav.photo">Photo</a></li>
         <li><a href="#parascolaire" data-i18n="nav.extra">Parascolaire</a></li>
@@ -134,7 +136,8 @@
             <span class="neon neon--2" aria-hidden="true">JNAH</span>
             <i class="sel__h" aria-hidden="true"></i><i class="sel__h" aria-hidden="true"></i>
           </h1>
-          <p class="hero__subtitle" data-i18n="hero.subtitle">Étudiant en marketing · IAE Saint-Étienne</p>
+          <p class="hero__subtitle" data-i18n="hero.subtitle">Étudiant en marketing · Esprit créatif</p>
+          <p class="typeline"><span data-i18n="hero.type_prefix">Je pense la stratégie. Je crée</span> <span class="typeword" id="typeword">l'image</span><span class="typecaret" aria-hidden="true"></span></p>
           <p class="badge" data-i18n="hero.badge">Recherche un stage en marketing · 3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne &amp; Lyon</p>
           <p class="hero__pitch">
             <span class="hero__tags"><span class="tag tag--black" data-i18n="hero.tag_analyse">Analyse</span><span class="plus" aria-hidden="true">+</span><span class="tag tag--red" data-i18n="hero.tag_creation">Création</span></span>
@@ -146,14 +149,15 @@
           </div>
         </div>
         <div class="hero__portrait" data-parallax="0.08">
-          <div class="portrait">
-            <img class="portrait__img" src="assets/img/portrait.png" alt="Portrait de Hamza Jnah" data-i18n-attr="alt:hero.portrait_alt" width="900" height="1100" fetchpriority="high"
-                 onerror="this.onerror=null;this.src='assets/img/portrait-placeholder.svg';this.closest('.portrait').classList.add('is-placeholder')">
-            <p class="portrait__todo" data-i18n="hero.portrait_todo">[À COMPLÉTER : portrait détouré]</p>
+          <div class="portrait is-photo" id="hero-portrait">
+            <img class="portrait__img" id="hero-portrait-img" src="assets/img/parascolaire/parascolaire-genie-the-pitch-7-chef-de-projet.webp" alt="Portrait de Hamza Jnah" data-i18n-attr="alt:hero.portrait_alt" width="1200" height="1600" fetchpriority="high">
           </div>
-          <p class="hand hand--hero" aria-hidden="true"><span data-i18n="about.note">analyse + création = moi</span>
-            <svg viewBox="0 0 120 60" class="draw"><path d="M5 10 C 40 0, 80 20, 100 50 M100 50 l-14 -3 M100 50 l2 -14"/></svg>
-          </p>
+          <ul class="ftags" id="hero-tags" aria-hidden="true">
+            <li class="ftag ftag--1"><span>vidéo</span><svg viewBox="0 0 90 60"><path pathLength="1" d="M8 8 C 30 4, 60 18, 78 46 M78 46 l-13 -3 M78 46 l1 -13"/></svg></li>
+            <li class="ftag ftag--2"><span>photo</span><svg viewBox="0 0 90 60"><path pathLength="1" d="M82 8 C 60 4, 30 18, 12 46 M12 46 l13 -3 M12 46 l-1 -13"/></svg></li>
+            <li class="ftag ftag--3"><span>design</span><svg viewBox="0 0 90 60"><path pathLength="1" d="M8 50 C 30 54, 60 40, 80 14 M80 14 l-12 3 M80 14 l-2 13"/></svg></li>
+            <li class="ftag ftag--4"><span>stratégie</span><svg viewBox="0 0 90 60"><path pathLength="1" d="M84 50 C 60 56, 30 40, 10 14 M10 14 l12 3 M10 14 l2 13"/></svg></li>
+          </ul>
         </div>
       </div>
       <div class="torn torn--bottom" data-color="black" data-seed="3"></div>
@@ -166,9 +170,24 @@
       <div class="torn torn--top" data-color="black" data-seed="7"></div>
       <div class="wrap about__grid">
         <div class="about__text">
-          <h2 class="h-giant sel reveal-letters" data-i18n="about.title">Hello</h2>
+          <div class="hello-row">
+            <div class="me3d" id="me3d">
+              <div class="me3d__stage" id="me3d-stage">
+                <button class="flipcard" id="flipcard" type="button" aria-pressed="false" data-i18n-attr="aria-label:about.card_hint" aria-label="Cliquez pour retourner la carte">
+                  <span class="flipcard__inner">
+                    <span class="flipcard__face flipcard__front"><img id="flip-img" src="assets/img/parascolaire/parascolaire-genie-the-pitch-7-chef-de-projet.webp" alt="" loading="lazy" width="1200" height="1600"></span>
+                    <span class="flipcard__face flipcard__back"><span class="flipcard__logo">HJ</span><span class="flipcard__t" data-i18n="about.card_back_title">Étudiant en marketing</span><span class="flipcard__s" data-i18n="about.card_back_sub">Saint-Étienne &amp; Lyon</span></span>
+                  </span>
+                </button>
+              </div>
+              <span class="me3d__tag" aria-hidden="true">360°</span>
+            </div>
+            <h2 class="h-giant sel reveal-letters" data-i18n="about.title">Hello</h2>
+          </div>
           <p class="about__lead" data-i18n="about.lead">Je suis Hamza.</p>
           <p class="about__body" data-i18n="about.text"></p>
+          <h3 class="label strengths__title" data-i18n="about.strengths_title">Mes atouts</h3>
+          <ul class="strengths" id="strengths"></ul>
           <p class="mobility"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span data-i18n="about.mobility">Mobilité : Saint-Étienne &amp; Lyon · Permis B</span></p>
         </div>
         <div class="about__side">
@@ -211,18 +230,26 @@
           <p class="sec-head__sub" data-i18n="experience.subtitle"></p>
         </header>
         <ol class="timeline" id="timeline"></ol>
-        <div class="exp-cols">
-          <div>
-            <h3 class="h-mid" data-i18n="experience.jobs_title">Jobs étudiants</h3>
-            <ul class="mini-list" id="jobs"></ul>
-          </div>
-          <div>
-            <h3 class="h-mid" data-i18n="experience.edu_title">Formation</h3>
-            <ul class="mini-list mini-list--edu" id="education"></ul>
-          </div>
+        <div class="edu">
+          <h3 class="h-mid" data-i18n="experience.edu_title">Formation</h3>
+          <ul class="mini-list mini-list--edu" id="education"></ul>
         </div>
       </div>
       <div class="torn torn--bottom" data-color="black" data-seed="19"></div>
+    </section>
+
+    <div class="marquee marquee--red" aria-hidden="true"><div class="marquee__track" data-marquee="marquee.jobs"></div></div>
+
+    <!-- JOBS ÉTUDIANTS -->
+    <section class="jobs black" id="jobs">
+      <div class="wrap">
+        <header class="sec-head">
+          <h2 class="h-big reveal-letters" data-i18n="jobs.title">Jobs étudiants</h2>
+          <p class="sec-head__sub jobs__intro" data-i18n="jobs.intro"></p>
+        </header>
+        <ul class="jobs__skills" id="jobs-skills"></ul>
+        <ol class="jobs__list" id="jobs-list"></ol>
+      </div>
     </section>
 
     <div class="marquee" aria-hidden="true"><div class="marquee__track" data-marquee="marquee.video"></div></div>
@@ -386,6 +413,7 @@
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/common.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/me3d.js"></script>
   <script type="module" src="assets/js/globe.js"></script>
   <script type="module" src="assets/js/intro.js"></script>
 </body>

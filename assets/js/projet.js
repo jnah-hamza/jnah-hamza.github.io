@@ -1,13 +1,16 @@
 /* =========================================================
-   Page détail d'un projet : projet.html?id=take-taste
-   La mise en page change selon le type : prototype, rapport,
-   vidéo, marque / entrepreneuriat, campagne.
+   Page détail d'un projet : projet.html?id=porsche-hermes
+   La mise en page change selon le type :
+   mix_report (rapport + présentation), mix_media (photo + vidéo),
+   brand (marque / entrepreneuriat), campaign (campagne), video, report.
+   Les éléments incomplets (lien manquant, PDF absent…) sont masqués.
    ========================================================= */
 (function () {
   'use strict';
 
   var t = function (k, v) { return I18N.t(k, v); };
   var h = function (s) { return I18N.html(s); };
+  var has = function (s) { return !!I18N.clean(s); };
   var id = new URLSearchParams(location.search).get('id') || '';
   var SITE, P, list;
   var root = document.getElementById('detail');
@@ -18,83 +21,128 @@
         SITE.campaigns.filter(function (p) { return p.id === id; })[0];
   }
 
-  function chip(text, cls) { return '<span class="chip ' + (cls || '') + '">' + h(text) + '</span>'; }
+  function chip(text, cls) { return has(text) ? '<span class="chip ' + (cls || '') + '">' + h(text) + '</span>' : ''; }
+  function sec(cls, inner, seed) {
+    var first = / first/.test(cls); cls = cls.replace(' first', '');
+    return '<section class="dsec ' + cls + '">' +
+      (cls === 'black' && !first ? '<div class="torn torn--top" data-color="paper" data-seed="' + seed + '"></div>' : '') +
+      '<div class="wrap">' + inner + '</div>' +
+      (cls === 'black' ? '<div class="torn torn--bottom" data-color="paper" data-seed="' + (seed + 5) + '"></div>' : '') + '</section>';
+  }
 
-  function facts(k) {
-    var tools = t(k + '.tools') || [];
-    return '<section class="dsec paper"><div class="wrap"><div class="facts">' +
-      '<div class="fact fact--wide rv"><span class="fact__lbl">' + h(t('projects.labels.context')) + '</span><p>' + h(t(k + '.context')) + '</p></div>' +
-      '<div class="fact rv"><span class="fact__lbl">' + h(t('projects.labels.problem')) + '</span><p>' + h(t(k + '.problem')) + '</p></div>' +
-      '<div class="fact rv"><span class="fact__lbl">' + h(t('projects.labels.role')) + '</span><p>' + h(t(k + '.role')) + '</p></div>' +
-      '<div class="fact rv"><span class="fact__lbl">' + h(t('projects.labels.output')) + '</span><p>' + h(t(k + '.output')) + '</p></div>' +
-      '<div class="fact fact--red rv"><span class="fact__lbl">' + h(t('projects.labels.result')) + '</span><p>' + h(t(k + '.result')) + '</p></div>' +
-      '<div class="fact fact--wide rv"><span class="fact__lbl">' + h(t('projects.labels.tools')) + '</span><div class="tools-row">' + tools.map(function (x) { return chip(x); }).join('') + '</div></div>' +
-      '</div></div></section>';
+  function facts(k, keys) {
+    var out = keys.map(function (x) {
+      var v = t(k + '.' + x[0]);
+      if (!has(v)) return '';
+      return '<div class="fact ' + (x[2] || '') + ' rv"><span class="fact__lbl">' + h(t('projects.labels.' + x[1])) + '</span><p>' + h(v) + '</p></div>';
+    }).join('');
+    var tools = (t(k + '.tools') || []).filter(has);
+    if (tools.length) out += '<div class="fact fact--wide rv"><span class="fact__lbl">' + h(t('projects.labels.tools')) + '</span><div class="tools-row">' + tools.map(function (x) { return chip(x); }).join('') + '</div></div>';
+    return out ? '<div class="facts">' + out + '</div>' : '';
   }
 
   function figures(k) {
-    var f = t(k + '.figures') || [];
+    var f = (t(k + '.figures') || []).filter(function (x) { return has(x.value); });
     if (!f.length) return '';
     return '<h2 class="dsec__title">' + h(t('projects.labels.figures')) + '</h2><div class="figures">' +
-      f.map(function (x, i) { return '<div class="figure rv" style="--d:' + (i * 90) + 'ms"><strong' + (String(x.value).length > 4 && !/COMPL/.test(x.value) ? ' class="is-long"' : '') + '>' + h(x.value) + '</strong><span>' + h(x.label) + '</span></div>'; }).join('') + '</div>';
-  }
-
-  function pages(arr, n) {
-    if (arr && arr.length) {
-      return '<div class="pages">' + arr.map(function (src, i) {
-        return '<button type="button" class="pages__img" data-gal="' + i + '"><img src="' + src + '" alt="Page ' + (i + 1) + '" loading="lazy"></button>';
+      f.map(function (x, i) {
+        return '<div class="figure rv" style="--d:' + (i * 90) + 'ms"><strong' + (String(x.value).length > 4 ? ' class="is-long"' : '') + '>' + h(x.value) + '</strong><span>' + h(x.label) + '</span></div>';
       }).join('') + '</div>';
-    }
-    var out = '';
-    for (var i = 0; i < n; i++) out += '<div class="pages__ph">' + h(t('projects.page_todo')) + ' ' + (i + 1) + '</div>';
-    return '<div class="pages" tabindex="0">' + out + '</div>';
   }
 
-  function pdfButton(file, labelKey) {
-    return '<a class="btn btn--red" data-pdf="' + file + '" href="' + file + '" download aria-disabled="true">' + h(labelKey) + '</a>';
+  function pages(arr) {
+    if (!arr || !arr.length) return '';
+    return '<h2 class="dsec__title">' + h(t('projects.labels.pages')) + '</h2><div class="pages" tabindex="0">' + arr.map(function (src, i) {
+      return '<button type="button" class="pages__img" data-gal="' + i + '"><img src="' + src + '" alt="' + I18N.esc(t('projects.labels.pages') + ' ' + (i + 1)) + '" loading="lazy" width="910" height="1287"></button>';
+    }).join('') + '</div>';
   }
 
-  /* --- Mise en page selon le type --- */
-  function showcase(k) {
-    var type = P.type;
-    var inner = '';
-    if (type === 'prototype') {
-      var screens = P.screens && P.screens.length ? P.screens : null;
-      var strip = screens
-        ? screens.map(function (s, i) { return '<img src="' + s + '" alt="' + I18N.esc(t(k + '.title') + ' — ' + (i + 1)) + '" loading="lazy">'; }).join('')
-        : [1, 2, 3].map(function (n) { return '<div class="phone__ph"><strong>Take<br>&amp; Taste</strong><span>' + h(t('projects.screen_todo')) + ' ' + n + '</span></div>'; }).join('');
-      var count = screens ? screens.length : 3;
-      inner = '<div class="phone-wrap">' +
-        '<div class="phone" aria-hidden="' + (screens ? 'false' : 'true') + '"><div class="phone__screen"><div class="phone__strip is-anim" style="--end:' + (-(count - 1) / count * 100).toFixed(2) + '%;--dur:' + (count * 4) + 's">' + strip + '</div></div></div>' +
-        '<div><h2 class="dsec__title">' + h(t('projects.labels.screens')) + '</h2>' +
-        '<p class="detail-lead">' + h(t(k + '.context')) + '</p>' +
-        '<div class="cta-row">' + (P.figma
-          ? '<a class="btn btn--red" href="' + P.figma + '" target="_blank" rel="noopener">' + h(t('projects.labels.figma')) + ' ↗<span class="sr-only"> ' + h(t('common.new_tab')) + '</span></a>'
-          : '<span class="btn btn--red" aria-disabled="true">' + h(t('projects.labels.figma')) + ' · ' + h(t('common.soon')) + '</span> <mark class="todo">[À COMPLÉTER : lien Figma]</mark>') +
-        '</div></div></div><div style="margin-top:64px">' + figures(k) + '</div>';
-    } else if (type === 'report') {
-      var hl = t(k + '.highlights') || [];
-      inner = figures(k) +
-        (hl.length ? '<h2 class="dsec__title" style="margin-top:56px">' + h(t('projects.labels.highlights')) + '</h2><ul class="highlights">' + hl.map(function (x) { return '<li class="rv">' + h(x) + '</li>'; }).join('') + '</ul>' : '') +
-        '<h2 class="dsec__title" style="margin-top:56px">' + h(t('projects.labels.pages')) + '</h2>' + pages(P.pages, 4) +
-        '<div class="cta-row">' + pdfButton(P.pdf, t('projects.labels.pdf')) + '</div>';
-    } else if (type === 'video') {
-      inner = '<div class="video-big"><iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(P.youtube || '') + '?rel=0" title="' + I18N.esc(t(k + '.title')) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>' +
-        '<div style="margin-top:48px">' + figures(k) + '</div>';
-    } else if (type === 'brand') {
-      var g = P.gallery || [];
-      var cells = g.length
-        ? g.map(function (src, i) { return '<button type="button" data-gal="' + i + '"><img src="' + src + '" alt="' + I18N.esc(t(k + '.title') + ' — ' + (i + 1)) + '" loading="lazy"></button>'; }).join('')
-        : [1, 2, 3, 4, 5, 6].map(function (n) { return '<div class="gallery__ph">' + h(t('projects.image_todo')) + ' ' + n + '</div>'; }).join('');
-      inner = '<h2 class="dsec__title">' + h(t('projects.labels.gallery')) + '</h2><div class="gallery">' + cells + '</div>' +
-        '<div style="margin-top:56px">' + figures(k) + '</div>';
-    } else if (type === 'campaign') {
-      inner = '<h2 class="dsec__title">' + h(t('projects.labels.pages')) + '</h2>' + pages(P.pages, 5) +
-        '<div class="cta-row">' + (P.pdfs || []).map(function (d) { return pdfButton(d.file, t(k + '.' + d.label)); }).join('') + '</div>' +
-        '<div style="margin-top:56px">' + figures(k) + '</div>';
-    }
-    return '<section class="dsec black"><div class="torn torn--top" data-color="paper" data-seed="' + (id.length + 3) + '"></div><div class="wrap">' + inner + '</div>' +
-      '<div class="torn torn--bottom" data-color="paper" data-seed="' + (id.length + 9) + '"></div></section>';
+  /* Boutons : un PDF n'apparaît que s'il existe vraiment */
+  function pdfBtn(file, label) {
+    return file ? '<a class="btn btn--red" data-pdf="' + file + '" href="' + file + '" download hidden>' + h(label) + '</a>' : '';
+  }
+  function linkBtn(url, label, cls) {
+    return url ? '<a class="btn ' + (cls || 'btn--outline-light') + '" href="' + url + '" target="_blank" rel="noopener">' + h(label) + ' ↗<span class="sr-only"> ' + h(t('common.new_tab')) + '</span></a>' : '';
+  }
+  function ytFrame(idv, title) {
+    return '<div class="video-big"><iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(idv) + '?rel=0" title="' + I18N.esc(title) + '" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+  }
+  function photoPola(folder, file, w, hh, caption, tilt) {
+    return HJ.polaroid({ thumb: 'assets/img/' + folder + '/thumbs/' + file + '.webp', alt: caption, caption: caption, w: w, h: hh, tilt: tilt || -3, size: 'l', button: true, index: 0 }) ;
+  }
+
+  /* ---------- En-têtes ---------- */
+  function heroPaper(k, back, extraCls, extraHTML) {
+    var chips = (t(k + '.chips') || []).map(function (c) { return chip(c); }).join('');
+    return '<section class="detail-hero paper ' + (extraCls || '') + '"><span class="corner corner--tl coords">45.4397° N, 4.3872° E</span><span class="corner corner--tr">Portfolio 2027</span><div class="wrap">' +
+      '<a class="back-link" href="' + back + '">' + h(t('common.back_home')) + '</a>' +
+      (extraHTML || '') +
+      '<p class="detail-hero__kind">' + h(t(k + '.kind')) + '</p>' +
+      '<h1 class="detail-hero__title">' + h(t(k + '.title')) + '</h1>' +
+      '<p class="detail-hero__tagline">' + h(t(k + '.tagline')) + '</p>' +
+      '<p class="detail-hero__chips">' + chip(t('projects.types.' + P.type), 'chip--red') + chip(t(k + '.year')) + chips + '</p>' +
+      '</div></section>';
+  }
+  function heroImage(k, back) {
+    var chips = (t(k + '.chips') || []).map(function (c) { return chip(c); }).join('');
+    return '<section class="detail-cover"><div class="detail-cover__bg" data-parallax="0.15" style="background-image:url(\'' + P.cover + '\')"></div>' +
+      '<span class="corner corner--tl coords">48.7758° N, 9.1829° E</span><span class="corner corner--tr">Portfolio 2027</span>' +
+      '<div class="wrap detail-cover__in">' +
+        '<a class="back-link" href="' + back + '">' + h(t('common.back_home')) + '</a>' +
+        '<p class="detail-hero__kind">' + h(t(k + '.kind')) + '</p>' +
+        '<h1 class="detail-cover__title">' + h(t(k + '.title')) + '</h1>' +
+        '<p class="detail-hero__tagline">' + h(t(k + '.tagline')) + '</p>' +
+        '<p class="detail-hero__chips">' + chip(t('projects.types.' + P.type), 'chip--red') + chip(t(k + '.year')) + chips + '</p>' +
+      '</div>' +
+      '<p class="detail-cover__note">' + h(t('projects.labels.concept_visual')) + '</p>' +
+      '<div class="torn torn--bottom" data-color="black" data-seed="61"></div></section>';
+  }
+
+  /* ---------- Contenus selon le type ---------- */
+  function bodyMixReport(k) {
+    var steps = (t(k + '.steps') || []).filter(has);
+    var launch = t(k + '.launch') || [];
+    var html = sec('black first', figures(k) + '<div class="concept rv"><span class="fact__lbl">' + h(t('projects.labels.concept')) + '</span><p>' + h(t(k + '.concept')) + '</p></div>', 62);
+    html += sec('paper', facts(k, [['context', 'context', 'fact--wide'], ['role', 'role', 'fact--red'], ['output', 'output']]) +
+      (steps.length ? '<h2 class="dsec__title" style="margin-top:64px">' + h(t('projects.labels.steps')) + '</h2><ol class="steps">' + steps.map(function (s, i) { return '<li class="rv" style="--d:' + (i * 70) + 'ms"><span>0' + (i + 1) + '</span>' + h(s) + '</li>'; }).join('') + '</ol>' : '') +
+      (launch.length ? '<h2 class="dsec__title" style="margin-top:64px">' + h(t('projects.labels.launch')) + '</h2><ol class="launch">' + launch.map(function (s) { return '<li class="rv"><strong>' + h(s.date) + '</strong><span>' + h(s.text) + '</span></li>'; }).join('') + '</ol>' : ''));
+    html += sec('black', pages(P.pages) + '<div class="cta-row">' + pdfBtn(P.pdf, t('projects.labels.pdf')) + linkBtn(P.canva, t('projects.labels.canva')) + '</div>', 63);
+    if (P.sketch) html += '<section class="dsec black"><div class="wrap"><h2 class="dsec__title">' + h(t('projects.labels.process')) + '</h2></div><div class="sketch-wrap" style="padding-top:10px">' + HJ.sketchSVG(k + '.sketch.') + '</div></section>';
+    return html;
+  }
+
+  function bodyMixMedia(k) {
+    var ph = P.photo;
+    var media = '<div class="case-media">' +
+      (ph ? '<div class="case-media__photo">' + photoPola('projets', ph.file, ph.w, ph.h, t(k + '.photo_caption'), -3) + '</div>' : '') +
+      '<div class="case-media__text"><span class="fact__lbl">' + h(t('projects.labels.concept')) + '</span><p class="case-media__concept">' + h(t(k + '.concept')) + '</p>' +
+      (P.youtube ? '<h2 class="dsec__title" style="margin-top:36px">' + h(t('projects.labels.video_intro')) + '</h2>' + ytFrame(P.youtube, t(k + '.title')) : '') +
+      '</div></div>';
+    return sec('paper case-file', media, 70) +
+      sec('black', figures(k), 71) +
+      sec('paper', facts(k, [['context', 'context', 'fact--wide'], ['role', 'role', 'fact--red'], ['output', 'output']]), 72);
+  }
+
+  function bodyBrand(k) {
+    var g = P.gallery || [];
+    var gal = g.length ? '<h2 class="dsec__title">' + h(t('projects.labels.gallery')) + '</h2><div class="gallery">' + g.map(function (src, i) {
+      return '<button type="button" data-gal="' + i + '"><img src="' + src + '" alt="' + I18N.esc(t(k + '.title') + ' — ' + (i + 1)) + '" loading="lazy"></button>';
+    }).join('') + '</div>' : '';
+    return sec('black', gal + figures(k), 80) +
+      sec('paper', facts(k, [['context', 'context', 'fact--wide'], ['problem', 'problem'], ['role', 'role', 'fact--red'], ['output', 'output'], ['result', 'result']]), 81);
+  }
+
+  function bodyCampaign(k) {
+    var team = (t(k + '.team') || []).filter(has);
+    var visuals = '<div class="poster-row">' +
+      (P.poster ? '<button type="button" class="poster rv" data-poster="0"><img src="' + P.poster + '" alt="' + I18N.esc(t(k + '.poster_caption')) + '" width="1066" height="1600"><span class="hand">' + h(t(k + '.poster_caption')) + '</span></button>' : '') +
+      '<div class="poster-side">' +
+        (P.team_photo ? '<button type="button" class="poster poster--team rv" data-poster="1"><img src="' + P.team_photo + '" alt="' + I18N.esc(t(k + '.team_caption')) + '" loading="lazy" width="1600" height="1200"><span class="hand">' + h(t(k + '.team_caption')) + '</span></button>' : '') +
+        (team.length ? '<h2 class="dsec__title" style="margin-top:34px">' + h(t('projects.labels.team')) + '</h2><ol class="team-list">' + team.map(function (r, i) { return '<li class="' + (i === 0 ? 'is-me' : '') + '">' + h(r) + '</li>'; }).join('') + '</ol>' : '') +
+      '</div></div>';
+    var btns = (P.pdfs || []).map(function (d) { return pdfBtn(d.file, t(k + '.' + d.label)); }).join('');
+    return sec('black', visuals + pages(P.pages) + '<div class="cta-row">' + btns + '</div>', 90) +
+      sec('paper', figures(k).replace('dsec__title', 'dsec__title dsec__title--ink') + '<div style="margin-top:40px">' + facts(k, [['context', 'context', 'fact--wide'], ['role', 'role', 'fact--red'], ['output', 'output'], ['result', 'result']]) + '</div>', 91);
   }
 
   function render() {
@@ -107,42 +155,47 @@
     var idx = list.indexOf(P);
     var next = isCampaign ? list[0] : list[(idx + 1) % list.length];
     var back = isCampaign ? 'index.html#parascolaire' : 'index.html#projets';
-    document.title = t(k + '.title') + ' — Hamza Jnah';
+    document.title = I18N.clean(t(k + '.title')) + ' — Hamza Jnah';
 
-    root.innerHTML =
-      '<section class="detail-hero paper"><span class="corner corner--tl coords">45.4397° N, 4.3872° E</span><span class="corner corner--tr">Portfolio 2027</span><div class="wrap">' +
-        '<a class="back-link" href="' + back + '">' + h(t('common.back_home')) + '</a>' +
-        '<p class="detail-hero__kind">' + h(t(k + '.kind')) + '</p>' +
-        '<h1 class="detail-hero__title' + (isCampaign ? ' h-giant--red' : '') + '">' + h(t(k + '.title')) + '</h1>' +
-        '<p class="detail-hero__tagline">' + h(t(k + '.tagline')) + '</p>' +
-        '<p class="detail-hero__chips">' + chip(t('projects.types.' + P.type), 'chip--red') + chip(t(k + '.year')) +
-          (P.group ? chip(t('common.group')) : '') + (P.ongoing ? chip('● ' + t('common.ongoing')) : '') + '</p>' +
-      '</div></section>' +
-      showcase(k) +
-      facts(k) +
-      (P.sketch ? '<section class="dsec black"><div class="torn torn--top" data-color="paper" data-seed="41"></div><div class="wrap"><h2 class="dsec__title">' + h(t('projects.labels.process')) + '</h2></div><div class="sketch-wrap" style="padding-top:10px">' + HJ.sketchSVG(k + '.sketch.') + '</div></section>' : '') +
+    var head, body;
+    if (P.type === 'mix_report') { head = heroImage(k, back); body = bodyMixReport(k); }
+    else if (P.type === 'mix_media') {
+      head = heroPaper(k, back, 'case-hero', '<span class="case-tape" aria-hidden="true"></span><p class="case-label">' + h(t(k + '.case')) + '</p><span class="case-stamp" aria-hidden="true">' + h(t(k + '.stamp')) + '</span>');
+      body = bodyMixMedia(k);
+    }
+    else if (P.type === 'campaign') { head = heroPaper(k, back, 'detail-hero--campaign'); body = bodyCampaign(k); }
+    else { head = heroPaper(k, back); body = bodyBrand(k); }
+
+    root.innerHTML = head + body +
       '<a class="next-project" href="projet.html?id=' + next.id + '"><span class="next-project__lbl">' + h(t('projects.labels.next')) + ' →</span><span class="next-project__title">' + h(t('projects.items.' + next.id + '.title')) + '</span></a>';
 
     HJ.torn(root);
     HJ.observe(root);
 
-    // Active les boutons PDF seulement si le fichier existe dans le dépôt
+    // N'affiche un bouton PDF que si le fichier existe dans le dépôt
     root.querySelectorAll('[data-pdf]').forEach(function (a) {
-      HJ.exists(a.getAttribute('data-pdf')).then(function (ok) {
-        if (ok) a.removeAttribute('aria-disabled');
-        else {
-          a.removeAttribute('href');
-          a.insertAdjacentHTML('beforeend', ' · ' + h(t('common.soon')));
-          a.insertAdjacentHTML('afterend', ' <mark class="todo">[À COMPLÉTER : ' + I18N.esc(a.getAttribute('data-pdf').split('/').pop()) + ']</mark>');
-        }
-      });
+      HJ.exists(a.getAttribute('data-pdf')).then(function (ok) { if (ok) a.hidden = false; else a.remove(); });
     });
 
-    // Galeries cliquables
-    root.querySelectorAll('[data-gal]').forEach(function (b) {
+    // Galeries cliquables (pages, photos, affiche)
+    root.querySelectorAll('.pages, .gallery').forEach(function (g) {
+      var imgs = Array.from(g.querySelectorAll('img'));
+      g.querySelectorAll('[data-gal]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          HJ.lightbox.open(imgs.map(function (im) { return { src: im.getAttribute('src'), alt: im.alt, caption: I18N.esc(im.alt) }; }), parseInt(b.getAttribute('data-gal'), 10));
+        });
+      });
+    });
+    var posters = Array.from(root.querySelectorAll('[data-poster]'));
+    posters.forEach(function (b, i) {
       b.addEventListener('click', function () {
-        var imgs = Array.from(b.parentNode.querySelectorAll('img'));
-        HJ.lightbox.open(imgs.map(function (im) { return { src: im.getAttribute('src'), alt: im.alt, caption: I18N.esc(im.alt) }; }), parseInt(b.getAttribute('data-gal'), 10));
+        HJ.lightbox.open(posters.map(function (p) { var im = p.querySelector('img'); return { src: im.getAttribute('src'), alt: im.alt, caption: I18N.esc(im.alt) }; }), i);
+      });
+    });
+    root.querySelectorAll('.polaroid[data-index]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var im = b.querySelector('img');
+        HJ.lightbox.open([{ src: im.getAttribute('src').replace('/thumbs/', '/'), alt: im.alt, caption: I18N.esc(im.alt) }], 0);
       });
     });
   }

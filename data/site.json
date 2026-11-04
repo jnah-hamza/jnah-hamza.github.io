@@ -5,32 +5,34 @@
   "linkedin": "https://www.linkedin.com/in/hamza-jnah",
   "instagram": "https://www.instagram.com/the_white_side_/",
   "formspree": "VOTRE_ID_FORMSPREE",
+  "portrait": {
+    "cutout": ["assets/img/portrait.png", "portrait.png"],
+    "photo": ["assets/img/portrait.jpg", "portrait.jpg"],
+    "fallback": "assets/img/parascolaire/parascolaire-genie-the-pitch-7-chef-de-projet.webp",
+    "model": ["assets/3d/moi-3d.glb", "moi-3d.glb"]
+  },
   "projects": [
     {
-      "id": "take-taste",
-      "type": "prototype",
-      "group": false,
-      "cover": "",
-      "figma": "",
-      "screens": [],
+      "id": "porsche-hermes",
+      "type": "mix_report",
+      "cover": "assets/img/projets/projet-911-sellier-fond.webp",
+      "pdf": "assets/docs/porsche-hermes-911-sellier.pdf",
+      "canva": "",
+      "pages": [
+        "assets/img/projets/projet-911-sellier-page-1.webp",
+        "assets/img/projets/projet-911-sellier-page-2.webp",
+        "assets/img/projets/projet-911-sellier-page-3.webp",
+        "assets/img/projets/projet-911-sellier-page-4.webp"
+      ],
       "sketch": true
     },
     {
-      "id": "porsche-hermes",
-      "type": "report",
-      "group": false,
-      "ongoing": true,
-      "cover": "",
-      "pdf": "assets/docs/porsche-hermes-911-sellier.pdf",
-      "pages": []
-    },
-    {
       "id": "sephora",
-      "type": "report",
-      "group": false,
-      "cover": "",
-      "pdf": "assets/docs/sephora-chatbots.pdf",
-      "pages": []
+      "type": "mix_media",
+      "group": true,
+      "cover": "assets/img/projets/projet-sephora-equipe.webp",
+      "photo": { "file": "projet-sephora-equipe", "w": 1280, "h": 960 },
+      "youtube": ""
     },
     {
       "id": "aballa",
@@ -44,7 +46,8 @@
     {
       "id": "rebirth",
       "type": "campaign",
-      "cover": "",
+      "poster": "assets/img/parascolaire/parascolaire-rebirth-affiche.webp",
+      "team_photo": "assets/img/parascolaire/parascolaire-rebirth-equipe.webp",
       "pages": [],
       "pdfs": [
         { "file": "assets/docs/rebirth-presentation.pdf", "label": "pdf_presentation" },
@@ -53,15 +56,41 @@
     }
   ],
   "videos": [
-    { "youtube": "4RrNR4nW9DI" },
-    { "youtube": "sCmYhfjKNMY" },
-    { "youtube": "" }
+    { "youtube": "sCmYhfjKNMY", "credit": "credit_film" },
+    { "youtube": "4RrNR4nW9DI", "credit": "credit_film" },
+    { "youtube": "bxmdEVaB_88", "credit": "credit_grade", "badge": "before_after" }
+  ],
+  "experience": [
+    { "logo": "assets/img/logos/logo-alsa-casabus.webp", "logo_alt": "Alsa · Casabus" },
+    { "logo": "assets/img/logos/logo-apebi.webp", "logo_alt": "APEBI" },
+    { "logo": "assets/img/logos/logo-ecotech-expo.webp", "logo_alt": "Ecotech Expo", "photo": { "folder": "experiences", "file": "experience-ecotech-expo", "w": 1200, "h": 1600 } }
+  ],
+  "education": [
+    { "logo": "assets/img/logos/logo-iae-saint-etienne.webp", "logo_alt": "IAE Saint-Étienne" },
+    { "logo": "assets/img/logos/logo-encg-settat.webp", "logo_alt": "ENCG Settat" },
+    {}
   ],
   "extra": [
     { "photos": [] },
     { "photos": [] },
-    { "photos": [] }
+    {
+      "logo": "assets/img/logos/logo-club-genie.webp",
+      "logo_alt": "Club Génie, ENCG Settat",
+      "photos": [
+        { "folder": "parascolaire", "file": "parascolaire-genie-the-pitch-7-chef-de-projet", "w": 1200, "h": 1600 },
+        { "folder": "parascolaire", "file": "parascolaire-genie-the-pitch-8-vp", "w": 1200, "h": 1600 },
+        { "folder": "parascolaire", "file": "parascolaire-genie-vp-crea-groupe", "w": 1600, "h": 1200 },
+        { "folder": "parascolaire", "file": "parascolaire-genie-vp-crea-equipe", "w": 1600, "h": 1200 }
+      ]
+    }
   ],
+  "take_taste": {
+    "prototype": "https://gentle-swept-10612813.figma.site/",
+    "photos": [
+      { "folder": "projets", "file": "projet-take-and-taste-pitch", "w": 1600, "h": 1200 },
+      { "folder": "projets", "file": "projet-take-and-taste-equipe", "w": 1600, "h": 1200 }
+    ]
+  },
   "about_polaroids": [
     "photo-44-saint-etienne-tram",
     "photo-24-al-wahda-voie-lactee",
