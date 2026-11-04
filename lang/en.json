@@ -32,7 +32,7 @@
     "kicker": "Portfolio 2027",
     "title": "Hamza Jnah",
     "subtitle": "Marketing student · Creative mind",
-    "badge": "Looking for a marketing internship · 3 to 6 months · from March 8, 2027 · Saint-Étienne & Lyon",
+    "badge": "Looking for an internship · 3 to 6 months · from March 8, 2027 · Saint-Étienne & Lyon",
     "pitch": "What sets me apart: a ==dual profile==. I analyze (data, SEO, GEO, market research, social media) and I create (video, photography, graphic design).",
     "tag_analyse": "Analysis",
     "tag_creation": "Creation",
@@ -53,7 +53,13 @@
       "design",
       "strategy"
     ],
-    "photo_caption": "The Pitch, 7th edition"
+    "photo_caption": "The Pitch, 7th edition",
+    "badge_kicker": "Looking for an internship",
+    "badge_text": "3 to 6 months · from March 8, 2027 · Saint-Étienne & Lyon",
+    "cta_contact": "Contact me",
+    "double": "Double degree ENCG Settat × IAE Saint-Étienne",
+    "drag": "← drag →",
+    "drag_label": "Drag the name"
   },
   "marquee": {
     "about": "About",
@@ -68,28 +74,42 @@
   },
   "about": {
     "title": "Hello",
-    "lead": "I'm Hamza.",
+    "lead": "I'm Hamza",
     "text": "After a Bachelor's in Marketing and Commerce at ENCG Settat, I moved to France in 2026 for my ==Master's in Marketing and Innovation Strategy== at IAE Saint-Étienne, on a double degree. I enjoy understanding as much as creating: I analyze the data, then turn it into images, videos and ideas. In student clubs and at AIESEC, I learned to lead teams and move real projects forward. Today, I'm looking for a ==3 to 6-month marketing internship== from March 2027, in Saint-Étienne or Lyon.",
-    "card_back_title": "Marketing student",
-    "card_back_sub": "Saint-Étienne & Lyon",
-    "card_hint": "Click to flip the card",
-    "model_alt": "Hamza Jnah in 3D",
     "strengths_title": "What I bring",
-    "s1n": "Creativity:",
-    "s1t": "videography, photography, graphic design, campaign art direction (Rebirth poster)",
-    "s2n": "Digital marketing:",
-    "s2t": "SEO, GEO, email marketing, social media, user journeys",
-    "s3n": "Strategic marketing:",
-    "s3t": "market research, competitive analysis, marketing strategy",
-    "s4n": "Data & reporting:",
-    "s4t": "data analysis, PCA, dashboards",
-    "s5n": "Mobility:",
-    "s5t": "Saint-Étienne & Lyon · Driving licence (B)"
+    "film_alt": "Photo of Hamza Jnah",
+    "cards": [
+      {
+        "id": "creativity",
+        "title": "Creativity",
+        "hook": "Thinking outside the box",
+        "text": "Videography, photography, graphic design."
+      },
+      {
+        "id": "digital",
+        "title": "Digital marketing",
+        "text": "SEO, GEO, email marketing, social media, user journeys."
+      },
+      {
+        "id": "strategy",
+        "title": "Strategic marketing",
+        "text": "Market research, competitive analysis, marketing strategy."
+      },
+      {
+        "id": "data",
+        "title": "Data & reporting",
+        "text": "Data analysis, PCA, dashboards."
+      }
+    ],
+    "card_flip": "Hover over or tap a card",
+    "mobility_title": "Mobility",
+    "mobility_line": "Saint-Étienne ⇄ Lyon",
+    "licence": "Driving licence B"
   },
   "projects": {
     "title": "Projects",
     "intro": "Three projects, three ways of working: luxury co-branding, staged operational marketing and entrepreneurship. Click a project to open it.",
-    "open": "View project",
+    "open": "See more",
     "drag": "Keep scrolling →",
     "types": {
       "prototype": "Prototype",
@@ -142,7 +162,6 @@
         "context": "“Branding: strategy and performance” module (L. Ambroise), Master's Year 1 in Marketing and Innovation Strategy, IAE Saint-Étienne, October 2026. Duo project with Ichrak Zerqaoui.",
         "concept": "A co-development between Porsche and Hermès. The 911 Sellier is a series of ==24 classic Porsche 911s== (G-series, 1974-1989) restored by Porsche Classic in Stuttgart and upholstered by Hermès saddlers, each delivered with a ==limited-edition Kelly bag==. Signature line: “For those who miss the 911”.",
         "steps": [
-          "Diagnosis of both brands (Kapferer identity prisms)",
           "Fit assessment on Deng & Messinger's 6 dimensions",
           "Brand equity × fit matrix",
           "Cross-transfer of associations",
@@ -168,7 +187,6 @@
         "tools": [
           "Brand equity",
           "Co-branding",
-          "Identity prism",
           "Risk matrix",
           "Brand equity chain and KPIs"
         ],
@@ -198,7 +216,7 @@
         "sketch": {
           "title": "911 Sellier — the process",
           "center": "911 Sellier",
-          "n1": "Kapferer prisms",
+          "n1": "",
           "n2": "Fit: 6 dimensions",
           "n3": "Brand equity × fit",
           "n4": "Association transfer",
@@ -301,8 +319,7 @@
         "date": "August – September 2024",
         "points": [
           "==SEO analysis== and study of visitor behavior (traffic, sources, journeys).",
-          "Designed visual communication materials.",
-          "Visual design for the ==AgoraTech 2025== event: invitations, Instagram posts and communication materials."
+          "Designed visual communication materials."
         ],
         "tags": [
           "SEO",
@@ -571,11 +588,13 @@
       "photo-56-geneve-cour-automne": "Courtyard covered in autumn leaves",
       "photo-74-geneve-jonction-rhone-arve": "The Junction: the blue Rhône and the beige Arve side by side"
     },
-    "home_label": "I live here"
+    "home_label": "I live here",
+    "spin": "Spin the globe",
+    "peek": "My Saint-Étienne photos"
   },
   "extra": {
     "title": "Activities",
-    "intro": "Four clubs, four worlds: entrepreneurship, leadership, the environment and strategic consulting.",
+    "intro": "Five worlds: strategic consulting, entrepreneurship, international leadership, the environment and innovation.",
     "logos_label": "Clubs & events",
     "theme": "Theme",
     "captions": {
@@ -585,7 +604,7 @@
       "parascolaire-genie-vp-crea-equipe": "The Club Génie members.",
       "parascolaire-rebirth-affiche": "The Rebirth campaign poster.",
       "parascolaire-rebirth-equipe": "The Rebirth team, ready for the campaign.",
-      "projet-take-and-taste-pitch": "Pitching Take & Taste to the jury.",
+      "projet-take-and-taste-pitch": "Pitching Take & Taste at QVEMI.",
       "projet-take-and-taste-equipe": "The Take & Taste team.",
       "parascolaire-green-invest-1-pitch": "Recycle It, 1st edition: the kick-off.",
       "parascolaire-green-invest-2-atelier": "Recycle, create, convince.",
@@ -599,7 +618,9 @@
       "parascolaire-aiesec-youth-corner-5-portrait": "The big day.",
       "parascolaire-hackathon-accede-1-victoire": "10 hours of work, one winning idea.",
       "parascolaire-hackathon-accede-2-groupe": "Participants of the first ACCEDE hackathon.",
-      "parascolaire-hackathon-accede-3-visite": "Touring the Technopark."
+      "parascolaire-hackathon-accede-3-visite": "Touring the Technopark.",
+      "parascolaire-epik-leaders-bureau": "The Epik Leaders board.",
+      "parascolaire-enactus-equipe": "Enactus ENCG Settat."
     },
     "tt": {
       "label": "Entrepreneurial project · Team",
@@ -634,13 +655,15 @@
             "l": "to build a project"
           }
         ]
-      }
+      },
+      "hack_short": "Winner of the “Le Phare de l'entrepreneuriat” hackathon"
     },
     "rebirth": {
       "label": "Campaign · Executive board",
       "title": "Rebirth",
       "text": "Rebirth is the team I brought together to run for Club Génie's executive board, with me as ==presidential candidate==. An unforgettable experience: building a ==full-year action plan== with like-minded people, from the club's strategy to its events.",
-      "cta": "See our action plan"
+      "cta": "See our action plan",
+      "proud": "The project I'm proudest of."
     },
     "clubs": {
       "genie": {
@@ -677,7 +700,8 @@
             "title": "Youth Corner, 4th edition “Techpreneurs” — OC Logistics & Finance",
             "text": "==More than 150 participants== and ==more than 20 tech speakers== gathered at ESCA École de Management, with media coverage (Hit Radio, L'Economiste), workshops and networking. In charge of logistics and finance, in coordination with the other organizing committees."
           }
-        ]
+        ],
+        "network": "An international network in more than 100 countries"
       },
       "green": {
         "name": "Green Invest",
@@ -703,6 +727,11 @@
         "date": "",
         "steps": [
           {
+            "title": "Founding board member",
+            "date": "",
+            "text": ""
+          },
+          {
             "title": "Head of the Training Unit",
             "date": "",
             "text": "Designed and ran ==leadership and soft skills training==, with performance tracking and continuous improvement of the programs."
@@ -713,8 +742,35 @@
             "text": "==Led the club==, with workshops and training in leadership, management and strategy."
           }
         ]
+      },
+      "accede": {
+        "name": "ACCEDE Internationale",
+        "org": "Le Phare de l'entrepreneuriat",
+        "theme": "Innovation",
+        "date": "April 2023",
+        "roles": [
+          {
+            "title": "Winner of the “Le Phare de l'entrepreneuriat” hackathon",
+            "text": "ACCEDE Internationale's first hackathon, co-organized with the MCISE and AUF North Africa at the Casablanca Technopark. Our winning project: ==Stademaps==, a platform that maps sports facilities so individuals can rent them."
+          }
+        ],
+        "stats": [
+          {
+            "v": "26",
+            "l": "students"
+          },
+          {
+            "v": "16+",
+            "l": "schools"
+          },
+          {
+            "v": "10 h",
+            "l": "to build a project"
+          }
+        ]
       }
-    }
+    },
+    "logos_hint": "Tap the Enactus logo to see the team"
   },
   "skills": {
     "title": "Skills",
@@ -763,7 +819,8 @@
     "tool_groups": {
       "analysis": "Analysis",
       "creation": "Creation",
-      "communication": "Communication"
+      "communication": "Communication",
+      "creativity": "Creativity"
     },
     "lang_story": [
       {
@@ -824,6 +881,12 @@
         "org": "Children of the World · a school in Virginia, USA",
         "date": "Ongoing · remote",
         "desc": "Making sure students ==finish their assignments== and re-explaining anything they didn't understand."
+      },
+      {
+        "role": "Visual design · AgoraTech 2025",
+        "org": "APEBI",
+        "date": "2025",
+        "desc": "Visual design for the ==AgoraTech 2025== event (APEBI): invitations, Instagram posts and communication materials."
       },
       {
         "role": "English and computer science teacher",

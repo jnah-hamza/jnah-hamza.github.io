@@ -173,6 +173,19 @@ async function start() {
     }
   });
 
+  /* Aperçu des photos de Saint-Étienne (téléphone et tablette) */
+  const peek = document.getElementById('globe-peek');
+  function renderPeek(id) {
+    const p = byId[id];
+    if (!peek || !p) return;
+    peek.innerHTML = '<p class="globe-peek__t">' + FLAGS[p.country] + ' ' + esc(t('photo.places.' + id)) + ' · ' + esc(photosLabel(p.photos.length)) + (p.home ? ' · <span>' + esc(t('photo.home_label')) + '</span>' : '') + '</p>' +
+      '<div class="globe-peek__strip">' + p.photos.map((ph, i) => '<button type="button" data-peek="' + i + '"><img src="assets/img/photos/thumbs/' + ph.file + '.webp" alt="' + esc(t('photo.alts.' + ph.file)) + '" loading="lazy"></button>').join('') + '</div>';
+    peek.dataset.place = id;
+    peek.hidden = false;
+  }
+  function hidePeek() { if (peek) peek.hidden = true; }
+  if (peek) peek.addEventListener('click', (e) => { if (e.target.closest('[data-peek]')) openPlace(peek.dataset.place, true); });
+
   function step(d) {
     const i = order.indexOf(state.place);
     openPlace(order[(i + d + order.length) % order.length], false, true);
@@ -181,7 +194,8 @@ async function start() {
   function openPlace(id, fromPills, keepFocus, silent) {
     const p = byId[id];
     if (!p) return;
-    if (engine && engine.finish) engine.finish();
+    if (!silent && engine && engine.finish) engine.finish();
+    if (!silent) hidePeek();
     state.place = id;
     state.region = p.region;
     stage.classList.add('has-panel');
@@ -189,8 +203,8 @@ async function start() {
     renderPanel();
     renderPills();
     labels.querySelectorAll('.gl-place').forEach((el) => el.classList.toggle('is-active', el.getAttribute('data-place') === id));
-    backBtn.hidden = state.mode === 'flat';
-    if (engine) { engine.resize(); engine.focusPlace(p); }
+    backBtn.hidden = state.mode === 'flat' || !!silent;
+    if (engine) { engine.resize(); if (!silent) engine.focusPlace(p); }
     const nameEl = panel.querySelector('.pp__name');
     if (silent) return;
     if (keepFocus) {
@@ -246,6 +260,7 @@ async function start() {
     renderCounter();
     renderPills();
     buildMarkers();
+    if (peek && !peek.hidden) renderPeek(peek.dataset.place);
     if (state.place) {
       renderPanel();
       labels.querySelectorAll('.gl-place').forEach((el) => el.classList.toggle('is-active', el.getAttribute('data-place') === state.place));
@@ -256,6 +271,9 @@ async function start() {
   renderCounter();
   renderPills();
   buildMarkers();
+  // À l'arrivée : Saint-Étienne et ses photos sont déjà affichés
+  if (window.innerWidth >= 1024) openPlace(START, false, false, true);
+  else renderPeek(START);
 
   /* ---------- Choix du moteur : 3D ou carte plate ---------- */
   function webglOK() {
@@ -267,6 +285,14 @@ async function start() {
 
   const ctx = { view, labels, canvas, places, byId, dots, state, declutter, stage, loading, backBtn };
 
+  // La zone de zoom au défilement est réservée dès le départ (pas de saut de page)
+  const scrollyEl = document.getElementById('globe-scrolly');
+  const canScrolly = !HJ.reduce && webglOK();
+  if (scrollyEl && canScrolly) scrollyEl.classList.add('is-scrolly');
+  HJ.dropScrolly = () => {
+    // On ne retire la zone que si le visiteur est encore au-dessus (sinon la page sauterait)
+    if (scrollyEl && scrollyEl.getBoundingClientRect().top > window.innerHeight) scrollyEl.classList.remove('is-scrolly');
+  };
   const near = new Promise((res) => {
     if (!('IntersectionObserver' in window)) return res();
     const io = new IntersectionObserver((en) => { if (en.some((x) => x.isIntersecting)) { io.disconnect(); res(); } }, { rootMargin: '900px 0px' });
@@ -410,7 +436,8 @@ function globe3D(THREE, OrbitControls, ctx) {
   controls.autoRotate = false;
   controls.autoRotateSpeed = 0.35;
   let userTouched = false;
-  controls.addEventListener('start', () => { userTouched = true; controls.autoRotate = false; cancelFly(); });
+  const spinHint = document.getElementById('spin-hint');
+  controls.addEventListener('start', () => { userTouched = true; controls.autoRotate = false; cancelFly(); if (spinHint) spinHint.classList.add('is-gone'); });
 
   const HOME = byId[START];
   camera.position.copy(vec(HOME.lat, HOME.lon, 1.045));
@@ -575,6 +602,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   }
   // Ouverture d'un lieu : le zoom arrière est terminé, la section n'est plus fixée
   function finish() {
+    if (spinHint) spinHint.classList.add('is-gone');
     if (sc.locked) return;
     sc.locked = true;
     applyP(1);
@@ -600,12 +628,13 @@ function globe3D(THREE, OrbitControls, ctx) {
         if (p < 0.999 || !wasFree) applyP(p);
         controls.enabled = p >= 0.999;
         if (p >= 0.999) { level = 1; state.region = null; }
+        if (spinHint) spinHint.classList.toggle('is-on', p >= 0.999);
       }
     } else {
       const r = view.getBoundingClientRect();
       const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
       if (!sc.t0 && vis > r.height * 0.45) sc.t0 = now;
-      if (sc.t0) { sc.p = Math.min(1, (now - sc.t0) / 2000); applyP(sc.p); if (sc.p >= 1) { sc.locked = true; controls.enabled = true; level = 1; } }
+      if (sc.t0) { sc.p = Math.min(1, (now - sc.t0) / 2000); applyP(sc.p); if (sc.p >= 1) { sc.locked = true; controls.enabled = true; level = 1; if (spinHint) spinHint.classList.add('is-on'); } }
       else if (!sc.drawn) { sc.drawn = true; applyP(0); }
     }
   }
@@ -615,8 +644,7 @@ function globe3D(THREE, OrbitControls, ctx) {
     const t = performance.now();
     for (let i = 0; i < 3; i++) renderer.render(scene, camera);
     const slow = (performance.now() - t) / 3 > 28 && mobile;
-    if (slow || !scrolly) { sc.mode = 'auto'; if (scrolly) scrolly.classList.remove('is-scrolly'); }
-    else scrolly.classList.add('is-scrolly');
+    if (slow || !scrolly || !scrolly.classList.contains('is-scrolly')) { sc.mode = 'auto'; HJ.dropScrolly(); }
     applyP(0);
   }
 
@@ -642,6 +670,7 @@ function globe3D(THREE, OrbitControls, ctx) {
 function flatMap(ctx) {
   const { view, labels, places, dots, byId, declutter, canvas, state, backBtn } = ctx;
   state.mode = 'flat';
+  if (HJ.dropScrolly) HJ.dropScrolly();
   canvas.style.display = 'none';
   view.classList.add('is-flat');
   const box = document.getElementById('flatmap');

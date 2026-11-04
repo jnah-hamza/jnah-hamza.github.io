@@ -32,7 +32,7 @@
     "kicker": "Portfolio 2027",
     "title": "Hamza Jnah",
     "subtitle": "Étudiant en marketing · Esprit créatif",
-    "badge": "Recherche un stage en marketing · 3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne & Lyon",
+    "badge": "En recherche de stage · 3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne & Lyon",
     "pitch": "Mon atout : un ==double profil==. J'analyse (données, SEO, GEO, études de marché, réseaux sociaux) et je crée (vidéo, photo, design graphique).",
     "tag_analyse": "Analyse",
     "tag_creation": "Création",
@@ -53,7 +53,13 @@
       "design",
       "stratégie"
     ],
-    "photo_caption": "The Pitch, 7e édition"
+    "photo_caption": "The Pitch, 7e édition",
+    "badge_kicker": "En recherche de stage",
+    "badge_text": "3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne & Lyon",
+    "cta_contact": "Me contacter",
+    "double": "Double diplôme ENCG Settat × IAE Saint-Étienne",
+    "drag": "← glisse →",
+    "drag_label": "Faites glisser le nom"
   },
   "marquee": {
     "about": "À propos",
@@ -68,28 +74,42 @@
   },
   "about": {
     "title": "Hello",
-    "lead": "Je suis Hamza.",
+    "lead": "Je suis Hamza",
     "text": "Après une licence en Marketing et Commerce à l'ENCG Settat, je suis arrivé en France en 2026 pour mon ==Master 1 Marketing et Stratégie d'Innovation== à l'IAE Saint-Étienne, en double diplôme. J'aime autant comprendre que créer : j'analyse les données, puis je les transforme en images, en vidéos et en idées. Dans les clubs étudiants et à AIESEC, j'ai appris à mener des équipes et à faire avancer des projets concrets. Aujourd'hui, je cherche un ==stage en marketing de 3 à 6 mois== dès mars 2027, à Saint-Étienne ou à Lyon.",
-    "card_back_title": "Étudiant en marketing",
-    "card_back_sub": "Saint-Étienne & Lyon",
-    "card_hint": "Cliquez pour retourner la carte",
-    "model_alt": "Hamza Jnah en 3D",
     "strengths_title": "Ce que j'apporte",
-    "s1n": "Créativité :",
-    "s1t": "vidéographie, photographie, design graphique, direction artistique de campagne (affiche Rebirth)",
-    "s2n": "Marketing digital :",
-    "s2t": "SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur",
-    "s3n": "Marketing stratégique :",
-    "s3t": "études de marché, analyse concurrentielle, stratégies marketing",
-    "s4n": "Data & reporting :",
-    "s4t": "analyse de données, ACP, tableaux de bord",
-    "s5n": "Mobilité :",
-    "s5t": "Saint-Étienne & Lyon · Permis B"
+    "film_alt": "Photo de Hamza Jnah",
+    "cards": [
+      {
+        "id": "creativity",
+        "title": "Créativité",
+        "hook": "Penser en dehors de la boîte",
+        "text": "Vidéographie, photographie, design graphique."
+      },
+      {
+        "id": "digital",
+        "title": "Marketing digital",
+        "text": "SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur."
+      },
+      {
+        "id": "strategy",
+        "title": "Marketing stratégique",
+        "text": "Études de marché, analyse concurrentielle, stratégies marketing."
+      },
+      {
+        "id": "data",
+        "title": "Data & reporting",
+        "text": "Analyse de données, ACP, tableaux de bord."
+      }
+    ],
+    "card_flip": "Survolez ou touchez une carte",
+    "mobility_title": "Mobilité",
+    "mobility_line": "Saint-Étienne ⇄ Lyon",
+    "licence": "Permis B"
   },
   "projects": {
     "title": "Projets",
     "intro": "Trois projets, trois façons de travailler : co-branding de luxe, marketing opérationnel mis en scène et entrepreneuriat. Cliquez sur un projet pour l'ouvrir.",
-    "open": "Voir le projet",
+    "open": "Voir plus",
     "drag": "Faites défiler →",
     "types": {
       "prototype": "Prototype",
@@ -142,7 +162,6 @@
         "context": "Module « Branding : stratégie et performance » (L. Ambroise), M1 Marketing et Stratégie d'Innovation, IAE Saint-Étienne, octobre 2026. Projet en binôme avec Ichrak Zerqaoui.",
         "concept": "Un co-développement entre Porsche et Hermès. La 911 Sellier est une série de ==24 Porsche 911 classiques== (type G, 1974-1989) restaurées par Porsche Classic à Stuttgart et habillées par les selliers d'Hermès, chacune livrée avec un ==sac Kelly en édition limitée==. Signature : « Pour ceux à qui la 911 manque ».",
         "steps": [
-          "Diagnostic des deux marques (prismes d'identité de Kapferer)",
           "Évaluation du fit sur les 6 dimensions de Deng & Messinger",
           "Matrice capital-marque × fit",
           "Transfert croisé d'associations",
@@ -168,7 +187,6 @@
         "tools": [
           "Capital-marque",
           "Co-branding",
-          "Prisme d'identité",
           "Matrice des risques",
           "Chaîne du capital-marque et indicateurs"
         ],
@@ -198,7 +216,7 @@
         "sketch": {
           "title": "911 Sellier — la démarche",
           "center": "911 Sellier",
-          "n1": "Prismes de Kapferer",
+          "n1": "",
           "n2": "Fit : 6 dimensions",
           "n3": "Capital-marque × fit",
           "n4": "Transfert d'associations",
@@ -301,8 +319,7 @@
         "date": "Août – septembre 2024",
         "points": [
           "Analyse ==SEO== et étude du comportement des visiteurs (trafic, sources, parcours).",
-          "Conception de supports visuels de communication.",
-          "Conception visuelle pour l'événement ==AgoraTech 2025== : invitations, posts Instagram et supports de communication."
+          "Conception de supports visuels de communication."
         ],
         "tags": [
           "SEO",
@@ -571,11 +588,13 @@
       "photo-56-geneve-cour-automne": "Cour intérieure couverte de feuilles d'automne",
       "photo-74-geneve-jonction-rhone-arve": "La Jonction : le Rhône bleu et l'Arve beige côte à côte (format large)"
     },
-    "home_label": "J'habite ici"
+    "home_label": "J'habite ici",
+    "spin": "Fais tourner le globe",
+    "peek": "Mes photos de Saint-Étienne"
   },
   "extra": {
     "title": "Parascolaire",
-    "intro": "Quatre clubs, quatre univers : l'entrepreneuriat, le leadership, l'environnement et le conseil stratégique.",
+    "intro": "Cinq univers : le conseil stratégique, l'entrepreneuriat, le leadership international, l'environnement et l'innovation.",
     "logos_label": "Clubs & événements",
     "theme": "Thème",
     "captions": {
@@ -585,7 +604,7 @@
       "parascolaire-genie-vp-crea-equipe": "Les membres du Club Génie.",
       "parascolaire-rebirth-affiche": "L'affiche de campagne de Rebirth.",
       "parascolaire-rebirth-equipe": "L'équipe Rebirth, prête pour la campagne.",
-      "projet-take-and-taste-pitch": "Le pitch de Take & Taste devant le jury.",
+      "projet-take-and-taste-pitch": "Le pitch de Take & Taste à QVEMI.",
       "projet-take-and-taste-equipe": "L'équipe Take & Taste.",
       "parascolaire-green-invest-1-pitch": "Recycle It, 1re édition : le lancement.",
       "parascolaire-green-invest-2-atelier": "Recycler, créer, convaincre.",
@@ -599,7 +618,9 @@
       "parascolaire-aiesec-youth-corner-5-portrait": "Le jour J.",
       "parascolaire-hackathon-accede-1-victoire": "10 heures de travail, une idée qui gagne.",
       "parascolaire-hackathon-accede-2-groupe": "Les participants du premier hackathon ACCEDE.",
-      "parascolaire-hackathon-accede-3-visite": "Visite des lieux au Technopark."
+      "parascolaire-hackathon-accede-3-visite": "Visite des lieux au Technopark.",
+      "parascolaire-epik-leaders-bureau": "Le bureau d'Epik Leaders.",
+      "parascolaire-enactus-equipe": "Enactus ENCG Settat."
     },
     "tt": {
       "label": "Projet entrepreneurial · En équipe",
@@ -634,13 +655,15 @@
             "l": "pour imaginer un projet"
           }
         ]
-      }
+      },
+      "hack_short": "Lauréat du hackathon « Le Phare de l'entrepreneuriat »"
     },
     "rebirth": {
       "label": "Campagne · Bureau exécutif",
       "title": "Rebirth",
       "text": "Rebirth, c'est l'équipe que j'ai réunie pour candidater au bureau exécutif de Club Génie, avec moi comme ==candidat président==. Une expérience inoubliable : construire avec des personnes qui partagent la même vision un ==plan d'action pour toute une année==, de la stratégie du club jusqu'aux événements.",
-      "cta": "Voir notre plan d'action"
+      "cta": "Voir notre plan d'action",
+      "proud": "Le projet dont je suis le plus fier."
     },
     "clubs": {
       "genie": {
@@ -677,7 +700,8 @@
             "title": "Youth Corner, 4e édition « Techpreneurs » — OC Logistique & Finance",
             "text": "==Plus de 150 participants== et ==plus de 20 intervenants== du secteur tech réunis à l'ESCA École de Management, avec une couverture médiatique (Hit Radio, L'Economiste), des ateliers et du networking. En charge de la logistique et des finances, en coordination avec les autres comités d'organisation."
           }
-        ]
+        ],
+        "network": "Un réseau international présent dans plus de 100 pays"
       },
       "green": {
         "name": "Green Invest",
@@ -703,6 +727,11 @@
         "date": "",
         "steps": [
           {
+            "title": "Membre du bureau fondateur",
+            "date": "",
+            "text": ""
+          },
+          {
             "title": "Chef de Cellule Formation",
             "date": "",
             "text": "Conception et animation de ==formations en leadership et soft skills==, avec suivi des performances et amélioration continue des programmes."
@@ -713,8 +742,35 @@
             "text": "==Pilotage du club==, ateliers et formations en leadership, management et stratégie."
           }
         ]
+      },
+      "accede": {
+        "name": "ACCEDE Internationale",
+        "org": "Le Phare de l'entrepreneuriat",
+        "theme": "Innovation",
+        "date": "Avril 2023",
+        "roles": [
+          {
+            "title": "Lauréat du hackathon « Le Phare de l'entrepreneuriat »",
+            "text": "Premier hackathon d'ACCEDE Internationale, co-organisé avec le MCISE et l'AUF Afrique du Nord, au Technopark de Casablanca. Notre projet gagnant : ==Stademaps==, une plateforme qui cartographie les infrastructures sportives pour les louer aux particuliers."
+          }
+        ],
+        "stats": [
+          {
+            "v": "26",
+            "l": "étudiants"
+          },
+          {
+            "v": "16+",
+            "l": "établissements"
+          },
+          {
+            "v": "10 h",
+            "l": "pour imaginer un projet"
+          }
+        ]
       }
-    }
+    },
+    "logos_hint": "Touchez le logo Enactus pour voir l'équipe"
   },
   "skills": {
     "title": "Compétences",
@@ -763,7 +819,8 @@
     "tool_groups": {
       "analysis": "Analyse",
       "creation": "Création",
-      "communication": "Communication"
+      "communication": "Communication",
+      "creativity": "Créativité"
     },
     "lang_story": [
       {
@@ -824,6 +881,12 @@
         "org": "Children of the World · école en Virginie, États-Unis",
         "date": "En cours · à distance",
         "desc": "M'assurer que les élèves ==terminent leurs tâches== et leur réexpliquer tout ce qu'ils n'ont pas compris."
+      },
+      {
+        "role": "Conception visuelle · AgoraTech 2025",
+        "org": "APEBI",
+        "date": "2025",
+        "desc": "Conception visuelle pour l'événement ==AgoraTech 2025== (APEBI) : invitations, posts Instagram et supports de communication."
       },
       {
         "role": "Professeur d'anglais et d'informatique",

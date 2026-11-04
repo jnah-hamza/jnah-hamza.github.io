@@ -59,13 +59,18 @@ Le compteur « photos · lieux · pays » se met à jour tout seul.
 « à publier seulement si la personne est d'accord ». Si elle est d'accord, dans `data/photos.json`,
 supprimez `"consent": false` sur la ligne `photo-11-…`.
 
-## 4. Portrait et modèle 3D
+## 4. Photos de profil
 
-- Le portrait officiel est `assets/img/portrait.webp` (détouré, fond transparent). Pour le changer,
-  remplacez ce fichier (WebP avec transparence, environ 1000 px de haut) : l'accueil, la carte « Hello »
-  et l'image de partage l'utilisent.
-- **`moi-3d.glb`** (à la racine ou dans `assets/3d/`) : il remplace automatiquement la carte qui se retourne
-  dans le cadre « Hello » (rotation lente, on peut le faire tourner, pas de zoom).
+- **Accueil** : `assets/img/portrait.webp` (détouré, fond transparent, environ 1000 px de haut).
+  Le contour rouge s'ajoute automatiquement. L'image de partage (`assets/img/og-image.jpg`) l'utilise aussi.
+- **Section Hello** : `assets/img/portrait-hello.webp` (présentée comme un tirage argentique dans une pellicule).
+Pour les changer, remplacez ces fichiers en gardant le même nom.
+
+## 4 bis. Logos des outils
+
+Les logos sont dans `data/site.json` → `tools` (champ `svg`), groupés par usage :
+`analysis` (Analyse), `creation` (Création), `creativity` (Créativité), `communication` (Communication).
+Un outil sans champ `svg` s'affiche avec son nom seul (c'est le cas de Sphinx, faute de logo officiel téléchargeable).
 
 ## 5. Projets : images, liens et PDF
 
