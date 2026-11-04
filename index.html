@@ -58,7 +58,7 @@
     "address": { "@type": "PostalAddress", "addressLocality": "Saint-Étienne", "addressCountry": "FR" },
     "alumniOf": ["ENCG Settat"],
     "affiliation": "IAE Saint-Étienne",
-    "sameAs": ["https://www.linkedin.com/in/hamza-jnah", "https://www.instagram.com/the_white_side_/"]
+    "sameAs": ["https://www.linkedin.com/in/hamza-jnah/", "https://www.instagram.com/the_white_side_/"]
   }
   </script>
 </head>
@@ -149,8 +149,8 @@
           </div>
         </div>
         <div class="hero__portrait" data-parallax="0.08">
-          <div class="portrait is-photo" id="hero-portrait">
-            <img class="portrait__img" id="hero-portrait-img" src="assets/img/parascolaire/parascolaire-genie-the-pitch-7-chef-de-projet.webp" alt="Portrait de Hamza Jnah" data-i18n-attr="alt:hero.portrait_alt" width="1200" height="1600" fetchpriority="high">
+          <div class="portrait is-cutout" id="hero-portrait">
+            <img class="portrait__img" id="hero-portrait-img" src="assets/img/portrait.webp" alt="Portrait de Hamza Jnah" data-i18n-attr="alt:hero.portrait_alt" width="717" height="1000" fetchpriority="high">
           </div>
           <ul class="ftags" id="hero-tags" aria-hidden="true">
             <li class="ftag ftag--1"><span>vidéo</span><svg viewBox="0 0 90 60"><path pathLength="1" d="M8 8 C 30 4, 60 18, 78 46 M78 46 l-13 -3 M78 46 l1 -13"/></svg></li>
@@ -175,7 +175,7 @@
               <div class="me3d__stage" id="me3d-stage">
                 <button class="flipcard" id="flipcard" type="button" aria-pressed="false" data-i18n-attr="aria-label:about.card_hint" aria-label="Cliquez pour retourner la carte">
                   <span class="flipcard__inner">
-                    <span class="flipcard__face flipcard__front"><img id="flip-img" src="assets/img/parascolaire/parascolaire-genie-the-pitch-7-chef-de-projet.webp" alt="" loading="lazy" width="1200" height="1600"></span>
+                    <span class="flipcard__face flipcard__front"><img id="flip-img" src="assets/img/portrait.webp" alt="" loading="lazy" width="717" height="1000"></span>
                     <span class="flipcard__face flipcard__back"><span class="flipcard__logo">HJ</span><span class="flipcard__t" data-i18n="about.card_back_title">Étudiant en marketing</span><span class="flipcard__s" data-i18n="about.card_back_sub">Saint-Étienne &amp; Lyon</span></span>
                   </span>
                 </button>
@@ -186,15 +186,18 @@
           </div>
           <p class="about__lead" data-i18n="about.lead">Je suis Hamza.</p>
           <p class="about__body" data-i18n="about.text"></p>
-          <h3 class="label strengths__title" data-i18n="about.strengths_title">Mes atouts</h3>
-          <ul class="strengths" id="strengths"></ul>
-          <p class="mobility"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span data-i18n="about.mobility">Mobilité : Saint-Étienne &amp; Lyon · Permis B</span></p>
         </div>
         <div class="about__side">
-          <h3 class="label" data-i18n="about.tools_title">Mes outils</h3>
-          <ul class="pills" id="about-tools"></ul>
-          <div class="polas" id="about-polas"></div>
-          <p class="hand" data-i18n="about.polaroids_note">Quelques images de mon carnet</p>
+          <div class="strengths-box">
+          <h3 class="label strengths__title" data-i18n="about.strengths_title">Ce que j'apporte</h3>
+          <ul class="strengths" id="strengths">
+            <li><strong data-i18n="about.s1n">Créativité :</strong> <span data-i18n="about.s1t">vidéographie, photographie, design graphique, direction artistique de campagne (affiche Rebirth)</span></li>
+            <li><strong data-i18n="about.s2n">Marketing digital :</strong> <span data-i18n="about.s2t">SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur</span></li>
+            <li><strong data-i18n="about.s3n">Marketing stratégique :</strong> <span data-i18n="about.s3t">études de marché, analyse concurrentielle, stratégies marketing</span></li>
+            <li><strong data-i18n="about.s4n">Data &amp; reporting :</strong> <span data-i18n="about.s4t">analyse de données, ACP, tableaux de bord</span></li>
+            <li><strong data-i18n="about.s5n">Mobilité :</strong> <span data-i18n="about.s5t">Saint-Étienne &amp; Lyon · Permis B</span></li>
+          </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -216,8 +219,6 @@
         </div>
       </div>
 
-      <!-- Carnet de croquis -->
-      <div class="sketch-wrap" id="sketch"></div>
     </section>
 
     <div class="marquee marquee--red" aria-hidden="true"><div class="marquee__track" data-marquee="marquee.experience"></div></div>
@@ -295,6 +296,7 @@
           <p class="globe-head__count" id="photo-count">75 photos · 13 lieux · 3 pays</p>
         </header>
 
+        <div class="globe-scrolly" id="globe-scrolly">
         <div class="globe-stage" id="globe-stage">
           <div class="globe-view" id="globe-view">
             <canvas id="globe-canvas" aria-hidden="true"></canvas>
@@ -305,6 +307,7 @@
             <button class="globe-back btn btn--small" id="globe-back" type="button" hidden data-i18n="photo.back">← Retour au globe</button>
           </div>
           <aside class="place-panel" id="place-panel" hidden aria-live="polite"></aside>
+        </div>
         </div>
 
         <nav class="place-pills" id="place-pills" data-i18n-attr="aria-label:photo.choose" aria-label="Choisir un lieu"></nav>
@@ -326,6 +329,8 @@
           <h2 class="h-big sel reveal-letters" data-i18n="extra.title">Parascolaire</h2>
           <p class="sec-head__sub" data-i18n="extra.intro"></p>
         </header>
+        <div class="club-logos" id="club-logos" aria-label="Clubs"></div>
+        <div class="awards" id="awards"></div>
         <div class="extra-list" id="extra-list"></div>
       </div>
     </section>
@@ -340,9 +345,9 @@
         </header>
         <div class="skill-groups" id="skill-groups"></div>
         <h3 class="h-mid" data-i18n="skills.tools_title">Outils</h3>
-        <ul class="tool-grid" id="tool-grid"></ul>
+        <div class="tool-groups" id="tool-grid"></div>
         <h3 class="h-mid" data-i18n="skills.languages_title">Langues</h3>
-        <ul class="langs" id="langs"></ul>
+        <ol class="lang-story" id="langs"></ol>
       </div>
       <div class="torn torn--bottom" data-color="black" data-seed="31"></div>
     </section>
@@ -367,7 +372,7 @@
             </li>
             <li>
               <span class="label">LinkedIn</span>
-              <a href="https://www.linkedin.com/in/hamza-jnah" class="contact__big" target="_blank" rel="noopener">linkedin.com/in/hamza-jnah<span class="sr-only" data-i18n="common.new_tab"></span></a>
+              <a href="https://www.linkedin.com/in/hamza-jnah/" class="contact__big" target="_blank" rel="noopener">linkedin.com/in/hamza-jnah<span class="sr-only" data-i18n="common.new_tab"></span></a>
             </li>
             <li>
               <span class="label">Instagram</span>
@@ -395,6 +400,14 @@
     <a href="#accueil" data-i18n="footer.top">Haut de page ↑</a>
   </footer>
 
+  <!-- Fenêtre projet -->
+  <div class="pmodal" id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pmodal-title" hidden>
+    <div class="pmodal__box" id="pmodal-box" tabindex="-1">
+      <button class="pmodal__close" type="button" data-i18n-attr="aria-label:projects.labels.close" aria-label="Fermer">×</button>
+      <div class="pmodal__content" id="pmodal-content"></div>
+    </div>
+  </div>
+
   <!-- Visionneuse plein écran -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
     <figure class="lightbox__fig">
@@ -412,6 +425,7 @@
 
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/common.js"></script>
+  <script src="assets/js/project-view.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/me3d.js"></script>
   <script type="module" src="assets/js/globe.js"></script>

@@ -33,7 +33,7 @@
     "title": "Hamza Jnah",
     "subtitle": "Étudiant en marketing · Esprit créatif",
     "badge": "Recherche un stage en marketing · 3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne & Lyon",
-    "pitch": "Mon atout : un double profil. J'analyse (données, SEO, GEO, études de marché, réseaux sociaux) et je crée (vidéo, photo, design graphique).",
+    "pitch": "Mon atout : un ==double profil==. J'analyse (données, SEO, GEO, études de marché, réseaux sociaux) et je crée (vidéo, photo, design graphique).",
     "tag_analyse": "Analyse",
     "tag_creation": "Création",
     "cta_projects": "Voir mes projets",
@@ -69,38 +69,26 @@
   "about": {
     "title": "Hello",
     "lead": "Je suis Hamza.",
-    "text": "Étudiant en Master 1 Marketing et Stratégie d'Innovation à l'IAE Saint-Étienne, en double diplôme avec l'ENCG Settat, je m'intéresse au marketing stratégique et digital. Je suis passionné par la création de contenu et je me sens à l'aise des deux côtés : j'analyse les données, puis je les transforme en images, en vidéos et en idées. Ancien membre actif de clubs étudiants et d'AIESEC, je suis arrivé en France en 2026 pour mon master.",
-    "tools_title": "Mes outils",
-    "mobility": "Mobilité : Saint-Étienne & Lyon · Permis B",
-    "note": "analyse + création = moi",
-    "polaroids_note": "Quelques images de mon carnet",
+    "text": "Après une licence en Marketing et Commerce à l'ENCG Settat, je suis arrivé en France en 2026 pour mon ==Master 1 Marketing et Stratégie d'Innovation== à l'IAE Saint-Étienne, en double diplôme. J'aime autant comprendre que créer : j'analyse les données, puis je les transforme en images, en vidéos et en idées. Dans les clubs étudiants et à AIESEC, j'ai appris à mener des équipes et à faire avancer des projets concrets. Aujourd'hui, je cherche un ==stage en marketing de 3 à 6 mois== dès mars 2027, à Saint-Étienne ou à Lyon.",
     "card_back_title": "Étudiant en marketing",
     "card_back_sub": "Saint-Étienne & Lyon",
     "card_hint": "Cliquez pour retourner la carte",
     "model_alt": "Hamza Jnah en 3D",
-    "strengths_title": "Mes atouts",
-    "strengths": [
-      {
-        "name": "Créativité",
-        "text": "vidéographie, photographie, design graphique, direction artistique de campagne (affiche Rebirth)"
-      },
-      {
-        "name": "Marketing digital",
-        "text": "SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur"
-      },
-      {
-        "name": "Marketing stratégique",
-        "text": "études de marché, analyse concurrentielle, stratégies marketing"
-      },
-      {
-        "name": "Data & reporting",
-        "text": "analyse de données, ACP, tableaux de bord"
-      }
-    ]
+    "strengths_title": "Ce que j'apporte",
+    "s1n": "Créativité :",
+    "s1t": "vidéographie, photographie, design graphique, direction artistique de campagne (affiche Rebirth)",
+    "s2n": "Marketing digital :",
+    "s2t": "SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur",
+    "s3n": "Marketing stratégique :",
+    "s3t": "études de marché, analyse concurrentielle, stratégies marketing",
+    "s4n": "Data & reporting :",
+    "s4t": "analyse de données, ACP, tableaux de bord",
+    "s5n": "Mobilité :",
+    "s5t": "Saint-Étienne & Lyon · Permis B"
   },
   "projects": {
     "title": "Projets",
-    "intro": "Trois projets, trois façons de travailler : co-branding de luxe, marketing opérationnel mis en scène et entrepreneuriat.",
+    "intro": "Trois projets, trois façons de travailler : co-branding de luxe, marketing opérationnel mis en scène et entrepreneuriat. Cliquez sur un projet pour l'ouvrir.",
     "open": "Voir le projet",
     "drag": "Faites défiler →",
     "types": {
@@ -137,8 +125,9 @@
       "concept_visual": "Visuel de concept, projet étudiant",
       "video_intro": "Vidéo d'introduction",
       "team": "L'équipe",
-      "photos": "En images",
-      "pdf_generic": "Télécharger le PDF"
+      "photos": "Les photos",
+      "pdf_generic": "Télécharger le PDF",
+      "close": "Fermer le projet"
     },
     "items": {
       "porsche-hermes": {
@@ -151,7 +140,7 @@
           "Visuel de concept"
         ],
         "context": "Module « Branding : stratégie et performance » (L. Ambroise), M1 Marketing et Stratégie d'Innovation, IAE Saint-Étienne, octobre 2026. Projet en binôme avec Ichrak Zerqaoui.",
-        "concept": "Un co-développement entre Porsche et Hermès. La 911 Sellier est une série de 24 Porsche 911 classiques (type G, 1974-1989) restaurées par Porsche Classic à Stuttgart et habillées par les selliers d'Hermès, chacune livrée avec un sac Kelly en édition limitée. Signature : « Pour ceux à qui la 911 manque ».",
+        "concept": "Un co-développement entre Porsche et Hermès. La 911 Sellier est une série de ==24 Porsche 911 classiques== (type G, 1974-1989) restaurées par Porsche Classic à Stuttgart et habillées par les selliers d'Hermès, chacune livrée avec un ==sac Kelly en édition limitée==. Signature : « Pour ceux à qui la 911 manque ».",
         "steps": [
           "Diagnostic des deux marques (prismes d'identité de Kapferer)",
           "Évaluation du fit sur les 6 dimensions de Deng & Messinger",
@@ -174,7 +163,7 @@
             "text": "Livraison au Mans"
           }
         ],
-        "role": "Co-auteur de la note de synthèse et de la présentation.",
+        "role": "==Co-auteur== de la note de synthèse et de la présentation.",
         "output": "Une note de synthèse de 4 pages et une présentation.",
         "tools": [
           "Capital-marque",
@@ -229,8 +218,8 @@
         "case": "Dossier : Sephora Secret",
         "stamp": "Confidentiel",
         "context": "Analyse des 4P de Sephora et de l'impact des chatbots sur l'expérience client.",
-        "concept": "Une présentation mise en scène comme une enquête de détectives, « Sephora Secret », pour révéler l'impact des chatbots sur l'expérience client chez Sephora, avec une vidéo d'introduction que j'ai réalisée.",
-        "role": "Réalisation de la vidéo d'introduction de la présentation.",
+        "concept": "Une présentation mise en scène comme une ==enquête de détectives==, « Sephora Secret », pour révéler l'impact des chatbots sur l'expérience client chez Sephora, avec une ==vidéo d'introduction== que j'ai réalisée.",
+        "role": "Réalisation de la ==vidéo d'introduction== de la présentation.",
         "output": "Une présentation en forme d'enquête et sa vidéo d'introduction.",
         "photo_caption": "Le jour de la soutenance du projet Sephora.",
         "figures": [
@@ -258,7 +247,7 @@
           "Avec deux associés"
         ],
         "context": "Petit projet entrepreneurial lancé entre amis : une marque de vêtements streetwear, vendue localement sur une marketplace, avec deux associés.",
-        "role": "Gestion des flux financiers, des flux de stock et de la communication.",
+        "role": "Gestion des ==flux financiers==, des ==flux de stock== et de la communication.",
         "figures": [
           {
             "value": "3",
@@ -274,35 +263,11 @@
           "Stock",
           "Communication"
         ]
-      },
-      "rebirth": {
-        "title": "Rebirth",
-        "kind": "Campagne · Club Génie",
-        "year": "",
-        "tagline": "L'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie.",
-        "chips": [
-          "Candidat président"
-        ],
-        "context": "Rebirth est l'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie, à l'ENCG Settat.",
-        "role": "Candidat président de l'équipe Rebirth.",
-        "output": "L'affiche de campagne, dans le style d'une affiche de film.",
-        "team": [
-          "Président",
-          "Vice-président événementiel",
-          "Vice-présidente créa",
-          "Trésorière",
-          "Coordinateur général",
-          "Secrétaire générale"
-        ],
-        "poster_caption": "L'affiche de campagne de Rebirth.",
-        "team_caption": "L'équipe Rebirth, prête pour la campagne.",
-        "figures": [
-          {
-            "value": "6",
-            "label": "membres dans l'équipe"
-          }
-        ]
       }
+    },
+    "categories": {
+      "academic": "Projet académique",
+      "entrepreneurial": "Projet entrepreneurial"
     }
   },
   "sketch": {
@@ -319,8 +284,8 @@
         "place": "Casablanca",
         "date": "Juillet – août 2026",
         "points": [
-          "Analyse de plus de 200 commentaires clients sur les réseaux sociaux et stratégies de réponse adaptées à la ligne éditoriale.",
-          "Analyse GEO pour améliorer la visibilité de la marque dans les moteurs de recherche IA.",
+          "Analyse de ==plus de 200 commentaires clients== sur les réseaux sociaux et stratégies de réponse adaptées à la ligne éditoriale.",
+          "Analyse ==GEO== pour améliorer la visibilité de la marque dans les moteurs de recherche IA.",
           "Recommandations UX et parcours utilisateur à partir du profil des visiteurs."
         ],
         "tags": [
@@ -335,8 +300,9 @@
         "place": "Casablanca",
         "date": "Août – septembre 2024",
         "points": [
-          "Analyse SEO et étude du comportement des visiteurs (trafic, sources, parcours).",
-          "Conception de supports visuels de communication."
+          "Analyse ==SEO== et étude du comportement des visiteurs (trafic, sources, parcours).",
+          "Conception de supports visuels de communication.",
+          "Conception visuelle pour l'événement ==AgoraTech 2025== : invitations, posts Instagram et supports de communication."
         ],
         "tags": [
           "SEO",
@@ -350,7 +316,7 @@
         "place": "Forum international",
         "date": "Août 2023 – mars 2024",
         "points": [
-          "Stratégie marketing d'un événement de plus de 40 exposants et plus de 40 intervenants.",
+          "Stratégie marketing d'un événement de ==plus de 40 exposants== et ==plus de 40 intervenants==.",
           "Coordination d'équipe.",
           "Communication multicanale : réseaux sociaux, newsletters via Brevo.",
           "Suivi et reporting."
@@ -359,8 +325,7 @@
           "Événementiel",
           "Brevo",
           "Reporting"
-        ],
-        "photo_caption": "Ecotech Expo, Casablanca : le jour J, après des mois de préparation."
+        ]
       }
     ],
     "edu_title": "Formation",
@@ -610,33 +575,9 @@
   },
   "extra": {
     "title": "Parascolaire",
-    "intro": "Les clubs et les associations m'ont appris à mener une équipe et à organiser des projets concrets.",
-    "items": [
-      {
-        "role": "Président",
-        "org": "Epik Leaders",
-        "date": "Mai – septembre 2026",
-        "desc": "Pilotage du club, ateliers et formations en leadership, management et stratégie."
-      },
-      {
-        "role": "Team Leader OGT & OCVP Marketing",
-        "org": "AIESEC Casablanca",
-        "date": "Septembre 2024 – juin 2025",
-        "desc": "Encadrement d'une équipe de plus de 15 personnes et suivi des performances. Stratégie marketing et campagnes digitales de RiseUp Co pour optimiser le recrutement."
-      },
-      {
-        "role": "Vice-président",
-        "org": "Club Génie",
-        "date": "Septembre 2022 – septembre 2025",
-        "desc": "Chef de projet de The Pitch (7e édition, compétition nationale d'entrepreneuriat), puis vice-président créatif : organisation d'événements et coordination des équipes sur des projets entrepreneuriaux."
-      }
-    ],
-    "rebirth": {
-      "label": "Campagne · Club Génie",
-      "title": "Rebirth",
-      "text": "L'équipe que j'ai montée pour candidater au bureau exécutif de Club Génie, avec moi comme candidat président. L'affiche de campagne, façon affiche de film, montre aussi ma patte en communication visuelle.",
-      "cta": "Voir la campagne"
-    },
+    "intro": "Quatre clubs, quatre univers : l'entrepreneuriat, le leadership, l'environnement et le conseil stratégique.",
+    "logos_label": "Clubs & événements",
+    "theme": "Thème",
     "captions": {
       "parascolaire-genie-the-pitch-7-chef-de-projet": "The Pitch, 7e édition : chef de projet, et un certificat pour l'équipe.",
       "parascolaire-genie-the-pitch-8-vp": "The Pitch, 8e édition, côté organisation.",
@@ -645,7 +586,20 @@
       "parascolaire-rebirth-affiche": "L'affiche de campagne de Rebirth.",
       "parascolaire-rebirth-equipe": "L'équipe Rebirth, prête pour la campagne.",
       "projet-take-and-taste-pitch": "Le pitch de Take & Taste devant le jury.",
-      "projet-take-and-taste-equipe": "L'équipe Take & Taste."
+      "projet-take-and-taste-equipe": "L'équipe Take & Taste.",
+      "parascolaire-green-invest-1-pitch": "Recycle It, 1re édition : le lancement.",
+      "parascolaire-green-invest-2-atelier": "Recycler, créer, convaincre.",
+      "parascolaire-green-invest-3-participant": "Chaque équipe défend son idée.",
+      "parascolaire-green-invest-4-equipes": "Les équipes à l'œuvre.",
+      "parascolaire-green-invest-5-organisation": "L'équipe d'organisation.",
+      "parascolaire-aiesec-youth-corner-1-oc-logfin": "L'annonce du comité d'organisation.",
+      "parascolaire-aiesec-youth-corner-2-techpreneurs": "Youth Corner 4 : Techpreneurs.",
+      "parascolaire-aiesec-youth-corner-3-oc-wizards": "Les comités d'organisation sur scène, certificats en main.",
+      "parascolaire-aiesec-youth-corner-4-equipe": "Les coulisses.",
+      "parascolaire-aiesec-youth-corner-5-portrait": "Le jour J.",
+      "parascolaire-hackathon-accede-1-victoire": "10 heures de travail, une idée qui gagne.",
+      "parascolaire-hackathon-accede-2-groupe": "Les participants du premier hackathon ACCEDE.",
+      "parascolaire-hackathon-accede-3-visite": "Visite des lieux au Technopark."
     },
     "tt": {
       "label": "Projet entrepreneurial · En équipe",
@@ -655,6 +609,111 @@
       "text": "Une application qui propose des idées de recettes et vend des kits d'ingrédients et des plats prêts, pensée pour les sportifs, avec un lancement en France. Un projet entrepreneurial mené en équipe dans le cadre associatif.",
       "role": "Mon rôle : conception du prototype de l'application et des idées pendant la phase d'idéation.",
       "cta": "Tester le prototype"
+    },
+    "awards": {
+      "title": "Prix & distinctions",
+      "hult": {
+        "title": "Lauréat de la phase campus de la Hult Prize",
+        "sub": "Avec Take & Taste · 2026"
+      },
+      "hack": {
+        "title": "Lauréat du hackathon « Le Phare de l'entrepreneuriat »",
+        "sub": "ACCEDE Internationale · avril 2023",
+        "text": "Premier hackathon d'ACCEDE Internationale, co-organisé avec le MCISE et l'AUF Afrique du Nord, au Technopark de Casablanca. Notre projet gagnant : ==Stademaps==, une plateforme qui cartographie les infrastructures sportives pour les louer aux particuliers.",
+        "stats": [
+          {
+            "v": "26",
+            "l": "étudiants"
+          },
+          {
+            "v": "16+",
+            "l": "établissements"
+          },
+          {
+            "v": "10 h",
+            "l": "pour imaginer un projet"
+          }
+        ]
+      }
+    },
+    "rebirth": {
+      "label": "Campagne · Bureau exécutif",
+      "title": "Rebirth",
+      "text": "Rebirth, c'est l'équipe que j'ai réunie pour candidater au bureau exécutif de Club Génie, avec moi comme ==candidat président==. Une expérience inoubliable : construire avec des personnes qui partagent la même vision un ==plan d'action pour toute une année==, de la stratégie du club jusqu'aux événements.",
+      "cta": "Voir notre plan d'action"
+    },
+    "clubs": {
+      "genie": {
+        "name": "Club Génie",
+        "org": "ENCG Settat",
+        "theme": "Entrepreneuriat",
+        "date": "Septembre 2022 – septembre 2025",
+        "roles": [
+          {
+            "title": "Vice-Président",
+            "text": "Contribution à la ==gestion stratégique== du club et à l'organisation de ses événements ; coordination des équipes et suivi des projets entrepreneuriaux."
+          },
+          {
+            "title": "Chef de projet, The Pitch (7e édition)",
+            "text": "Organisation du ==concours national de pitch== au Technopark ; gestion opérationnelle, coordination des parties prenantes et logistique."
+          }
+        ]
+      },
+      "aiesec": {
+        "name": "AIESEC Casablanca",
+        "org": "",
+        "theme": "Leadership",
+        "date": "Septembre 2024 – juin 2025",
+        "roles": [
+          {
+            "title": "Team Leader, département OGT (Outgoing Global Talent)",
+            "text": "Encadrement d'une ==équipe de plus de 15 personnes== et suivi des performances."
+          },
+          {
+            "title": "OCVP Marketing, campagne RiseUp Co",
+            "text": "Pilotage de la ==stratégie marketing== et gestion des campagnes digitales pour optimiser le recrutement."
+          },
+          {
+            "title": "Youth Corner, 4e édition « Techpreneurs » — OC Logistique & Finance",
+            "text": "==Plus de 150 participants== et ==plus de 20 intervenants== du secteur tech réunis à l'ESCA École de Management, avec une couverture médiatique (Hit Radio, L'Economiste), des ateliers et du networking. En charge de la logistique et des finances, en coordination avec les autres comités d'organisation."
+          }
+        ]
+      },
+      "green": {
+        "name": "Green Invest",
+        "org": "ENCG Settat",
+        "theme": "Environnement",
+        "date": "2024",
+        "roles": [
+          {
+            "title": "Chef de projet, « Recycle It » (1re édition, 2024)",
+            "text": "Une ==compétition de sensibilisation à l'environnement== qui a fait travailler ensemble les clubs de l'ENCG Settat. Co-pilotée en binôme."
+          }
+        ],
+        "skills": [
+          "Leadership",
+          "Travail d'équipe",
+          "Communication"
+        ]
+      },
+      "epik": {
+        "name": "Epik Leaders",
+        "org": "ENCG Settat",
+        "theme": "Conseil stratégique",
+        "date": "",
+        "steps": [
+          {
+            "title": "Chef de Cellule Formation",
+            "date": "",
+            "text": "Conception et animation de ==formations en leadership et soft skills==, avec suivi des performances et amélioration continue des programmes."
+          },
+          {
+            "title": "Président",
+            "date": "Mai – septembre 2026",
+            "text": "==Pilotage du club==, ateliers et formations en leadership, management et stratégie."
+          }
+        ]
+      }
     }
   },
   "skills": {
@@ -700,26 +759,27 @@
       }
     ],
     "tools_title": "Outils",
-    "tool_cats": {
-      "office": "Bureautique",
-      "data": "Data",
-      "marketing": "Marketing",
-      "design": "Design",
-      "video": "Montage"
-    },
     "languages_title": "Langues",
-    "languages": [
+    "tool_groups": {
+      "analysis": "Analyse",
+      "creation": "Création",
+      "communication": "Communication"
+    },
+    "lang_story": [
       {
         "name": "Arabe",
-        "level": "Langue maternelle"
+        "level": "Langue maternelle",
+        "text": "La langue de la maison, au Maroc."
       },
       {
         "name": "Français",
-        "level": "C1"
+        "level": "C1",
+        "text": "La langue de mes études, de l'ENCG Settat jusqu'à l'IAE Saint-Étienne, où je vis aujourd'hui."
       },
       {
         "name": "Anglais",
-        "level": "C1"
+        "level": "C1",
+        "text": "La langue que j'enseigne. Celle avec laquelle je travaille avec des élèves aux États-Unis et des équipes internationales à AIESEC."
       }
     ]
   },
@@ -752,7 +812,7 @@
   },
   "jobs": {
     "title": "Jobs étudiants",
-    "intro": "Enseigner, c'est expliquer simplement, convaincre et s'adapter à chaque public. Trois réflexes que j'emporte en marketing.",
+    "intro": "Enseigner, c'est ==expliquer simplement==, ==convaincre== et s'adapter à chaque public. Trois réflexes que j'emporte en marketing.",
     "skills": [
       "Expliquer simplement",
       "Convaincre",
@@ -760,22 +820,16 @@
     ],
     "items": [
       {
-        "role": "Tuteur de mathématiques",
-        "org": "",
-        "date": "En cours",
-        "desc": ""
-      },
-      {
-        "role": "Professeur d'anglais à distance",
-        "org": "Children of the World · Virginie, États-Unis",
-        "date": "Été 2026",
-        "desc": ""
+        "role": "Tuteur",
+        "org": "Children of the World · école en Virginie, États-Unis",
+        "date": "En cours · à distance",
+        "desc": "M'assurer que les élèves ==terminent leurs tâches== et leur réexpliquer tout ce qu'ils n'ont pas compris."
       },
       {
         "role": "Professeur d'anglais et d'informatique",
-        "org": "Neoschool International",
+        "org": "Neoschool International · Casablanca, Maroc",
         "date": "Étés 2024 et 2025",
-        "desc": "Anglais en maternelle et primaire ; Pack Office et Scratch."
+        "desc": "==Anglais== en maternelle et primaire ; ==Pack Office et Scratch==."
       }
     ]
   }
