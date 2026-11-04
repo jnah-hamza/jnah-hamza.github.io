@@ -358,60 +358,90 @@
   }
 
 
-  /* Bulles façon « écran d'accueil Apple Watch » : nid d'abeille, grandes au centre
-     (ou près de la souris), petites aux bords ; on fait glisser pour explorer.       */
-  var HEX = [[0, 0], [-1, 0], [1, 0], [-0.5, -0.866], [0.5, -0.866], [-0.5, 0.866], [0.5, 0.866],
-             [2, 0], [1.5, -0.866], [1, -1.732], [0, -1.732], [-1, -1.732], [-1.5, -0.866], [-2, 0], [-1.5, 0.866], [-1, 1.732], [0, 1.732], [1, 1.732], [1.5, 0.866]];
+  /* Bande de photos façon pellicule : 2 rangées qui défilent en sens opposés
+     (1 rangée sur téléphone), boucle infinie, pause au survol, glisser au doigt.
+     Animations réduites : la bande ne bouge pas, on la fait défiler à la main. */
   function honey(photos) {
-    return '<div class="honey" data-honey>' + photos.map(function (p, i) {
-      var c = capOf(p), h = HEX[i % HEX.length];
-      return '<button type="button" class="honey__b" data-index="' + i + '" data-hx="' + h[0] + '" data-hy="' + h[1] + '" aria-label="' + I18N.esc(c) + '">' +
-        '<img src="assets/img/' + p.folder + '/thumbs/' + p.file + '.webp" alt="" loading="lazy" draggable="false"></button>';
-    }).join('') + '</div>';
+    function row(list, dir) {
+      var items = list.map(function (p) {
+        var c = capOf(p), i = photos.indexOf(p);
+        return '<button type="button" class="reel__p" data-index="' + i + '" style="--ar:' + (p.w / p.h).toFixed(3) + '" aria-label="' + I18N.esc(c) + '">' +
+          '<img src="assets/img/' + p.folder + '/thumbs/' + p.file + '.webp" alt="" loading="lazy" draggable="false"></button>';
+      }).join('');
+      return '<div class="reel__row" data-dir="' + dir + '"><div class="reel__track">' + items + '</div></div>';
+    }
+    var half = Math.ceil(photos.length / 2);
+    var top = photos.slice(0, half), bottom = photos.slice(half);
+    if (!bottom.length) bottom = top.slice();
+    return '<div class="reel" data-reel>' + row(top, -1) + row(bottom, 1) + '<div class="reel__row reel__row--one" data-dir="-1"><div class="reel__track">' +
+      photos.map(function (p, i) { return '<button type="button" class="reel__p" data-index="' + i + '" style="--ar:' + (p.w / p.h).toFixed(3) + '" aria-label="' + I18N.esc(capOf(p)) + '"><img src="assets/img/' + p.folder + '/thumbs/' + p.file + '.webp" alt="" loading="lazy" draggable="false"></button>'; }).join('') +
+      '</div></div></div>';
   }
   function bindHoney(root, photos) {
-    var el = root.querySelector('[data-honey]');
+    var el = root.querySelector('[data-reel]');
     if (!el) return;
-    var bs = Array.from(el.querySelectorAll('.honey__b'));
-    var pan = { x: 0, y: 0 }, ptr = null, drag = null, moved = 0;
-    function layout() {
-      var W = el.clientWidth, H = el.clientHeight;
-      var D = bs.length > 3 ? Math.min(W / 2.55, H / 1.95) : Math.min(W / 3.1, H / 1.1), step = D * 0.9;
-      var reach = Math.min(W, H) * 0.62;
-      bs.forEach(function (b) {
-        var x = W / 2 + pan.x + parseFloat(b.dataset.hx) * step, y = H / 2 + pan.y + (parseFloat(b.dataset.hy) + (bs.length <= 5 ? 0.43 : 0)) * step;
-        var dc = Math.hypot(x - W / 2, y - H / 2);
-        var s = 1.08 - Math.min(1, dc / reach) * 0.42;
-        if (ptr) { var dp = Math.hypot(x - ptr.x, y - ptr.y); s = Math.max(s, 1.12 - Math.min(1, dp / (D * 1.4)) * 0.6); }
-        s = Math.max(0.42, Math.min(1.12, s));
-        b.style.width = b.style.height = D + 'px';
-        b.style.transform = 'translate(' + (x - D / 2).toFixed(1) + 'px,' + (y - D / 2).toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
-        b.style.zIndex = String(Math.round(s * 100));
-      });
-    }
-    var raf = 0; function req() { if (!raf) raf = requestAnimationFrame(function () { raf = 0; layout(); }); }
-    el.addEventListener('pointermove', function (e) {
-      var r = el.getBoundingClientRect();
-      if (HJ.fine) ptr = { x: e.clientX - r.left, y: e.clientY - r.top };
-      if (drag) {
-        var lim = Math.min(r.width, r.height) * 0.45;
-        pan.x = Math.max(-lim, Math.min(lim, drag.px + e.clientX - drag.x));
-        pan.y = Math.max(-lim, Math.min(lim, drag.py + e.clientY - drag.y));
-        moved = Math.max(moved, Math.hypot(e.clientX - drag.x, e.clientY - drag.y));
+    var rows = Array.from(el.querySelectorAll('.reel__row'));
+    rows.forEach(function (r) {
+      var track = r.querySelector('.reel__track');
+      var base = track.innerHTML;
+      var st = { x: 0, speed: 0, target: 0, w: 0, drag: null, moved: 0, hover: false };
+      r.__st = st;
+      // Duplique les photos jusqu'à couvrir 2 fois la largeur : boucle sans saut
+      function fill() {
+        track.innerHTML = base;
+        var unitW = track.scrollWidth, n = 1;
+        while (unitW * n < r.clientWidth * 2 && n < 12) { track.insertAdjacentHTML('beforeend', base); n++; }
+        track.insertAdjacentHTML('beforeend', track.innerHTML);
+        st.w = track.scrollWidth / 2;
       }
-      req();
-    });
-    el.addEventListener('pointerleave', function () { ptr = null; req(); });
-    el.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY, px: pan.x, py: pan.y }; moved = 0; el.classList.add('is-drag'); });
-    window.addEventListener('pointerup', function () { if (drag) { drag = null; el.classList.remove('is-drag'); } });
-    bs.forEach(function (b) {
-      b.addEventListener('click', function (e) {
-        if (moved > 6) { e.preventDefault(); return; }
+      st.fill = fill;
+      fill();
+      r.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') st.hover = true; });
+      r.addEventListener('pointerleave', function () { st.hover = false; });
+      r.addEventListener('pointerdown', function (e) { st.drag = { x: e.clientX, x0: st.x }; st.moved = 0; });
+      window.addEventListener('pointermove', function (e) {
+        if (!st.drag) return;
+        var d = e.clientX - st.drag.x;
+        st.moved = Math.max(st.moved, Math.abs(d));
+        if (st.moved > 6) r.classList.add('is-drag');
+        st.x = st.drag.x0 + d;
+      });
+      function up() { if (st.drag) { st.drag = null; r.classList.remove('is-drag'); } }
+      window.addEventListener('pointerup', up); window.addEventListener('pointercancel', up);
+      r.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { e.preventDefault(); st.x -= e.deltaX; } }, { passive: false });
+      r.addEventListener('click', function (e) {
+        var b = e.target.closest('.reel__p');
+        if (!b || st.moved > 6) return;
         HJ.lightbox.open(photos.map(function (p) { var c = capOf(p); return { src: 'assets/img/' + p.folder + '/' + p.file + '.webp', alt: c, caption: I18N.esc(c) }; }), parseInt(b.dataset.index, 10));
       });
+      r.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { st.x += e.key === 'ArrowLeft' ? 120 : -120; }
+      });
     });
-    window.addEventListener('resize', req);
-    layout();
+    var last = performance.now();
+    function tick(now) {
+      var dt = Math.min(50, now - last); last = now;
+      var mobile = window.innerWidth < 700;
+      var visible = el.getBoundingClientRect().bottom > 0 && el.getBoundingClientRect().top < window.innerHeight;
+      rows.forEach(function (r) {
+        var st = r.__st;
+        if (!r.offsetParent || !st.w) return;
+        var dir = parseFloat(r.dataset.dir);
+        st.target = (HJ.reduce || st.hover || st.drag || !visible) ? 0 : dir * (mobile ? 22 : 34);
+        st.speed += (st.target - st.speed) * Math.min(1, dt / 350);  // ralentit en douceur au survol
+        if (st.target === 0 && Math.abs(st.speed) < 0.4) st.speed = 0;
+        if (!st.drag) st.x += st.speed * dt / 1000;
+        // boucle infinie
+        if (st.x <= -st.w) st.x += st.w; else if (st.x > 0) st.x -= st.w;
+        r.firstChild.style.transform = 'translate3d(' + st.x.toFixed(2) + 'px,0,0)';
+      });
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    var rt = 0;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { rows.forEach(function (r) { if (r.offsetParent) r.__st.fill(); }); }, 200); });
+    // les images arrivent en différé : on recalcule la largeur une fois chargées
+    el.querySelectorAll('img').forEach(function (im) { if (!im.complete) im.addEventListener('load', function () { clearTimeout(rt); rt = setTimeout(function () { rows.forEach(function (r) { if (r.offsetParent) r.__st.fill(); }); }, 150); }, { once: true }); });
   }
   var HONEY = { genie: true, green: true };
 

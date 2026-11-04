@@ -1828,3 +1828,26 @@ html.reduce .env-scrolly.is-list .pcard { opacity: 1; transform: none; }
 .spin-hint span { white-space: nowrap; }
 .club--epik .club__text { max-width: none; }
 .honey { background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--c1) 16%, #fff), transparent 70%); }
+
+/* ---------- Bande de photos façon pellicule (Club Génie, Green Invest) ---------- */
+.club__body.has-honey { grid-template-columns: 1fr !important; }
+.club__body.has-honey .club__text { max-width: 900px; }
+.honey { display: none; }
+.reel { --h: clamp(130px, 13vw, 170px); display: grid; gap: 10px; background: #0d0d0d; border-radius: 16px; padding: 10px 0; overflow: hidden; }
+.reel__row { position: relative; overflow: hidden; padding: 16px 0; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.reel__row.is-drag { cursor: grabbing; }
+.reel__row::before, .reel__row::after { content: ''; position: absolute; left: 0; right: 0; height: 8px; pointer-events: none;
+  background: radial-gradient(circle, #f1eee7 0 2.4px, transparent 2.9px) 0 50% / 18px 8px repeat-x; opacity: .85; }
+.reel__row::before { top: 4px; }
+.reel__row::after { bottom: 4px; }
+.reel__row--one { display: none; }
+.reel__track { display: flex; gap: 8px; width: max-content; will-change: transform; }
+.reel__p { flex: none; height: var(--h); width: calc(var(--h) * var(--ar)); padding: 0; border: 0; border-radius: 6px; overflow: hidden; background: #222; cursor: zoom-in; transition: transform .35s var(--ease); }
+.reel__p img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.reel__row:not(.is-drag) .reel__p:hover { transform: scale(1.06); position: relative; z-index: 2; }
+.reel__p:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+@media (max-width: 699px) {
+  .reel { --h: 150px; }
+  .reel__row:not(.reel__row--one) { display: none; }
+  .reel__row--one { display: block; }
+}
