@@ -9,8 +9,8 @@ if (sec) start();
 
 const FLAGS = { ma: '🇲🇦', fr: '🇫🇷', ch: '🇨🇭' };
 const REGIONS = {
-  maroc: { lat: 34.4, lon: -5.9, dist: 1.26, flags: '🇲🇦' },
-  alpes: { lat: 45.85, lon: 5.6, dist: 1.13, flags: '🇫🇷🇨🇭' }
+  maroc: { lat: 34.38, lon: -5.79, flags: '🇲🇦' },
+  alpes: { lat: 45.82, lon: 5.63, flags: '🇫🇷🇨🇭' }
 };
 const ROUTE = ['casablanca', 'saint-etienne', 'chamonix', 'geneve'];
 const DEG = Math.PI / 180;
@@ -90,7 +90,7 @@ async function start() {
   }
   labels.addEventListener('click', (e) => {
     const b = e.target.closest('[data-region]');
-    if (b) { goRegion(b.getAttribute('data-region')); return; }
+    if (b) { goRegion(b.getAttribute('data-region'), e.detail === 0); return; }
     const p = e.target.closest('[data-place]');
     if (p) openPlace(p.getAttribute('data-place'));
   });
@@ -107,7 +107,8 @@ async function start() {
       const cands = [
         [g, -h / 2], [-g - w, -h / 2], [-w / 2, -g - h], [-w / 2, g],
         [g, -h - 2], [g, 2], [-g - w, -h - 2], [-g - w, 2],
-        [g + 10, -h / 2 - 26], [g + 10, h / 2 + 4], [-w / 2, -g - h - 24], [-w / 2, g + 24]
+        [g + 10, -h / 2 - 26], [g + 10, h / 2 + 4], [-w / 2, -g - h - 24], [-w / 2, g + 24],
+        [-g - w - 10, -h / 2 - 26], [-g - w - 10, h / 2 + 4], [g + 18, -h / 2 - 50], [-g - w - 18, h / 2 + 28]
       ];
       let best = null, bestScore = Infinity;
       for (const [dx, dy] of cands) {
@@ -214,11 +215,11 @@ async function start() {
     (m && !m.classList.contains('is-hidden') ? m : pill || backBtn).focus({ preventScroll: true });
   }
 
-  function goRegion(r) {
+  function goRegion(r, kb) {
     state.region = r;
     backBtn.hidden = false;
     if (engine) engine.showRegion(r);
-    setTimeout(() => { const f = labels.querySelector('.gl-place:not(.is-hidden)'); if (f) f.focus({ preventScroll: true }); }, 1300);
+    if (kb) setTimeout(() => { const f = labels.querySelector('.gl-place:not(.is-hidden)'); if (f) f.focus({ preventScroll: true }); }, 1600);
   }
 
   backBtn.addEventListener('click', () => {
@@ -318,14 +319,26 @@ function globe3D(THREE, OrbitControls, ctx) {
   for (let i = 0; i < dots.length; i += 2 * stepN) { const v = vec(dots[i], dots[i + 1], 1.002); pos.push(v.x, v.y, v.z); }
   const landGeo = new THREE.BufferGeometry();
   landGeo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  scene.add(new THREE.Points(landGeo, new THREE.PointsMaterial({ size: mobile ? 0.019 : 0.013, map: dotTex, transparent: true, opacity: 0.78, color: 0xf1eee7, depthWrite: false, alphaTest: 0.2 })));
+  const landSize = mobile ? 0.019 : 0.013;
+  const landMat = new THREE.PointsMaterial({ size: landSize, map: dotTex, transparent: true, opacity: 0.78, color: 0xf1eee7, depthWrite: false, alphaTest: 0.2 });
+  scene.add(new THREE.Points(landGeo, landMat));
+
+  // Points plus fins pour la vue rapprochée (Maroc → Alpes), chargés à part
+  const fineMat = new THREE.PointsMaterial({ size: 0.0019, map: dotTex, transparent: true, opacity: 0, color: 0xf1eee7, depthWrite: false });
+  fetch('data/land-dots-fine.json').then((r) => r.json()).then((fd) => {
+    const fp = [];
+    for (let i = 0; i < fd.length; i += 2) { const v = vec(fd[i], fd[i + 1], 1.0015); fp.push(v.x, v.y, v.z); }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(fp, 3));
+    scene.add(new THREE.Points(g, fineMat));
+  }).catch(() => {});
 
   // Lueur rouge autour du globe
   const glow = new THREE.Mesh(
-    new THREE.SphereGeometry(1.16, 64, 64),
+    new THREE.SphereGeometry(1.22, 64, 64),
     new THREE.ShaderMaterial({
       vertexShader: 'varying vec3 vN; void main(){ vN = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
-      fragmentShader: 'varying vec3 vN; void main(){ float i = pow(0.62 - dot(vN, vec3(0.0,0.0,1.0)), 3.2); gl_FragColor = vec4(0.88,0.03,0.0,1.0) * i * 1.4; }',
+      fragmentShader: 'varying vec3 vN; void main(){ float d = abs(dot(vN, vec3(0.0,0.0,1.0))); float i = smoothstep(0.0, 0.62, d); i = i * i * i; gl_FragColor = vec4(0.88,0.03,0.0,1.0) * i * 1.5; }',
       blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true, depthWrite: false
     })
   );
@@ -371,7 +384,11 @@ function globe3D(THREE, OrbitControls, ctx) {
     const mesh = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: 0xff2414, transparent: true, opacity: 0.95 }));
     geo.setDrawRange(0, 0);
     scene.add(mesh);
-    arcs.push({ geo, total: geo.index.count });
+    const lgeo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(160));
+    const line = new THREE.Line(lgeo, new THREE.LineBasicMaterial({ color: 0xff2414, transparent: true, opacity: 0.9 }));
+    lgeo.setDrawRange(0, 0);
+    scene.add(line);
+    arcs.push({ geo, total: geo.index.count, mesh, line, lgeo, ltotal: 161 });
   }
 
   // Contrôles : souris, doigt, molette, pincement
@@ -383,7 +400,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   controls.zoomSpeed = 0.7;
   controls.minDistance = 1.08;
   controls.maxDistance = 6.5;
-  const fitDist = () => Math.min(6, Math.max(2.6, 1.25 / (Math.tan(20 * DEG) * Math.min(1, camera.aspect || 1))));
+  const fitDist = () => Math.min(6.2, 1.32 / (Math.tan(20 * DEG) * Math.min(1, camera.aspect || 1)));
   controls.autoRotate = false;
   controls.autoRotateSpeed = 0.35;
   let userTouched = false;
@@ -422,6 +439,17 @@ function globe3D(THREE, OrbitControls, ctx) {
   }
 
   /* ---------- Niveaux de zoom ---------- */
+  // Distance de la caméra pour que tous les lieux d'une région tiennent à l'écran
+  function regionDist(r) {
+    const R = REGIONS[r];
+    const list = places.filter((p) => p.region === r);
+    let dLat = 0, dLon = 0;
+    list.forEach((p) => { dLat = Math.max(dLat, Math.abs(p.lat - R.lat)); dLon = Math.max(dLon, Math.abs(p.lon - R.lon) * Math.cos(R.lat * DEG)); });
+    const tanH = Math.tan(20 * DEG);
+    const needV = (dLat + 0.75) * DEG / tanH;
+    const needH = (dLon + 0.9) * DEG / (tanH * (camera.aspect || 1));
+    return 1 + Math.max(needV, needH, 0.06);
+  }
   let level = 1; // 1 = globe, 2 = région
   function showGlobe() {
     level = 1; state.region = null;
@@ -432,7 +460,7 @@ function globe3D(THREE, OrbitControls, ctx) {
     level = 2; state.region = r;
     controls.autoRotate = false;
     const R = REGIONS[r];
-    flyTo(R.lat, R.lon, R.dist + (mobile ? 0.06 : 0), 1500).then(() => {
+    flyTo(R.lat, R.lon, regionDist(r), 1500).then(() => {
       labels.querySelectorAll('.gl-place').forEach((el, i) => {
         if (byId[el.dataset.place].region === r) { el.classList.remove('is-lit'); void el.offsetWidth; el.querySelector('.gl-place__dot').style.animationDelay = (i * 40) + 'ms'; el.classList.add('is-lit'); }
       });
@@ -441,8 +469,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   function focusPlace(p) {
     level = 2; state.region = p.region;
     controls.autoRotate = false;
-    const R = REGIONS[p.region];
-    flyTo(p.lat, p.lon, R.dist - 0.02, 1200);
+    flyTo(p.lat, p.lon, regionDist(p.region) * 0.985, 1200);
   }
 
   /* ---------- Étiquettes HTML suivant le globe ---------- */
@@ -467,7 +494,7 @@ function globe3D(THREE, OrbitControls, ctx) {
       if (!visible) return;
       tmp.copy(w).project(camera);
       const x = (tmp.x + 1) / 2 * W, y = (1 - tmp.y) / 2 * H;
-      el.style.transform = 'translate(' + (x - (isPlace ? 22 : 0)).toFixed(1) + 'px,' + (y - (isPlace ? 22 : 0)).toFixed(1) + 'px)' + (isPlace ? '' : ' translate(-50%,-50%)');
+      el.style.transform = 'translate(' + (x - (isPlace ? 22 : 0)).toFixed(1) + 'px,' + (y - (isPlace ? 22 : 0)).toFixed(1) + 'px)' + (isPlace ? '' : (el.dataset.region === 'maroc' ? (W < 600 ? ' translate(-62%,30%)' : ' translate(-88%,10%)') : (W < 600 ? ' translate(-38%,-130%)' : ' translate(-12%,-110%)')));
       if (isPlace) items.push({ el, x, y, r: parseFloat(el.style.getPropertyValue('--s')) / 2 || 6, n: byId[el.dataset.place].photos.length, W, H });
     });
     if (items.length) declutter(items);
@@ -484,12 +511,21 @@ function globe3D(THREE, OrbitControls, ctx) {
   new ResizeObserver(resize).observe(view);
   resize();
 
-  let running = true;
-  const io = new IntersectionObserver((en) => { running = en[0].isIntersecting; if (running) requestAnimationFrame(loop); }, { rootMargin: '100px' });
-  io.observe(view);
-
+  // On ne dessine que lorsque le globe est à l'écran (économise la batterie)
+  let running = false;
   function loop(now) {
+    requestAnimationFrame(loop);
+    const r = view.getBoundingClientRect();
+    running = r.bottom > -50 && r.top < window.innerHeight + 50 && !document.hidden;
     if (!running) return;
+    checkIntro();
+    const dist = camera.position.length();
+    landMat.size = landSize * Math.min(1, Math.max(0.2, (dist - 1) / 1.6));
+    landMat.opacity = 0.78 * Math.min(1, Math.max(0.15, (dist - 1.2) / 0.5));
+    fineMat.opacity = Math.min(0.8, Math.max(0, (1.9 - dist) / 0.5));
+    const far = dist > 1.6;
+    placeMeshes.forEach((m) => { m.visible = far; });
+    arcs.forEach((a) => { a.mesh.visible = far; });
     stepFly(now);
     if (!fly) {
       controls.rotateSpeed = 0.15 + Math.min(0.45, (camera.position.length() - 1) * 0.3);
@@ -498,7 +534,6 @@ function globe3D(THREE, OrbitControls, ctx) {
     animateIntro(now);
     renderer.render(scene, camera);
     updateLabels();
-    requestAnimationFrame(loop);
   }
 
   /* ---------- Animation d'arrivée ---------- */
@@ -509,8 +544,8 @@ function globe3D(THREE, OrbitControls, ctx) {
     // Arcs : chacun se dessine en 700 ms
     arcs.forEach((a, i) => {
       const k = Math.min(1, Math.max(0, (el - i * 650) / 700));
-      const n = Math.floor(k * a.total / 3) * 3;
-      a.geo.setDrawRange(0, n);
+      a.geo.setDrawRange(0, Math.floor(k * a.total / 3) * 3);
+      a.lgeo.setDrawRange(0, Math.floor(k * a.ltotal));
     });
     // Points des lieux : un par un
     const lightStart = arcs.length * 650 + 200;
@@ -529,22 +564,26 @@ function globe3D(THREE, OrbitControls, ctx) {
   setTimeout(() => labels.classList.remove('is-intro'), 9000);
   const startIntro = () => {
     if (state.place) { // un lieu a déjà été choisi avec les pastilles
-      arcs.forEach((a) => a.geo.setDrawRange(0, a.total));
+      arcs.forEach((a) => { a.geo.setDrawRange(0, a.total); a.lgeo.setDrawRange(0, a.ltotal); });
       placeMeshes.forEach((m) => m.scale.setScalar(1));
       labels.classList.remove('is-intro');
       return;
     }
     flyTo(REGIONS.maroc.lat, REGIONS.maroc.lon, fitDist(), 2000).then(() => { intro = { t0: performance.now() }; });
   };
-  const sio = new IntersectionObserver((en) => {
-    if (en[0].intersectionRatio > 0.3) { sio.disconnect(); startIntro(); }
-  }, { threshold: [0, 0.3, 0.6] });
-  sio.observe(view);
+  // Lance l'animation d'arrivée quand le globe est bien visible à l'écran
+  let introStarted = false;
+  function checkIntro() {
+    if (introStarted) return;
+    const r = view.getBoundingClientRect();
+    const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+    if (vis > Math.min(r.height, window.innerHeight) * 0.45) { introStarted = true; startIntro(); }
+  }
 
   requestAnimationFrame(loop);
 
   return {
-    resize: () => { requestAnimationFrame(resize); setTimeout(resize, 650); },
+    resize: () => { resize(); setTimeout(resize, 300); },
     showRegion, showGlobe, focusPlace,
     refresh: () => { labels.querySelectorAll('.gl').forEach((el) => { el.style.left = '0'; el.style.top = '0'; }); }
   };
@@ -555,46 +594,67 @@ function globe3D(THREE, OrbitControls, ctx) {
    ========================================================= */
 function flatMap(ctx) {
   const { view, labels, places, dots, byId, declutter, canvas, state, backBtn } = ctx;
+  state.mode = 'flat';
   canvas.style.display = 'none';
+  view.classList.add('is-flat');
   const box = document.getElementById('flatmap');
   box.hidden = false;
-  state.mode = 'flat';
-  const L0 = -11, L1 = 10, B0 = 31, B1 = 48.5; // zone Maroc → Alpes
-  const k = Math.cos(40 * DEG);
-  const VW = (L1 - L0) * k, VH = B1 - B0;
-  const X = (lon) => (lon - L0) * k, Y = (lat) => B1 - lat;
-  let svg = '<svg viewBox="0 0 ' + VW.toFixed(2) + ' ' + VH + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true">';
-  for (let i = 0; i < dots.length; i += 2) {
-    const la = dots[i], lo = dots[i + 1];
-    if (lo >= L0 && lo <= L1 && la >= B0 && la <= B1) svg += '<circle class="land" cx="' + X(lo).toFixed(2) + '" cy="' + Y(la).toFixed(2) + '" r=".22"/>';
+  const BOX = {
+    maroc: { L0: -8.7, L1: -3.1, B0: 32.3, B1: 36.4 },
+    alpes: { L0: 3.5, L1: 7.7, B0: 44.85, B1: 46.75 }
+  };
+  Object.values(BOX).forEach((b) => {
+    b.k = Math.cos(((b.B0 + b.B1) / 2) * DEG);
+    b.VW = (b.L1 - b.L0) * b.k; b.VH = b.B1 - b.B0;
+  });
+  function svgFor(r, pts) {
+    const b = BOX[r];
+    const rad = (b.VH / 90).toFixed(3);
+    let out = '<svg viewBox="0 0 ' + b.VW.toFixed(3) + ' ' + b.VH.toFixed(3) + '" preserveAspectRatio="xMidYMid meet" aria-hidden="true">';
+    for (let i = 0; i < pts.length; i += 2) {
+      const la = pts[i], lo = pts[i + 1];
+      if (lo >= b.L0 && lo <= b.L1 && la >= b.B0 && la <= b.B1) out += '<circle class="land" cx="' + ((lo - b.L0) * b.k).toFixed(3) + '" cy="' + (b.B1 - la).toFixed(3) + '" r="' + rad + '"/>';
+    }
+    return out + '</svg>';
   }
-  const r = ROUTE.map((id) => byId[id]);
-  svg += '<path class="route" d="' + r.map((p, i) => (i ? 'L' : 'M') + X(p.lon).toFixed(2) + ' ' + Y(p.lat).toFixed(2)).join(' ') + '"/></svg>';
-  box.innerHTML = svg + '<p class="flatmap__note">' + I18N.esc(I18N.t('photo.flat_note')) + '</p>';
-  const svgEl = box.querySelector('svg');
+  function draw(pts) {
+    box.innerHTML = '<div class="fm-grid">' + Object.keys(BOX).map((r) =>
+      '<div class="fm" data-r="' + r + '"><p class="fm__lbl">' + I18N.esc(I18N.t('photo.regions.' + r)) + ' ' + REGIONS[r].flags + '</p>' + svgFor(r, pts) + '</div>').join('') +
+      '</div><p class="flatmap__note">' + I18N.esc(I18N.t('photo.flat_note')) + '</p>';
+    layout();
+  }
+  draw(dots);
+  fetch('data/land-dots-fine.json').then((r) => r.json()).then(draw).catch(() => {});
 
   function layout() {
-    const W = view.clientWidth, H = view.clientHeight;
-    const s = Math.min(W / VW, H / VH);
-    const ox = (W - VW * s) / 2, oy = (H - VH * s) / 2;
+    const vr = view.getBoundingClientRect();
     const items = [];
-    labels.querySelectorAll('.gl').forEach((el) => {
-      if (el.classList.contains('gl-bubble')) { el.classList.add('is-hidden'); return; }
-      const p = byId[el.dataset.place];
-      el.classList.remove('is-hidden');
-      const x = ox + X(p.lon) * s, y = oy + Y(p.lat) * s;
-      el.style.left = '0'; el.style.top = '0';
-      el.style.transform = 'translate(' + (x - 22).toFixed(1) + 'px,' + (y - 22).toFixed(1) + 'px)';
-      items.push({ el, x, y, r: 6, n: p.photos.length, W, H });
+    labels.querySelectorAll('.gl-bubble').forEach((el) => el.classList.add('is-hidden'));
+    Object.keys(BOX).forEach((r) => {
+      const fm = box.querySelector('.fm[data-r="' + r + '"] svg');
+      if (!fm) return;
+      const fr = fm.getBoundingClientRect();
+      const b = BOX[r];
+      const sc = Math.min(fr.width / b.VW, fr.height / b.VH);
+      const ox = fr.left - vr.left + (fr.width - b.VW * sc) / 2;
+      const oy = fr.top - vr.top + (fr.height - b.VH * sc) / 2;
+      places.filter((p) => p.region === r).forEach((p) => {
+        const el = labels.querySelector('.gl-place[data-place="' + p.id + '"]');
+        if (!el) return;
+        el.classList.remove('is-hidden');
+        const x = ox + (p.lon - b.L0) * b.k * sc, y = oy + (b.B1 - p.lat) * sc;
+        el.style.left = '0'; el.style.top = '0';
+        el.style.transform = 'translate(' + (x - 22).toFixed(1) + 'px,' + (y - 22).toFixed(1) + 'px)';
+        items.push({ el, x, y, r: 7, n: p.photos.length, W: vr.width, H: vr.height });
+      });
     });
     declutter(items);
   }
-  new ResizeObserver(layout).observe(view);
-  layout();
+  new ResizeObserver(() => layout()).observe(view);
   backBtn.hidden = true;
   return {
-    resize: () => { setTimeout(layout, 50); setTimeout(layout, 700); },
-    showRegion: () => {}, showGlobe: () => { layout(); }, focusPlace: () => {},
-    refresh: () => { box.querySelector('.flatmap__note').textContent = I18N.t('photo.flat_note'); setTimeout(layout, 0); }
+    resize: () => { layout(); setTimeout(layout, 300); },
+    showRegion: () => {}, showGlobe: layout, focusPlace: () => {},
+    refresh: () => { draw(dots); fetch('data/land-dots-fine.json').then((r) => r.json()).then(draw).catch(() => {}); }
   };
 }

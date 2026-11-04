@@ -36,7 +36,7 @@
     var f = t(k + '.figures') || [];
     if (!f.length) return '';
     return '<h2 class="dsec__title">' + h(t('projects.labels.figures')) + '</h2><div class="figures">' +
-      f.map(function (x, i) { return '<div class="figure rv" style="--d:' + (i * 90) + 'ms"><strong>' + h(x.value) + '</strong><span>' + h(x.label) + '</span></div>'; }).join('') + '</div>';
+      f.map(function (x, i) { return '<div class="figure rv" style="--d:' + (i * 90) + 'ms"><strong' + (String(x.value).length > 4 && !/COMPL/.test(x.value) ? ' class="is-long"' : '') + '>' + h(x.value) + '</strong><span>' + h(x.label) + '</span></div>'; }).join('') + '</div>';
   }
 
   function pages(arr, n) {
@@ -66,11 +66,12 @@
       var count = screens ? screens.length : 3;
       inner = '<div class="phone-wrap">' +
         '<div class="phone" aria-hidden="' + (screens ? 'false' : 'true') + '"><div class="phone__screen"><div class="phone__strip is-anim" style="--end:' + (-(count - 1) / count * 100).toFixed(2) + '%;--dur:' + (count * 4) + 's">' + strip + '</div></div></div>' +
-        '<div><h2 class="dsec__title">' + h(t('projects.labels.screens')) + '</h2>' + figures(k) +
+        '<div><h2 class="dsec__title">' + h(t('projects.labels.screens')) + '</h2>' +
+        '<p class="detail-lead">' + h(t(k + '.context')) + '</p>' +
         '<div class="cta-row">' + (P.figma
           ? '<a class="btn btn--red" href="' + P.figma + '" target="_blank" rel="noopener">' + h(t('projects.labels.figma')) + ' ↗<span class="sr-only"> ' + h(t('common.new_tab')) + '</span></a>'
           : '<span class="btn btn--red" aria-disabled="true">' + h(t('projects.labels.figma')) + ' · ' + h(t('common.soon')) + '</span> <mark class="todo">[À COMPLÉTER : lien Figma]</mark>') +
-        '</div></div></div>';
+        '</div></div></div><div style="margin-top:64px">' + figures(k) + '</div>';
     } else if (type === 'report') {
       var hl = t(k + '.highlights') || [];
       inner = figures(k) +

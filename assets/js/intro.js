@@ -86,7 +86,8 @@ function run() {
     intro.classList.add('has-3d');
     const loop = (now) => {
       const k = (now - t0) / 1000;
-      group.rotation.y = Math.sin(k * 1.6) * 0.6 + k * 0.9 + mx * 0.35;
+      const e = Math.max(0, 1 - k / 0.9);
+      group.rotation.y = -1.3 * e * e + Math.sin(k * 2.4) * 0.22 + mx * 0.35;
       group.rotation.x = Math.sin(k * 1.1) * 0.12 + my * 0.25;
       const s = Math.min(1, 0.6 + k * 0.6);
       group.scale.setScalar(s);

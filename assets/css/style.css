@@ -53,6 +53,7 @@ p { margin: 0 0 1em; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px; }
 ::selection { background: var(--red); color: #fff; }
+[hidden] { display: none !important; }
 .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .skip-link { position: fixed; left: 12px; top: -80px; z-index: 300; background: var(--red); color: #fff; padding: 10px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; }
 .skip-link:focus { top: 12px; }
@@ -96,7 +97,7 @@ mark.todo {
 
 /* ---------- Typo ---------- */
 .h-giant, .h-big, .h-mid, .opener__title, .hero__title { font-family: var(--f-title); text-transform: uppercase; letter-spacing: .005em; line-height: .86; }
-.h-giant { font-size: clamp(64px, 19vw, 230px); }
+.h-giant { font-size: clamp(64px, 19vw, 230px); line-height: .92; }
 .h-giant--red { color: var(--red); }
 .h-big { font-size: clamp(52px, 12vw, 150px); }
 .h-mid { font-size: clamp(30px, 5vw, 52px); line-height: .95; margin: 64px 0 22px; }
@@ -608,7 +609,7 @@ html.js:not(.reduce) .vcard__rec { animation: rec 2.4s ease-in-out infinite; }
 .insta-link svg .fill { fill: currentColor; stroke: none; }
 
 .globe-stage { position: relative; display: grid; grid-template-columns: 1fr; border-radius: 26px; overflow: hidden; background: radial-gradient(ellipse at 50% 45%, #1a0b0a 0%, #070707 60%); border: 1px solid #222; }
-.globe-view { position: relative; height: clamp(440px, 78vh, 820px); transition: height .6s var(--ease); touch-action: pan-y; }
+.globe-view { position: relative; height: clamp(440px, 78vh, 820px); touch-action: pan-y; }
 #globe-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; }
 #globe-canvas:active { cursor: grabbing; }
 .globe-labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
@@ -892,3 +893,31 @@ html.reduce .marquee__track, html.reduce .opener__bg, html.reduce .tv__grain { a
 }
 .globe-labels.is-intro .gl-bubble { opacity: 0; pointer-events: none; }
 html.show-intro:not(.intro-done) .hero__title .neon { animation-play-state: paused; }
+.about .polas { flex-wrap: nowrap; justify-content: center; }
+.about .polas .polaroid { width: 38%; max-width: 220px; margin: 0 -2.5%; }
+.about .polas .polaroid--land { width: 44%; max-width: 260px; }
+.about .polas .polaroid:nth-child(2) { margin-top: 46px; z-index: 1; }
+.tile--fig strong.is-long { font-size: clamp(28px, 3.2vw, 46px); overflow-wrap: normal; }
+.pp__name:focus { outline: none; }
+
+.globe-stage.has-panel .globe-hint { display: none; }
+@media (max-width: 600px) {
+  .gl-bubble { min-height: 44px; padding: 8px 13px; font-size: 13px; gap: 6px; }
+  .gl-bubble small { font-size: 11px; }
+  .globe-view { height: 64svh; min-height: 420px; }
+}
+.phone__screen { color: var(--ink); }
+.figure strong.is-long { font-size: clamp(36px, 4.4vw, 60px); }
+.detail-lead { font-size: clamp(17px, 1.6vw, 20px); max-width: 560px; color: #e4e0d7; }
+.btn[aria-disabled="true"] { opacity: 1; background: transparent; border: 2px dashed #6b6862; color: var(--grey-light); }
+.paper .btn[aria-disabled="true"] { color: var(--grey); border-color: var(--grey-light); }
+.cta-row { align-items: center; }
+/* Carte plate : deux cartes (Maroc / Alpes) */
+.is-flat .globe-hint { display: none; }
+.fm-grid { position: absolute; inset: 14px 14px 34px; display: grid; gap: 12px; grid-template-rows: 1.6fr 1fr; }
+.fm { position: relative; border: 1px solid #262626; border-radius: 16px; padding: 30px 10px 10px; min-height: 0; display: flex; }
+.fm svg { flex: 1; width: 100%; height: 100%; min-height: 0; }
+.fm__lbl { position: absolute; top: 8px; left: 12px; margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--grey-light); }
+@media (min-width: 760px) { .fm-grid { grid-template-rows: none; grid-template-columns: 1.3fr 1fr; } }
+.globe-stage.has-panel .is-flat .fm-grid { grid-template-rows: none; grid-template-columns: 1.3fr 1fr; }
+@media (min-width: 1024px) { .globe-stage.has-panel .is-flat .fm-grid { grid-template-columns: none; grid-template-rows: 1.4fr 1fr; } }

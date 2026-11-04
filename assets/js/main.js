@@ -50,7 +50,7 @@
         '<div class="tile tile--year"><span class="tile__lbl">' + h(t('projects.labels.year')) + '</span><strong>' + h(t(k + '.year')) + '</strong></div>' +
         '<div class="tile tile--tall"><ul>' + tiles.map(function (x) { return '<li>' + h(x) + '</li>'; }).join('') + '</ul></div>' +
         '<div class="tile tile--wide"><p>' + h(t(k + '.tagline')) + '</p><span class="tile__go" aria-hidden="true">' + h(t('projects.open')) + ' →</span></div>' +
-        '<div class="tile tile--fig"><strong>' + h(fig.value) + '</strong><span>' + h(fig.label) + '</span></div>' +
+        '<div class="tile tile--fig"><strong' + (String(fig.value).length > 3 ? ' class="is-long"' : '') + '>' + h(fig.value) + '</strong><span>' + h(fig.label) + '</span></div>' +
       '</div></article>';
   }
   function renderProjects() {
