@@ -1,0 +1,599 @@
+{
+ "instagram": "https://www.instagram.com/the_white_side_/",
+ "places": [
+  {
+   "id": "casablanca",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Casablanca",
+   "lat": 33.608,
+   "lon": -7.633,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-02-casablanca-mosquee-hassan2-nuit",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-01-casablanca-mosquee-hassan2-jour",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-03-casablanca-minaret-arche",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-04-casablanca-salle-de-priere",
+     "star": false,
+     "w": 1280,
+     "h": 1600
+    },
+    {
+     "file": "photo-43-casablanca-chat-lierre",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    }
+   ]
+  },
+  {
+   "id": "settat",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Settat",
+   "lat": 33.001,
+   "lon": -7.617,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-12-settat-rue-nuit-brouillard",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-75-settat-arche-cypres",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-13-settat-bus-brume",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-32-settat-rue-minaret",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-33-settat-parc-matin",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-34-settat-porte-ancienne",
+     "star": false,
+     "w": 1279,
+     "h": 1600
+    },
+    {
+     "file": "photo-39-settat-drapeau",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    }
+   ]
+  },
+  {
+   "id": "ifrane",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Ifrane & Immouzer",
+   "lat": 33.53,
+   "lon": -5.11,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-06-ifrane-immouzer-maison-brume",
+     "star": true,
+     "w": 1279,
+     "h": 1600
+    },
+    {
+     "file": "photo-05-ifrane-immouzer-chat-vitre",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-07-ifrane-immouzer-route-foret-neige",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-08-ifrane-immouzer-rue-palmier-neige",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-09-ifrane-immouzer-terrain-basket-neige",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-10-ifrane-immouzer-toits-neige",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-11-ifrane-immouzer-homme-neige",
+     "star": false,
+     "w": 1200,
+     "h": 1600,
+     "consent": false
+    }
+   ]
+  },
+  {
+   "id": "al-wahda",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Barrage Al Wahda",
+   "lat": 34.65,
+   "lon": -5.19,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-24-al-wahda-voie-lactee",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-30-al-wahda-lac-sinueux",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-25-al-wahda-barque",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-26-al-wahda-tente",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-27-al-wahda-chaton-herbe",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-28-al-wahda-lac-olivier",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-29-al-wahda-foret-montagnes",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-31-al-wahda-lac-panorama",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    }
+   ]
+  },
+  {
+   "id": "tanger",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Tanger",
+   "lat": 35.76,
+   "lon": -5.834,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-41-tanger-chat-endormi",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-40-tanger-corniche-port",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-42-tanger-corniche-virage",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    }
+   ]
+  },
+  {
+   "id": "tetouan",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Tétouan",
+   "lat": 35.578,
+   "lon": -5.368,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-20-tetouan-terrain-foot-nuit",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-21-tetouan-panorama",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    }
+   ]
+  },
+  {
+   "id": "mdiq",
+   "country": "ma",
+   "region": "maroc",
+   "name": "M'diq",
+   "lat": 35.686,
+   "lon": -5.325,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-17-mdiq-chaton-arche",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-16-mdiq-maison-pilotis",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-18-mdiq-panneaux",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-19-mdiq-club-plongee",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    }
+   ]
+  },
+  {
+   "id": "chefchaouen",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Chefchaouen",
+   "lat": 35.169,
+   "lon": -5.264,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-35-chefchaouen-minaret-bleu",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-37-chefchaouen-medina-cadre",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-38-chefchaouen-voiture-rouge",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-36-chefchaouen-medina",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    }
+   ]
+  },
+  {
+   "id": "akchour",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Akchour",
+   "lat": 35.238,
+   "lon": -5.175,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-23-akchour-riviere-lauriers",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-22-akchour-sentier-figuiers",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-57-akchour-promeneuse",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    }
+   ]
+  },
+  {
+   "id": "al-hoceima",
+   "country": "ma",
+   "region": "maroc",
+   "name": "Al Hoceima",
+   "lat": 35.252,
+   "lon": -3.937,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-14-al-hoceima-vallee-route",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-15-al-hoceima-coucher-soleil",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    }
+   ]
+  },
+  {
+   "id": "saint-etienne",
+   "country": "fr",
+   "region": "alpes",
+   "name": "Saint-Étienne",
+   "lat": 45.44,
+   "lon": 4.387,
+   "home": true,
+   "photos": [
+    {
+     "file": "photo-44-saint-etienne-tram",
+     "star": true,
+     "w": 1280,
+     "h": 1600
+    },
+    {
+     "file": "photo-45-saint-etienne-kiosque-nuit",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-59-saint-etienne-hotel-de-ville-place",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-46-saint-etienne-rue-coucher-soleil",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-58-saint-etienne-hotel-de-ville-drapeaux",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-61-saint-etienne-route-arbres",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    }
+   ]
+  },
+  {
+   "id": "chamonix",
+   "country": "fr",
+   "region": "alpes",
+   "name": "Chamonix",
+   "lat": 45.924,
+   "lon": 6.869,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-62-chamonix-lac-reflet-dore",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-65-chamonix-lac-reflet-bleu",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-70-chamonix-rue-grue",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-63-chamonix-banc-glacier",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-64-chamonix-sentier-moutons",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-66-chamonix-chalet-soir",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-67-chamonix-panneau-canards",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-68-chamonix-horloge",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-69-chamonix-sentier-aiguille",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-71-chamonix-maison-aiguilles",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-72-chamonix-route-automne",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-73-chamonix-foret-orange",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    }
+   ]
+  },
+  {
+   "id": "geneve",
+   "country": "ch",
+   "region": "alpes",
+   "name": "Genève",
+   "lat": 46.204,
+   "lon": 6.143,
+   "home": false,
+   "photos": [
+    {
+     "file": "photo-48-geneve-batiment-forces-motrices",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-50-geneve-jet-d-eau",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-55-geneve-cathedrale-saint-pierre",
+     "star": true,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-74-geneve-jonction-rhone-arve",
+     "star": true,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-47-geneve-promenade-automne",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-49-geneve-quais-mont-blanc",
+     "star": false,
+     "w": 1600,
+     "h": 1200
+    },
+    {
+     "file": "photo-51-geneve-quai-coucher-soleil",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-52-geneve-echecs-bastions",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-53-geneve-drapeaux",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-54-geneve-passerelle",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-60-geneve-cathedrale-interieur",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    },
+    {
+     "file": "photo-56-geneve-cour-automne",
+     "star": false,
+     "w": 1200,
+     "h": 1600
+    }
+   ]
+  }
+ ]
+}

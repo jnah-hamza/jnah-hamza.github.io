@@ -1,0 +1,86 @@
+{
+  "cv": "assets/docs/cv-hamza-jnah.pdf",
+  "email": "jnah.hamza.pro@gmail.com",
+  "phone": "+33 7 45 74 91 80",
+  "linkedin": "https://www.linkedin.com/in/hamza-jnah",
+  "instagram": "https://www.instagram.com/the_white_side_/",
+  "formspree": "VOTRE_ID_FORMSPREE",
+  "projects": [
+    {
+      "id": "take-taste",
+      "type": "prototype",
+      "group": false,
+      "cover": "",
+      "figma": "",
+      "screens": [],
+      "sketch": true
+    },
+    {
+      "id": "porsche-hermes",
+      "type": "report",
+      "group": false,
+      "ongoing": true,
+      "cover": "",
+      "pdf": "assets/docs/porsche-hermes-911-sellier.pdf",
+      "pages": []
+    },
+    {
+      "id": "sephora",
+      "type": "report",
+      "group": false,
+      "cover": "",
+      "pdf": "assets/docs/sephora-chatbots.pdf",
+      "pages": []
+    },
+    {
+      "id": "aballa",
+      "type": "brand",
+      "group": true,
+      "cover": "",
+      "gallery": []
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "rebirth",
+      "type": "campaign",
+      "cover": "",
+      "pages": [],
+      "pdfs": [
+        { "file": "assets/docs/rebirth-presentation.pdf", "label": "pdf_presentation" },
+        { "file": "assets/docs/rebirth-fiche.pdf", "label": "pdf_fiche" }
+      ]
+    }
+  ],
+  "videos": [
+    { "youtube": "4RrNR4nW9DI" },
+    { "youtube": "sCmYhfjKNMY" },
+    { "youtube": "" }
+  ],
+  "extra": [
+    { "photos": [] },
+    { "photos": [] },
+    { "photos": [] }
+  ],
+  "about_polaroids": [
+    "photo-44-saint-etienne-tram",
+    "photo-24-al-wahda-voie-lactee",
+    "photo-62-chamonix-lac-reflet-dore"
+  ],
+  "tools": [
+    { "cat": "office", "name": "Excel avancé", "name_en": "Advanced Excel" },
+    { "cat": "office", "name": "Word" },
+    { "cat": "office", "name": "PowerPoint" },
+    { "cat": "data", "name": "Power BI" },
+    { "cat": "data", "name": "SPSS" },
+    { "cat": "data", "name": "Sphinx" },
+    { "cat": "data", "name": "Google Analytics" },
+    { "cat": "marketing", "name": "Brevo" },
+    { "cat": "design", "name": "Canva" },
+    { "cat": "design", "name": "Figma" },
+    { "cat": "design", "name": "Adobe Photoshop" },
+    { "cat": "design", "name": "Adobe Illustrator" },
+    { "cat": "video", "name": "Adobe Premiere Pro" },
+    { "cat": "video", "name": "DaVinci Resolve" }
+  ]
+}

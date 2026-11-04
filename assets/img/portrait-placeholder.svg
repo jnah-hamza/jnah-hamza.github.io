@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Portrait à venir">
+  <defs>
+    <pattern id="h" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="#1b1b1b"/><rect width="5" height="14" fill="#242424"/>
+    </pattern>
+  </defs>
+  <path d="M450 120c-112 0-190 86-190 205 0 82 34 150 86 190-6 30-20 52-52 66-140 40-224 108-244 220-8 46-10 140-10 299h820c0-159-2-253-10-299-20-112-104-180-244-220-32-14-46-36-52-66 52-40 86-108 86-190 0-119-78-205-190-205z" fill="url(#h)"/>
+</svg>
