@@ -30,7 +30,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,500&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script type="importmap">
@@ -131,18 +131,21 @@
       <div class="hero__inner">
         <div class="hero__text">
           <p class="hero__kicker"><span class="star">✦✦✦</span> <span data-i18n="hero.kicker">Portfolio 2027</span></p>
-          <h1 class="hero__title sel" aria-label="Hamza Jnah">
-            <span class="neon" aria-hidden="true">HAMZA</span>
-            <span class="neon neon--2" aria-hidden="true">JNAH</span>
-            <i class="sel__h" aria-hidden="true"></i><i class="sel__h" aria-hidden="true"></i>
-          </h1>
+          <div class="dragname" id="dragname">
+            <h1 class="hero__title sel" id="hero-title" aria-label="Hamza Jnah">
+              <span class="neon" aria-hidden="true">HAMZA</span>
+              <span class="neon neon--2" aria-hidden="true">JNAH</span>
+              <i class="sel__h" aria-hidden="true"></i><i class="sel__h" aria-hidden="true"></i>
+            </h1>
+            <span class="dragname__hint" id="drag-hint" aria-hidden="true" data-i18n="hero.drag">← glisse →</span>
+          </div>
           <p class="hero__subtitle" data-i18n="hero.subtitle">Étudiant en marketing · Esprit créatif</p>
-          <p class="typeline"><span data-i18n="hero.type_prefix">Je pense la stratégie. Je crée</span> <span class="typeword" id="typeword">l'image</span><span class="typecaret" aria-hidden="true"></span></p>
-          <p class="badge" data-i18n="hero.badge">Recherche un stage en marketing · 3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne &amp; Lyon</p>
-          <p class="hero__pitch">
-            <span class="hero__tags"><span class="tag tag--black" data-i18n="hero.tag_analyse">Analyse</span><span class="plus" aria-hidden="true">+</span><span class="tag tag--red" data-i18n="hero.tag_creation">Création</span></span>
-            <span data-i18n="hero.pitch">Mon atout : un double profil. J'analyse (données, SEO, GEO, études de marché, réseaux sociaux) et je crée (vidéo, photo, design graphique).</span>
-          </p>
+          <p class="double"><span class="double__logos"><img src="assets/img/logos/logo-encg-settat.webp" alt="ENCG Settat" width="40" height="40"><span aria-hidden="true">×</span><img src="assets/img/logos/logo-iae-saint-etienne.webp" alt="IAE Saint-Étienne" width="40" height="40"></span><span data-i18n="hero.double">Double diplôme ENCG Settat × IAE Saint-Étienne</span></p>
+          <p class="typeline"><span data-i18n="hero.type_prefix">Je pense la stratégie. Je crée</span> <span class="typeword fx-0" id="typeword">l'image</span></p>
+          <div class="seeking">
+            <p class="seeking__text"><strong class="seeking__k" data-i18n="hero.badge_kicker">En recherche de stage</strong> <span data-i18n="hero.badge_text">3 à 6 mois · dès le 8 mars 2027 · Saint-Étienne &amp; Lyon</span></p>
+            <a class="seeking__btn" href="#contact" data-i18n="hero.cta_contact">Me contacter</a>
+          </div>
           <div class="hero__cta">
             <a class="btn btn--red" href="#projets" data-i18n="hero.cta_projects">Voir mes projets</a>
             <a class="btn btn--outline" href="assets/docs/cv-hamza-jnah.pdf" download data-i18n="hero.cta_cv">Télécharger mon CV</a>
@@ -171,32 +174,68 @@
       <div class="wrap about__grid">
         <div class="about__text">
           <div class="hello-row">
-            <div class="me3d" id="me3d">
-              <div class="me3d__stage" id="me3d-stage">
-                <button class="flipcard" id="flipcard" type="button" aria-pressed="false" data-i18n-attr="aria-label:about.card_hint" aria-label="Cliquez pour retourner la carte">
-                  <span class="flipcard__inner">
-                    <span class="flipcard__face flipcard__front"><img id="flip-img" src="assets/img/portrait.webp" alt="" loading="lazy" width="717" height="1000"></span>
-                    <span class="flipcard__face flipcard__back"><span class="flipcard__logo">HJ</span><span class="flipcard__t" data-i18n="about.card_back_title">Étudiant en marketing</span><span class="flipcard__s" data-i18n="about.card_back_sub">Saint-Étienne &amp; Lyon</span></span>
-                  </span>
-                </button>
+            <figure class="film rv" id="film">
+              <div class="film__strip">
+                <span class="film__code" aria-hidden="true">HJ 2027 · 400</span>
+                <div class="film__frame">
+                  <img src="assets/img/portrait-hello.webp" alt="Photo de Hamza Jnah" data-i18n-attr="alt:about.film_alt" width="800" height="1000" loading="lazy">
+                  <span class="film__leak" aria-hidden="true"></span>
+                </div>
+                <span class="film__num" aria-hidden="true">24 ▸ 24A</span>
               </div>
-              <span class="me3d__tag" aria-hidden="true">360°</span>
-            </div>
+            </figure>
             <h2 class="h-giant sel reveal-letters" data-i18n="about.title">Hello</h2>
           </div>
-          <p class="about__lead" data-i18n="about.lead">Je suis Hamza.</p>
+          <h3 class="sig" id="sig"><span class="sr-only" data-i18n="about.lead">Je suis Hamza</span><svg viewBox="0 0 640 130" aria-hidden="true" focusable="false"><text x="6" y="98" id="sig-text">Je suis Hamza</text></svg></h3>
           <p class="about__body" data-i18n="about.text"></p>
         </div>
         <div class="about__side">
-          <div class="strengths-box">
           <h3 class="label strengths__title" data-i18n="about.strengths_title">Ce que j'apporte</h3>
-          <ul class="strengths" id="strengths">
-            <li><strong data-i18n="about.s1n">Créativité :</strong> <span data-i18n="about.s1t">vidéographie, photographie, design graphique, direction artistique de campagne (affiche Rebirth)</span></li>
-            <li><strong data-i18n="about.s2n">Marketing digital :</strong> <span data-i18n="about.s2t">SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur</span></li>
-            <li><strong data-i18n="about.s3n">Marketing stratégique :</strong> <span data-i18n="about.s3t">études de marché, analyse concurrentielle, stratégies marketing</span></li>
-            <li><strong data-i18n="about.s4n">Data &amp; reporting :</strong> <span data-i18n="about.s4t">analyse de données, ACP, tableaux de bord</span></li>
-            <li><strong data-i18n="about.s5n">Mobilité :</strong> <span data-i18n="about.s5t">Saint-Étienne &amp; Lyon · Permis B</span></li>
+          <p class="bcards__hint" data-i18n="about.card_flip">Survolez ou touchez une carte</p>
+          <ul class="bcards" id="bcards">
+            <li class="bc bc--creativity rv" style="--d:0ms" tabindex="0">
+              <div class="bc__inner">
+                <div class="bc__face bc__front"><svg class="bc__box" viewBox="0 0 120 90" aria-hidden="true"><path class="bc__box-body" d="M30 40 h60 v40 h-60 Z"/><path class="bc__lid bc__lid--l" d="M30 40 l-18 -14"/><path class="bc__lid bc__lid--r" d="M90 40 l18 -14"/><g class="bc__spark"><path d="M60 30 v-10 M48 32 l-6 -8 M72 32 l6 -8"/></g></svg><span class="bc__hook" data-i18n="about.cards.0.hook">Penser en dehors de la boîte</span><h4 class="bc__title" data-i18n="about.cards.0.title">Créativité</h4></div>
+                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.0.title">Créativité</h4><p data-i18n="about.cards.0.text">Vidéographie, photographie, design graphique.</p></div>
+              </div>
+            </li>
+            <li class="bc bc--digital rv" style="--d:140ms" tabindex="0">
+              <div class="bc__inner">
+                <div class="bc__face bc__front"><svg class="bc__ico bc__ico--click" viewBox="0 0 64 64" aria-hidden="true"><circle class="w1" cx="26" cy="26" r="8"/><circle class="w2" cx="26" cy="26" r="16"/><path class="cur" d="M26 26 l22 10 -9 3 -3 9 Z"/></svg><h4 class="bc__title" data-i18n="about.cards.1.title">Marketing digital</h4></div>
+                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.1.title">Marketing digital</h4><p data-i18n="about.cards.1.text">SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur.</p></div>
+              </div>
+            </li>
+            <li class="bc bc--strategy rv" style="--d:280ms" tabindex="0">
+              <div class="bc__inner">
+                <div class="bc__face bc__front"><svg class="bc__ico bc__ico--target" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="13"/><circle class="dot" cx="32" cy="32" r="4"/><path class="arrow" d="M58 6 L34 30 M58 6 h-9 M58 6 v9"/></svg><h4 class="bc__title" data-i18n="about.cards.2.title">Marketing stratégique</h4></div>
+                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.2.title">Marketing stratégique</h4><p data-i18n="about.cards.2.text">Études de marché, analyse concurrentielle, stratégies marketing.</p></div>
+              </div>
+            </li>
+            <li class="bc bc--data rv" style="--d:420ms" tabindex="0">
+              <div class="bc__inner">
+                <div class="bc__face bc__front"><svg class="bc__ico bc__ico--bars" viewBox="0 0 64 64" aria-hidden="true"><rect class="b1" x="10" y="30" width="10" height="24"/><rect class="b2" x="27" y="18" width="10" height="36"/><rect class="b3" x="44" y="8" width="10" height="46"/><path d="M6 56 h52"/></svg><h4 class="bc__title" data-i18n="about.cards.3.title">Data &amp; reporting</h4></div>
+                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.3.title">Data &amp; reporting</h4><p data-i18n="about.cards.3.text">Analyse de données, ACP, tableaux de bord.</p></div>
+              </div>
+            </li>
           </ul>
+          <div class="move rv" id="move">
+            <div class="move__map">
+              <p class="label" data-i18n="about.mobility_title">Mobilité</p>
+              <svg viewBox="0 0 300 150" aria-hidden="true" focusable="false">
+                <path class="move__river" d="M210 0 C 200 40, 230 70, 215 150"/>
+                <path id="move-line" class="move__line" d="M70 112 C 120 70, 170 60, 230 38"/>
+                <circle class="move__city" cx="70" cy="112" r="7"/><circle class="move__city" cx="230" cy="38" r="7"/>
+                <text x="40" y="140" class="move__name">Saint-Étienne</text><text x="196" y="22" class="move__name">Lyon</text>
+                <g class="move__train"><rect x="-13" y="-7" width="26" height="14" rx="4"/><rect class="win" x="-8" y="-4" width="6" height="5" rx="1"/><rect class="win" x="2" y="-4" width="6" height="5" rx="1"/>
+                  <animateMotion id="move-anim" dur="5s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="linear"><mpath href="#move-line"/></animateMotion></g>
+              </svg>
+              <p class="move__line-txt" data-i18n="about.mobility_line">Saint-Étienne ⇄ Lyon</p>
+            </div>
+            <div class="licence" aria-label="Permis B">
+              <span class="licence__eu" aria-hidden="true">F</span>
+              <span class="licence__t" data-i18n="about.licence">Permis B</span>
+              <span class="licence__b" aria-hidden="true">B</span>
+            </div>
           </div>
         </div>
       </div>
@@ -305,6 +344,11 @@
             <p class="globe-loading" id="globe-loading" data-i18n="photo.loading">Chargement du globe…</p>
             <p class="globe-hint" data-i18n="photo.hint">Faites tourner le globe, puis choisissez une région.</p>
             <button class="globe-back btn btn--small" id="globe-back" type="button" hidden data-i18n="photo.back">← Retour au globe</button>
+            <div class="globe-peek" id="globe-peek" hidden></div>
+            <div class="spin-hint" id="spin-hint" aria-hidden="true">
+              <svg viewBox="0 0 120 80"><path class="spin-hint__arc" d="M20 50 A 42 22 0 1 1 100 50"/><path class="spin-hint__arrow" d="M100 50 l-10 -2 M100 50 l3 -9"/><g class="spin-hint__hand"><path d="M54 70 v-22 a4 4 0 0 1 8 0 v14 v-6 a4 4 0 0 1 8 0 v6 v-3 a4 4 0 0 1 8 0 v9 c0 9 -5 14 -14 14 h-4 c-6 0 -10 -4 -12 -9 l-6 -10 a4 4 0 0 1 7 -4 Z"/></g></svg>
+              <span data-i18n="photo.spin">Fais tourner le globe</span>
+            </div>
           </div>
           <aside class="place-panel" id="place-panel" hidden aria-live="polite"></aside>
         </div>
@@ -427,7 +471,7 @@
   <script src="assets/js/common.js"></script>
   <script src="assets/js/project-view.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/me3d.js"></script>
+  <script src="assets/js/hero.js"></script>
   <script type="module" src="assets/js/globe.js"></script>
   <script type="module" src="assets/js/intro.js"></script>
 </body>
