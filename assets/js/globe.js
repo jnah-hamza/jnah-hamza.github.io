@@ -316,6 +316,8 @@ async function start() {
     }
   }
   view.classList.add('globe-ready');
+  // Carte plate : on affiche le panneau complet de Saint-Étienne sous la carte (le bandeau la cacherait)
+  if (state.mode === 'flat' && peek && !peek.hidden) { hidePeek(); openPlace(START, false, false, true); }
   if (engine && engine.intro) engine.intro();
 }
 

@@ -1631,3 +1631,15 @@ html.js:not(.reduce) .bc--creativity:not(.is-in) .bc__hook { transform: translat
 .spin-hint { top: auto; bottom: 18px; transform: translateX(-50%); flex-direction: row; gap: 10px; } .spin-hint svg { width: 84px; height: 56px; } .spin-hint span { font-size: 20px; }
 .club--epik .club__body.has-gal { grid-template-columns: 1fr; }
 .club--epik .club__body .mosaic { order: -1; max-width: 560px; }
+/* Clubs : texte puis mosaïque pleine largeur (plus de vide sous le texte) */
+@media (min-width: 960px) {
+  .club__body.has-gal { grid-template-columns: 1fr; }
+  .club__text { max-width: 900px; }
+  .club__body.has-gal .mosaic--4 { columns: 4; }
+  .club__body.has-gal .mosaic--5 { columns: 3; }
+  .club__body.has-gal .mosaic--3 { columns: 3; }
+  .club__body.has-gal .mosaic--2 { columns: 2; max-width: 820px; }
+  .subcard { grid-template-columns: 1.2fr 1fr; }
+}
+.club--epik .club__body .mosaic { max-width: 720px; margin: 0 auto; }
+.club--epik .club__body .mosaic--1 .mosaic__item { margin: 0; }

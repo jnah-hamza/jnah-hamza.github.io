@@ -104,7 +104,10 @@
       if (!n) return;
       if (reduce()) { sig.letters.forEach(function (l) { l.style.strokeDashoffset = 0; l.style.fillOpacity = 1; }); return; }
       var r = box.getBoundingClientRect(), vh = window.innerHeight;
-      var p = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.45)));
+      var p = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.4)));
+      // Une fois écrite, la signature reste visible (et elle l'est aussi si on arrive plus bas)
+      if (r.bottom < 0) p = 1;
+      sig.max = Math.max(sig.max || 0, p); p = sig.max;
       sig.letters.forEach(function (l, i) {
         var lp = Math.min(1, Math.max(0, p * (n + 3) - i));
         l.style.strokeDashoffset = (300 * (1 - lp)).toFixed(1);
