@@ -131,13 +131,13 @@
       <div class="hero__inner">
         <div class="hero__text">
           <p class="hero__kicker"><span class="star">✦✦✦</span> <span data-i18n="hero.kicker">Portfolio 2027</span></p>
-          <div class="dragname" id="dragname">
-            <h1 class="hero__title sel" id="hero-title" aria-label="Hamza Jnah">
-              <span class="neon" aria-hidden="true">HAMZA</span>
-              <span class="neon neon--2" aria-hidden="true">JNAH</span>
-              <i class="sel__h" aria-hidden="true"></i><i class="sel__h" aria-hidden="true"></i>
+          <div class="namebox" id="namebox">
+            <h1 class="hero__title namebox__text" id="hero-title" aria-label="Hamza Jnah">
+              <span class="neon" aria-hidden="true">HAMZA</span> <span class="neon neon--2" aria-hidden="true">JNAH</span>
             </h1>
-            <span class="dragname__hint" id="drag-hint" aria-hidden="true" data-i18n="hero.drag">← glisse →</span>
+            <span class="namebox__frame" aria-hidden="true"><i class="nb-c nb-tl"></i><i class="nb-c nb-tr"></i><i class="nb-c nb-bl"></i><i class="nb-c nb-br"></i><i class="nb-s nb-t"></i><i class="nb-s nb-b"></i><i class="nb-s nb-l"></i></span>
+            <button class="namebox__handle" id="namebox-handle" type="button" data-i18n-attr="aria-label:hero.stretch_label" aria-label="Élargir la zone du nom"><i></i></button>
+            <span class="namebox__hint" id="namebox-hint" aria-hidden="true" data-i18n="hero.stretch">↔ étire-moi</span>
           </div>
           <p class="hero__subtitle" data-i18n="hero.subtitle">Étudiant en marketing · Esprit créatif</p>
           <p class="double"><span class="double__logos"><img src="assets/img/logos/logo-encg-settat.webp" alt="ENCG Settat" width="40" height="40"><span aria-hidden="true">×</span><img src="assets/img/logos/logo-iae-saint-etienne.webp" alt="IAE Saint-Étienne" width="40" height="40"></span><span data-i18n="hero.double">Double diplôme ENCG Settat × IAE Saint-Étienne</span></p>
@@ -171,10 +171,8 @@
     <!-- 6.2 À PROPOS -->
     <section class="about paper" id="a-propos">
       <div class="torn torn--top" data-color="black" data-seed="7"></div>
-      <div class="wrap about__grid">
-        <div class="about__text">
-          <div class="hello-row">
-            <figure class="film rv" id="film">
+      <div class="wrap hello">
+                    <figure class="film hello__photo rv" id="film">
               <div class="film__strip">
                 <span class="film__code" aria-hidden="true">HJ 2027 · 400</span>
                 <div class="film__frame">
@@ -184,39 +182,16 @@
                 <span class="film__num" aria-hidden="true">24 ▸ 24A</span>
               </div>
             </figure>
-            <h2 class="h-giant sel reveal-letters" data-i18n="about.title">Hello</h2>
-          </div>
-          <h3 class="sig" id="sig"><span class="sr-only" data-i18n="about.lead">Je suis Hamza</span><svg viewBox="0 0 640 130" aria-hidden="true" focusable="false"><text x="6" y="98" id="sig-text">Je suis Hamza</text></svg></h3>
-          <p class="about__body" data-i18n="about.text"></p>
-        </div>
-        <div class="about__side">
-          <h3 class="label strengths__title" data-i18n="about.strengths_title">Ce que j'apporte</h3>
-          <p class="bcards__hint" data-i18n="about.card_flip">Survolez ou touchez une carte</p>
-          <ul class="bcards" id="bcards">
-            <li class="bc bc--creativity rv" style="--d:0ms" tabindex="0">
-              <div class="bc__inner">
-                <div class="bc__face bc__front"><svg class="bc__box" viewBox="0 0 120 90" aria-hidden="true"><path class="bc__box-body" d="M30 40 h60 v40 h-60 Z"/><path class="bc__lid bc__lid--l" d="M30 40 l-18 -14"/><path class="bc__lid bc__lid--r" d="M90 40 l18 -14"/><g class="bc__spark"><path d="M60 30 v-10 M48 32 l-6 -8 M72 32 l6 -8"/></g></svg><span class="bc__hook" data-i18n="about.cards.0.hook">Penser en dehors de la boîte</span><h4 class="bc__title" data-i18n="about.cards.0.title">Créativité</h4></div>
-                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.0.title">Créativité</h4><p data-i18n="about.cards.0.text">Vidéographie, photographie, design graphique.</p></div>
-              </div>
-            </li>
-            <li class="bc bc--digital rv" style="--d:140ms" tabindex="0">
-              <div class="bc__inner">
-                <div class="bc__face bc__front"><svg class="bc__ico bc__ico--click" viewBox="0 0 64 64" aria-hidden="true"><circle class="w1" cx="26" cy="26" r="8"/><circle class="w2" cx="26" cy="26" r="16"/><path class="cur" d="M26 26 l22 10 -9 3 -3 9 Z"/></svg><h4 class="bc__title" data-i18n="about.cards.1.title">Marketing digital</h4></div>
-                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.1.title">Marketing digital</h4><p data-i18n="about.cards.1.text">SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur.</p></div>
-              </div>
-            </li>
-            <li class="bc bc--strategy rv" style="--d:280ms" tabindex="0">
-              <div class="bc__inner">
-                <div class="bc__face bc__front"><svg class="bc__ico bc__ico--target" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="13"/><circle class="dot" cx="32" cy="32" r="4"/><path class="arrow" d="M58 6 L34 30 M58 6 h-9 M58 6 v9"/></svg><h4 class="bc__title" data-i18n="about.cards.2.title">Marketing stratégique</h4></div>
-                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.2.title">Marketing stratégique</h4><p data-i18n="about.cards.2.text">Études de marché, analyse concurrentielle, stratégies marketing.</p></div>
-              </div>
-            </li>
-            <li class="bc bc--data rv" style="--d:420ms" tabindex="0">
-              <div class="bc__inner">
-                <div class="bc__face bc__front"><svg class="bc__ico bc__ico--bars" viewBox="0 0 64 64" aria-hidden="true"><rect class="b1" x="10" y="30" width="10" height="24"/><rect class="b2" x="27" y="18" width="10" height="36"/><rect class="b3" x="44" y="8" width="10" height="46"/><path d="M6 56 h52"/></svg><h4 class="bc__title" data-i18n="about.cards.3.title">Data &amp; reporting</h4></div>
-                <div class="bc__face bc__back"><h4 class="bc__title" data-i18n="about.cards.3.title">Data &amp; reporting</h4><p data-i18n="about.cards.3.text">Analyse de données, ACP, tableaux de bord.</p></div>
-              </div>
-            </li>
+        <div class="hello__content">
+          <p class="hello__kicker"><span class="star">✦</span> <span data-i18n="about.title">Hello</span></p>
+          <h2 class="sig" id="sig"><span class="sr-only" data-i18n="about.lead">Je suis Hamza</span><svg viewBox="0 0 640 130" aria-hidden="true" focusable="false"><text x="6" y="98" id="sig-text">Je suis Hamza</text></svg></h2>
+          <p class="hello__text" data-i18n="about.text"></p>
+          <h3 class="label hello__label" data-i18n="about.strengths_title">Ce que j'apporte</h3>
+          <ul class="brings">
+              <li class="bring bring--creativity rv" style="--d:0ms"><span class="bring__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg></span><div><h4 data-i18n="about.cards.0.title">Créativité</h4><p data-i18n="about.cards.0.text">Vidéographie, photographie, design graphique.</p></div></li>
+              <li class="bring bring--digital rv" style="--d:90ms"><span class="bring__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l12 5-5 2-2 5z"/><path d="M4 4l2 2M3 9h3M9 3v3"/></svg></span><div><h4 data-i18n="about.cards.1.title">Marketing digital</h4><p data-i18n="about.cards.1.text">SEO, GEO, e-mailing, réseaux sociaux, parcours utilisateur.</p></div></li>
+              <li class="bring bring--strategy rv" style="--d:180ms"><span class="bring__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" /></svg></span><div><h4 data-i18n="about.cards.2.title">Marketing stratégique</h4><p data-i18n="about.cards.2.text">Études de marché, analyse concurrentielle, stratégies marketing.</p></div></li>
+              <li class="bring bring--data rv" style="--d:270ms"><span class="bring__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16v-5M12 16V7M17 16v-8"/></svg></span><div><h4 data-i18n="about.cards.3.title">Data &amp; reporting</h4><p data-i18n="about.cards.3.text">Analyse de données, ACP, tableaux de bord.</p></div></li>
           </ul>
           <div class="move rv" id="move">
             <div class="move__map">
@@ -251,13 +226,18 @@
         <h2 class="opener__title sel reveal-letters" data-i18n="projects.title">Projets</h2>
         <p class="opener__intro" data-i18n="projects.intro"></p>
       </div>
-      <div class="hscroll" id="hscroll">
-        <div class="hscroll__sticky">
-          <div class="hscroll__track" id="projects-track"></div>
-          <p class="hscroll__hint" data-i18n="projects.drag">Faites défiler →</p>
+      <div class="env-scrolly" id="env-scrolly">
+        <div class="env-stage" id="env-stage">
+          <div class="env" id="env">
+            <div class="env__back" aria-hidden="true"></div>
+            <div class="env__cards" id="projects-track"></div>
+            <div class="env__front" aria-hidden="true"><span class="env__addr" data-i18n="projects.envelope">Projets · Hamza Jnah</span><span class="env__stamp">2027</span></div>
+            <div class="env__flap" aria-hidden="true"><span class="env__flap-in"></span></div>
+            <div class="env__seal" aria-hidden="true"><span class="env__seal-l"></span><span class="env__seal-r"></span><b>HJ</b></div>
+          </div>
+          <p class="env__hint" aria-hidden="true" data-i18n="projects.envelope_hint">Faites défiler pour ouvrir</p>
         </div>
       </div>
-
     </section>
 
     <div class="marquee marquee--red" aria-hidden="true"><div class="marquee__track" data-marquee="marquee.experience"></div></div>
@@ -272,7 +252,8 @@
         <ol class="timeline" id="timeline"></ol>
         <div class="edu">
           <h3 class="h-mid" data-i18n="experience.edu_title">Formation</h3>
-          <ul class="mini-list mini-list--edu" id="education"></ul>
+          <div class="edu-double rv" id="edu-double"></div>
+          <ol class="edu-line" id="education"></ol>
         </div>
       </div>
       <div class="torn torn--bottom" data-color="black" data-seed="19"></div>
@@ -351,6 +332,7 @@
             </div>
           </div>
           <aside class="place-panel" id="place-panel" hidden aria-live="polite"></aside>
+          <div class="se-intro" id="se-intro" aria-hidden="true"></div>
         </div>
         </div>
 
@@ -374,7 +356,6 @@
           <p class="sec-head__sub" data-i18n="extra.intro"></p>
         </header>
         <div class="club-logos" id="club-logos" aria-label="Clubs"></div>
-        <div class="awards" id="awards"></div>
         <div class="extra-list" id="extra-list"></div>
       </div>
     </section>

@@ -184,7 +184,14 @@
       "id": "epik",
       "logo": "assets/img/logos/logo-epik-leaders.webp",
       "logo_alt": "Epik Leaders, ENCG Settat",
-      "photos": [
+      "photos": [],
+      "steps_photos": [
+        {
+          "folder": "parascolaire",
+          "file": "parascolaire-epik-leaders-chef-de-cellule",
+          "w": 607,
+          "h": 449
+        },
         {
           "folder": "parascolaire",
           "file": "parascolaire-epik-leaders-bureau",
@@ -367,13 +374,7 @@
     },
     {
       "logo": "assets/img/logos/logo-enactus.webp",
-      "name": "Enactus",
-      "photo": {
-        "folder": "parascolaire",
-        "file": "parascolaire-enactus-equipe",
-        "w": 607,
-        "h": 449
-      }
+      "name": "Enactus"
     },
     {
       "logo": "assets/img/logos/logo-espress.webp",
