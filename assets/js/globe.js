@@ -173,6 +173,17 @@ async function start() {
     }
   });
 
+  /* Photos de Saint-Étienne en grand, au début de l'enchaînement */
+  function renderSeIntro() {
+    const box = document.getElementById('se-intro');
+    const p = byId[START];
+    if (!box || !p) return;
+    const ph = p.photos.slice(0, 5);
+    const tilts = [-6, 3, -2, 5, -4];
+    box.innerHTML = '<p class="se-intro__t">' + FLAGS[p.country] + ' ' + esc(t('photo.places.' + START)) + ' · <span>' + esc(t('photo.home_label')) + '</span></p>' +
+      '<div class="se-intro__row">' + ph.map((x, i) => '<figure class="se-intro__p" style="--r:' + tilts[i] + 'deg;--i:' + i + '"><img src="assets/img/photos/thumbs/' + x.file + '.webp" alt="' + esc(t('photo.alts.' + x.file)) + '"><figcaption>' + esc(t('photo.captions.' + x.file)) + '</figcaption></figure>').join('') + '</div>';
+  }
+
   /* Aperçu des photos de Saint-Étienne (téléphone et tablette) */
   const peek = document.getElementById('globe-peek');
   function renderPeek(id) {
@@ -271,6 +282,8 @@ async function start() {
   renderCounter();
   renderPills();
   buildMarkers();
+  renderSeIntro();
+  document.addEventListener('langchange', renderSeIntro);
   // À l'arrivée : Saint-Étienne et ses photos sont déjà affichés
   if (window.innerWidth >= 1024) openPlace(START, false, false, true);
   else renderPeek(START);
@@ -316,6 +329,8 @@ async function start() {
     }
   }
   view.classList.add('globe-ready');
+  // Carte plate : on affiche le panneau complet de Saint-Étienne sous la carte (le bandeau la cacherait)
+  if (state.mode === 'flat' && peek && !peek.hidden) { hidePeek(); openPlace(START, false, false, true); }
   if (engine && engine.intro) engine.intro();
 }
 
@@ -582,7 +597,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   controls.enabled = false;
   backBtn.hidden = true;
   function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
-  function applyP(p) {
+  function applyCam(p) {
     const e = ease(p);
     const a = vec(HOME.lat, HOME.lon).normalize(), b = vec(END.lat, END.lon).normalize();
     const ang = a.angleTo(b);
@@ -593,6 +608,17 @@ function globe3D(THREE, OrbitControls, ctx) {
     const k = Math.min(1, Math.max(0, (p - 0.3) / 0.55));
     arcs.forEach((ar) => { ar.geo.setDrawRange(0, Math.floor(k * ar.total / 3) * 3); ar.lgeo.setDrawRange(0, Math.floor(k * ar.ltotal)); });
     placeMeshes.forEach((m, i) => { const q = Math.min(1, Math.max(0, (p - 0.55 - i * 0.02) / 0.15)); m.scale.setScalar(Math.max(0.001, q)); });
+  }
+  /* Enchaînement : a) photos de Saint-Étienne en grand, b) elles glissent sur le côté,
+     c) le globe apparaît zoomé puis recule, d) « Fais tourner le globe ». */
+  const seIntro = document.getElementById('se-intro');
+  function applyP(p) {
+    const k = Math.min(1, Math.max(0, p / 0.28));
+    const g = Math.min(1, Math.max(0, (p - 0.18) / 0.16));
+    stage.style.setProperty('--se', k.toFixed(3));
+    view.style.setProperty('--g', g.toFixed(3));
+    if (seIntro) seIntro.classList.toggle('is-gone', k >= 0.999);
+    applyCam(Math.min(1, Math.max(0, (p - 0.3) / 0.7)));
   }
   function scrollMetrics() {
     const extra = scrolly.offsetHeight - stage.offsetHeight;
@@ -634,7 +660,7 @@ function globe3D(THREE, OrbitControls, ctx) {
       const r = view.getBoundingClientRect();
       const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
       if (!sc.t0 && vis > r.height * 0.45) sc.t0 = now;
-      if (sc.t0) { sc.p = Math.min(1, (now - sc.t0) / 2000); applyP(sc.p); if (sc.p >= 1) { sc.locked = true; controls.enabled = true; level = 1; if (spinHint) spinHint.classList.add('is-on'); } }
+      if (sc.t0) { sc.p = Math.min(1, (now - sc.t0) / 3200); applyP(sc.p); if (sc.p >= 1) { sc.locked = true; controls.enabled = true; level = 1; if (spinHint) spinHint.classList.add('is-on'); } }
       else if (!sc.drawn) { sc.drawn = true; applyP(0); }
     }
   }
@@ -671,6 +697,7 @@ function flatMap(ctx) {
   const { view, labels, places, dots, byId, declutter, canvas, state, backBtn } = ctx;
   state.mode = 'flat';
   if (HJ.dropScrolly) HJ.dropScrolly();
+  const seI = document.getElementById('se-intro'); if (seI) seI.classList.add('is-gone');
   canvas.style.display = 'none';
   view.classList.add('is-flat');
   const box = document.getElementById('flatmap');

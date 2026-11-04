@@ -59,7 +59,9 @@
     "cta_contact": "Contact me",
     "double": "Double degree ENCG Settat × IAE Saint-Étienne",
     "drag": "← drag →",
-    "drag_label": "Drag the name"
+    "drag_label": "Drag the name",
+    "stretch": "↔ stretch me",
+    "stretch_label": "Widen the name box"
   },
   "marquee": {
     "about": "About",
@@ -75,14 +77,13 @@
   "about": {
     "title": "Hello",
     "lead": "I'm Hamza",
-    "text": "After a Bachelor's in Marketing and Commerce at ENCG Settat, I moved to France in 2026 for my ==Master's in Marketing and Innovation Strategy== at IAE Saint-Étienne, on a double degree. I enjoy understanding as much as creating: I analyze the data, then turn it into images, videos and ideas. In student clubs and at AIESEC, I learned to lead teams and move real projects forward. Today, I'm looking for a ==3 to 6-month marketing internship== from March 2027, in Saint-Étienne or Lyon.",
+    "text": "First-year Master's student in ==Marketing and Innovation Strategy== at IAE Saint-Étienne, on a double degree with ENCG Settat. I enjoy understanding as much as creating: I analyze the data, then turn it into images, videos and ideas. I'm looking for a ==3 to 6-month marketing internship== from March 2027, in Saint-Étienne or Lyon.",
     "strengths_title": "What I bring",
     "film_alt": "Photo of Hamza Jnah",
     "cards": [
       {
         "id": "creativity",
         "title": "Creativity",
-        "hook": "Thinking outside the box",
         "text": "Videography, photography, graphic design."
       },
       {
@@ -101,7 +102,6 @@
         "text": "Data analysis, PCA, dashboards."
       }
     ],
-    "card_flip": "Hover over or tap a card",
     "mobility_title": "Mobility",
     "mobility_line": "Saint-Étienne ⇄ Lyon",
     "licence": "Driving licence B"
@@ -286,7 +286,9 @@
     "categories": {
       "academic": "Academic project",
       "entrepreneurial": "Entrepreneurial project"
-    }
+    },
+    "envelope": "Projects · Hamza Jnah",
+    "envelope_hint": "Scroll to open"
   },
   "sketch": {
     "label": "Sketchbook",
@@ -365,7 +367,8 @@
         "date": "2022",
         "note": ""
       }
-    ]
+    ],
+    "double": "Double degree"
   },
   "video": {
     "title": "Videography",
@@ -619,8 +622,8 @@
       "parascolaire-hackathon-accede-1-victoire": "10 hours of work, one winning idea.",
       "parascolaire-hackathon-accede-2-groupe": "Participants of the first ACCEDE hackathon.",
       "parascolaire-hackathon-accede-3-visite": "Touring the Technopark.",
-      "parascolaire-epik-leaders-bureau": "The Epik Leaders board.",
-      "parascolaire-enactus-equipe": "Enactus ENCG Settat."
+      "parascolaire-epik-leaders-bureau": "The elected Epik Leaders board.",
+      "parascolaire-epik-leaders-chef-de-cellule": "Epik Leaders, back when I was Head of the Training Unit."
     },
     "tt": {
       "label": "Entrepreneurial project · Team",
@@ -630,33 +633,6 @@
       "text": "An app that suggests recipe ideas and sells ingredient kits and ready-made meals, designed for athletes and launching in France. A team entrepreneurial project run through student associations.",
       "role": "My role: designing the app prototype and generating ideas during the ideation phase.",
       "cta": "Try the prototype"
-    },
-    "awards": {
-      "title": "Awards",
-      "hult": {
-        "title": "Winner of the Hult Prize campus round",
-        "sub": "With Take & Taste · 2026"
-      },
-      "hack": {
-        "title": "Winner of the “Le Phare de l'entrepreneuriat” hackathon",
-        "sub": "ACCEDE Internationale · April 2023",
-        "text": "ACCEDE Internationale's first hackathon, co-organized with the MCISE and AUF North Africa at the Casablanca Technopark. Our winning project: ==Stademaps==, a platform that maps sports facilities so individuals can rent them.",
-        "stats": [
-          {
-            "v": "26",
-            "l": "students"
-          },
-          {
-            "v": "16+",
-            "l": "schools"
-          },
-          {
-            "v": "10 h",
-            "l": "to build a project"
-          }
-        ]
-      },
-      "hack_short": "Winner of the “Le Phare de l'entrepreneuriat” hackathon"
     },
     "rebirth": {
       "label": "Campaign · Executive board",
@@ -727,12 +703,7 @@
         "date": "",
         "steps": [
           {
-            "title": "Founding board member",
-            "date": "",
-            "text": ""
-          },
-          {
-            "title": "Head of the Training Unit",
+            "title": "Founding board member · Head of the Training Unit",
             "date": "",
             "text": "Designed and ran ==leadership and soft skills training==, with performance tracking and continuous improvement of the programs."
           },
@@ -769,8 +740,7 @@
           }
         ]
       }
-    },
-    "logos_hint": "Tap the Enactus logo to see the team"
+    }
   },
   "skills": {
     "title": "Skills",
@@ -780,8 +750,7 @@
         "items": [
           "Videography",
           "Photography (shooting, editing)",
-          "Graphic design",
-          "Campaign art direction (Rebirth poster)"
+          "Graphic design"
         ]
       },
       {
@@ -838,7 +807,8 @@
         "level": "C1",
         "text": "The language I teach. The one I use to work with students in the US and international teams at AIESEC."
       }
-    ]
+    ],
+    "box_hook": "Thinking outside the box"
   },
   "contact": {
     "title": "Let's work together",

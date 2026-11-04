@@ -11,42 +11,78 @@
   'use strict';
   var reduce = function () { return HJ.reduce; };
 
-  /* ---------- Nom à faire glisser ---------- */
-  function dragName() {
-    var box = document.getElementById('dragname');
-    var hint = document.getElementById('drag-hint');
-    if (!box) return;
+  /* ---------- « HAMZA JNAH » : zone de texte à étirer, façon Canva ---------- */
+  function nameBox() {
+    var box = document.getElementById('namebox');
+    var text = document.getElementById('hero-title');
+    var handle = document.getElementById('namebox-handle');
+    if (!box || !text || !handle) return;
+    var PAD = 6, st = { w: 0, min: 0, one: 0, max: 0, base: 0, r1: 0 };
     var seen = false;
-    try { seen = localStorage.getItem('hj-drag') === '1'; } catch (e) {}
-    if (!seen && !reduce()) box.classList.add('show-hint');
-    if (reduce()) return;
-    var x0 = 0, dx = 0, active = false, id = null;
-    function max() { return Math.max(120, window.innerWidth * 0.55); }
-    box.addEventListener('pointerdown', function (e) {
-      if (e.button && e.button !== 0) return;
-      active = true; id = e.pointerId; x0 = e.clientX - dx;
-      box.classList.add('is-drag'); box.classList.remove('is-back');
-    });
-    window.addEventListener('pointermove', function (e) {
-      if (!active || e.pointerId !== id) return;
-      var raw = e.clientX - x0;
-      // résistance élastique au-delà des limites
-      dx = raw > max() ? max() + (raw - max()) * 0.2 : raw < -30 ? -30 + (raw + 30) * 0.2 : raw;
-      box.style.transform = 'translate3d(' + dx.toFixed(1) + 'px,0,0) rotate(' + (dx * 0.006).toFixed(2) + 'deg)';
-      if (Math.abs(dx) > 8) {
-        box.classList.add('has-moved');
-        try { localStorage.setItem('hj-drag', '1'); } catch (er) {}
-      }
-    }, { passive: true });
-    function release() {
-      if (!active) return;
-      active = false; dx = 0;
-      box.classList.remove('is-drag'); box.classList.add('is-back');
-      box.style.transform = '';
+    try { seen = localStorage.getItem('hj-stretch') === '1'; } catch (e) {}
+    if (!seen) box.classList.add('show-hint');
+
+    function measure() {
+      text.style.fontSize = '';
+      st.base = parseFloat(getComputedStyle(text).fontSize);
+      var probe = document.createElement('span');
+      probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;letter-spacing:inherit;';
+      text.appendChild(probe);
+      probe.textContent = 'HAMZA JNAH'; var w1 = probe.offsetWidth;
+      probe.textContent = 'HAMZA'; var w2 = probe.offsetWidth;
+      text.removeChild(probe);
+      st.r1 = w1 / st.base;
+      st.min = Math.ceil(w2 + PAD * 2);
+      st.one = Math.ceil(w1 + PAD * 2);
+      // la zone ne dépasse jamais de l'écran (ni de l'accueil sur ordinateur)
+      var left = box.getBoundingClientRect().left;
+      var inner = document.querySelector('.hero__inner').getBoundingClientRect();
+      st.max = Math.max(st.min, Math.min(window.innerWidth - 16, inner.right - 16) - left);
     }
-    window.addEventListener('pointerup', release);
-    window.addEventListener('pointercancel', release);
-    if (hint) hint.addEventListener('animationend', function () {});
+    function apply(w) {
+      st.w = w;
+      box.style.width = w + 'px';
+      var fs = st.base;
+      // Sur petit écran, si « HAMZA JNAH » ne tient pas sur une ligne, le texte se réduit pour y tenir
+      if (st.one > st.max && w > st.min + (st.max - st.min) * 0.45) fs = Math.min(st.base, (w - PAD * 2) / st.r1);
+      text.style.fontSize = fs === st.base ? '' : fs.toFixed(1) + 'px';
+      box.classList.toggle('is-one', w >= Math.min(st.one, st.max) - 2);
+    }
+    function init() { var wasOne = st.w && st.w >= st.one - 2; measure(); apply(wasOne ? Math.min(st.one, st.max) : st.min); }
+
+    var drag = null;
+    handle.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      handle.setPointerCapture(e.pointerId);
+      drag = { x: e.clientX, w: st.w };
+      box.classList.remove('is-snap'); box.classList.add('is-drag');
+      box.classList.add('used');
+      try { localStorage.setItem('hj-stretch', '1'); } catch (er) {}
+    });
+    handle.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var w = drag.w + (e.clientX - drag.x);
+      if (w > st.max) w = st.max + (w - st.max) * 0.15;      // résistance au bord
+      if (w < st.min) w = st.min - (st.min - w) * 0.3;
+      apply(Math.max(st.min * 0.7, w));
+    });
+    function end() {
+      if (!drag) return;
+      drag = null;
+      box.classList.remove('is-drag'); box.classList.add('is-snap');
+      if (st.w < st.min) apply(st.min);            // revient en douceur
+      else if (st.w > st.max) apply(st.max);
+    }
+    handle.addEventListener('pointerup', end);
+    handle.addEventListener('pointercancel', end);
+    handle.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault(); box.classList.add('is-snap', 'used');
+      apply(Math.min(st.max, Math.max(st.min, st.w + (e.key === 'ArrowRight' ? 40 : -40))));
+    });
+    window.addEventListener('resize', function () { requestAnimationFrame(init); });
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(init);
+    init();
   }
 
   /* ---------- Machine à écrire : un effet par mot ---------- */
@@ -104,7 +140,10 @@
       if (!n) return;
       if (reduce()) { sig.letters.forEach(function (l) { l.style.strokeDashoffset = 0; l.style.fillOpacity = 1; }); return; }
       var r = box.getBoundingClientRect(), vh = window.innerHeight;
-      var p = Math.min(1, Math.max(0, (vh * 0.92 - r.top) / (vh * 0.45)));
+      var p = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.4)));
+      // Une fois écrite, la signature reste visible (et elle l'est aussi si on arrive plus bas)
+      if (r.bottom < 0) p = 1;
+      sig.max = Math.max(sig.max || 0, p); p = sig.max;
       sig.letters.forEach(function (l, i) {
         var lp = Math.min(1, Math.max(0, p * (n + 3) - i));
         l.style.strokeDashoffset = (300 * (1 - lp)).toFixed(1);
@@ -127,7 +166,7 @@
     }
   }
 
-  dragName();
+  nameBox();
   sigScroll();
   cards();
   document.addEventListener('langchange', function () { typewriter(); tags(); buildSig(); });
