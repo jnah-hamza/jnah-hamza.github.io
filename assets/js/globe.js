@@ -649,7 +649,9 @@ function globe3D(THREE, OrbitControls, ctx) {
     if (sc.mode === 'scroll') {
       // Lié au défilement dans les deux sens ; le globe est libre une fois le zoom arrière terminé
       const m = scrollMetrics();
-      const p = Math.min(1, Math.max(0, m.used / Math.max(1, m.extra)));
+      // La dernière hauteur d'écran sert de pause : « Fais tourner le globe » reste affiché
+      const hold = Math.min(window.innerHeight, m.extra * 0.4);
+      const p = Math.min(1, Math.max(0, m.used / Math.max(1, m.extra - hold)));
       if (Math.abs(p - sc.p) > 0.0005 || !sc.drawn) {
         const wasFree = sc.p >= 0.999;
         sc.p = p; sc.drawn = true;

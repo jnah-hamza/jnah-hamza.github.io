@@ -147,7 +147,16 @@
       "team": "L'équipe",
       "photos": "Les photos",
       "pdf_generic": "Télécharger le PDF",
-      "close": "Fermer le projet"
+      "close": "Fermer le projet",
+      "question": "La question",
+      "investigation": "L'enquête",
+      "verdict": "Le verdict",
+      "strategy": "Notre stratégie",
+      "creative": "Notre idée créative",
+      "report": "Lire le rapport (PDF)",
+      "canva_pres": "Voir la présentation (Canva)",
+      "canva_bot": "Chatbot & assistant vocal (Canva)",
+      "lookbook": "Lookbook"
     },
     "items": {
       "porsche-hermes": {
@@ -227,32 +236,79 @@
       },
       "sephora": {
         "title": "Sephora et les chatbots",
-        "kind": "Marketing opérationnel · Photo + vidéo",
-        "year": "Novembre 2025",
-        "tagline": "« Sephora Secret » : une enquête de détectives sur l'impact des chatbots.",
+        "kind": "Projet académique · Dossier d'enquête",
+        "year": "2025",
+        "tagline": "Les chatbots & les assistants vocaux chez Sephora : enquête et stratégie.",
         "chips": [
-          "Projet de groupe · 6 personnes"
+          "Projet de groupe · 8 étudiants"
         ],
-        "case": "Dossier : Sephora Secret",
+        "case": "Special Edition · Sephora Secret",
         "stamp": "Confidentiel",
-        "context": "Analyse des 4P de Sephora et de l'impact des chatbots sur l'expérience client.",
-        "concept": "Une présentation mise en scène comme une ==enquête de détectives==, « Sephora Secret », pour révéler l'impact des chatbots sur l'expérience client chez Sephora, avec une ==vidéo d'introduction== que j'ai réalisée.",
-        "role": "Réalisation de la ==vidéo d'introduction== de la présentation.",
-        "output": "Une présentation en forme d'enquête et sa vidéo d'introduction.",
-        "photo_caption": "Le jour de la soutenance du projet Sephora.",
-        "figures": [
+        "masthead": "The Beauty Times",
+        "context": "Projet de groupe (8 étudiants), ENCG Settat, encadré par Mme Doulkaid Amal. Soutenance mise en scène comme une enquête, « Sephora Secret », avec une vidéo d'introduction.",
+        "question": "« Comment Sephora peut-elle exploiter son chatbot pour une expérience plus personnalisée et interactive, et ainsi fidéliser ses clientes ? »",
+        "investigation": [
+          "Taille du marché de la beauté et de la BeautyTech",
+          "Cible : 18-34 ans en priorité, puis 35-55 ans",
+          "Analyse concurrentielle et benchmark des chatbots et assistants vocaux : Ulta Beauty, Amazon/Alexa, L'Oréal Modiface, Marionnaud, Nocibé",
+          "5 forces de Porter",
+          "SWOT"
+        ],
+        "verdict": "Sephora est ==en avance sur la BeautyTech visuelle== (Virtual Artist, réalité augmentée, omnicanal) mais ==en retard sur le commerce vocal==.",
+        "strategy": "Faire passer le chatbot à un véritable ==assistant beauté intelligent==, à l'écrit et à la voix, autour de 4 axes :",
+        "axes": [
           {
-            "value": "6",
-            "label": "membres dans l'équipe"
+            "t": "Expertise personnalisée",
+            "d": "Diagnostic de peau, routines sur mesure."
           },
           {
-            "value": "4P",
-            "label": "produit, prix, distribution, communication"
+            "t": "Expérience interactive",
+            "d": "Quiz, mini-défis."
+          },
+          {
+            "t": "Omnicanal",
+            "d": "Site, appli, magasin."
+          },
+          {
+            "t": "Voix",
+            "d": "Un assistant qui répond à l'oral."
           }
         ],
+        "message": "« Votre nouvelle experte beauté sur mesure : 24h/24, 100 % vous. »",
+        "plan": "Plan de lancement en 16 semaines, test sur un panel de 200 clientes, budget marketing estimé à 32 000 – 44 000 MAD.",
+        "creative": [
+          {
+            "t": "GlowTalk by Sephora",
+            "d": "Un pop-up en centre commercial : diagnostic de peau instantané, discussion avec le chatbot sur un miroir interactif, puis un mini récap imprimé, un échantillon adapté et un QR code pour continuer la conversation dans l'appli."
+          },
+          {
+            "t": "Sephora Voice Expert",
+            "d": "Un assistant vocal dans l'appli, sur le site et en magasin : « Ajoute un mascara waterproof à mon panier »."
+          }
+        ],
+        "figures": [
+          {
+            "value": "8",
+            "label": "étudiants"
+          },
+          {
+            "value": "16",
+            "label": "semaines de plan"
+          },
+          {
+            "value": "200",
+            "label": "clientes test"
+          },
+          {
+            "value": "4",
+            "label": "axes stratégiques"
+          }
+        ],
+        "role": "[À COMPLÉTER : mon rôle]",
+        "photo_caption": "Le jour de la soutenance",
         "tiles": [
-          "4P",
-          "Chatbots",
+          "Chatbot",
+          "Voix",
           "Enquête"
         ]
       },
@@ -260,12 +316,11 @@
         "title": "Aballa",
         "kind": "Marque streetwear · Entrepreneuriat",
         "year": "",
-        "tagline": "Une marque de vêtements streetwear lancée entre amis, vendue localement sur une marketplace.",
+        "tagline": "Aballa, une marque de streetwear lancée entre amis et vendue localement sur une marketplace. J'ai géré les flux financiers, les flux de stock et la communication.",
         "chips": [
           "Avec deux associés"
         ],
-        "context": "Petit projet entrepreneurial lancé entre amis : une marque de vêtements streetwear, vendue localement sur une marketplace, avec deux associés.",
-        "role": "Gestion des ==flux financiers==, des ==flux de stock== et de la communication.",
+        "context": "Aballa, une marque de streetwear lancée entre amis et vendue localement sur une marketplace. J'ai géré les flux financiers, les flux de stock et la communication.",
         "figures": [
           {
             "value": "3",
@@ -593,7 +648,8 @@
     },
     "home_label": "J'habite ici",
     "spin": "Fais tourner le globe",
-    "peek": "Mes photos de Saint-Étienne"
+    "peek": "Mes photos de Saint-Étienne",
+    "spin_hold": 1
   },
   "extra": {
     "title": "Parascolaire",
