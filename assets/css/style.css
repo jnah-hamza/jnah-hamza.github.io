@@ -2013,3 +2013,15 @@ html.reduce .holo { rotate: none; }
 .lookbook__txt { margin: 26px 0 0; font-size: clamp(17px, 1.8vw, 20px); color: #e4e0d7; max-width: 760px; }
 .np__chips .chip--red { color: #fff; }
 @media (max-width: 600px) { .np__edition { font-size: 9px; letter-spacing: .1em; } .np__edition span { white-space: nowrap; } }
+
+/* Enveloppe : après l'éventail, les cartes se posent en grand */
+.env-scrolly.is-pinned { height: 420vh; }
+.env-scrolly.is-pinned .env__back, .env-scrolly.is-pinned .env__front, .env-scrolly.is-pinned .env__flap, .env-scrolly.is-pinned .env__seal { opacity: var(--env-fade, 1); }
+.env-scrolly.is-pinned .env::after { opacity: var(--env-fade, 1); }
+.env-scrolly.is-pinned .pcard.is-big { border-radius: 22px; }
+.env-scrolly.is-pinned .pcard.is-big .pcard__media { flex: 0 0 48%; border-radius: 20px 20px 0 0; }
+.env-scrolly.is-pinned .pcard.is-big .pcard__body { padding: 20px 22px 22px; }
+.env-scrolly.is-pinned .pcard.is-big .pcard__meta .chip { font-size: 12px; padding: 4px 10px; }
+.env-scrolly.is-pinned .pcard.is-big .pcard__title { font-size: clamp(26px, 2.4vw, 36px); margin-bottom: 8px; }
+.env-scrolly.is-pinned .pcard.is-big .pcard__tagline { font-size: 15px; -webkit-line-clamp: 4; }
+.env-scrolly.is-pinned .pcard.is-big .pcard__more { min-height: 44px; padding: 10px 20px; font-size: 14px; }
