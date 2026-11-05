@@ -122,6 +122,46 @@
       sec('paper', facts(k, [['context', 'context', 'fact--wide'], ['problem', 'problem'], ['role', 'role', 'fact--red'], ['output', 'output'], ['result', 'result']]), 81);
   }
 
+  /* Sephora : page « journal vintage / dossier d'enquête » */
+  function journal(k) {
+    var L = function (x) { return h(t('projects.labels.' + x)); };
+    var figs = (t(k + '.figures') || []);
+    var inv = t(k + '.investigation') || [], axes = t(k + '.axes') || [], cr = t(k + '.creative') || [];
+    var ph = P.photo;
+    var btns = '<div class="np-btns">' + pdfBtn(P.pdf, t('projects.labels.report')).replace(' download hidden', ' target="_blank" rel="noopener" hidden') +
+      linkBtn(P.canva, t('projects.labels.canva_pres'), 'btn--np') + linkBtn(P.canva2, t('projects.labels.canva_bot'), 'btn--np') + '</div>';
+    var role = has(t(k + '.role')) ? '<p class="np-role"><strong>' + h(t('projects.labels.role')) + ' :</strong> ' + h(t(k + '.role')) + '</p>' : '';
+    return '<article class="np">' +
+      '<div class="np__cover"><img src="' + P.cover + '" alt="" loading="lazy"><span class="np__stamp" aria-hidden="true">' + h(t(k + '.stamp')) + '</span></div>' +
+      '<header class="np__mast"><p class="np__edition"><span>Special Edition</span><span>' + h(t(k + '.year')) + '</span><span>ENCG Settat</span></p>' +
+        '<p class="np__name">' + h(t(k + '.masthead')) + '</p>' +
+        '<h1 class="np__headline" id="pmodal-title">' + h(t(k + '.title')) + '</h1>' +
+        '<p class="np__deck">' + h(t(k + '.tagline')) + '</p>' +
+        '<p class="np__chips">' + chip(t('projects.categories.' + P.category), 'chip--red') + chip(t(k + '.year')) + (t(k + '.chips') || []).map(function (c) { return chip(c); }).join('') + '</p></header>' +
+      '<div class="np__figs">' + figs.map(function (f) { return '<div class="rv"><strong>' + h(f.value) + '</strong><span>' + h(f.label) + '</span></div>'; }).join('') + '</div>' +
+      '<div class="np__cols">' +
+        '<section class="np__col"><h2 class="np__h">' + L('context') + '</h2><p class="np__drop">' + h(t(k + '.context')) + '</p>' + role +
+          '<h2 class="np__h">' + L('question') + '</h2><blockquote class="np__quote">' + h(t(k + '.question')) + '</blockquote>' +
+          '<h2 class="np__h">' + L('investigation') + '</h2><ul class="np__list">' + inv.map(function (x) { return '<li>' + h(x) + '</li>'; }).join('') + '</ul></section>' +
+        '<section class="np__col"><h2 class="np__h">' + L('verdict') + '</h2><p class="np__verdict">' + h(t(k + '.verdict')) + '</p>' +
+          '<h2 class="np__h">' + L('strategy') + '</h2><p>' + h(t(k + '.strategy')) + '</p><ol class="np__axes">' + axes.map(function (x, i) { return '<li><b>0' + (i + 1) + '</b><span><strong>' + h(x.t) + '</strong> ' + h(x.d) + '</span></li>'; }).join('') + '</ol>' +
+          '<p class="np__msg">' + h(t(k + '.message')) + '</p><p class="np__plan">' + h(t(k + '.plan')) + '</p></section>' +
+      '</div>' +
+      '<section class="np__creative"><h2 class="np__h">' + L('creative') + '</h2><div class="np__ads">' + cr.map(function (x) { return '<div class="np__ad"><h3>' + h(x.t) + '</h3><p>' + h(x.d) + '</p></div>'; }).join('') + '</div></section>' +
+      (ph ? '<figure class="np__photo">' + photoPola('projets', ph.file, ph.w, ph.h, t(k + '.photo_caption'), -2) + '</figure>' : '') +
+      '<section class="np__pages"><h2 class="np__h">' + L('pages') + '</h2>' + pages(P.pages).replace(/<h2 class="dsec__title">[^<]*<\/h2>/, '') + '</section>' +
+      btns +
+    '</article>';
+  }
+  /* Aballa : lookbook de grandes photos verticales */
+  function lookbook(k) {
+    var g = P.gallery || [];
+    var gal = g.length ? '<h2 class="dsec__title">' + h(t('projects.labels.lookbook')) + '</h2><div class="lookbook">' + g.map(function (src, i) {
+      return '<button type="button" data-gal="' + i + '" class="rv" style="--d:' + (i * 90) + 'ms"><img src="' + src + '" alt="' + I18N.esc(I18N.clean(t(k + '.title')) + ' — ' + (i + 1)) + '" loading="lazy"></button>';
+    }).join('') + '</div>' : '';
+    return sec('black', gal + '<p class="lookbook__txt">' + h(t(k + '.tagline')) + '</p>', 80);
+  }
+
   /* Renvoie le HTML complet d'un projet */
   HJ.projectHTML = function (project, list, back) {
     P = project;
@@ -134,7 +174,8 @@
       head = heroPaper(k, back, 'case-hero', '<span class="case-tape" aria-hidden="true"></span><p class="case-label">' + h(t(k + '.case')) + '</p><span class="case-stamp" aria-hidden="true">' + h(t(k + '.stamp')) + '</span>');
       body = bodyMixMedia(k);
     }
-    else { head = heroPaper(k, back); body = bodyBrand(k); }
+    else if (P.type === 'journal') { head = ''; body = journal(k); }
+    else { head = heroPaper(k, back); body = P.gallery && P.gallery.length ? lookbook(k) : bodyBrand(k); }
     return head + body +
       '<a class="next-project" href="projet.html?id=' + next.id + '" data-project="' + next.id + '"><span class="next-project__lbl">' + h(t('projects.labels.next')) + ' →</span><span class="next-project__title">' + h(t('projects.items.' + next.id + '.title')) + '</span></a>';
   };
@@ -146,7 +187,7 @@
     root.querySelectorAll('[data-pdf]').forEach(function (a) {
       HJ.exists(a.getAttribute('data-pdf')).then(function (ok) { if (ok) a.hidden = false; else a.remove(); });
     });
-    root.querySelectorAll('.pages, .gallery').forEach(function (g) {
+    root.querySelectorAll('.pages, .gallery, .lookbook').forEach(function (g) {
       var imgs = Array.from(g.querySelectorAll('img'));
       g.querySelectorAll('[data-gal]').forEach(function (b) {
         b.addEventListener('click', function () {

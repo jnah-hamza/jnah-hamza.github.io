@@ -37,7 +37,9 @@
     var k = 'projects.items.' + p.id;
     var year = t(k + '.year');
     var cover = p.cover ? '<img src="' + p.cover + '" alt="" loading="lazy">' : '<span class="tile__pattern" aria-hidden="true"></span>';
-    return '<article class="pcard pcard--' + p.id + (p.cover ? ' has-cover' : '') + '" style="--d:' + (i * 120) + 'ms" data-card="' + p.id + '">' +
+    var glow = { 'porsche-hermes': '#d8b76a', sephora: '#ff7ab6', aballa: '#ff4a3d' }[p.id] || '#ff4a3d';
+    return '<article class="pcard holo pcard--' + p.id + (p.cover ? ' has-cover' : '') + '" style="--d:' + (i * 120) + 'ms;--glow:' + glow + '" data-card="' + p.id + '">' +
+      '<span class="holo__shine" aria-hidden="true"></span>' +
       '<div class="pcard__media">' + cover + '<span class="tile__num">0' + (i + 1) + '</span></div>' +
       '<div class="pcard__body">' +
         '<p class="pcard__meta"><span class="chip chip--red">' + h(t('projects.categories.' + p.category)) + '</span>' + (I18N.clean(year) ? '<span class="chip">' + h(year) + '</span>' : '') + '</p>' +
@@ -46,8 +48,31 @@
         '<a class="pcard__more" href="projet.html?id=' + p.id + '" data-project="' + p.id + '">' + h(t('projects.open')) + ' <span aria-hidden="true">→</span></a>' +
       '</div></article>';
   }
+  /* Cartes « premium » : reflet qui suit la souris, contour lumineux, inclinaison 3D */
+  var holoBound = false;
+  function setupHolo() {
+    if (holoBound) return; holoBound = true;
+    var track = $('#projects-track');
+    track.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse' || HJ.reduce) return;
+      var c = e.target.closest('.holo'); if (!c) return;
+      var r = c.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      c.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      // inclinaison 3D (propriété « rotate », compatible avec le transform de l'enveloppe)
+      var ax = (0.5 - y), ay = (x - 0.5), ang = Math.hypot(ax, ay) * 16;
+      c.style.setProperty('--tilt3d', ax.toFixed(3) + ' ' + ay.toFixed(3) + ' 0 ' + ang.toFixed(2) + 'deg');
+      c.classList.add('is-hover');
+    });
+    track.addEventListener('pointerout', function (e) {
+      var c = e.target.closest('.holo');
+      if (c && !c.contains(e.relatedTarget)) { c.classList.remove('is-hover'); c.style.setProperty('--tilt3d', '0 1 0 0deg'); }
+    });
+  }
   function renderProjects() {
     var track = $('#projects-track');
+    setupHolo();
     track.innerHTML = SITE.projects.map(projectCard).join('');
     HJ.observe(track);
     setupHScroll();

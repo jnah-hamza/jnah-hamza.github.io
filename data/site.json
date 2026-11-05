@@ -30,23 +30,41 @@
     },
     {
       "id": "sephora",
-      "type": "mix_media",
+      "type": "journal",
+      "category": "academic",
       "group": true,
-      "cover": "assets/img/projets/projet-sephora-equipe.webp",
+      "cover": "assets/img/projets/projet-sephora-couverture.webp",
       "photo": {
         "file": "projet-sephora-equipe",
         "w": 1280,
         "h": 960
       },
-      "youtube": "",
-      "category": "academic"
+      "pdf": "assets/docs/projet-sephora-rapport.pdf",
+      "pdf_external": true,
+      "canva": "https://canva.link/0nz17r7g3o5iwxb",
+      "canva2": "https://canva.link/tcrs79097ueer8x",
+      "pages": [
+        "assets/img/projets/projet-sephora-page-1.webp",
+        "assets/img/projets/projet-sephora-page-2.webp",
+        "assets/img/projets/projet-sephora-page-3.webp",
+        "assets/img/projets/projet-sephora-page-4.webp",
+        "assets/img/projets/projet-sephora-page-5.webp",
+        "assets/img/projets/projet-sephora-page-6.webp",
+        "assets/img/projets/projet-sephora-page-7.webp",
+        "assets/img/projets/projet-sephora-page-8.webp"
+      ]
     },
     {
       "id": "aballa",
       "type": "brand",
       "group": true,
-      "cover": "",
-      "gallery": [],
+      "cover": "assets/img/projets/projet-aballa-4.webp",
+      "gallery": [
+        "assets/img/projets/projet-aballa-1.webp",
+        "assets/img/projets/projet-aballa-2.webp",
+        "assets/img/projets/projet-aballa-3.webp",
+        "assets/img/projets/projet-aballa-4.webp"
+      ],
       "category": "entrepreneurial"
     }
   ],

@@ -147,7 +147,16 @@
       "team": "The team",
       "photos": "Photos",
       "pdf_generic": "Download the PDF",
-      "close": "Close the project"
+      "close": "Close the project",
+      "question": "The question",
+      "investigation": "The investigation",
+      "verdict": "The verdict",
+      "strategy": "Our strategy",
+      "creative": "Our creative idea",
+      "report": "Read the report (PDF)",
+      "canva_pres": "View the presentation (Canva)",
+      "canva_bot": "Chatbot & voice assistant (Canva)",
+      "lookbook": "Lookbook"
     },
     "items": {
       "porsche-hermes": {
@@ -227,32 +236,79 @@
       },
       "sephora": {
         "title": "Sephora and chatbots",
-        "kind": "Operational marketing · Photo + video",
-        "year": "November 2025",
-        "tagline": "“Sephora Secret”: a detective investigation into the impact of chatbots.",
+        "kind": "Academic project · Case file",
+        "year": "2025",
+        "tagline": "Chatbots & voice assistants at Sephora: an investigation and a strategy.",
         "chips": [
-          "Group project · 6 people"
+          "Group project · 8 students"
         ],
-        "case": "Case file: Sephora Secret",
+        "case": "Special Edition · Sephora Secret",
         "stamp": "Confidential",
-        "context": "Analysis of Sephora's 4Ps and of the impact of chatbots on the customer experience.",
-        "concept": "A presentation staged as a ==detective investigation==, “Sephora Secret”, to reveal the impact of chatbots on Sephora's customer experience, opened by an ==intro video== I made.",
-        "role": "Made the ==intro video== for the presentation.",
-        "output": "An investigation-style presentation and its intro video.",
-        "photo_caption": "Presentation day for the Sephora project.",
-        "figures": [
+        "masthead": "The Beauty Times",
+        "context": "Group project (8 students) at ENCG Settat, supervised by Ms. Doulkaid Amal. The final presentation was staged as an investigation, “Sephora Secret”, opened by an intro video.",
+        "question": "“How can Sephora use its chatbot to deliver a more personalized, interactive experience and build customer loyalty?”",
+        "investigation": [
+          "Size of the beauty and BeautyTech market",
+          "Target: 18-34 year-olds first, then 35-55",
+          "Competitive analysis and benchmark of chatbots and voice assistants: Ulta Beauty, Amazon/Alexa, L'Oréal Modiface, Marionnaud, Nocibé",
+          "Porter's five forces",
+          "SWOT"
+        ],
+        "verdict": "Sephora is ==ahead in visual BeautyTech== (Virtual Artist, augmented reality, omnichannel) but ==behind in voice commerce==.",
+        "strategy": "Turn the chatbot into a true ==smart beauty assistant==, by text and by voice, built on 4 pillars:",
+        "axes": [
           {
-            "value": "6",
-            "label": "team members"
+            "t": "Personalized expertise",
+            "d": "Skin diagnosis, tailored routines."
           },
           {
-            "value": "4P",
-            "label": "product, price, place, promotion"
+            "t": "Interactive experience",
+            "d": "Quizzes, mini-challenges."
+          },
+          {
+            "t": "Omnichannel",
+            "d": "Website, app, store."
+          },
+          {
+            "t": "Voice",
+            "d": "An assistant that answers out loud."
           }
         ],
+        "message": "“Your new tailor-made beauty expert: 24/7, 100% you.”",
+        "plan": "A 16-week launch plan, a test panel of 200 customers, and an estimated marketing budget of MAD 32,000–44,000.",
+        "creative": [
+          {
+            "t": "GlowTalk by Sephora",
+            "d": "A shopping-mall pop-up: an instant skin diagnosis, a chat with the chatbot on an interactive mirror, then a small printed recap, a matching sample and a QR code to continue the conversation in the app."
+          },
+          {
+            "t": "Sephora Voice Expert",
+            "d": "A voice assistant in the app, on the website and in store: “Add a waterproof mascara to my cart.”"
+          }
+        ],
+        "figures": [
+          {
+            "value": "8",
+            "label": "students"
+          },
+          {
+            "value": "16",
+            "label": "weeks of planning"
+          },
+          {
+            "value": "200",
+            "label": "test customers"
+          },
+          {
+            "value": "4",
+            "label": "strategic pillars"
+          }
+        ],
+        "role": "[À COMPLÉTER : mon rôle]",
+        "photo_caption": "Presentation day",
         "tiles": [
-          "4P",
-          "Chatbots",
+          "Chatbot",
+          "Voice",
           "Investigation"
         ]
       },
@@ -260,12 +316,11 @@
         "title": "Aballa",
         "kind": "Streetwear brand · Entrepreneurship",
         "year": "",
-        "tagline": "A streetwear clothing brand launched with friends and sold locally on a marketplace.",
+        "tagline": "Aballa, a streetwear brand launched with friends and sold locally on a marketplace. I managed cash flow, stock flow and communication.",
         "chips": [
           "With two partners"
         ],
-        "context": "A small entrepreneurial project launched with friends: a streetwear clothing brand, sold locally on a marketplace, with two partners.",
-        "role": "Managed the ==financial flows==, the ==inventory flows== and the communication.",
+        "context": "Aballa, a streetwear brand launched with friends and sold locally on a marketplace. I managed cash flow, stock flow and communication.",
         "figures": [
           {
             "value": "3",
@@ -593,7 +648,8 @@
     },
     "home_label": "I live here",
     "spin": "Spin the globe",
-    "peek": "My Saint-Étienne photos"
+    "peek": "My Saint-Étienne photos",
+    "spin_hold": 1
   },
   "extra": {
     "title": "Activities",
