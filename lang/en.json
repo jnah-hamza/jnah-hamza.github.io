@@ -648,7 +648,9 @@
     "home_label": "I live here",
     "spin": "Spin the globe",
     "peek": "My Saint-Étienne photos",
-    "spin_hold": 1
+    "spin_hold": 1,
+    "choose_title": "Choose a destination",
+    "choose_sub": "Click a place to see its photos"
   },
   "extra": {
     "title": "Activities",

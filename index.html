@@ -326,9 +326,9 @@
             <p class="globe-hint" data-i18n="photo.hint">Faites tourner le globe, puis choisissez une région.</p>
             <button class="globe-back btn btn--small" id="globe-back" type="button" hidden data-i18n="photo.back">← Retour au globe</button>
             <div class="globe-peek" id="globe-peek" hidden></div>
-            <div class="spin-hint" id="spin-hint" aria-hidden="true">
-              <svg viewBox="0 0 120 80"><path class="spin-hint__arc" d="M20 50 A 42 22 0 1 1 100 50"/><path class="spin-hint__arrow" d="M100 50 l-10 -2 M100 50 l3 -9"/><g class="spin-hint__hand"><path d="M54 70 v-22 a4 4 0 0 1 8 0 v14 v-6 a4 4 0 0 1 8 0 v6 v-3 a4 4 0 0 1 8 0 v9 c0 9 -5 14 -14 14 h-4 c-6 0 -10 -4 -12 -9 l-6 -10 a4 4 0 0 1 7 -4 Z"/></g></svg>
-              <span data-i18n="photo.spin">Fais tourner le globe</span>
+            <div class="spin-hint choose" id="spin-hint">
+              <div class="choose__head"><p class="choose__title" data-i18n="photo.choose_title">Choisis une destination</p><p class="choose__sub" data-i18n="photo.choose_sub">Clique sur un lieu pour voir ses photos</p></div>
+              <div class="choose__tags" id="choose-tags"></div>
             </div>
           </div>
           <aside class="place-panel" id="place-panel" hidden aria-live="polite"></aside>
