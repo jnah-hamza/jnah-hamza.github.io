@@ -462,6 +462,33 @@ function globe3D(THREE, OrbitControls, ctx) {
   controls.zoomSpeed = 0.7;
   controls.minDistance = 1.08;
   controls.maxDistance = 6.5;
+  // La molette ne doit JAMAIS bloquer le défilement de la page : on ne la laisse pas
+  // arriver jusqu'au globe (pas de zoom molette, pas de preventDefault).
+  view.addEventListener('wheel', (e) => { e.stopPropagation(); }, { capture: true, passive: true });
+  // Téléphone : un doigt fait défiler la page verticalement, glisser à l'horizontale fait
+  // tourner le globe, le pincement zoome.
+  canvas.style.touchAction = 'pan-y';
+  // Zoom : double-clic ou boutons + / −
+  function camLatLon() {
+    const d = camera.position.clone().normalize();
+    return { lat: 90 - Math.acos(Math.max(-1, Math.min(1, d.y))) / DEG, lon: Math.atan2(d.z, -d.x) / DEG - 180 };
+  }
+  function zoomBy(f) {
+    if (!controls.enabled) return;
+    const ll = camLatLon();
+    const dist = Math.max(controls.minDistance, Math.min(controls.maxDistance, 1 + (camera.position.length() - 1) * f));
+    controls.autoRotate = false;
+    flyTo(ll.lat, ll.lon, dist, 600);
+  }
+  canvas.addEventListener('dblclick', (e) => { e.preventDefault(); zoomBy(0.55); });
+  const zoomBox = document.getElementById('globe-zoom');
+  if (zoomBox) {
+    zoomBox.hidden = false;
+    zoomBox.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-zoom]');
+      if (b) zoomBy(b.getAttribute('data-zoom') === 'in' ? 0.6 : 1.6);
+    });
+  }
   const fitDist = () => Math.min(6.2, 1.32 / (Math.tan(20 * DEG) * Math.min(1, camera.aspect || 1)));
   controls.autoRotate = false;
   controls.autoRotateSpeed = 0.35;
