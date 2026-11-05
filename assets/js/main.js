@@ -209,32 +209,47 @@
       var r = wrap.getBoundingClientRect();
       var total = wrap.offsetHeight - window.innerHeight;
       var p = clamp01(-r.top / Math.max(1, total));
-      var g = env.g;
+      var g = env.g, q = p / 0.76;   // q : ouverture + éventail ; ensuite les cartes se posent en grand
       // 1) le cachet se brise
-      var ks = ease(clamp01((p - 0.04) / 0.12));
+      var ks = ease(clamp01((q - 0.04) / 0.12));
       seal.style.setProperty('--k', ks.toFixed(3));
       // 2) le rabat s'ouvre en 3D
-      var kf = ease(clamp01((p - 0.14) / 0.18));
+      var kf = ease(clamp01((q - 0.14) / 0.18));
       flap.style.transform = 'rotateX(' + (kf * 178).toFixed(1) + 'deg)';
       box.classList.toggle('flap-open', kf > 0.5);
       // 3) l'enveloppe descend pour laisser la place à l'éventail
-      var kd = ease(clamp01((p - 0.3) / 0.25));
+      var kd = ease(clamp01((q - 0.3) / 0.25));
       var y0 = (g.vh - g.EH) / 2 + 20, y1 = g.vh - g.EH - 24;
       box.style.transform = 'translateY(' + ((y1 - y0) * kd).toFixed(1) + 'px)';
       stage.style.setProperty('--env-top', y0 + 'px');
-      // 4) les projets sortent un par un puis se posent en éventail
+      // 5) les cartes se posent en grand, côte à côte ; l'enveloppe s'efface
+      var k3 = ease(clamp01((p - 0.78) / 0.17));
+      box.style.setProperty('--env-fade', (1 - k3).toFixed(3));
+      var vw = window.innerWidth, HDR = 64, GAP = 28;
       var cards = track.querySelectorAll('.pcard'), n = cards.length;
+      var FW = Math.min(440, (vw - 96 - GAP * (n - 1)) / n);
+      var FH = Math.min(g.vh - HDR - 70, FW * 1.5);
+      var rowX = (vw - (FW * n + GAP * (n - 1))) / 2, rowY = HDR + (g.vh - HDR - FH) / 2 + 10;
+      var boxX = vw / 2 - g.EW / 2, boxY = y0 + (y1 - y0) * kd;
+      var baseX = boxX + (g.EW - g.CW) / 2, baseY = boxY + g.EH * 0.1;
+      // 4) les projets sortent un par un puis se posent en éventail
       cards.forEach(function (c, i) {
         var start = 0.34 + i * 0.13;
-        var k1 = ease(clamp01((p - start) / 0.16));
-        var k2 = ease(clamp01((p - start - 0.12) / 0.2));
+        var k1 = ease(clamp01((q - start) / 0.16));
+        var k2 = ease(clamp01((q - start - 0.12) / 0.2));
         var mid = i - (n - 1) / 2;
         var ty = -k1 * g.CH * 0.98 - k2 * g.EH * 0.18;
         var tx = k2 * mid * g.CW * 1.12;
         var rot = k2 * mid * 6;
         var sc = 1 + k2 * 0.1;
+        var w = g.CW + (FW - g.CW) * k3, hh = g.CH + (FH - g.CH) * k3;
+        tx = tx + ((rowX + i * (FW + GAP) - baseX) - tx) * k3;
+        ty = ty + ((rowY - baseY) - ty) * k3;
+        rot = rot * (1 - k3); sc = sc + (1 - sc) * k3;
+        c.style.width = w.toFixed(1) + 'px'; c.style.height = hh.toFixed(1) + 'px';
         c.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) rotate(' + rot.toFixed(2) + 'deg) scale(' + sc.toFixed(3) + ')';
         c.classList.toggle('is-out', k1 > 0.8);
+        c.classList.toggle('is-big', k3 > 0.55);
         c.style.visibility = kf > 0.55 ? '' : 'hidden';
         c.style.zIndex = k1 > 0.8 ? String(10 + i) : '';
       });

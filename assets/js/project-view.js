@@ -129,7 +129,7 @@
     var inv = t(k + '.investigation') || [], axes = t(k + '.axes') || [], cr = t(k + '.creative') || [];
     var ph = P.photo;
     var btns = '<div class="np-btns">' + pdfBtn(P.pdf, t('projects.labels.report')).replace(' download hidden', ' target="_blank" rel="noopener" hidden') +
-      linkBtn(P.canva, t('projects.labels.canva_pres'), 'btn--np') + linkBtn(P.canva2, t('projects.labels.canva_bot'), 'btn--np') + '</div>';
+      linkBtn(P.canva, t('projects.labels.canva_pres'), 'btn--np') + '</div>';
     var role = has(t(k + '.role')) ? '<p class="np-role"><strong>' + h(t('projects.labels.role')) + ' :</strong> ' + h(t(k + '.role')) + '</p>' : '';
     return '<article class="np">' +
       '<div class="np__cover"><img src="' + P.cover + '" alt="" loading="lazy"><span class="np__stamp" aria-hidden="true">' + h(t(k + '.stamp')) + '</span></div>' +

@@ -285,8 +285,7 @@ async function start() {
   renderSeIntro();
   document.addEventListener('langchange', renderSeIntro);
   // À l'arrivée : Saint-Étienne et ses photos sont déjà affichés
-  if (window.innerWidth >= 1024) openPlace(START, false, false, true);
-  else renderPeek(START);
+  // Au départ : aucun panneau ouvert, le globe est centré sur Saint-Étienne
 
   /* ---------- Choix du moteur : 3D ou carte plate ---------- */
   function webglOK() {
@@ -330,7 +329,6 @@ async function start() {
   }
   view.classList.add('globe-ready');
   // Carte plate : on affiche le panneau complet de Saint-Étienne sous la carte (le bandeau la cacherait)
-  if (state.mode === 'flat' && peek && !peek.hidden) { hidePeek(); openPlace(START, false, false, true); }
   if (engine && engine.intro) engine.intro();
 }
 
