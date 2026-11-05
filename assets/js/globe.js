@@ -71,6 +71,23 @@ async function start() {
           esc(t('photo.places.' + p.id)) + '<small>' + p.photos.length + '</small></button>').join('') + '</div>';
     }).join('');
   }
+  /* Étiquettes « Choisis une destination » sous le globe, groupées par pays */
+  const chooseTags = document.getElementById('choose-tags');
+  function renderChooseTags() {
+    if (!chooseTags) return;
+    const ids = ORDER.filter((id) => byId[id]);
+    chooseTags.innerHTML = ['fr', 'ch', 'ma'].map((c) => {
+      const list = ids.filter((id) => byId[id].country === c);
+      return '<div class="choose__group"><span class="choose__flag" aria-hidden="true">' + FLAGS[c] + '</span>' +
+        list.map((id) => '<button type="button" class="choose__tag" data-place="' + id + '">' + FLAGS[c] + ' ' + esc(t('photo.places.' + id)) + ' <small>' + byId[id].photos.length + '</small></button>').join('') + '</div>';
+    }).join('');
+  }
+  if (chooseTags) chooseTags.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-place]');
+    if (b) openPlace(b.getAttribute('data-place'));
+  });
+  renderChooseTags();
+  document.addEventListener('langchange', renderChooseTags);
   pills.addEventListener('click', (e) => {
     const b = e.target.closest('[data-place]');
     if (b) openPlace(b.getAttribute('data-place'), true);
@@ -450,7 +467,29 @@ function globe3D(THREE, OrbitControls, ctx) {
   controls.autoRotateSpeed = 0.35;
   let userTouched = false;
   const spinHint = document.getElementById('spin-hint');
-  controls.addEventListener('start', () => { userTouched = true; controls.autoRotate = false; cancelFly(); if (spinHint) spinHint.classList.add('is-gone'); });
+  /* Fin du zoom arrière : « Choisis une destination » ; les points pulsent l'un après l'autre */
+  let chooseOn = false, pulseTimer = 0, pulseI = 0;
+  function setChoose(on) {
+    on = on && !state.place && !(spinHint && spinHint.classList.contains('is-gone'));
+    if (on === chooseOn) return;
+    chooseOn = on;
+    if (spinHint) spinHint.classList.toggle('is-on', on);
+    labels.classList.toggle('is-choose', on);
+    view.classList.toggle('is-choosing', on);
+    clearInterval(pulseTimer);
+    labels.querySelectorAll('.gl-place.is-pulse').forEach((el) => el.classList.remove('is-pulse'));
+    if (on && !HJ.reduce) {
+      const ids = ORDER.filter((id) => byId[id]);
+      const tick = () => {
+        labels.querySelectorAll('.gl-place.is-pulse').forEach((el) => el.classList.remove('is-pulse'));
+        const el = labels.querySelector('.gl-place[data-place="' + ids[pulseI % ids.length] + '"]');
+        if (el) el.classList.add('is-pulse');
+        pulseI++;
+      };
+      tick(); pulseTimer = setInterval(tick, 1100);
+    }
+  }
+  controls.addEventListener('start', () => { userTouched = true; controls.autoRotate = false; cancelFly(); });
 
   const HOME = byId[START];
   camera.position.copy(vec(HOME.lat, HOME.lon, 1.045));
@@ -528,7 +567,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   function updateLabels() {
     const dist = camera.position.length();
     camDir.copy(camera.position).normalize();
-    const showPlaces = level === 2 || dist < 1.55;
+    const showPlaces = level === 2 || dist < 1.55 || chooseOn;
     const items = [];
     markers().forEach((el) => {
       let lat, lon, isPlace = el.classList.contains('gl-place');
@@ -629,6 +668,7 @@ function globe3D(THREE, OrbitControls, ctx) {
   // Ouverture d'un lieu : le zoom arrière est terminé, la section n'est plus fixée
   function finish() {
     if (spinHint) spinHint.classList.add('is-gone');
+    setChoose(false);
     if (sc.locked) return;
     sc.locked = true;
     applyP(1);
@@ -656,13 +696,13 @@ function globe3D(THREE, OrbitControls, ctx) {
         if (p < 0.999 || !wasFree) applyP(p);
         controls.enabled = p >= 0.999;
         if (p >= 0.999) { level = 1; state.region = null; }
-        if (spinHint) spinHint.classList.toggle('is-on', p >= 0.999);
+        setChoose(p >= 0.999);
       }
     } else {
       const r = view.getBoundingClientRect();
       const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
       if (!sc.t0 && vis > r.height * 0.45) sc.t0 = now;
-      if (sc.t0) { sc.p = Math.min(1, (now - sc.t0) / 3200); applyP(sc.p); if (sc.p >= 1) { sc.locked = true; controls.enabled = true; level = 1; if (spinHint) spinHint.classList.add('is-on'); } }
+      if (sc.t0) { sc.p = Math.min(1, (now - sc.t0) / 3200); applyP(sc.p); if (sc.p >= 1) { sc.locked = true; controls.enabled = true; level = 1; setChoose(true); } }
       else if (!sc.drawn) { sc.drawn = true; applyP(0); }
     }
   }

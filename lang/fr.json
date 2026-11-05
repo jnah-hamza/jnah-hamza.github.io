@@ -648,7 +648,9 @@
     "home_label": "J'habite ici",
     "spin": "Fais tourner le globe",
     "peek": "Mes photos de Saint-Étienne",
-    "spin_hold": 1
+    "spin_hold": 1,
+    "choose_title": "Choisis une destination",
+    "choose_sub": "Clique sur un lieu pour voir ses photos"
   },
   "extra": {
     "title": "Parascolaire",
