@@ -61,7 +61,9 @@
     "drag": "← glisse →",
     "drag_label": "Faites glisser le nom",
     "stretch": "↔ étire-moi",
-    "stretch_label": "Élargir la zone du nom"
+    "stretch_label": "Élargir la zone du nom",
+    "cta_portfolio": "Télécharger le portfolio (PDF)",
+    "portfolio_href": "assets/docs/portfolio-hamza-jnah.pdf"
   },
   "marquee": {
     "about": "À propos",
