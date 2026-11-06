@@ -129,3 +129,10 @@ Tant que l'identifiant n'est pas collé, le formulaire affiche un message invita
   une carte plate s'affiche à la place, avec les mêmes photos.
 - La langue est détectée automatiquement au premier passage puis mémorisée.
 - L'intro s'affiche une fois par visite (pas à chaque rechargement).
+
+## 10. Portfolio PDF
+
+Le portfolio PDF (`assets/docs/portfolio-hamza-jnah.pdf` et `-en.pdf`) est fabriqué à partir des textes du site.
+Après une modification des textes, régénérez-le depuis la racine du dépôt :
+`node pdf/build.js fr` puis `node pdf/build.js en` (nécessite Playwright et le paquet npm `qrcode`).
+La page `pdf/portfolio.html` sert uniquement à fabriquer le PDF ; elle n'est pas liée dans le menu.

@@ -61,7 +61,9 @@
     "drag": "← drag →",
     "drag_label": "Drag the name",
     "stretch": "↔ stretch me",
-    "stretch_label": "Widen the name box"
+    "stretch_label": "Widen the name box",
+    "cta_portfolio": "Download the portfolio (PDF)",
+    "portfolio_href": "assets/docs/portfolio-hamza-jnah-en.pdf"
   },
   "marquee": {
     "about": "About",
